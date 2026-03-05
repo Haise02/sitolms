@@ -307,8 +307,13 @@
 .mt-carousel-arrow svg {
   width: 20px;
   height: 20px;
-  stroke: currentColor;
-  fill: none;
+  display: block;
+}
+.mt-carousel-arrow svg polyline,
+.mt-carousel-arrow svg path,
+.mt-carousel-arrow svg line {
+  stroke: #ffffff !important;
+  fill: none !important;
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -347,24 +352,42 @@
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .mt-articoli { padding: 70px 0 90px; }
-  .mt-articoli-inner { padding: 0 16px; }
+  .mt-articoli-inner { padding: 0 12px; }
   .mt-articoli h2 { font-size: 36px; }
-  .mt-art-card-img { height: 160px; }
-  .mt-art-card-top { padding: 20px 20px 0; }
-  .mt-art-card-body { padding: 14px 20px 22px; }
+  .mt-art-header { margin-bottom: 48px; }
+  .mt-art-card-img { height: 150px; }
+  .mt-art-card-top { padding: 18px 18px 0; }
+  .mt-art-card-body { padding: 12px 18px 20px; }
   .mt-art-card-title { font-size: 16px; }
-  .mt-carousel-arrow { width: 40px; height: 40px; }
-  .mt-carousel-arrow--left { left: 6px; }
-  .mt-carousel-arrow--right { right: 6px; }
+  .mt-art-card-abstract { font-size: 13px; margin-bottom: 16px; }
+  .mt-art-card-cta { padding: 8px 18px; font-size: 12px; }
+  .mt-carousel-arrow { width: 36px; height: 36px; }
+  .mt-carousel-arrow--left { left: 4px; }
+  .mt-carousel-arrow--right { right: 4px; }
+  .mt-carousel-arrow svg { width: 16px; height: 16px; }
+  .mt-carousel-dots { margin-top: 24px; gap: 6px; }
+  .mt-carousel-dot { width: 6px; height: 6px; }
+  .mt-carousel-dot.mt-dot-active { width: 20px; }
 }
 
 @media (max-width: 480px) {
-  .mt-articoli { padding: 50px 0 70px; }
-  .mt-articoli h2 { font-size: 30px; }
-  .mt-art-card-img { height: 140px; }
-  .mt-art-card-title { font-size: 15px; }
-  .mt-art-card-abstract { font-size: 13px; }
-  .mt-carousel-arrow { width: 36px; height: 36px; }
+  .mt-articoli { padding: 50px 0 60px; }
+  .mt-articoli-inner { padding: 0 8px; }
+  .mt-articoli h2 { font-size: 28px; }
+  .mt-art-subtitle { font-size: 14px; }
+  .mt-art-header { margin-bottom: 36px; }
+  .mt-art-card-img { height: 120px; }
+  .mt-art-card-top { padding: 14px 14px 0; }
+  .mt-art-card-body { padding: 10px 14px 16px; }
+  .mt-art-card-title { font-size: 14px; margin-bottom: 8px; }
+  .mt-art-card-abstract { font-size: 12px; line-height: 1.5; margin-bottom: 12px; }
+  .mt-art-card-cta { padding: 7px 14px; font-size: 11px; }
+  .mt-art-media-badge { font-size: 10px; padding: 4px 10px; }
+  .mt-art-card-type { font-size: 9px; }
+  .mt-carousel-arrow { width: 32px; height: 32px; }
+  .mt-carousel-arrow--left { left: 2px; }
+  .mt-carousel-arrow--right { right: 2px; }
+  .mt-carousel-arrow svg { width: 14px; height: 14px; }
 }
 </style>
 
@@ -515,14 +538,28 @@
   }
   var dots = dotsBox.querySelectorAll('.mt-carousel-dot');
 
+  /* Responsive breakpoints for center width and peek */
+  function getLayout(){
+    var W = stage.offsetWidth;
+    var centerPct, peekPct;
+    if(W <= 480){
+      centerPct = 0.85; peekPct = 0.04;
+    } else if(W <= 768){
+      centerPct = 0.80; peekPct = 0.06;
+    } else {
+      centerPct = 0.58; peekPct = 0.12;
+    }
+    var centerW = Math.round(W * centerPct);
+    var peekAmount = Math.round(W * peekPct);
+    return { W: W, centerW: centerW, peekAmount: peekAmount };
+  }
+
   /* Measure natural height of center card once */
   var stageH = 0;
   function measureHeight(){
-    /* Temporarily make first card visible at center width to measure */
-    var W = stage.offsetWidth;
-    var centerW = Math.round(W * 0.58);
+    var lay = getLayout();
     cards[0].style.position = 'relative';
-    cards[0].style.width = centerW + 'px';
+    cards[0].style.width = lay.centerW + 'px';
     cards[0].style.height = 'auto';
     cards[0].style.opacity = '1';
     stageH = cards[0].offsetHeight;
@@ -535,15 +572,14 @@
 
   /* Layout: calculate pixel positions based on stage width */
   function layout(idx){
-    var W = stage.offsetWidth;
-
-    /* Center card: 58% width */
-    var centerW = Math.round(W * 0.58);
+    var lay = getLayout();
+    var W = lay.W;
+    var centerW = lay.centerW;
     var centerL = Math.round((W - centerW) / 2);
 
     /* Side peek cards: same width as center, but pushed off-screen so only a sliver shows */
     var sideW = centerW;
-    var peekAmount = Math.round(W * 0.12); /* how much of side card is visible */
+    var peekAmount = lay.peekAmount;
     var leftL  = -(sideW - peekAmount);
     var rightL = W - peekAmount;
 
