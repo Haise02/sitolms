@@ -11,11 +11,9 @@
   --accent2: #7B5CF5;
   --beige: #D4C5B0;
   position: relative;
-  padding: 80px 24px 100px;
   background: var(--navy);
-  min-height: 100vh;
-  overflow: hidden;
   font-family: 'Inter', sans-serif;
+  /* NO overflow:hidden — cards use position:fixed */
 }
 
 .mt-iniziative *,
@@ -35,15 +33,18 @@
 .mt-iniz-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 24px;
   position: relative;
 }
 
-/* ── Header ── */
+/* ── Header — sits in normal flow, NOT overlapped ── */
 .mt-iniz-header {
   text-align: center;
   max-width: 900px;
-  margin: 0 auto 10px;
-  z-index: 3;
+  margin: 0 auto;
+  padding: 80px 0 60px;
+  position: relative;
+  z-index: 5;
 }
 
 .mt-iniz-label {
@@ -85,33 +86,23 @@
   margin: 0 auto;
 }
 
-/* ── Stacked Cards Wrapper ── */
-.mt-iniz-cards-wrapper {
+/* ── Scroll track — the tall div that drives the scroll animation ── */
+.mt-iniz-scroll-track {
   position: relative;
-  height: 2400px;
+  /* height set by JS: (totalCards * scrollPerCard) + cardH */
 }
 
-.mt-iniz-card-wrap {
-  display: contents;
-}
-
-/* ── Single Card ── */
+/* ── Single Card — starts fixed, last card goes absolute when done ── */
 .mt-iniz-card {
   position: fixed;
-  top: 160px;
-  left: 50%;
-  right: auto;
-  width: min(680px, calc(100vw - 80px));
-  transform: translate3d(-50%, 100vh, 0);
-  height: calc(65vh - 60px);
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
+  border: 2px solid rgba(123,92,245,0.35);
   padding: 36px 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
-  border: 2px solid rgba(123,92,245,0.35);
-  border-radius: 24px;
-  overflow: hidden;
   backdrop-filter: blur(20px);
   box-shadow:
     0 30px 80px rgba(0,0,0,0.5),
@@ -121,11 +112,16 @@
   will-change: transform, opacity;
 }
 
-/* Z-index stacking */
+/* Z-index stacking — last card on top */
 .mt-iniz-card[data-index="1"] { z-index: 1; }
 .mt-iniz-card[data-index="2"] { z-index: 2; }
 .mt-iniz-card[data-index="3"] { z-index: 3; }
 .mt-iniz-card[data-index="4"] { z-index: 4; }
+
+/* When JS switches to absolute positioning for the "done" state */
+.mt-iniz-card.mt-iniz-done {
+  position: absolute !important;
+}
 
 /* ── Card inner elements ── */
 .mt-iniz-card-header {
@@ -200,20 +196,11 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .mt-iniziative { padding: 60px 20px 80px; }
+  .mt-iniz-header { padding: 60px 0 40px; }
   .mt-iniziative h2 { font-size: 36px; }
   .mt-iniz-subtitle { font-size: 15px; }
-  .mt-iniz-header { margin-bottom: 10px; }
-  .mt-iniz-cards-wrapper { height: 2200px; }
-  .mt-iniz-card {
-    top: 140px;
-    left: 20px;
-    right: 20px;
-    width: auto;
-    transform: translate3d(0, 100vh, 0);
-    height: calc(58vh - 40px);
-    padding: 28px 24px;
-  }
+  .mt-iniz-container { padding: 0 20px; }
+  .mt-iniz-card { padding: 28px 24px; }
   .mt-iniz-card-title { font-size: 22px; }
   .mt-iniz-card-desc { font-size: 14px; line-height: 1.6; }
   .mt-iniz-card-icon { width: 48px; height: 48px; border-radius: 14px; margin-bottom: 20px; }
@@ -221,225 +208,246 @@
 }
 
 @media (max-width: 480px) {
-  .mt-iniziative { padding: 50px 16px 60px; }
+  .mt-iniz-header { padding: 50px 0 30px; }
   .mt-iniziative h2 { font-size: 30px; }
   .mt-iniz-subtitle { font-size: 14px; }
-  .mt-iniz-cards-wrapper { height: 2000px; }
-  .mt-iniz-card {
-    top: 120px;
-    left: 16px;
-    right: 16px;
-    height: calc(60vh - 30px);
-    padding: 24px 20px;
-  }
+  .mt-iniz-container { padding: 0 16px; }
+  .mt-iniz-card { padding: 24px 20px; border-radius: 18px; }
   .mt-iniz-card-header { margin-bottom: 20px; }
   .mt-iniz-card-title { font-size: 19px; margin-bottom: 12px; }
   .mt-iniz-card-desc { font-size: 13px; }
+  .mt-iniz-card-icon { width: 44px; height: 44px; margin-bottom: 16px; }
+  .mt-iniz-card-icon svg { width: 20px; height: 20px; }
 }
 </style>
 
-<section class="mt-iniziative">
+<section class="mt-iniziative" id="mtInizSection">
   <div class="mt-iniz-container">
 
-    <!-- Header -->
-    <div class="mt-iniz-header">
+    <!-- Header — normal flow, never overlapped -->
+    <div class="mt-iniz-header" id="mtInizHeader">
       <div class="mt-iniz-label">Iniziative Speciali</div>
       <h2>Oltre la formazione: <em>impatto sociale</em></h2>
       <p class="mt-iniz-subtitle">Progetti, partnership e iniziative che testimoniano l'impegno della Leone Master School nel creare valore reale per la comunità.</p>
     </div>
 
-    <!-- Stacked Cards -->
-    <div class="mt-iniz-cards-wrapper" id="mtInizWrapper">
+    <!-- Scroll track — tall div that drives the scroll animation -->
+    <div class="mt-iniz-scroll-track" id="mtInizTrack">
 
       <!-- Card 1 -->
-      <div class="mt-iniz-card-wrap">
-        <div class="mt-iniz-card" data-index="1">
-          <div class="mt-iniz-card-header">
-            <span class="mt-iniz-card-number">01</span>
-            <span class="mt-iniz-card-tag">Empowerment</span>
-          </div>
-          <div class="mt-iniz-card-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div class="mt-iniz-card-title">Evento "Donna Leader"</div>
-          <p class="mt-iniz-card-desc">Un progetto dedicato alla <strong>leadership femminile</strong>, con articoli e copertura mediatica nazionale. Un'iniziativa per valorizzare il ruolo delle donne nel mondo imprenditoriale e professionale.</p>
+      <div class="mt-iniz-card" data-index="1">
+        <div class="mt-iniz-card-header">
+          <span class="mt-iniz-card-number">01</span>
+          <span class="mt-iniz-card-tag">Empowerment</span>
         </div>
+        <div class="mt-iniz-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="mt-iniz-card-title">Evento "Donna Leader"</div>
+        <p class="mt-iniz-card-desc">Un progetto dedicato alla <strong>leadership femminile</strong>, con articoli e copertura mediatica nazionale. Un'iniziativa per valorizzare il ruolo delle donne nel mondo imprenditoriale e professionale.</p>
       </div>
 
       <!-- Card 2 -->
-      <div class="mt-iniz-card-wrap">
-        <div class="mt-iniz-card" data-index="2">
-          <div class="mt-iniz-card-header">
-            <span class="mt-iniz-card-number">02</span>
-            <span class="mt-iniz-card-tag">Accademia</span>
-          </div>
-          <div class="mt-iniz-card-icon">
-            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          </div>
-          <div class="mt-iniz-card-title">Partnership con Università IUL</div>
-          <p class="mt-iniz-card-desc">Una collaborazione strategica con <strong>l'Università Telematica IUL</strong> per unire rigore accademico e approccio pratico, creando percorsi formativi riconosciuti e certificati.</p>
+      <div class="mt-iniz-card" data-index="2">
+        <div class="mt-iniz-card-header">
+          <span class="mt-iniz-card-number">02</span>
+          <span class="mt-iniz-card-tag">Accademia</span>
         </div>
+        <div class="mt-iniz-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="mt-iniz-card-title">Partnership con Università IUL</div>
+        <p class="mt-iniz-card-desc">Una collaborazione strategica con <strong>l'Università Telematica IUL</strong> per unire rigore accademico e approccio pratico, creando percorsi formativi riconosciuti e certificati.</p>
       </div>
 
       <!-- Card 3 -->
-      <div class="mt-iniz-card-wrap">
-        <div class="mt-iniz-card" data-index="3">
-          <div class="mt-iniz-card-header">
-            <span class="mt-iniz-card-number">03</span>
-            <span class="mt-iniz-card-tag">Istituzioni</span>
-          </div>
-          <div class="mt-iniz-card-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
-          </div>
-          <div class="mt-iniz-card-title">Attività con Regione Lazio</div>
-          <p class="mt-iniz-card-desc">Collaborazioni istituzionali per promuovere la <strong>formazione professionale</strong> e sostenere l'innovazione nel territorio, con il supporto delle istituzioni regionali.</p>
+      <div class="mt-iniz-card" data-index="3">
+        <div class="mt-iniz-card-header">
+          <span class="mt-iniz-card-number">03</span>
+          <span class="mt-iniz-card-tag">Istituzioni</span>
         </div>
+        <div class="mt-iniz-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
+        </div>
+        <div class="mt-iniz-card-title">Attività con Regione Lazio</div>
+        <p class="mt-iniz-card-desc">Collaborazioni istituzionali per promuovere la <strong>formazione professionale</strong> e sostenere l'innovazione nel territorio, con il supporto delle istituzioni regionali.</p>
       </div>
 
       <!-- Card 4 -->
-      <div class="mt-iniz-card-wrap">
-        <div class="mt-iniz-card" data-index="4">
-          <div class="mt-iniz-card-header">
-            <span class="mt-iniz-card-number">04</span>
-            <span class="mt-iniz-card-tag">Imprenditoria</span>
-          </div>
-          <div class="mt-iniz-card-icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div class="mt-iniz-card-title">Imprenditoria Femminile e Giovani</div>
-          <p class="mt-iniz-card-desc">Progetti mirati a supportare <strong>l'imprenditoria femminile e giovanile</strong>, con programmi dedicati, borse di studio e percorsi di accelerazione per i talenti emergenti.</p>
+      <div class="mt-iniz-card" data-index="4">
+        <div class="mt-iniz-card-header">
+          <span class="mt-iniz-card-number">04</span>
+          <span class="mt-iniz-card-tag">Imprenditoria</span>
         </div>
+        <div class="mt-iniz-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="mt-iniz-card-title">Imprenditoria Femminile e Giovani</div>
+        <p class="mt-iniz-card-desc">Progetti mirati a supportare <strong>l'imprenditoria femminile e giovanile</strong>, con programmi dedicati, borse di studio e percorsi di accelerazione per i talenti emergenti.</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- Spacer after stacked section -->
-<div class="mt-iniz-spacer" aria-hidden="true"></div>
-<style>
-.mt-iniz-spacer {
-  width: 100%;
-  background: var(--navy, #07162E);
-  height: 60vh;
-}
-@media (max-width: 768px) {
-  .mt-iniz-spacer { height: 50vh; }
-}
-</style>
-
 <script>
 (function(){
-  var cards = document.querySelectorAll('.mt-iniz-card');
-  var wrapper = document.getElementById('mtInizWrapper');
-  var totalCards = cards.length;
-  var isMobile = window.matchMedia('(max-width: 768px)').matches;
+  var track    = document.getElementById('mtInizTrack');
+  var cards    = track.querySelectorAll('.mt-iniz-card');
+  var total    = cards.length;  // 4
+  var isMobile = window.innerWidth <= 768;
 
-  function updateIsMobile(){
-    isMobile = window.matchMedia('(max-width: 768px)').matches;
+  /* ── CONFIG ── */
+  var CARD_TOP    = 100;               /* fixed top position for cards (px from viewport top) */
+  var CARD_H      = 420;               /* card height in px */
+  var CARD_W_MAX  = 680;               /* max card width */
+  var SCROLL_PER  = 500;               /* scroll pixels to advance one card */
+  var RETRACT_PX  = 70;                /* how far a card retracts upward when replaced */
+
+  function recalc(){
+    isMobile = window.innerWidth <= 768;
+    if(isMobile){
+      CARD_TOP = 80;
+      CARD_H   = Math.min(380, window.innerHeight * 0.55);
+      SCROLL_PER = 400;
+    } else {
+      CARD_TOP = 100;
+      CARD_H   = Math.min(420, window.innerHeight * 0.55);
+      SCROLL_PER = 500;
+    }
+    /* Set track height: enough scroll for all cards + one screen to display last card */
+    var trackH = (total * SCROLL_PER) + CARD_H;
+    track.style.height = trackH + 'px';
   }
 
-  var cachedWrapperHeight = 0;
-  var needsRecalc = true;
-
-  function updateWrapperCache(){
-    cachedWrapperHeight = wrapper.getBoundingClientRect().height;
-    needsRecalc = false;
+  function getCardGeometry(){
+    var vw = window.innerWidth;
+    var pad = isMobile ? (vw <= 480 ? 16 : 20) : 0;
+    var w, l;
+    if(isMobile){
+      w = vw - (pad * 2);
+      l = pad;
+    } else {
+      w = Math.min(CARD_W_MAX, vw - 80);
+      l = Math.round((vw - w) / 2);
+    }
+    return { w: w, l: l };
   }
 
-  cards.forEach(function(card){ card.style.opacity = '1'; });
-  updateWrapperCache();
+  function ease(t){
+    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3) / 2;
+  }
 
-  function updateStackedCards(){
-    if(!wrapper) return;
-    updateIsMobile();
-    if(needsRecalc) updateWrapperCache();
+  function update(){
+    var trackRect = track.getBoundingClientRect();
+    var geo = getCardGeometry();
 
-    var wrapperTop = wrapper.getBoundingClientRect().top;
-    var scrollProgress = -wrapperTop / cachedWrapperHeight;
-    var xOffset = isMobile ? '0' : '-50%';
+    /* scrolled = how many px of track have scrolled past the viewport top */
+    var scrolled = -trackRect.top;
 
-    for(var i = 0; i < totalCards; i++){
+    for(var i = 0; i < total; i++){
       var card = cards[i];
-      var cardProgress = ((scrollProgress * totalCards * 1.4) + 1.9) - i;
+      var enterStart = i * SCROLL_PER;            /* when this card starts entering */
+      var enterEnd   = enterStart + SCROLL_PER;    /* when this card is fully in position */
+      var exitStart  = (i + 1) * SCROLL_PER;       /* when next card starts pushing this one */
+      var isLast     = (i === total - 1);
 
-      var easeInOutCubic = function(t){
-        return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
-      };
-      var useEasing = !isMobile;
+      /* Card dimensions */
+      card.style.width  = geo.w + 'px';
+      card.style.height = CARD_H + 'px';
 
-      if(cardProgress < 0){
-        /* Card below viewport — not yet arrived */
-        var distance = Math.abs(cardProgress) * 50;
-        card.style.transform = 'translate3d(' + xOffset + ', ' + Math.min(100, 100 + distance) + 'vh, 0) scale(0.95)';
-        card.style.opacity = '1';
+      if(scrolled < enterStart){
+        /* ── BEFORE: card is below viewport, hidden ── */
+        card.classList.remove('mt-iniz-done');
+        card.style.position = 'fixed';
+        card.style.top  = '';
+        card.style.left = geo.l + 'px';
+        card.style.transform = 'translateY(100vh)';
+        card.style.opacity = '0';
         card.style.pointerEvents = 'none';
-      } else if(cardProgress >= 0 && cardProgress < 1){
-        /* Card entering — sliding up */
-        var rawP = Math.max(0, Math.min(1, cardProgress));
-        var progress = useEasing ? easeInOutCubic(rawP) : rawP;
-        var translateY = (1 - progress) * 100;
-        var scale = 0.95 + (progress * 0.05);
-        card.style.transform = 'translate3d(' + xOffset + ', ' + translateY + 'vh, 0) scale(' + scale + ')';
+
+      } else if(scrolled >= enterStart && scrolled < enterEnd){
+        /* ── ENTERING: card slides up from bottom to CARD_TOP ── */
+        var p = (scrolled - enterStart) / SCROLL_PER;
+        p = ease(Math.max(0, Math.min(1, p)));
+        var yVh = (1 - p) * 100;
+
+        card.classList.remove('mt-iniz-done');
+        card.style.position = 'fixed';
+        card.style.top  = CARD_TOP + 'px';
+        card.style.left = geo.l + 'px';
+        card.style.transform = 'translateY(' + yVh + 'vh) scale(' + (0.95 + p * 0.05) + ')';
+        card.style.opacity = '' + Math.min(1, p * 2);
+        card.style.pointerEvents = p > 0.5 ? 'auto' : 'none';
+
+      } else if(scrolled >= enterEnd && (isLast || scrolled < exitStart)){
+        /* ── ACTIVE: card is at its resting position ── */
+        card.classList.remove('mt-iniz-done');
+        card.style.position = 'fixed';
+        card.style.top  = CARD_TOP + 'px';
+        card.style.left = geo.l + 'px';
+        card.style.transform = 'translateY(0) scale(1)';
         card.style.opacity = '1';
         card.style.pointerEvents = 'auto';
-      } else if(cardProgress >= 1 && cardProgress < 2){
-        /* Card active or starting to retract */
-        var subP = cardProgress - 1;
-        if(subP < 0.3){
-          card.style.transform = 'translate3d(' + xOffset + ', 0, 0) scale(1)';
-          card.style.opacity = '1';
-          card.style.pointerEvents = 'auto';
-        } else {
-          var retractP = (subP - 0.3) / 0.7;
-          var smoothR = useEasing ? easeInOutCubic(retractP) : retractP;
-          var offset = smoothR * 85;
-          var sc = 1 - (smoothR * 0.005);
-          card.style.transform = 'translate3d(' + xOffset + ', -' + offset + 'px, 0) scale(' + sc + ')';
-          card.style.opacity = '1';
-          card.style.pointerEvents = retractP < 0.5 ? 'auto' : 'none';
-        }
-      } else {
-        /* Card stacked above */
-        var stacksAfter = cardProgress - 2;
-        var stackPosition = stacksAfter + 1;
-        var stackOffset = stackPosition * 85;
-        var stackScale = 1 - (stackPosition * 0.005);
-        card.style.transform = 'translate3d(' + xOffset + ', -' + stackOffset + 'px, 0) scale(' + stackScale + ')';
-        card.style.opacity = '1';
+
+      } else if(!isLast && scrolled >= exitStart){
+        /* ── RETRACTED: pushed up by the next card ── */
+        var retractP = Math.min(1, (scrolled - exitStart) / SCROLL_PER);
+        retractP = ease(retractP);
+        var retractY = -(retractP * RETRACT_PX);
+        var retractScale = 1 - (retractP * 0.02);
+        var retractOpacity = Math.max(0.3, 1 - retractP * 0.7);
+
+        card.classList.remove('mt-iniz-done');
+        card.style.position = 'fixed';
+        card.style.top  = CARD_TOP + 'px';
+        card.style.left = geo.l + 'px';
+        card.style.transform = 'translateY(' + retractY + 'px) scale(' + retractScale + ')';
+        card.style.opacity = '' + retractOpacity;
         card.style.pointerEvents = 'none';
       }
     }
+
+    /* ── LAST CARD STOP: when scroll goes past all cards, pin last card absolutely ── */
+    var allDoneAt = total * SCROLL_PER;
+    var lastCard = cards[total - 1];
+    if(scrolled >= allDoneAt){
+      /* Switch to absolute so it scrolls normally with the page */
+      lastCard.classList.add('mt-iniz-done');
+      lastCard.style.position = 'absolute';
+      lastCard.style.top  = allDoneAt + 'px';
+      lastCard.style.left = geo.l + 'px';
+      lastCard.style.transform = 'translateY(0) scale(1)';
+      lastCard.style.opacity = '1';
+      lastCard.style.pointerEvents = 'auto';
+    }
   }
 
-  var lastTime = 0;
-  var throttleMs = isMobile ? 50 : 0;
+  /* ── Scroll listener ── */
   var rafId = null;
-
   function handleScroll(){
-    var now = performance.now();
-    if(isMobile && now - lastTime < throttleMs) return;
-    lastTime = now;
     if(rafId) cancelAnimationFrame(rafId);
     rafId = requestAnimationFrame(function(){
-      updateStackedCards();
+      update();
       rafId = null;
     });
   }
 
   window.addEventListener('scroll', handleScroll, {passive: true});
   window.addEventListener('touchmove', handleScroll, {passive: true});
-  updateStackedCards();
 
-  var resizeTimeout;
+  /* ── Resize ── */
+  var resizeTimer;
   window.addEventListener('resize', function(){
-    needsRecalc = true;
-    updateIsMobile();
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(function(){
-      updateWrapperCache();
-      updateStackedCards();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){
+      recalc();
+      update();
     }, 100);
   });
+
+  /* ── Init ── */
+  recalc();
+  update();
 })();
 </script>
