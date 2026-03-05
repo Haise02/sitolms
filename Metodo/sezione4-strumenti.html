@@ -1,0 +1,431 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-strumenti {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 50px 0 100px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.mt-strumenti::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 40%, rgba(76,123,244,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 60%, rgba(56,163,244,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Header */
+.mt-stru-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  padding: 0 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+  z-index: 2;
+}
+.mt-stru-header.mt-vis { animation: mtSUp 0.8s ease forwards; }
+
+.mt-stru-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.mt-stru-label::before,
+.mt-stru-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.mt-strumenti h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 46px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+
+.mt-strumenti h2 em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+.mt-stru-subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Carousel ── */
+.mt-carousel-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* Fade edges */
+.mt-carousel-wrap::before,
+.mt-carousel-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 3;
+  pointer-events: none;
+}
+.mt-carousel-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--navy) 0%, transparent 100%);
+}
+.mt-carousel-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--navy) 0%, transparent 100%);
+}
+
+.mt-carousel-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  will-change: transform;
+  padding: 20px 0;
+}
+
+/* Individual card */
+.mt-car-card {
+  flex: 0 0 420px;
+  border-radius: 24px;
+  padding: 44px 38px;
+  box-sizing: border-box;
+  background-color: #07162E;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(76,123,244,0.12);
+  opacity: 0.4;
+  transform: scale(0.96);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark overlay for readability over bg images */
+.mt-car-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,22,46,0.55) 0%, rgba(7,22,46,0.88) 60%, rgba(7,22,46,0.95) 100%);
+  border-radius: 24px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mt-car-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mt-car-card.mt-car-active {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(76,123,244,0.25);
+  box-shadow: 0 16px 60px rgba(76,123,244,0.08);
+}
+
+.mt-car-card:hover {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  border-color: rgba(76,123,244,0.3);
+  box-shadow: 0 16px 60px rgba(76,123,244,0.1);
+}
+
+/* Card number */
+.mt-car-num {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 64px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+  margin-bottom: 20px;
+  letter-spacing: -2px;
+}
+
+/* Icon */
+.mt-car-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(76,123,244,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.mt-car-icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--accent);
+}
+
+/* Card title – Inter Tight varied weights */
+.mt-car-card h3 {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 14px;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+
+/* Keyword tag */
+.mt-car-tag {
+  display: inline-block;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: rgba(76,123,244,0.08);
+  padding: 5px 12px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+
+.mt-car-card p {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  margin: 0;
+}
+
+@keyframes mtSUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .mt-strumenti { padding: 70px 0; }
+  .mt-stru-header { padding: 0 20px; }
+  .mt-strumenti h2 { font-size: 36px; }
+  .mt-car-card { flex: 0 0 320px; padding: 36px 28px; }
+  .mt-car-card h3 { font-size: 22px; }
+  .mt-car-num { font-size: 48px; }
+  .mt-carousel-wrap::before,
+  .mt-carousel-wrap::after { width: 60px; }
+  .mt-carousel-track { gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .mt-strumenti { padding: 50px 0; }
+  .mt-stru-header { padding: 0 16px; }
+  .mt-strumenti h2 { font-size: 30px; }
+  .mt-car-card { flex: 0 0 290px; padding: 30px 22px; }
+  .mt-car-card h3 { font-size: 20px; }
+  .mt-car-num { font-size: 40px; }
+  .mt-carousel-wrap::before,
+  .mt-carousel-wrap::after { width: 40px; }
+}
+</style>
+
+<div class="mt-strumenti">
+
+  <div class="mt-stru-header" id="mtStruHeader">
+    <div class="mt-stru-label">Cosa Include</div>
+    <h2>Tutto ciò che ti serve per<br><em>applicare ciò che impari</em></h2>
+    <p class="mt-stru-subtitle">Ogni modulo include:</p>
+  </div>
+
+  <div class="mt-carousel-wrap" id="mtCarouselWrap">
+    <div class="mt-carousel-track" id="mtCarouselTrack">
+
+      <!-- Card 1: bg-image slot -->
+      <div class="mt-car-card" data-car-idx="0" style="background-image: url('');">
+        <div class="mt-car-num">01</div>
+        <div class="mt-car-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="mt-car-tag">Pratica</div>
+        <h3>Esercizi pratici e casi studio</h3>
+        <p>Non solo concetti da memorizzare, ma esercizi pensati per farti applicare subito ciò che impari su situazioni reali e casi concreti.</p>
+      </div>
+
+      <!-- Card 2: bg-image slot -->
+      <div class="mt-car-card" data-car-idx="1" style="background-image: url('');">
+        <div class="mt-car-num">02</div>
+        <div class="mt-car-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="mt-car-tag">Strumenti</div>
+        <h3>Strumenti pronti da usare subito</h3>
+        <p>Template, framework e risorse operative che puoi utilizzare immediatamente nel lavoro e nella vita quotidiana, senza doverli creare da zero.</p>
+      </div>
+
+      <!-- Card 3: bg-image slot -->
+      <div class="mt-car-card" data-car-idx="2" style="background-image: url('');">
+        <div class="mt-car-num">03</div>
+        <div class="mt-car-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="mt-car-tag">Piattaforma</div>
+        <h3>Piattaforma interattiva</h3>
+        <p>Una piattaforma dedicata per restare in contatto con i Docenti-Mentori, accedere ai materiali e monitorare i tuoi progressi in ogni momento.</p>
+      </div>
+
+      <!-- Card 4: bg-image slot -->
+      <div class="mt-car-card" data-car-idx="3" style="background-image: url('');">
+        <div class="mt-car-num">04</div>
+        <div class="mt-car-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="mt-car-tag">Feedback</div>
+        <h3>Feedback e correzioni</h3>
+        <p>Feedback e correzioni per migliorare in tempo reale. Non sei mai solo: il tuo percorso è costantemente monitorato e ottimizzato.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  /* ── Header reveal ── */
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('mt-vis'); obs.unobserve(entry.target); }
+      });
+    }, {threshold: 0.1});
+    var hdr = document.getElementById('mtStruHeader');
+    if(hdr) obs.observe(hdr);
+  }
+
+  /* ── Carousel logic ── */
+  var wrap  = document.getElementById('mtCarouselWrap');
+  var track = document.getElementById('mtCarouselTrack');
+  if(!wrap || !track) return;
+
+  var origCards = track.querySelectorAll('.mt-car-card');
+  var cardCount = origCards.length;
+
+  /* Clone cards for infinite loop (3 sets total) */
+  for(var s = 0; s < 2; s++){
+    for(var c = 0; c < cardCount; c++){
+      var cl = origCards[c].cloneNode(true);
+      track.appendChild(cl);
+    }
+  }
+
+  var allCards = track.querySelectorAll('.mt-car-card');
+  var speed = 0.6;
+  var pos = 0;
+  var paused = false;
+  var raf;
+
+  function getCardWidth(){
+    return allCards[0].offsetWidth + parseFloat(getComputedStyle(track).gap);
+  }
+
+  function getSetWidth(){
+    return getCardWidth() * cardCount;
+  }
+
+  function updateActive(){
+    var wrapRect = wrap.getBoundingClientRect();
+    var center = wrapRect.left + wrapRect.width / 2;
+    var closest = null;
+    var closestDist = Infinity;
+
+    allCards.forEach(function(card){
+      var cardRect = card.getBoundingClientRect();
+      var cardCenter = cardRect.left + cardRect.width / 2;
+      var dist = Math.abs(center - cardCenter);
+      card.classList.remove('mt-car-active');
+      if(dist < closestDist){
+        closestDist = dist;
+        closest = card;
+      }
+    });
+
+    if(closest) closest.classList.add('mt-car-active');
+  }
+
+  function animate(){
+    if(!paused){
+      pos -= speed;
+      var setW = getSetWidth();
+      if(Math.abs(pos) >= setW){
+        pos += setW;
+      }
+      track.style.transform = 'translateX(' + pos + 'px)';
+    }
+    updateActive();
+    raf = requestAnimationFrame(animate);
+  }
+
+  /* Center first card initially */
+  function initPosition(){
+    var wrapW = wrap.offsetWidth;
+    var cardW = allCards[0].offsetWidth;
+    pos = -(getSetWidth() - (wrapW / 2) + (cardW / 2));
+    /* Ensure pos is within valid range */
+    var setW = getSetWidth();
+    while(pos < -setW) pos += setW;
+    track.style.transform = 'translateX(' + pos + 'px)';
+  }
+
+  initPosition();
+  raf = requestAnimationFrame(animate);
+
+  /* Pause on hover */
+  wrap.addEventListener('mouseenter', function(){ paused = true; });
+  wrap.addEventListener('mouseleave', function(){ paused = false; });
+
+  /* Touch support */
+  var touchStartX = 0;
+  var touchPos = 0;
+  wrap.addEventListener('touchstart', function(e){
+    paused = true;
+    touchStartX = e.touches[0].clientX;
+    touchPos = pos;
+  }, {passive: true});
+
+  wrap.addEventListener('touchmove', function(e){
+    var dx = e.touches[0].clientX - touchStartX;
+    pos = touchPos + dx;
+    track.style.transform = 'translateX(' + pos + 'px)';
+    updateActive();
+  }, {passive: true});
+
+  wrap.addEventListener('touchend', function(){
+    paused = false;
+  });
+})();
+</script>

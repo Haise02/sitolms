@@ -1,0 +1,312 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.cs-selezione {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 40px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-selezione-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.cs-selezione-content {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.cs-selezione-content.cs-vis { animation: csSUp 0.8s ease forwards; }
+
+.cs-selezione-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.cs-selezione-label::before,
+.cs-selezione-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.cs-selezione h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 28px;
+  line-height: 1.2;
+}
+
+.cs-selezione h2 em { font-style: italic; color: var(--beige); }
+
+.cs-selezione-text {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  margin: 0 0 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cs-selezione-text strong {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+/* Comparison cards */
+.cs-selezione-compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+  margin: 48px 0;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.cs-selezione-compare.cs-vis { animation: csSUp 0.8s ease forwards 0.15s; }
+
+.cs-compare-card {
+  border-radius: 20px;
+  padding: 36px 32px;
+}
+
+.cs-compare-old {
+  background: rgba(255,80,80,0.04);
+  border: 1px solid rgba(255,80,80,0.1);
+}
+
+.cs-compare-new {
+  background: rgba(76,123,244,0.06);
+  border: 1px solid rgba(76,123,244,0.15);
+}
+
+.cs-compare-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.cs-compare-old h4 { color: rgba(255,120,120,0.8); }
+.cs-compare-new h4 { color: var(--accent); }
+
+.cs-compare-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cs-compare-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+.cs-compare-list li svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cs-compare-old .cs-compare-list li svg { color: rgba(255,100,100,0.5); }
+.cs-compare-new .cs-compare-list li svg { color: var(--accent); }
+
+.cs-compare-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.cs-compare-divider-line {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
+  position: relative;
+}
+
+.cs-compare-vs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1px;
+}
+
+/* Bottom highlight */
+.cs-selezione-bottom {
+  background: rgba(76,123,244,0.04);
+  border: 1px solid rgba(76,123,244,0.1);
+  border-radius: 16px;
+  padding: 28px 32px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.cs-selezione-bottom.cs-vis { animation: csSUp 0.8s ease forwards 0.25s; }
+
+.cs-selezione-bottom p {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+}
+
+.cs-selezione-bottom p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+@keyframes csSUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .cs-selezione { padding: 70px 20px; }
+  .cs-selezione h2 { font-size: 34px; }
+  .cs-selezione-compare { grid-template-columns: 1fr; gap: 16px; }
+  .cs-compare-divider { display: none; }
+  .cs-compare-card { padding: 28px 24px; }
+}
+
+@media (max-width: 480px) {
+  .cs-selezione { padding: 50px 16px; }
+  .cs-selezione h2 { font-size: 28px; }
+  .cs-selezione-text { font-size: 15px; }
+  .cs-compare-card { padding: 22px 18px; }
+}
+</style>
+
+<div class="cs-selezione">
+  <div class="cs-selezione-inner">
+
+    <div class="cs-selezione-content" id="csSel1">
+      <div class="cs-selezione-label">Il Nostro Approccio</div>
+      <h2>L'iscrizione non è automatica:<br><em>esiste un processo di selezione.</em></h2>
+      <p class="cs-selezione-text">La crescita richiede <strong>disciplina, costanza e responsabilità</strong>. Solo così possiamo garantire un programma di affiancamento serio, selettivo e di valore, in linea con i nostri standard e con i risultati che promettiamo.</p>
+    </div>
+
+    <div class="cs-selezione-compare" id="csSel2">
+      <div class="cs-compare-card cs-compare-old">
+        <h4>Formazione tradizionale</h4>
+        <ul class="cs-compare-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Teoria senza applicazione pratica
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Nessun affiancamento individuale
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Community motivazionale "fai-da-te"
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Risultati non misurabili
+          </li>
+        </ul>
+      </div>
+
+      <div class="cs-compare-divider">
+        <div class="cs-compare-divider-line">
+          <div class="cs-compare-vs">VS</div>
+        </div>
+      </div>
+
+      <div class="cs-compare-card cs-compare-new">
+        <h4>Programma LMS</h4>
+        <ul class="cs-compare-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Affiancamento di gruppo e individuale
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Passi settimanali con standard chiari
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Solo da chi ha esperienza sul campo
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            100% orientato ai risultati tangibili
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cs-selezione-bottom" id="csSel3">
+      <p><strong>Per forgiare talenti, servono talenti.</strong> Per questo l'iscrizione non è automatica: esiste un processo di selezione reciproca.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('cs-vis');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.cs-selezione-content, .cs-selezione-compare, .cs-selezione-bottom').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.cs-selezione-content, .cs-selezione-compare, .cs-selezione-bottom').forEach(function(el){ el.classList.add('cs-vis'); });
+  }
+})();
+</script>

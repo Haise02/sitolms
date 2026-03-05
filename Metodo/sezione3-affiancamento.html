@@ -1,0 +1,520 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-affiancamento {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: visible;
+}
+
+.mt-affiancamento::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(circle, rgba(76,123,244,0.03) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Header ── */
+.mt-aff-header-wrap {
+  padding: 100px 40px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.mt-aff-header {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-aff-header.mt-vis { animation: mtUp 0.8s ease forwards; }
+
+.mt-aff-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.mt-aff-label::before,
+.mt-aff-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.mt-affiancamento h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 20px;
+}
+
+.mt-affiancamento h2 em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+.mt-aff-subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ── Card Stack Container ── */
+.mt-stack-outer {
+  position: relative;
+  z-index: 2;
+}
+
+.mt-stack-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  overflow: hidden;
+}
+
+.mt-stack-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  height: 420px;
+}
+
+/* Individual stack cards */
+.mt-stack-card {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  border-radius: 24px;
+  padding: 52px 48px;
+  box-sizing: border-box;
+  will-change: transform, opacity;
+  transition: transform 0.05s linear, opacity 0.05s linear;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 380px;
+}
+
+/* Card backgrounds — fully opaque so text below never bleeds through */
+.mt-stack-card-1 {
+  background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
+  border: 1px solid rgba(76,123,244,0.22);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.mt-stack-card-2 {
+  background: linear-gradient(160deg, #0b2248 0%, #07162E 100%);
+  border: 1px solid rgba(56,163,244,0.22);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.mt-stack-card-3 {
+  background: linear-gradient(160deg, #0f1e38 0%, #07162E 100%);
+  border: 1px solid rgba(212,197,176,0.22);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+
+/* Step number */
+.mt-stack-step {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity: 0.4;
+}
+
+.mt-stack-card-1 .mt-stack-step { color: var(--accent); }
+.mt-stack-card-2 .mt-stack-step { color: #38A3F4; }
+.mt-stack-card-3 .mt-stack-step { color: var(--beige); }
+
+/* Icon */
+.mt-stack-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.mt-stack-card-1 .mt-stack-icon { background: rgba(76,123,244,0.1); }
+.mt-stack-card-2 .mt-stack-icon { background: rgba(56,163,244,0.1); }
+.mt-stack-card-3 .mt-stack-icon { background: rgba(212,197,176,0.1); }
+
+.mt-stack-icon svg {
+  width: 26px;
+  height: 26px;
+}
+.mt-stack-card-1 .mt-stack-icon svg { color: var(--accent); }
+.mt-stack-card-2 .mt-stack-icon svg { color: #38A3F4; }
+.mt-stack-card-3 .mt-stack-icon svg { color: var(--beige); }
+
+/* Card title – Inter Tight bold white */
+.mt-stack-card h3 {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 18px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.mt-stack-card p {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.85;
+  margin: 0;
+  max-width: 580px;
+}
+
+/* Progress dots */
+.mt-stack-dots {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mt-stack-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transition: all 0.3s ease;
+}
+
+.mt-stack-dot.mt-dot-active {
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(76,123,244,0.4);
+  transform: scale(1.3);
+}
+
+/* ── Story block ── */
+.mt-aff-story-wrap {
+  padding: 40px 40px 100px;
+  position: relative;
+  z-index: 2;
+}
+
+.mt-aff-story {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.mt-aff-story-content {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.mt-aff-story-content.mt-vis { animation: mtSlideR 0.8s ease forwards; }
+
+.mt-aff-story-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 24px;
+  line-height: 1.25;
+}
+
+.mt-aff-story-content h3 em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+.mt-aff-story-text {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.85;
+  margin: 0 0 16px;
+}
+
+.mt-aff-story-quote {
+  border-left: 3px solid var(--accent);
+  padding: 14px 18px;
+  margin: 24px 0 0;
+  background: rgba(76,123,244,0.04);
+  border-radius: 0 12px 12px 0;
+}
+
+.mt-aff-story-quote p {
+  font-size: 15px;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Story visual */
+.mt-aff-story-visual {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.mt-aff-story-visual.mt-vis { animation: mtSlideL 0.8s ease forwards 0.15s; }
+
+.mt-aff-story-img {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, rgba(76,123,244,0.06), rgba(56,163,244,0.04));
+  border: 1px solid rgba(76,123,244,0.1);
+}
+
+.mt-aff-story-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mt-aff-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(76,123,244,0.3);
+}
+
+.mt-aff-img-placeholder svg {
+  width: 48px;
+  height: 48px;
+}
+
+.mt-aff-img-placeholder span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@keyframes mtUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mtSlideR {
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes mtSlideL {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .mt-aff-header-wrap { padding: 70px 20px 40px; }
+  .mt-affiancamento h2 { font-size: 36px; }
+  .mt-stack-sticky { padding: 0 20px; }
+  .mt-stack-viewport { height: 440px; }
+  .mt-stack-card { padding: 40px 28px; min-height: 400px; }
+  .mt-stack-card h3 { font-size: 28px; }
+  .mt-stack-dots { display: none; }
+  .mt-aff-story-wrap { padding: 60px 20px 70px; }
+  .mt-aff-story { grid-template-columns: 1fr; gap: 40px; }
+  .mt-aff-story-visual { order: -1; }
+  .mt-aff-story-content h3 { font-size: 28px; }
+  .mt-aff-story-img { aspect-ratio: 16 / 10; }
+}
+
+@media (max-width: 480px) {
+  .mt-aff-header-wrap { padding: 50px 16px 30px; }
+  .mt-affiancamento h2 { font-size: 30px; }
+  .mt-stack-sticky { padding: 0 16px; }
+  .mt-stack-viewport { height: 460px; }
+  .mt-stack-card { padding: 32px 22px; min-height: 420px; }
+  .mt-stack-card h3 { font-size: 24px; }
+  .mt-aff-story-wrap { padding: 50px 16px; }
+  .mt-aff-story-content h3 { font-size: 24px; }
+}
+</style>
+
+<div class="mt-affiancamento">
+
+  <!-- Header -->
+  <div class="mt-aff-header-wrap">
+    <div class="mt-aff-header" id="mtAffHeader">
+      <div class="mt-aff-label">Il Metodo Formativo</div>
+      <h2>Teoria, pratica<br>E soprattutto, <em>affiancamento</em></h2>
+      <p class="mt-aff-subtitle">Ogni Programma di Affiancamento in Leone Master School è costruito per darti basi solide e allo stesso tempo portarti subito all'azione.</p>
+    </div>
+  </div>
+
+  <!-- Card Stack with sticky scroll -->
+  <div class="mt-stack-outer" id="mtStackOuter" style="height: 200vh;">
+    <div class="mt-stack-sticky">
+      <div class="mt-stack-viewport" id="mtStackViewport">
+
+        <!-- Card 1: Teoria -->
+        <div class="mt-stack-card mt-stack-card-1" data-stack-index="0">
+          <div class="mt-stack-step">Step 01</div>
+          <div class="mt-stack-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <h3>Teoria</h3>
+          <p>La teoria serve a creare fondamenta chiare, un linguaggio comune e i concetti indispensabili per capire dove stai andando.</p>
+        </div>
+
+        <!-- Card 2: Pratica -->
+        <div class="mt-stack-card mt-stack-card-2" data-stack-index="1">
+          <div class="mt-stack-step">Step 02</div>
+          <div class="mt-stack-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Pratica</h3>
+          <p>Ma è solo con la pratica che quel sapere diventa vivo: esercizi, casi reali, simulazioni, strumenti già pronti da usare nel lavoro e nella vita quotidiana.</p>
+        </div>
+
+        <!-- Card 3: Affiancamento -->
+        <div class="mt-stack-card mt-stack-card-3" data-stack-index="2">
+          <div class="mt-stack-step">Step 03</div>
+          <div class="mt-stack-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Affiancamento</h3>
+          <p>Il docente-mentore non trasmette solo concetti: ti mostra come applicarli, ti corregge quando serve, ti fa vedere gli errori che ha già commesso e come evitarli.</p>
+        </div>
+
+        <!-- Progress dots -->
+        <div class="mt-stack-dots" id="mtStackDots">
+          <div class="mt-stack-dot mt-dot-active"></div>
+          <div class="mt-stack-dot"></div>
+          <div class="mt-stack-dot"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Story block -->
+  <div class="mt-aff-story-wrap">
+    <div class="mt-aff-story">
+      <div class="mt-aff-story-content" id="mtAffStory">
+        <h3>Dal latino <em>Magister:</em><br>colui che sa di più</h3>
+        <p class="mt-aff-story-text">Un tempo si chiamava "andare a bottega": osservavi il maestro, ripetevi i gesti, ricevevi correzioni, finché il mestiere diventava tuo.</p>
+        <p class="mt-aff-story-text">È proprio da questa tradizione che nasce la parola Master: dal latino magister, "colui che sa di più", da magis = "più, grande". Nei secoli è diventata sinonimo di guida e di mentore: chi non si limita a conoscere, ma insegna ciò che ha già applicato e vissuto.</p>
+        <div class="mt-aff-story-quote">
+          <p>È questo passaggio di esperienza – dal vissuto di chi insegna alle mani di chi impara – che trasforma il sapere in mestiere, la teoria in competenza reale.</p>
+        </div>
+      </div>
+
+      <!-- SLOT IMMAGINE -->
+      <div class="mt-aff-story-visual" id="mtAffStoryVisual">
+        <div class="mt-aff-story-img">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/metodo/images/DSC01855.JPG" alt="Sessione di affiancamento Leone Master School">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  /* ── Card Stack scroll logic ── */
+  var outer = document.getElementById('mtStackOuter');
+  var cards = document.querySelectorAll('.mt-stack-card');
+  var dots  = document.querySelectorAll('.mt-stack-dot');
+  var total = cards.length;
+
+  function updateStack(){
+    if(!outer) return;
+    var rect = outer.getBoundingClientRect();
+    var scrollH = outer.offsetHeight - window.innerHeight;
+    if(scrollH <= 0) return;
+    var progress = Math.max(0, Math.min(1, -rect.top / scrollH));
+
+    var segSize = 1 / total;
+
+    for(var i = 0; i < total; i++){
+      var card = cards[i];
+      var segStart = i * segSize;
+      var segEnd   = segStart + segSize;
+      var segProg  = Math.max(0, Math.min(1, (progress - segStart) / segSize));
+
+      if(i === 0){
+        /* First card: fully visible, then scales down and fades as card 2 arrives */
+        var exitProg = Math.max(0, Math.min(1, (progress - segSize * 0.5) / (segSize * 0.5)));
+        card.style.transform = 'scale(' + (1 - exitProg * 0.06) + ')';
+        card.style.opacity = (1 - exitProg * 0.5);
+        card.style.zIndex = 1;
+      } else {
+        /* Cards 2,3: slide up from below, then scale down as next card arrives */
+        var enterProg = Math.max(0, Math.min(1, (progress - segStart) / (segSize * 0.5)));
+        var exitProg2 = (i < total - 1) ? Math.max(0, Math.min(1, (progress - segStart - segSize * 0.5) / (segSize * 0.5))) : 0;
+
+        var translateY = (1 - enterProg) * 100;
+        var scale = 1 - exitProg2 * 0.06;
+        var opacity = enterProg * (1 - exitProg2 * 0.5);
+
+        card.style.transform = 'translateY(' + translateY + '%) scale(' + scale + ')';
+        card.style.opacity = opacity;
+        card.style.zIndex = i + 1;
+      }
+    }
+
+    /* Update dots */
+    var activeIdx = Math.min(total - 1, Math.floor(progress * total));
+    for(var d = 0; d < dots.length; d++){
+      dots[d].classList.toggle('mt-dot-active', d === activeIdx);
+    }
+  }
+
+  window.addEventListener('scroll', function(){ requestAnimationFrame(updateStack); }, {passive: true});
+  updateStack();
+
+  /* ── IntersectionObserver for header & story ── */
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('mt-vis');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.1});
+    document.querySelectorAll('.mt-aff-header, .mt-aff-story-content, .mt-aff-story-visual').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.mt-aff-header, .mt-aff-story-content, .mt-aff-story-visual').forEach(function(el){ el.classList.add('mt-vis'); });
+  }
+})();
+</script>

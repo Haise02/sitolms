@@ -1,0 +1,237 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-cta {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 40px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.mt-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(76,123,244,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(123,92,245,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.mt-cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.mt-cta-box {
+  text-align: center;
+  background: linear-gradient(160deg, rgba(76,123,244,0.06) 0%, rgba(123,92,245,0.04) 100%);
+  border: 1px solid rgba(76,123,244,0.12);
+  border-radius: 28px;
+  padding: 60px 48px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.mt-cta-box.mt-vis { animation: mtCtaUp 0.8s ease forwards; }
+
+/* Shimmer effect */
+.mt-cta-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(76,123,244,0.03), transparent);
+  animation: mtCtaShimmer 6s ease infinite;
+}
+
+.mt-cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.mt-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+.mt-cta h2 em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+.mt-cta-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  margin: 0 0 36px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mt-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #ffffff !important;
+  padding: 16px 36px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 20px rgba(76,123,244,0.25);
+}
+
+.mt-cta-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(76,123,244,0.35);
+}
+
+.mt-cta-btn-primary svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Company info */
+.mt-cta-info {
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+.mt-cta-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+}
+
+.mt-cta-info-item svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255,255,255,0.25);
+}
+
+@keyframes mtCtaUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mtCtaShimmer {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(250%); }
+}
+
+@media (max-width: 768px) {
+  .mt-cta { padding: 70px 20px; }
+  .mt-cta-box { padding: 44px 28px; }
+  .mt-cta h2 { font-size: 32px; }
+  .mt-cta-buttons { flex-direction: column; align-items: center; }
+  .mt-cta-btn-primary { width: 100%; max-width: 280px; justify-content: center; }
+  .mt-cta-info { gap: 16px; flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+  .mt-cta { padding: 50px 16px; }
+  .mt-cta-box { padding: 36px 20px; border-radius: 20px; }
+  .mt-cta h2 { font-size: 26px; }
+  .mt-cta-text { font-size: 14px; }
+}
+</style>
+
+<div class="mt-cta">
+  <div class="mt-cta-inner">
+    <div class="mt-cta-box" id="mtCtaBox">
+
+      <div class="mt-cta-label">Inizia il tuo percorso</div>
+
+      <h2>Sei pronto a raggiungere<br>risultati <em>straordinari?</em></h2>
+
+      <p class="mt-cta-text">Allora è il momento di fare il primo passo. Scopri i nostri programmi di affiancamento e inizia il tuo percorso di crescita.</p>
+
+      <div class="mt-cta-buttons">
+        <a href="#" class="mt-cta-btn-primary" data-tf-popup="mGllVklt" data-tf-size="50" data-tf-opacity="100">
+          Conosciamoci meglio
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-cta-info">
+        <div class="mt-cta-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Via Ostiense, 131/L – Roma (RM)
+        </div>
+        <div class="mt-cta-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          P.IVA 17680571001
+        </div>
+        <div class="mt-cta-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@leonemasterschool.it
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="//embed.typeform.com/next/embed.js"></script>
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('mt-vis');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.mt-cta-box').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.mt-cta-box').forEach(function(el){ el.classList.add('mt-vis'); });
+  }
+})();
+</script>

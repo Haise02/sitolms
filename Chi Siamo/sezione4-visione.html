@@ -1,0 +1,307 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.cs-visione {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 40px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-visione::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(76,123,244,0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cs-visione-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.cs-visione-header {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.cs-visione-header.cs-vis { animation: csUp 0.8s ease forwards; }
+
+.cs-visione-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.cs-visione-label::before,
+.cs-visione-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.cs-visione h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.cs-visione h2 em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+/* Two big cards side by side */
+.cs-visione-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.cs-vcard-big {
+  position: relative;
+  border-radius: 24px;
+  padding: 48px 40px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.45s cubic-bezier(0.25,1,0.5,1);
+}
+
+.cs-vcard-big.cs-vis { animation: csUp 0.7s ease forwards; }
+.cs-vcard-big:nth-child(1).cs-vis { animation-delay: 0.1s; }
+.cs-vcard-big:nth-child(2).cs-vis { animation-delay: 0.2s; }
+
+.cs-vcard-big:hover {
+  transform: translateY(-5px);
+}
+
+/* PIANO card */
+.cs-vcard-piano {
+  background: linear-gradient(135deg, rgba(76,123,244,0.08) 0%, rgba(76,123,244,0.02) 100%);
+  border: 1px solid rgba(76,123,244,0.15);
+}
+
+.cs-vcard-piano:hover {
+  border-color: rgba(76,123,244,0.3);
+  box-shadow: 0 20px 60px rgba(76,123,244,0.08);
+}
+
+/* VISIONE card */
+.cs-vcard-visione {
+  background: linear-gradient(135deg, rgba(123,92,245,0.08) 0%, rgba(123,92,245,0.02) 100%);
+  border: 1px solid rgba(123,92,245,0.15);
+}
+
+.cs-vcard-visione:hover {
+  border-color: rgba(123,92,245,0.3);
+  box-shadow: 0 20px 60px rgba(123,92,245,0.08);
+}
+
+.cs-vcard-big-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.cs-vcard-piano .cs-vcard-big-label { color: var(--accent); }
+.cs-vcard-visione .cs-vcard-big-label { color: var(--accent2); }
+
+.cs-vcard-big h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px;
+  line-height: 1.25;
+}
+
+.cs-vcard-big p {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.cs-vcard-big-icon {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.15;
+}
+
+.cs-vcard-piano .cs-vcard-big-icon {
+  background: rgba(76,123,244,0.15);
+}
+
+.cs-vcard-visione .cs-vcard-big-icon {
+  background: rgba(123,92,245,0.15);
+}
+
+.cs-vcard-big-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.cs-vcard-piano .cs-vcard-big-icon svg { color: var(--accent); }
+.cs-vcard-visione .cs-vcard-big-icon svg { color: var(--accent2); }
+
+/* Bottom quote */
+.cs-visione-quote {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.cs-visione-quote.cs-vis { animation: csUp 0.8s ease forwards 0.3s; }
+
+.cs-visione-quote blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--beige);
+  line-height: 1.5;
+  margin: 0 0 16px;
+  position: relative;
+}
+
+.cs-visione-quote blockquote::before {
+  content: '\201C';
+  font-size: 80px;
+  color: rgba(76,123,244,0.15);
+  position: absolute;
+  top: -30px;
+  left: -10px;
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1;
+}
+
+.cs-visione-quote cite {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.5px;
+}
+
+@keyframes csUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .cs-visione { padding: 70px 20px; }
+  .cs-visione h2 { font-size: 36px; }
+  .cs-visione-cards { grid-template-columns: 1fr; gap: 16px; }
+  .cs-vcard-big { padding: 32px 28px; }
+  .cs-vcard-big h3 { font-size: 26px; }
+  .cs-visione-quote blockquote { font-size: 22px; }
+}
+
+@media (max-width: 480px) {
+  .cs-visione { padding: 50px 16px; }
+  .cs-visione h2 { font-size: 30px; }
+  .cs-vcard-big { padding: 28px 22px; }
+  .cs-vcard-big h3 { font-size: 22px; }
+  .cs-vcard-big p { font-size: 14px; }
+  .cs-visione-quote blockquote { font-size: 20px; }
+  .cs-vcard-big-icon { display: none; }
+}
+</style>
+
+<div class="cs-visione">
+  <div class="cs-visione-inner">
+
+    <div class="cs-visione-header" id="csVisioneH">
+      <div class="cs-visione-label">Dove andiamo</div>
+      <h2>NON la chiamiamo missione.<br><em>Lo chiamiamo Piano.</em></h2>
+    </div>
+
+    <div class="cs-visione-cards">
+
+      <!-- IL PIANO -->
+      <div class="cs-vcard-big cs-vcard-piano">
+        <div class="cs-vcard-big-label">Il Nostro Piano</div>
+        <div class="cs-vcard-big-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Migliorare la vita di un milione di persone.</h3>
+        <p>Il nostro obiettivo come scuola è rendere le persone più libere: economicamente, intellettualmente, attraverso il sapere. Trasformiamo la formazione in risultati concreti.</p>
+      </div>
+
+      <!-- LA VISIONE -->
+      <div class="cs-vcard-big cs-vcard-visione">
+        <div class="cs-vcard-big-label">La Nostra Visione</div>
+        <div class="cs-vcard-big-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <h3>Elevare il potere intellettuale e economico dell'essere umano grazie al sapere.</h3>
+        <p>Vogliamo un futuro in cui chi sceglie di crescere abbia formazione di alta qualità, strumenti pratici e affiancamento continuo per trasformare la propria identità in risultati concreti. Un mondo in cui le persone – nella vita e nel lavoro – superano i propri limiti, si realizzano e contribuiscono in modo visibile al progresso sociale ed economico.</p>
+      </div>
+
+    </div>
+
+    <div class="cs-visione-quote" id="csVisioneQ">
+      <blockquote>Cambiare noi stessi per cambiare il mondo e l'ambiente in cui viviamo.</blockquote>
+      <cite>— Leonardo Leone, Founder</cite>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('cs-vis');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.cs-visione-header, .cs-vcard-big, .cs-visione-quote').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.cs-visione-header, .cs-vcard-big, .cs-visione-quote').forEach(function(el){ el.classList.add('cs-vis'); });
+  }
+})();
+</script>

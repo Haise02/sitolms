@@ -1,0 +1,182 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.cs-etico {
+  --bg: #05052A;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--bg);
+  padding: 100px 40px;
+  font-family: 'Inter', sans-serif;
+}
+
+.cs-etico-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cs-etico-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cs-etico-card {
+  position: relative;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25,1,0.5,1);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.cs-etico-card.cs-vis { animation: csEUp 0.7s ease forwards; }
+.cs-etico-card:nth-child(1).cs-vis { animation-delay: 0.05s; }
+.cs-etico-card:nth-child(2).cs-vis { animation-delay: 0.15s; }
+
+.cs-etico-card:hover {
+  border-color: rgba(76,123,244,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  background: rgba(255,255,255,0.04);
+}
+
+.cs-etico-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(76,123,244,0.1), rgba(123,92,245,0.06));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.cs-etico-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--accent);
+}
+
+.cs-etico-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+.cs-etico-card p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0 0 24px;
+}
+
+.cs-etico-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.cs-etico-link:hover {
+  gap: 12px;
+  color: #6da0ff;
+}
+
+.cs-etico-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.cs-etico-card:hover .cs-etico-link svg {
+  transform: translateX(4px);
+}
+
+@keyframes csEUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .cs-etico { padding: 70px 20px; }
+  .cs-etico-cards { grid-template-columns: 1fr; gap: 16px; }
+  .cs-etico-card { padding: 32px 24px; }
+  .cs-etico-card h3 { font-size: 22px; }
+}
+
+@media (max-width: 480px) {
+  .cs-etico { padding: 50px 16px; }
+  .cs-etico-card { padding: 28px 20px; }
+}
+</style>
+
+<div class="cs-etico">
+  <div class="cs-etico-inner">
+    <div class="cs-etico-cards">
+
+      <!-- Codice Etico -->
+      <div class="cs-etico-card" id="csEtico1">
+        <div class="cs-etico-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Codice Etico</h3>
+        <p>Alla Leone Master School, ci impegniamo a promuovere un ambiente di crescita basato su integrità, rispetto e trasparenza.</p>
+        <a href="https://drive.google.com/file/d/1zxLO8EhBGFeaWlCO0I_Iy-dJVnFF9MCS/view?usp=sharing" target="_blank" class="cs-etico-link">
+          Consulta il codice etico
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Patto di Selezione -->
+      <div class="cs-etico-card" id="csEtico2">
+        <div class="cs-etico-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.48 0 2.88.36 4.11 1"/><path d="M22 2l-4.5 4.5"/></svg>
+        </div>
+        <h3>Patto di Selezione</h3>
+        <p>Le regole di accesso alla Leone Master School sono pensate per garantire un percorso formativo di alta qualità e in linea con i nostri valori.</p>
+        <a href="https://drive.google.com/file/d/18eo8iane8Yde5p28Myrm3X8Bx-Gen_2M/view?usp=sharing" target="_blank" class="cs-etico-link">
+          Consulta il patto di selezione
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('cs-vis');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll('.cs-etico-card').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.cs-etico-card').forEach(function(el){ el.classList.add('cs-vis'); });
+  }
+})();
+</script>

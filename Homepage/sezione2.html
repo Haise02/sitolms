@@ -1,0 +1,155 @@
+<style>
+  .image-scroller {
+    position: relative;
+    overflow: hidden;
+    background: #07162E;
+    width: 100%;
+    touch-action: pan-y;
+    margin: 0;
+    padding: 0;
+  }
+  .scroll-track {
+    display: flex;
+    gap: 100px;
+    transition: transform 0.1s linear;
+    will-change: transform;
+  }
+  .scroll-track img {
+    height: 70px;
+    flex-shrink: 0;
+    display: block;
+  }
+  @media (pointer: fine) {
+    .scroll-track {
+      cursor: grab;
+    }
+    .scroll-track:active {
+      cursor: grabbing;
+    }
+  }
+  .fade-left,
+  .fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .fade-left {
+    left: 0;
+    background: linear-gradient(to right, #07162E 0%, transparent 100%);
+  }
+  .fade-right {
+    right: 0;
+    background: linear-gradient(to left, #07162E 0%, transparent 100%);
+  }
+  body.dragging,
+  body.dragging * {
+    user-select: none !important;
+  }
+</style>
+<div class="image-scroller">
+  <div class="fade-left"></div>
+  <div class="scroll-track" id="scrollTrack">
+    <!-- Primo set -->
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rai-1-70px-6.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/milionaire-70px-2.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rds-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/yahoo-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rete4-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/iltempo-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rai2-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/corrieredellasera-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/la7-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/italia1-70px-1.png" alt="">
+    <!-- Secondo set -->
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rai-1-70px-6.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/milionaire-70px-2.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rds-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/yahoo-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rete4-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/iltempo-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rai2-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/corrieredellasera-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/la7-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/italia1-70px-1.png" alt="">
+    <!-- Terzo set -->
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rai-1-70px-6.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/milionaire-70px-2.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rds-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/yahoo-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rete4-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/iltempo-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rai2-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/corrieredellasera-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/la7-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/italia1-70px-1.png" alt="">
+    <!-- Quarto set -->
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rai-1-70px-6.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/milionaire-70px-2.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rds-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/yahoo-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rete4-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/iltempo-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/rai2-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/corrieredellasera-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/la7-70px-1.png" alt="">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2024/04/italia1-70px-1.png" alt="">
+  </div>
+  <div class="fade-right"></div>
+</div>
+<script>
+  const track = document.getElementById("scrollTrack");
+  const speed = 0.5;
+  let offset = 0;
+  let isDragging = false;
+  let startX = 0;
+  let currentX = 0;
+  let lastOffset = 0;
+  function autoScroll() {
+    if (!isDragging) {
+      offset -= speed;
+      const totalWidth = track.scrollWidth / 2;
+      if (Math.abs(offset) >= totalWidth) {
+        offset = 0;
+      }
+      track.style.transform = `translateX(${offset}px)`;
+    }
+    requestAnimationFrame(autoScroll);
+  }
+  // Drag desktop
+  track.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    isDragging = true;
+    startX = e.clientX;
+    lastOffset = offset;
+    document.body.classList.add("dragging");
+  });
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    currentX = e.clientX;
+    offset = lastOffset + (currentX - startX);
+    track.style.transform = `translateX(${offset}px)`;
+  });
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+    document.body.classList.remove("dragging");
+  });
+  // Drag mobile
+  track.addEventListener("touchstart", (e) => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    lastOffset = offset;
+  });
+  track.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+    offset = lastOffset + (currentX - startX);
+    track.style.transform = `translateX(${offset}px)`;
+  });
+  track.addEventListener("touchend", () => {
+    isDragging = false;
+  });
+  autoScroll();
+</script>

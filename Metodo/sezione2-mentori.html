@@ -1,0 +1,318 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-mentori {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 40px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.mt-mentori::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 75% 30%, rgba(76,123,244,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 25% 70%, rgba(123,92,245,0.04) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.mt-mentori-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Layout: testo a sinistra, immagine a destra */
+.mt-mentori-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Content */
+.mt-mentori-content {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+.mt-mentori-content.mt-vis { animation: mtSlideRight 0.8s ease forwards; }
+
+.mt-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.mt-section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.mt-mentori h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 46px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 28px;
+}
+
+.mt-mentori h2 em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+.mt-mentori-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.85;
+  margin: 0 0 16px;
+}
+
+.mt-mentori-highlight {
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  margin: 28px 0;
+  background: rgba(76,123,244,0.04);
+  border-radius: 0 12px 12px 0;
+}
+
+.mt-mentori-highlight p {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.75;
+  margin: 0;
+  font-style: italic;
+}
+
+.mt-mentori-cta {
+  margin-top: 32px;
+}
+
+.mt-btn-outline {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.5) !important;
+  padding: 14px 28px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  line-height: 1.4 !important;
+}
+
+.mt-btn-outline:hover {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.8) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255,255,255,0.06);
+}
+
+.mt-btn-outline svg {
+  width: 16px;
+  height: 16px;
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Visual: immagine placeholder */
+.mt-mentori-visual {
+  opacity: 0;
+  transform: translateX(40px);
+}
+.mt-mentori-visual.mt-vis { animation: mtSlideLeft 0.8s ease forwards 0.15s; }
+
+.mt-mentori-img-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, rgba(76,123,244,0.06), rgba(123,92,245,0.04));
+  border: 1px solid rgba(76,123,244,0.1);
+}
+
+.mt-mentori-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Slot immagine placeholder */
+.mt-mentori-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(76,123,244,0.3);
+}
+
+.mt-mentori-img-placeholder svg {
+  width: 48px;
+  height: 48px;
+}
+
+.mt-mentori-img-placeholder span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Floating badge */
+.mt-mentori-float {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background: rgba(7,22,46,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(76,123,244,0.15);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mt-mentori-float-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(76,123,244,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt-mentori-float-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+.mt-float-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mt-float-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+@keyframes mtSlideRight {
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes mtSlideLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .mt-mentori { padding: 70px 20px; }
+  .mt-mentori-grid { grid-template-columns: 1fr; gap: 40px; }
+  .mt-mentori h2 { font-size: 36px; }
+  .mt-mentori-visual { order: -1; }
+  .mt-mentori-img-wrap { aspect-ratio: 16 / 10; }
+}
+
+@media (max-width: 480px) {
+  .mt-mentori { padding: 50px 16px; }
+  .mt-mentori h2 { font-size: 30px; }
+  .mt-mentori-text { font-size: 15px; }
+}
+</style>
+
+<div class="mt-mentori">
+  <div class="mt-mentori-inner">
+    <div class="mt-mentori-grid">
+
+      <div class="mt-mentori-content" id="mtMentoriContent">
+        <div class="mt-section-label">Come lo facciamo?</div>
+        <h2>Sarai guidato da Docenti–Mentori <em>selezionati</em></h2>
+        <p class="mt-mentori-text">Nella Leone Master School insegnano solo professionisti che hanno già dimostrato di saper costruire risultati fuori dall'aula.</p>
+        <p class="mt-mentori-text">Non formatori improvvisati, ma persone che hanno fondato aziende, scritto libri di riferimento, guidato team e firmato progetti che oggi fanno la differenza nel loro settore.</p>
+        <div class="mt-mentori-highlight">
+          <p>Ogni docente-Mentore, porta il peso della propria esperienza: successi, errori, strategie che funzionano davvero. È questo che rende ogni sessione di affiancamento viva, concreta e soprattutto utile.</p>
+        </div>
+        <div class="mt-mentori-cta">
+          <a href="https://leonemasterschool.it/i-nostri-programmi/" class="mt-btn-outline">
+            Scopri i tuoi Mentori
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- SLOT IMMAGINE: Docente/Mentore in azione (es. sessione di affiancamento, aula, speaking) -->
+      <div class="mt-mentori-visual" id="mtMentoriVisual">
+        <div class="mt-mentori-img-wrap">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/metodo/images/mentori.png" alt="Docenti-Mentori Leone Master School">
+          <div class="mt-mentori-float">
+            <div class="mt-mentori-float-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <div class="mt-float-label">Docenti-Mentori</div>
+              <div class="mt-float-value">Esperienza reale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('mt-vis');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.1});
+    document.querySelectorAll('.mt-mentori-content, .mt-mentori-visual').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.mt-mentori-content, .mt-mentori-visual').forEach(function(el){ el.classList.add('mt-vis'); });
+  }
+})();
+</script>

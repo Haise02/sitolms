@@ -1,0 +1,389 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.cs-team {
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: transparent;
+  padding: 80px 0 60px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.cs-team-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Header */
+.cs-team-header {
+  text-align: center;
+  margin-bottom: 48px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.cs-team-header.cs-vis { animation: csTeamUp 0.8s ease forwards; }
+
+.cs-team-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.cs-team-label::before,
+.cs-team-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.cs-team h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+.cs-team h2 em { font-style: italic; color: var(--beige); }
+
+.cs-team-subtitle {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ========== IMAGE ITEM ========== */
+.cs-timg {
+  position: relative;
+  cursor: default;
+}
+.cs-timg img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: brightness(0.95);
+  position: relative;
+  z-index: 2;
+}
+.cs-timg:hover img {
+  transform: translateY(-6px) scale(1.03);
+  filter: brightness(1.1);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 30px rgba(76,123,244,0.1);
+}
+
+/* ========== ROW 1: Leadership (30% - 40% - 30%) ========== */
+.cs-row-leadership {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.cs-row-leadership.cs-vis { animation: csTeamUp 0.8s ease forwards 0.1s; }
+
+.cs-row-leadership .cs-lead-side {
+  flex: 0 0 28%;
+  max-width: 28%;
+}
+.cs-row-leadership .cs-lead-center {
+  flex: 0 0 38%;
+  max-width: 38%;
+}
+
+/* ========== ROW 2: Management (20% 30% 30% 20%) ========== */
+.cs-row-mgmt {
+  display: grid;
+  grid-template-columns: 20% 30% 30% 20%;
+  align-items: end;
+  gap: 0;
+  justify-content: center;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.cs-row-mgmt.cs-vis { animation: csTeamUp 0.8s ease forwards 0.2s; }
+.cs-row-mgmt2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 48px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.cs-row-mgmt2.cs-vis { animation: csTeamUp 0.8s ease forwards 0.25s; }
+
+/* ========== CAROUSEL ========== */
+.cs-carousel-wrap {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  margin-bottom: 14px;
+  padding: 6px 0;
+}
+
+.cs-carousel-wrap::before,
+.cs-carousel-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 5;
+  pointer-events: none;
+}
+.cs-carousel-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, #05052A, transparent);
+}
+.cs-carousel-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, #05052A, transparent);
+}
+
+.cs-carousel-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+}
+
+.cs-carousel-track .cs-timg {
+  flex-shrink: 0;
+  width: 260px;
+}
+
+/* Animations */
+.cs-carousel-track--right {
+  animation: csScrollRight 45s linear infinite;
+}
+.cs-carousel-track--left {
+  animation: csScrollLeft 45s linear infinite;
+}
+.cs-carousel-track--right2 {
+  animation: csScrollRight 48s linear infinite;
+}
+.cs-carousel-track--left2 {
+  animation: csScrollLeft 48s linear infinite;
+}
+
+/* Pause on hover */
+.cs-carousel-wrap:hover .cs-carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes csScrollRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes csScrollLeft {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+@keyframes csTeamUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 1024px) {
+  .cs-row-mgmt, .cs-row-mgmt2 { grid-template-columns: repeat(4, 1fr); }
+  .cs-carousel-track .cs-timg { width: 230px; }
+}
+
+@media (max-width: 768px) {
+  .cs-team { padding: 60px 0 40px; }
+  .cs-team-inner { padding: 0 20px; }
+  .cs-team h2 { font-size: 36px; }
+  .cs-row-leadership { gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .cs-row-leadership .cs-lead-center { flex: 0 0 60%; max-width: 60%; order: -1; }
+  .cs-row-leadership .cs-lead-side { flex: 0 0 42%; max-width: 42%; }
+  .cs-row-mgmt, .cs-row-mgmt2 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .cs-carousel-track .cs-timg { width: 200px; }
+  .cs-carousel-wrap::before,
+  .cs-carousel-wrap::after { width: 40px; }
+}
+
+@media (max-width: 480px) {
+  .cs-team { padding: 40px 0 30px; }
+  .cs-team-inner { padding: 0 16px; }
+  .cs-team h2 { font-size: 30px; }
+  .cs-row-leadership { gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .cs-row-leadership .cs-lead-center { flex: 0 0 65%; max-width: 65%; order: -1; }
+  .cs-row-leadership .cs-lead-side { flex: 0 0 44%; max-width: 44%; }
+  .cs-row-mgmt, .cs-row-mgmt2 { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .cs-carousel-track .cs-timg { width: 180px; }
+  .cs-carousel-wrap::before,
+  .cs-carousel-wrap::after { width: 24px; }
+}
+</style>
+
+<div class="cs-team">
+  <div class="cs-team-inner">
+
+    <div class="cs-team-header">
+      <div class="cs-team-label">Il Nostro Team</div>
+      <h2>Per forgiare talenti, <em>servono talenti.</em></h2>
+      <p class="cs-team-subtitle">I grandi risultati nascono quando si crea un team unito: colleghi che diventano amici, collaboratori che diventano una famiglia.</p>
+    </div>
+
+    <!-- ROW 1: Leadership (30% Salvatore | 40% Leonardo | 30% Siria) -->
+    <div class="cs-row-leadership">
+      <div class="cs-timg cs-lead-side"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-2.png" alt="Salvatore Scibetta - CEO"></div>
+      <div class="cs-timg cs-lead-center"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta.png" alt="Leonardo Leone - Founder"></div>
+      <div class="cs-timg cs-lead-side"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-3.png" alt="Siria S. - COO"></div>
+    </div>
+
+    <!-- ROW 2: Management (4 colonne) -->
+    <div class="cs-row-mgmt">
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-4.png" alt="Salvo T. - Marketing Manager"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-5.png" alt="Leonardo S. - Head of Event Sales"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-8.png" alt="Mary D.G. - Customer Success Manager"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-9.png" alt="Eleonora C. - Administration Manager"></div>
+    </div>
+
+    <!-- ROW 3: Management 2 (4 colonne) -->
+    <div class="cs-row-mgmt2">
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-10.png" alt="Alessio D.M. - IT Operations Manager"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-11.png" alt="Alessia V. - HR Manager"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-15.png" alt="Adriano F. - Marketing Manager"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/59.png" alt="Antonio T. - Marketing Manager"></div>
+    </div>
+
+  </div>
+
+  <!-- CAROUSEL 1: scorre a destra (7 persone) -->
+  <div class="cs-carousel-wrap">
+    <div class="cs-carousel-track cs-carousel-track--right">
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-6.png" alt="Martina S. - Team Leader"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-12.png" alt="Patrizia F. - Sales Coach"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-13.png" alt="Gianluca P. - Video Editor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-14.png" alt="Nilo L. - Full Stack Marketer"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-16.png" alt="Bartolo G. - Executive Assistant"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-17.png" alt="Renata C. - Event Planner"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/67.png" alt="Team Member"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/68.png" alt="Team Member"></div>
+      <!-- duplicate -->
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-6.png" alt="Martina S."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-12.png" alt="Patrizia F."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-13.png" alt="Gianluca P."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-14.png" alt="Nilo L."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-16.png" alt="Bartolo G."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-17.png" alt="Renata C."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/67.png" alt="Team Member"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/68.png" alt="Team Member"></div>
+    </div>
+  </div>
+
+  <!-- CAROUSEL 2: scorre a sinistra (7 persone) -->
+  <div class="cs-carousel-wrap">
+    <div class="cs-carousel-track cs-carousel-track--left">
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-18.png" alt="Francesca D.S.R. - Learning Experience Coordinator"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-19.png" alt="Angelo P. - IT Operations Assistant"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-20.png" alt="Alessandra S. - IT Operations Assistant"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-21.png" alt="Enzo V. - Junior Customer Success Specialist"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-22.png" alt="Barbara B. - Senior Customer Success Specialist"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-23.png" alt="Chiara L. - Community Manager"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/51.png" alt="Gianna M. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/69.png" alt="Team Member"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/70.png" alt="Team Member"></div>
+      <!-- duplicate -->
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-18.png" alt="Francesca D.S.R."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-19.png" alt="Angelo P."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-20.png" alt="Alessandra S."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-21.png" alt="Enzo V."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-22.png" alt="Barbara B."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-23.png" alt="Chiara L."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/51.png" alt="Gianna M."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/69.png" alt="Team Member"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/70.png" alt="Team Member"></div>
+    </div>
+  </div>
+
+  <!-- CAROUSEL 3: scorre a destra (8 persone) -->
+  <div class="cs-carousel-wrap">
+    <div class="cs-carousel-track cs-carousel-track--right2">
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/52.png" alt="Asma B. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/53.png" alt="Marvin A. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/54.png" alt="Hassan M. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/56.png" alt="Nora D. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/57.png" alt="Cristian T. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/58.png" alt="Domenico P. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/60.png" alt="Eleonora C. - Junior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/71.png" alt="Team Member"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/72.png" alt="Team Member"></div>
+      <!-- duplicate -->
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/52.png" alt="Asma B."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/53.png" alt="Marvin A."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/54.png" alt="Hassan M."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/56.png" alt="Nora D."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/57.png" alt="Cristian T."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/58.png" alt="Domenico P."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/60.png" alt="Eleonora C."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/71.png" alt="Team Member"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/72.png" alt="Team Member"></div>
+    </div>
+  </div>
+
+  <!-- CAROUSEL 4: scorre a sinistra (7 persone) -->
+  <div class="cs-carousel-wrap">
+    <div class="cs-carousel-track cs-carousel-track--left2">
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/61.png" alt="Roberta S. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/62.png" alt="Roberta C. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/50.png" alt="Laura B. - Appointment Setter"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-26.png" alt="Manuel C. - Senior Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-27.png" alt="Asia C. - Event Advisor"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-24.png" alt="Daniela I. - Appointment Setter"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-25.png" alt="Giusy P. - Navigator Coach"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/73.png" alt="Team Member"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/74.png" alt="Team Member"></div>
+      <!-- duplicate -->
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/61.png" alt="Roberta S."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/62.png" alt="Roberta C."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/50.png" alt="Laura B."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-26.png" alt="Manuel C."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-27.png" alt="Asia C."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-24.png" alt="Daniela I."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/Salvatore-Scibetta-25.png" alt="Giusy P."></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/73.png" alt="Team Member"></div>
+      <div class="cs-timg"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/chi-siamo/images-team/74.png" alt="Team Member"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('cs-vis');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.08});
+    document.querySelectorAll('.cs-team-header, .cs-row-leadership, .cs-row-mgmt, .cs-row-mgmt2').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.cs-team-header, .cs-row-leadership, .cs-row-mgmt, .cs-row-mgmt2').forEach(function(el){ el.classList.add('cs-vis'); });
+  }
+})();
+</script>

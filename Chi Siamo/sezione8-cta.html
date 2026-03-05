@@ -1,0 +1,265 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.cs-cta {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 40px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(76,123,244,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(123,92,245,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cs-cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.cs-cta-box {
+  background: linear-gradient(135deg, rgba(76,123,244,0.06) 0%, rgba(123,92,245,0.03) 100%);
+  border: 1px solid rgba(76,123,244,0.12);
+  border-radius: 28px;
+  padding: 64px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.cs-cta-box.cs-vis { animation: csCUp 0.8s ease forwards; }
+
+.cs-cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+  animation: csCShimmer 4s ease infinite;
+}
+
+.cs-cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.cs-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.cs-cta h2 em { font-style: italic; color: var(--beige); }
+
+.cs-cta-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin: 0 0 36px;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cs-cta-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.cs-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  padding: 16px 36px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.cs-cta-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(59,130,246,0.3);
+}
+
+.cs-cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.30) !important;
+  padding: 16px 36px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  font-family: 'Inter', sans-serif;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 0 transparent, 0 0 20px rgba(255,255,255,0.03);
+}
+
+.cs-cta-btn-secondary:hover {
+  background: rgba(255,255,255,0.14) !important;
+  border-color: rgba(255,255,255,0.45) !important;
+  color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255,255,255,0.08);
+}
+
+.cs-cta-btn-secondary svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Company info */
+.cs-cta-info {
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.cs-cta-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+}
+
+.cs-cta-info-item svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255,255,255,0.25);
+}
+
+@keyframes csCUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes csCShimmer {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(50%); }
+}
+
+@media (max-width: 768px) {
+  .cs-cta { padding: 70px 20px; }
+  .cs-cta-box { padding: 44px 28px; }
+  .cs-cta h2 { font-size: 32px; }
+  .cs-cta-buttons { flex-direction: column; align-items: center; }
+  .cs-cta-btn-primary, .cs-cta-btn-secondary { width: 100%; max-width: 280px; justify-content: center; }
+  .cs-cta-info { gap: 16px; flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+  .cs-cta { padding: 50px 16px; }
+  .cs-cta-box { padding: 36px 20px; border-radius: 20px; }
+  .cs-cta h2 { font-size: 26px; }
+  .cs-cta-text { font-size: 14px; }
+}
+</style>
+
+<div class="cs-cta">
+  <div class="cs-cta-inner">
+    <div class="cs-cta-box" id="csCtaBox">
+
+      <div class="cs-cta-label">Unisciti a noi</div>
+
+      <h2>Vuoi far parte <em>del team?</em></h2>
+
+      <p class="cs-cta-text">Siamo sempre alla ricerca di nuovi talenti e collaborazioni. Se condividi i nostri valori e vuoi fare la differenza, contattaci.</p>
+
+      <div class="cs-cta-buttons" style="justify-content: center;">
+        <a href="#" class="cs-cta-btn-primary" data-tf-popup="mGllVklt" data-tf-size="50" data-tf-opacity="100">
+          Conosciamoci meglio
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="cs-cta-info">
+        <div class="cs-cta-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Via Ostiense, 131/L – Roma (RM)
+        </div>
+        <div class="cs-cta-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          P.IVA 17680571001
+        </div>
+        <div class="cs-cta-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@leonemasterschool.it
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="//embed.typeform.com/next/embed.js"></script>
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('cs-vis');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.cs-cta-box').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.cs-cta-box').forEach(function(el){ el.classList.add('cs-vis'); });
+  }
+})();
+</script>

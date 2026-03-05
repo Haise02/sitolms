@@ -1,0 +1,61 @@
+<!-- Typeform Embed Script -->
+<script src="//embed.typeform.com/next/embed.js"></script>
+
+<!-- Bottone CTA Contattaci -->
+<button 
+    data-tf-popup="mGllVklt" 
+    data-tf-size="50"
+    data-tf-opacity="100"
+    data-tf-medium="menu"
+    class="cta-contattaci"
+    style="
+        background: #ffffff;
+        color: #132E55;
+        border: 2px solid #132E55;
+        padding: 12px 28px;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+        letter-spacing: 0.3px;
+    ">
+    Contattaci
+</button>
+
+<script>
+// Gestione mobile portrait per size 100
+document.querySelector('.cta-contattaci').addEventListener('click', function() {
+    const isMobile = window.innerWidth <= 768;
+    const isPortrait = window.innerHeight > window.innerWidth;
+    
+    if (isMobile && isPortrait) {
+        this.setAttribute('data-tf-size', '100');
+    } else {
+        this.setAttribute('data-tf-size', '50');
+    }
+});
+</script>
+
+<style>
+.cta-contattaci:hover {
+    background: #132E55 !important;
+    color: #ffffff !important;
+    border-color: #132E55 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(19, 46, 85, 0.2);
+}
+
+.cta-contattaci:active {
+    transform: translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .cta-contattaci {
+        padding: 10px 24px !important;
+        font-size: 14px !important;
+    }
+}
+</style>

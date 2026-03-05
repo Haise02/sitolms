@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi Siamo - Leone Master School (Preview)</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #07162E; overflow-x: hidden; }
+  .section-embed { width: 100%; }
+</style>
+</head>
+<body>
+
+<!-- Sezione 1: Hero -->
+<div class="section-embed" id="sec1"></div>
+
+<!-- Sezione 2: Perché Esiste LMS -->
+<div class="section-embed" id="sec2"></div>
+
+<!-- Sezione 3: Valori -->
+<div class="section-embed" id="sec3"></div>
+
+<!-- Sezione 4: Visione & Piano -->
+<div class="section-embed" id="sec4"></div>
+
+<!-- Sezione 5: Team -->
+<div class="section-embed" id="sec5"></div>
+
+<!-- Sezione 6: Selezione -->
+<div class="section-embed" id="sec6"></div>
+
+<!-- Sezione 7: Codice Etico -->
+<div class="section-embed" id="sec7"></div>
+
+<!-- Sezione 8: CTA -->
+<div class="section-embed" id="sec8"></div>
+
+<script>
+const sections = [
+  { id: 'sec1', file: 'sezione1-hero.html' },
+  { id: 'sec2', file: 'sezione2-perche.html' },
+  { id: 'sec3', file: 'sezione3-valori.html' },
+  { id: 'sec4', file: 'sezione4-visione.html' },
+  { id: 'sec5', file: 'sezione5-team.html' },
+  { id: 'sec6', file: 'sezione6-selezione.html' },
+  { id: 'sec7', file: 'sezione7-etico.html' },
+  { id: 'sec8', file: 'sezione8-cta.html' }
+];
+
+sections.forEach(function(s) {
+  fetch(s.file)
+    .then(r => r.text())
+    .then(html => {
+      const container = document.getElementById(s.id);
+      container.innerHTML = html;
+      // Execute scripts
+      const scripts = container.querySelectorAll('script');
+      scripts.forEach(function(oldScript) {
+        const newScript = document.createElement('script');
+        if (oldScript.src) {
+          newScript.src = oldScript.src;
+        } else {
+          newScript.textContent = oldScript.textContent;
+        }
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+      });
+    });
+});
+</script>
+
+</body>
+</html>

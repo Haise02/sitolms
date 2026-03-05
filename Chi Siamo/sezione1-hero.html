@@ -1,0 +1,455 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.cs-hero {
+  --navy: #07162E;
+  --navy-deep: #050F1F;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  --beige-light: #E8DCC8;
+  background: linear-gradient(175deg, var(--navy-deep) 0%, var(--navy) 40%, #0a1e3d 100%);
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 40px 100px;
+  font-family: 'Inter', sans-serif;
+}
+
+.cs-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(76,123,244,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cs-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(123,92,245,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cs-hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cs-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.cs-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(76,123,244,0.08);
+  border: 1px solid rgba(76,123,244,0.2);
+  border-radius: 100px;
+  padding: 8px 20px;
+  margin-bottom: 32px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: csFadeUp 0.8s ease forwards 0.2s;
+}
+
+.cs-hero-badge span {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.cs-hero-badge svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+
+.cs-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 0 0 12px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: csFadeUp 0.8s ease forwards 0.4s;
+}
+
+.cs-hero h1 .cs-gradient {
+  background: linear-gradient(135deg, var(--beige) 0%, var(--beige-light) 40%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cs-hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--beige);
+  margin: 0 0 36px;
+  max-width: 750px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: csFadeUp 0.8s ease forwards 0.55s;
+}
+
+.cs-hero-text {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  max-width: 700px;
+  line-height: 1.8;
+  margin: 0 0 48px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: csFadeUp 0.8s ease forwards 0.7s;
+}
+
+.cs-hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: csFadeUp 0.8s ease forwards 0.85s;
+}
+
+.cs-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  padding: 16px 36px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.cs-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(59,130,246,0.3);
+}
+
+.cs-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.30) !important;
+  padding: 16px 36px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 0 transparent, 0 0 20px rgba(255,255,255,0.03);
+}
+
+.cs-btn-secondary:hover {
+  background: rgba(255,255,255,0.14) !important;
+  border-color: rgba(255,255,255,0.45) !important;
+  color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255,255,255,0.08);
+}
+
+.cs-btn-secondary svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.cs-hero-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 64px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: csFadeUp 0.8s ease forwards 1s;
+}
+
+.cs-stat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(76,123,244,0.2);
+  border-radius: 16px;
+  padding: 20px 24px;
+  flex: 1;
+}
+
+.cs-stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(76,123,244,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cs-stat-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+.cs-stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.cs-stat-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.3;
+}
+
+.cs-scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: csFadeUp 0.8s ease forwards 1.2s;
+}
+
+.cs-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  animation: csScrollPulse 2s ease infinite;
+}
+
+@keyframes csFadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes csScrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 0.8; transform: scaleY(1.2); }
+}
+
+@media (max-width: 768px) {
+  .cs-hero {
+    min-height: auto;
+    padding: 100px 20px 80px;
+  }
+  .cs-hero h1 { font-size: 42px; }
+  .cs-hero-sub { font-size: 20px; }
+  .cs-hero-text { font-size: 15px; }
+  .cs-hero-stats { gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .cs-stat { padding: 16px 18px; }
+  .cs-stat-num { font-size: 26px; }
+  .cs-hero-ctas { flex-direction: column; align-items: center; }
+  .cs-btn-primary, .cs-btn-secondary { width: 100%; max-width: 300px; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .cs-hero { padding: 90px 16px 60px; }
+  .cs-hero h1 { font-size: 34px; }
+  .cs-hero-sub { font-size: 18px; }
+  .cs-hero-stats { gap: 10px; flex-direction: column; }
+  .cs-stat { padding: 14px 16px; }
+  .cs-stat-num { font-size: 24px; }
+}
+</style>
+
+<div class="cs-hero">
+  <canvas class="cs-hero-particles" id="csParticles"></canvas>
+  <div class="cs-hero-inner">
+    <div class="cs-hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <span>Polo Universitario IUL</span>
+    </div>
+
+    <h1>Non siamo una <span class="cs-gradient">semplice scuola.</span></h1>
+
+    <p class="cs-hero-sub">"La prima scuola in Italia con master di affiancamento orientati ai risultati"</p>
+
+    <p class="cs-hero-text">LMS accompagna davvero con passi settimanali e standard chiari. Non ci rivolgiamo a chi cerca scorciatoie, ma a chi vuole trasformare la propria vita con metodo, visione e responsabilità. Per chi la frequenta significa risultati concreti e sostenibili nella vita e nel lavoro.</p>
+
+    <div class="cs-hero-ctas" style="justify-content: center;">
+      <a href="#" class="cs-btn-primary" data-tf-popup="mGllVklt" data-tf-size="50" data-tf-opacity="100">
+        Conosciamoci meglio
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="cs-hero-stats">
+      <div class="cs-stat">
+        <div class="cs-stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="cs-stat-content">
+          <div class="cs-stat-num">+60.000</div>
+          <div class="cs-stat-label">corsisti affiancati</div>
+        </div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="cs-stat-content">
+          <div class="cs-stat-num">1.300</div>
+          <div class="cs-stat-label">testimonianze reali<br><span style="opacity:0.6;font-size:11px">(367 a 5 stelle su Trustpilot)</span></div>
+        </div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="cs-stat-content">
+          <div class="cs-stat-num">92%</div>
+          <div class="cs-stat-label">tasso di completamento<br>dei programmi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-scroll-indicator">
+    <div class="cs-scroll-line"></div>
+  </div>
+</div>
+
+<script src="//embed.typeform.com/next/embed.js"></script>
+
+<script>
+(function(){
+  var c = document.getElementById('csParticles');
+  if(!c) return;
+  var ctx = c.getContext('2d');
+  var particles = [];
+  var count = 90;
+  var mouse = {x: -1000, y: -1000};
+
+  function resize(){
+    c.width = c.parentElement.offsetWidth;
+    c.height = c.parentElement.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  c.parentElement.addEventListener('mousemove', function(e){
+    var r = c.parentElement.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+
+  for(var i = 0; i < count; i++){
+    particles.push({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      r: Math.random() * 2.2 + 0.8,
+      dx: (Math.random() - 0.5) * 0.6,
+      dy: (Math.random() - 0.5) * 0.6,
+      o: Math.random() * 0.5 + 0.15
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, c.width, c.height);
+
+    for(var i = 0; i < particles.length; i++){
+      var p = particles[i];
+      p.x += p.dx;
+      p.y += p.dy;
+
+      if(p.x < 0) p.x = c.width;
+      if(p.x > c.width) p.x = 0;
+      if(p.y < 0) p.y = c.height;
+      if(p.y > c.height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(76,123,244,' + p.o + ')';
+      ctx.fill();
+
+      // Connect nearby particles with lines
+      for(var j = i + 1; j < particles.length; j++){
+        var p2 = particles[j];
+        var dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
+        if(dist < 170){
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = 'rgba(76,123,244,' + (0.12 * (1 - dist / 170)) + ')';
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+
+      // Subtle mouse interaction
+      var md = Math.sqrt((p.x - mouse.x) ** 2 + (p.y - mouse.y) ** 2);
+      if(md < 140){
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r + 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(76,123,244,' + (0.4 * (1 - md / 140)) + ')';
+        ctx.fill();
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
