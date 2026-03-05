@@ -1,0 +1,345 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.dm-hero {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 130px 40px 100px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Morphing wireframe canvas */
+.dm-hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Vignette */
+.dm-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,22,46,0.2) 0%, transparent 30%, transparent 70%, rgba(7,22,46,0.3) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dm-hero-inner {
+  max-width: 960px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+/* Label */
+.dm-hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.dm-hero-label.dm-vis { animation: dmUp 0.8s ease forwards; }
+
+.dm-hero-label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Headline */
+.dm-hero h1 {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 82px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  margin: 0 0 12px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.dm-hero h1.dm-vis { animation: dmUp 0.8s ease 0.15s forwards; }
+
+.dm-hero h1 span {
+  background: linear-gradient(135deg, var(--accent) 0%, #38a0f4 50%, var(--beige) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtitle */
+.dm-hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--beige);
+  margin: 0 0 36px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.dm-hero-sub.dm-vis { animation: dmUp 0.8s ease 0.3s forwards; }
+
+/* Body */
+.dm-hero-text {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.85;
+  max-width: 680px;
+  margin: 0 auto 20px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.dm-hero-text.dm-vis { animation: dmUp 0.8s ease 0.45s forwards; }
+
+.dm-hero-text strong {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+/* Scroll indicator */
+.dm-hero-scroll {
+  margin-top: 48px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.dm-hero-scroll.dm-vis { animation: dmUp 0.8s ease 0.6s forwards; }
+
+.dm-hero-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  margin: 0 auto;
+  animation: dmPulse 2s ease-in-out infinite;
+}
+
+@keyframes dmPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes dmUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .dm-hero h1 { font-size: 64px; letter-spacing: -2px; }
+}
+
+@media (max-width: 768px) {
+  .dm-hero {
+    min-height: auto;
+    padding: 100px 20px 80px;
+  }
+  .dm-hero h1 { font-size: 48px; letter-spacing: -1px; }
+  .dm-hero-sub { font-size: 22px; }
+  .dm-hero-text { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .dm-hero { padding: 90px 16px 60px; }
+  .dm-hero h1 { font-size: 38px; letter-spacing: -0.5px; }
+  .dm-hero-sub { font-size: 20px; }
+}
+</style>
+
+<div class="dm-hero">
+  <!-- Morphing wireframe rings -->
+  <canvas class="dm-hero-canvas" id="dmHeroCanvas"></canvas>
+
+  <div class="dm-hero-inner">
+    <div class="dm-hero-label" id="dmHeroLabel">
+      Docenti–Mentori
+    </div>
+
+    <h1 id="dmHeroH1">I nostri <span>(TUOI)</span><br>Docenti–Mentori</h1>
+
+    <div class="dm-hero-sub" id="dmHeroSub">Per creare competenze e risultati, servono competenze e risultati.</div>
+
+    <p class="dm-hero-text" id="dmHeroText1">Nella Leone Master School non ti guideranno semplici formatori: <strong>sale in cattedra soltanto chi ha già costruito qualcosa di concreto</strong> e ha ottenuto risultati nel proprio settore di riferimento.</p>
+
+    <p class="dm-hero-text" id="dmHeroText2">Troverai solo <strong>professionisti attivi</strong>, che hanno già costruito aziende, scritto libri di riferimento, guidato team o firmato progetti che hanno lasciato il segno nel loro settore.</p>
+
+    <div class="dm-hero-scroll" id="dmHeroScroll">
+      <div class="dm-hero-scroll-line"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ── Morphing Wireframe Rings ── */
+  var canvas = document.getElementById('dmHeroCanvas');
+  var ctx = canvas.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  var mouse = { x: -9999, y: -9999 };
+  var time = 0;
+
+  function resize(){
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  /* Ring configs: each ring morphs between polygon vertex counts */
+  var rings = [
+    { cx: 0.3, cy: 0.4, radius: 220, sides: 5, targetSides: 7, rotation: 0, rotSpeed: 0.002, morphSpeed: 0.0008, morphPhase: 0, alpha: 0.22, color: [76,123,244], lineW: 1.6 },
+    { cx: 0.7, cy: 0.35, radius: 180, sides: 6, targetSides: 4, rotation: 0, rotSpeed: -0.0015, morphSpeed: 0.0006, morphPhase: 1.5, alpha: 0.17, color: [56,152,244], lineW: 1.3 },
+    { cx: 0.5, cy: 0.6, radius: 280, sides: 8, targetSides: 5, rotation: 0, rotSpeed: 0.001, morphSpeed: 0.0005, morphPhase: 3, alpha: 0.13, color: [100,160,255], lineW: 1.1 },
+    { cx: 0.25, cy: 0.7, radius: 140, sides: 4, targetSides: 6, rotation: 0, rotSpeed: -0.003, morphSpeed: 0.001, morphPhase: 4.5, alpha: 0.19, color: [76,123,244], lineW: 1.4 },
+    { cx: 0.75, cy: 0.65, radius: 160, sides: 7, targetSides: 3, rotation: 0, rotSpeed: 0.0025, morphSpeed: 0.0007, morphPhase: 2, alpha: 0.15, color: [140,180,255], lineW: 1.1 },
+    { cx: 0.5, cy: 0.3, radius: 320, sides: 12, targetSides: 6, rotation: 0, rotSpeed: -0.0008, morphSpeed: 0.0004, morphPhase: 5, alpha: 0.1, color: [76,123,244], lineW: 0.9 }
+  ];
+
+  /* Interpolate between polygon with N sides and M sides */
+  function getShapePoint(angle, radius, sides, morph){
+    /* morph 0..1: 0 = perfect polygon, 1 = circle */
+    var sectorAngle = (Math.PI * 2) / sides;
+    var localAngle = ((angle % sectorAngle) + sectorAngle) % sectorAngle;
+    var halfSector = sectorAngle / 2;
+    /* Distance from center for polygon vertex */
+    var polyR = radius * Math.cos(halfSector) / Math.cos(localAngle - halfSector);
+    /* Blend between polygon radius and circle radius */
+    return polyR * (1 - morph) + radius * morph;
+  }
+
+  function drawRing(ring, w, h){
+    var cx = ring.cx * w;
+    var cy = ring.cy * h;
+
+    /* Mouse attraction: subtle pull toward cursor */
+    if(mouse.x > 0){
+      var mdx = mouse.x - cx;
+      var mdy = mouse.y - cy;
+      var md = Math.sqrt(mdx * mdx + mdy * mdy);
+      if(md < 400){
+        var pull = (400 - md) / 400 * 15;
+        cx += (mdx / md) * pull;
+        cy += (mdy / md) * pull;
+      }
+    }
+
+    /* Morph factor oscillates between polygon and target polygon */
+    var morphT = (Math.sin(time * ring.morphSpeed * 60 + ring.morphPhase) + 1) / 2;
+    var currentSides = ring.sides + (ring.targetSides - ring.sides) * morphT;
+    var intSides = Math.round(currentSides);
+    var circleBlend = 0.15 + Math.sin(time * 0.3 + ring.morphPhase) * 0.15;
+
+    /* Breathing radius */
+    var breathe = 1 + Math.sin(time * 0.5 + ring.morphPhase) * 0.06;
+    var r = ring.radius * breathe;
+
+    ring.rotation += ring.rotSpeed;
+
+    var steps = Math.max(intSides * 8, 48);
+    var angleStep = (Math.PI * 2) / steps;
+
+    ctx.save();
+    ctx.globalAlpha = ring.alpha + Math.sin(time * 0.4 + ring.morphPhase) * 0.03;
+
+    /* Glow */
+    ctx.shadowColor = 'rgba(' + ring.color.join(',') + ',0.3)';
+    ctx.shadowBlur = 30;
+
+    ctx.strokeStyle = 'rgba(' + ring.color.join(',') + ',1)';
+    ctx.lineWidth = ring.lineW;
+    ctx.beginPath();
+
+    for(var i = 0; i <= steps; i++){
+      var angle = i * angleStep + ring.rotation;
+      var pr = getShapePoint(angle - ring.rotation, r, intSides, circleBlend);
+      var px = cx + Math.cos(angle) * pr;
+      var py = cy + Math.sin(angle) * pr;
+      if(i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+
+    ctx.closePath();
+    ctx.stroke();
+
+    /* Draw vertex dots */
+    ctx.shadowBlur = 0;
+    for(var i = 0; i < intSides; i++){
+      var angle = (Math.PI * 2 / intSides) * i + ring.rotation;
+      var pr = getShapePoint(0, r, intSides, circleBlend);
+      var px = cx + Math.cos(angle) * pr;
+      var py = cy + Math.sin(angle) * pr;
+      ctx.fillStyle = 'rgba(' + ring.color.join(',') + ',' + (ring.alpha * 2.5) + ')';
+      ctx.beginPath();
+      ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+
+  function draw(){
+    var w = canvas.width / dpr;
+    var h = canvas.height / dpr;
+    ctx.clearRect(0, 0, w, h);
+    time += 0.016;
+
+    for(var i = 0; i < rings.length; i++){
+      drawRing(rings[i], w, h);
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  draw();
+
+  window.addEventListener('resize', resize);
+
+  canvas.parentElement.addEventListener('mousemove', function(e){
+    var rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+
+  canvas.parentElement.addEventListener('mouseleave', function(){
+    mouse.x = -9999;
+    mouse.y = -9999;
+  });
+
+  /* ── IntersectionObserver ── */
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('dm-vis'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.1});
+    document.querySelectorAll('#dmHeroLabel, #dmHeroH1, #dmHeroSub, #dmHeroText1, #dmHeroText2, #dmHeroScroll').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('#dmHeroLabel, #dmHeroH1, #dmHeroSub, #dmHeroText1, #dmHeroText2, #dmHeroScroll').forEach(function(el){ el.classList.add('dm-vis'); });
+  }
+})();
+</script>

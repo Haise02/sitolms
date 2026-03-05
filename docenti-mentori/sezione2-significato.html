@@ -1,0 +1,345 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.dm-sig {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 40px 120px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.dm-sig::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(76,123,244,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(56,163,244,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Header */
+.dm-sig-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 72px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.dm-sig-header.dm-vis { animation: dmSigUp 0.8s ease forwards; }
+
+.dm-sig-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.dm-sig-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.dm-sig-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 46px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 24px;
+  letter-spacing: -0.5px;
+}
+
+.dm-sig-header h2 em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+.dm-sig-intro {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ── Horizontal scroll reveal cards ── */
+.dm-sig-cards-outer {
+  position: relative;
+  z-index: 2;
+}
+
+.dm-sig-cards-track {
+  display: flex;
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.dm-sig-card {
+  flex: 0 0 360px;
+  border-radius: 24px;
+  padding: 48px 36px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(60px) scale(0.95);
+}
+
+.dm-sig-card.dm-vis {
+  animation: dmCardSlide 0.7s ease forwards;
+}
+
+.dm-sig-card:nth-child(2).dm-vis { animation-delay: 0.15s; }
+.dm-sig-card:nth-child(3).dm-vis { animation-delay: 0.3s; }
+
+@keyframes dmCardSlide {
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+.dm-sig-card-1 {
+  background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
+  border: 1px solid rgba(76,123,244,0.18);
+}
+.dm-sig-card-2 {
+  background: linear-gradient(160deg, #0b2248 0%, #07162E 100%);
+  border: 1px solid rgba(56,163,244,0.18);
+}
+.dm-sig-card-3 {
+  background: linear-gradient(160deg, #0f1e38 0%, #07162E 100%);
+  border: 1px solid rgba(212,197,176,0.15);
+}
+
+/* Card accent line at top */
+.dm-sig-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 36px;
+  right: 36px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+}
+
+.dm-sig-card-1::before { background: linear-gradient(90deg, var(--accent), transparent); }
+.dm-sig-card-2::before { background: linear-gradient(90deg, #38a0f4, transparent); }
+.dm-sig-card-3::before { background: linear-gradient(90deg, var(--beige), transparent); }
+
+/* Number */
+.dm-sig-num {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -3px;
+}
+
+/* Icon */
+.dm-sig-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.dm-sig-card-1 .dm-sig-icon { background: rgba(76,123,244,0.1); }
+.dm-sig-card-2 .dm-sig-icon { background: rgba(56,163,244,0.1); }
+.dm-sig-card-3 .dm-sig-icon { background: rgba(212,197,176,0.08); }
+
+.dm-sig-icon svg {
+  width: 28px;
+  height: 28px;
+}
+.dm-sig-card-1 .dm-sig-icon svg { color: var(--accent); }
+.dm-sig-card-2 .dm-sig-icon svg { color: #38a0f4; }
+.dm-sig-card-3 .dm-sig-icon svg { color: var(--beige); }
+
+/* Title */
+.dm-sig-card h3 {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+/* Arrow indicator */
+.dm-sig-arrow {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.dm-sig-card-2 .dm-sig-arrow { color: #38a0f4; }
+.dm-sig-card-3 .dm-sig-arrow { color: var(--beige); }
+
+/* Description */
+.dm-sig-card p {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ── Divider quote ── */
+.dm-sig-quote-wrap {
+  max-width: 700px;
+  margin: 72px auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.dm-sig-quote-wrap.dm-vis { animation: dmSigUp 0.8s ease forwards; }
+
+.dm-sig-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--beige);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0 20px;
+  position: relative;
+}
+
+.dm-sig-quote::before,
+.dm-sig-quote::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,197,176,0.3), transparent);
+  margin: 0 auto 20px;
+}
+
+.dm-sig-quote::after {
+  margin: 20px auto 0;
+}
+
+@keyframes dmSigUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .dm-sig-cards-track { flex-wrap: wrap; justify-content: center; }
+  .dm-sig-card { flex: 0 0 calc(50% - 14px); }
+}
+
+@media (max-width: 768px) {
+  .dm-sig { padding: 70px 20px 90px; }
+  .dm-sig-header h2 { font-size: 36px; }
+  .dm-sig-cards-track { flex-direction: column; align-items: center; }
+  .dm-sig-card { flex: 0 0 auto; width: 100%; max-width: 420px; }
+  .dm-sig-card.dm-vis { animation-name: dmCardSlideUp; }
+  @keyframes dmCardSlideUp { to { opacity: 1; transform: translateY(0) scale(1); } }
+  .dm-sig-card { transform: translateY(40px) scale(0.95); }
+}
+
+@media (max-width: 480px) {
+  .dm-sig { padding: 50px 16px 70px; }
+  .dm-sig-header h2 { font-size: 30px; }
+  .dm-sig-quote { font-size: 22px; }
+}
+</style>
+
+<div class="dm-sig">
+  <div class="dm-sig-header" id="dmSigHeader">
+    <div class="dm-sig-label">Cosa ci rende diversi</div>
+    <h2>Cosa significa essere<br><em>Docente-Mentore</em></h2>
+    <p class="dm-sig-intro">Per insegnare non basta aver studiato qualche corso e ripetere la teoria. Serve essere tra i migliori nel proprio settore, con tre caratteristiche decisive:</p>
+  </div>
+
+  <div class="dm-sig-cards-outer">
+    <div class="dm-sig-cards-track">
+
+      <!-- Card 1: Risultati tangibili -->
+      <div class="dm-sig-card dm-sig-card-1" id="dmSigCard1">
+        <div class="dm-sig-num">01</div>
+        <div class="dm-sig-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="dm-sig-arrow">Risultati tangibili →</div>
+        <h3>Costruiscono, non teorizzano</h3>
+        <p>Hanno fondato aziende, guidato team, firmato progetti concreti. Non insegnano ciò che hanno letto, ma ciò che hanno fatto.</p>
+      </div>
+
+      <!-- Card 2: Presenza attiva -->
+      <div class="dm-sig-card dm-sig-card-2" id="dmSigCard2">
+        <div class="dm-sig-num">02</div>
+        <div class="dm-sig-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="dm-sig-arrow">Presenza attiva →</div>
+        <h3>Ancora protagonisti</h3>
+        <p>Sono ancora protagonisti nel loro settore, non vivono di titoli passati. Portano in aula ciò che succede oggi, non ieri.</p>
+      </div>
+
+      <!-- Card 3: Capacità di guidare -->
+      <div class="dm-sig-card dm-sig-card-3" id="dmSigCard3">
+        <div class="dm-sig-num">03</div>
+        <div class="dm-sig-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="dm-sig-arrow">Capacità di guidare →</div>
+        <h3>Affiancano, non spiegano</h3>
+        <p>Un Docente–Mentore non spiega soltanto: affianca, corregge, trasferisce esperienza. È la differenza tra studiare e imparare davvero.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dm-sig-quote-wrap" id="dmSigQuote">
+    <blockquote class="dm-sig-quote">
+      Non hanno bisogno di presentazioni, ma te li presentiamo lo stesso.
+    </blockquote>
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('dm-vis'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll('#dmSigHeader, #dmSigCard1, #dmSigCard2, #dmSigCard3, #dmSigQuote').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('#dmSigHeader, #dmSigCard1, #dmSigCard2, #dmSigCard3, #dmSigQuote').forEach(function(el){ el.classList.add('dm-vis'); });
+  }
+})();
+</script>

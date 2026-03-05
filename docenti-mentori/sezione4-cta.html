@@ -1,0 +1,198 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.dm-cta {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 40px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.dm-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(76,123,244,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(123,92,245,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.dm-cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.dm-cta-box {
+  text-align: center;
+  background: linear-gradient(160deg, rgba(76,123,244,0.06) 0%, rgba(123,92,245,0.04) 100%);
+  border: 1px solid rgba(76,123,244,0.12);
+  border-radius: 28px;
+  padding: 60px 48px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.dm-cta-box.dm-vis { animation: dmCtaUp 0.8s ease forwards; }
+
+/* Shimmer effect */
+.dm-cta-box::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(76,123,244,0.03) 50%, transparent 70%);
+  animation: dmShimmer 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes dmShimmer {
+  0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+  100% { transform: translateX(50%) translateY(50%) rotate(360deg); }
+}
+
+.dm-cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.dm-cta-label::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.dm-cta-box h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.dm-cta-box h2 em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+.dm-cta-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  margin: 0 0 36px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.dm-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: #ffffff;
+  color: var(--navy);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 12px;
+  letter-spacing: 0.3px;
+  transition: all 0.35s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.dm-cta-btn:hover {
+  background: var(--beige);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(212,197,176,0.15);
+}
+
+.dm-cta-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.dm-cta-btn:hover svg {
+  transform: translateX(4px);
+}
+
+@keyframes dmCtaUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .dm-cta { padding: 70px 20px; }
+  .dm-cta-box { padding: 48px 28px; }
+  .dm-cta-box h2 { font-size: 32px; }
+}
+
+@media (max-width: 480px) {
+  .dm-cta { padding: 50px 16px; }
+  .dm-cta-box { padding: 40px 20px; border-radius: 20px; }
+  .dm-cta-box h2 { font-size: 28px; }
+  .dm-cta-btn { padding: 14px 28px; font-size: 13px; }
+}
+</style>
+
+<div class="dm-cta">
+  <div class="dm-cta-inner">
+    <div class="dm-cta-box" id="dmCtaBox">
+      <div class="dm-cta-label">Inizia il tuo percorso</div>
+      <h2>Pronto a farti guidare<br>dai <em>migliori?</em></h2>
+      <p class="dm-cta-text">Scegli il programma più adatto a te e scopri come i nostri Docenti–Mentori possono trasformare il tuo potenziale in risultati concreti.</p>
+      <a href="https://leonemasterschool.it/i-nostri-programmi/" class="dm-cta-btn">
+        Scopri i Programmi
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('dm-vis'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll('#dmCtaBox').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('#dmCtaBox').forEach(function(el){ el.classList.add('dm-vis'); });
+  }
+})();
+</script>

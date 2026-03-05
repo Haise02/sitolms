@@ -1,0 +1,843 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.dm-docenti {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 0 120px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.dm-docenti::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(76,123,244,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(56,163,244,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Header */
+.dm-doc-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 48px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.dm-doc-header.dm-vis { animation: dmDocUp 0.8s ease forwards; }
+
+.dm-doc-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.dm-doc-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.dm-doc-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 46px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  letter-spacing: -0.5px;
+}
+
+.dm-doc-header h2 em {
+  font-style: italic;
+  color: var(--beige);
+}
+
+.dm-doc-subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ── Program Tabs ── */
+.dm-tabs-wrap {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 48px;
+  overflow: hidden;
+}
+
+.dm-tabs-scroll {
+  display: flex;
+  gap: 10px;
+  padding: 0 40px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dm-tabs-scroll::-webkit-scrollbar { display: none; }
+
+.dm-tab {
+  flex-shrink: 0;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(76,123,244,0.12);
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.dm-tab:hover {
+  color: rgba(255,255,255,0.8);
+  border-color: rgba(76,123,244,0.25);
+  background: rgba(76,123,244,0.04);
+}
+
+.dm-tab.dm-tab-active {
+  color: #ffffff;
+  background: rgba(76,123,244,0.12);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(76,123,244,0.1);
+}
+
+/* Per-program active tab colors */
+.dm-tab[data-dm-tab="rem"].dm-tab-active {
+  background: #21422f;
+  border-color: #21422f;
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(33,66,47,0.35);
+}
+.dm-tab[data-dm-tab="rem"]:hover:not(.dm-tab-active) {
+  border-color: rgba(33,66,47,0.4);
+  background: rgba(33,66,47,0.08);
+}
+
+.dm-tab[data-dm-tab="abm"].dm-tab-active {
+  background: #a38c54;
+  border-color: #a38c54;
+  color: var(--navy);
+  box-shadow: 0 0 24px rgba(163,140,84,0.3);
+}
+.dm-tab[data-dm-tab="abm"]:hover:not(.dm-tab-active) {
+  border-color: rgba(163,140,84,0.4);
+  background: rgba(163,140,84,0.08);
+}
+
+/* MM keeps default accent blue */
+
+.dm-tab[data-dm-tab="dcc"].dm-tab-active {
+  background: #3f2a5b;
+  border-color: #3f2a5b;
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(63,42,91,0.35);
+}
+.dm-tab[data-dm-tab="dcc"]:hover:not(.dm-tab-active) {
+  border-color: rgba(63,42,91,0.4);
+  background: rgba(63,42,91,0.08);
+}
+
+.dm-tab[data-dm-tab="mep"].dm-tab-active {
+  background: #d0dcef;
+  border-color: #d0dcef;
+  color: var(--navy);
+  box-shadow: 0 0 24px rgba(208,220,239,0.25);
+}
+.dm-tab[data-dm-tab="mep"]:hover:not(.dm-tab-active) {
+  border-color: rgba(208,220,239,0.4);
+  background: rgba(208,220,239,0.06);
+}
+
+.dm-tab[data-dm-tab="sales"].dm-tab-active {
+  background: #a38c54;
+  border-color: #a38c54;
+  color: var(--navy);
+  box-shadow: 0 0 24px rgba(163,140,84,0.3);
+}
+.dm-tab[data-dm-tab="sales"]:hover:not(.dm-tab-active) {
+  border-color: rgba(163,140,84,0.4);
+  background: rgba(163,140,84,0.08);
+}
+
+.dm-tab[data-dm-tab="ade"].dm-tab-active {
+  background: #f0f7ff;
+  border-color: #f0f7ff;
+  color: var(--navy);
+  box-shadow: 0 0 24px rgba(240,247,255,0.2);
+}
+.dm-tab[data-dm-tab="ade"]:hover:not(.dm-tab-active) {
+  border-color: rgba(240,247,255,0.3);
+  background: rgba(240,247,255,0.05);
+}
+
+/* ── Program panels ── */
+.dm-panels-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.dm-panel {
+  display: none;
+  animation: dmPanelIn 0.5s ease;
+}
+
+.dm-panel.dm-panel-active {
+  display: block;
+}
+
+@keyframes dmPanelIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mentor cards grid (scrollable row) ── */
+.dm-mentors-track-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fade edges */
+.dm-mentors-track-wrap::before,
+.dm-mentors-track-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 80px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.dm-mentors-track-wrap::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--navy), transparent);
+}
+
+.dm-mentors-track-wrap::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--navy), transparent);
+}
+
+.dm-mentors-track {
+  display: flex;
+  gap: 24px;
+  padding: 20px 80px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  scroll-behavior: auto;
+}
+
+.dm-mentors-track:active { cursor: grabbing; }
+.dm-mentors-track::-webkit-scrollbar { display: none; }
+
+/* ── Mentor Card ── */
+.dm-mentor-card {
+  flex: 0 0 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
+  border: 1px solid rgba(76,123,244,0.12);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.dm-mentor-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(76,123,244,0.3);
+  box-shadow: 0 16px 48px rgba(76,123,244,0.08);
+}
+
+/* Image placeholder */
+.dm-mentor-img {
+  width: 100%;
+  aspect-ratio: 3 / 3.5;
+  background: linear-gradient(160deg, rgba(76,123,244,0.06) 0%, rgba(7,22,46,0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dm-mentor-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dm-mentor-img-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.15);
+}
+
+.dm-mentor-img-placeholder svg {
+  width: 36px;
+  height: 36px;
+}
+
+.dm-mentor-img-placeholder span {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Card body */
+.dm-mentor-body {
+  padding: 24px 22px;
+}
+
+.dm-mentor-name {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.dm-mentor-role {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Program counter badge ── */
+.dm-panel-count {
+  text-align: center;
+  margin-top: 32px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 1px;
+}
+
+.dm-panel-count span {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Drag hint */
+.dm-drag-hint {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.5px;
+}
+
+.dm-drag-hint svg {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-right: 4px;
+  color: rgba(255,255,255,0.2);
+}
+
+@keyframes dmDocUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .dm-docenti { padding: 70px 0 90px; }
+  .dm-doc-header { padding: 0 20px; }
+  .dm-doc-header h2 { font-size: 36px; }
+  .dm-tabs-wrap { overflow: visible; }
+  .dm-tabs-scroll {
+    padding: 0 16px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 8px;
+    scroll-padding: 0 16px;
+  }
+  .dm-tabs-scroll::-webkit-scrollbar { display: none; }
+  .dm-tab { padding: 10px 16px; font-size: 12px; }
+  .dm-mentors-track { padding: 20px 40px; gap: 16px; }
+  .dm-mentor-card { flex: 0 0 240px; }
+}
+
+@media (max-width: 480px) {
+  .dm-docenti { padding: 50px 0 70px; }
+  .dm-doc-header h2 { font-size: 30px; }
+  .dm-tabs-scroll { padding: 0 12px; gap: 6px; }
+  .dm-tab { padding: 9px 14px; font-size: 11px; letter-spacing: 0.3px; }
+  .dm-mentor-card { flex: 0 0 220px; }
+  .dm-mentors-track { padding: 16px 20px; }
+}
+</style>
+
+<div class="dm-docenti">
+
+  <div class="dm-doc-header" id="dmDocHeader">
+    <div class="dm-doc-label">Master con Affiancamento</div>
+    <h2>Scopri chi ti <em>guiderà</em></h2>
+    <p class="dm-doc-subtitle">Seleziona un programma per scoprire i Docenti–Mentori che ti affiancheranno nel percorso.</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="dm-tabs-wrap">
+    <div class="dm-tabs-scroll" id="dmTabsScroll">
+      <div class="dm-tab dm-tab-active" data-dm-tab="rem">REM – Real Estate</div>
+      <div class="dm-tab" data-dm-tab="abm">ABM – Business Management</div>
+      <div class="dm-tab" data-dm-tab="mm">MM – Marketing Millionaire</div>
+      <div class="dm-tab" data-dm-tab="dcc">Diventa Coach Certificato</div>
+      <div class="dm-tab" data-dm-tab="mep">MEP – Evoluzione Personale</div>
+      <div class="dm-tab" data-dm-tab="sales">Sales Skills</div>
+      <div class="dm-tab" data-dm-tab="ade">ADE – Educazione Genitoriale</div>
+    </div>
+  </div>
+
+  <!-- Panels -->
+  <div class="dm-panels-wrap" id="dmPanelsWrap">
+
+    <!-- REM -->
+    <div class="dm-panel dm-panel-active" data-dm-panel="rem">
+      <div class="dm-mentors-track-wrap">
+        <div class="dm-mentors-track">
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><div class="dm-mentor-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto</span></div></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Gaia Appignani</div><p class="dm-mentor-role">Home stager e interior designer.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/orsola.png" alt="Orsola Palladino"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Orsola Palladino</div><p class="dm-mentor-role">Avvocato specializzato in diritto immobiliare.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/ivan.png" alt="Ivan William De Pace"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Ivan William De Pace</div><p class="dm-mentor-role">Esperto in Saldo e Stralcio.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/francesca borsetti.png" alt="Francesca Borsetti"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Francesca Borsetti</div><p class="dm-mentor-role">Geometra e home stager.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/leccese.png" alt="Massimiliano Leccese"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Massimiliano Leccese</div><p class="dm-mentor-role">Avvocato e delegato alla vendita aste.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/dania.png" alt="Dania Strambi"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Dania Strambi</div><p class="dm-mentor-role">Esperta in Saldo e Stralcio.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/borghese.png" alt="Massimiliano Borghese"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Massimiliano Borghese</div><p class="dm-mentor-role">Commercialista e formatore.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/fabio toma.png" alt="Fabio Toma"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Fabio Toma</div><p class="dm-mentor-role">Imprenditore immobiliare, specializzato in aste.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/leonardo leone.png" alt="Leonardo Leone"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Leonardo Leone</div><p class="dm-mentor-role">Fondatore LMS, investitore immobiliare e formatore.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><div class="dm-mentor-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto</span></div></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Davide Quartucci</div><p class="dm-mentor-role">Esperto di mercato libero.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="dm-panel-count"><span>10</span> Docenti–Mentori</div>
+      <div class="dm-drag-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Scorri per vedere tutti</div>
+    </div>
+
+    <!-- ABM -->
+    <div class="dm-panel" data-dm-panel="abm">
+      <div class="dm-mentors-track-wrap">
+        <div class="dm-mentors-track">
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/francesco magro.png" alt="Francesco Magro"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Francesco Magro</div><p class="dm-mentor-role">Fondatore Wine Livery, pioniere del food delivery in Italia.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/grossi.png" alt="Giampaolo Grossi"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Giampaolo Grossi</div><p class="dm-mentor-role">Ex General Manager Starbucks Italia, ha guidato l'espansione del brand nel Paese.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><div class="dm-mentor-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto</span></div></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Claudio Rossi</div><p class="dm-mentor-role">Imprenditore e business coach, formatore di centinaia di manager.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><div class="dm-mentor-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto</span></div></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Salvatore Scibetta</div><p class="dm-mentor-role">CEO e General Manager Leone Master School.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><div class="dm-mentor-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto</span></div></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Chiara Rota</div><p class="dm-mentor-role">Fondatrice di MyCookingBox, caso di successo nel settore food.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/borghese.png" alt="Massimiliano Borghese"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Massimiliano Borghese</div><p class="dm-mentor-role">Commercialista e revisore contabile, esperto in fiscalità e bilanci.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="dm-panel-count"><span>6</span> Docenti–Mentori</div>
+      <div class="dm-drag-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Scorri per vedere tutti</div>
+    </div>
+
+    <!-- MM -->
+    <div class="dm-panel" data-dm-panel="mm">
+      <div class="dm-mentors-track-wrap">
+        <div class="dm-mentors-track">
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/antonio testa.png" alt="Antonio Testa"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Antonio Testa</div><p class="dm-mentor-role">Copywriter strategico, specializzato in direct response e posizionamento.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/daniele riolo.png" alt="Daniele Riolo"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Daniele Riolo</div><p class="dm-mentor-role">Media buyer e consulente, esperto in campagne Facebook e Google Ads.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><div class="dm-mentor-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto</span></div></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Salvo Trifirò</div><p class="dm-mentor-role">Direttore Marketing Leone Master School, con esperienza in strategie digital e branding.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/alessio di marco.png" alt="Alessio Di Marco"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Alessio Di Marco</div><p class="dm-mentor-role">IT Operations Manager LMS, con esperienza in sistemi digitali e automazioni di marketing.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="dm-panel-count"><span>4</span> Docenti–Mentori</div>
+    </div>
+
+    <!-- DCC -->
+    <div class="dm-panel" data-dm-panel="dcc">
+      <div class="dm-mentors-track-wrap">
+        <div class="dm-mentors-track">
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/abbattista.png" alt="Alessandra Abbattista"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Alessandra Abbattista</div><p class="dm-mentor-role">General Manager Karakter Coaching School.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/angeletti.png" alt="Marco Angeletti"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Marco Angeletti</div><p class="dm-mentor-role">Presidente Karakter Coaching School.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="dm-panel-count"><span>2</span> Docenti–Mentori</div>
+    </div>
+
+    <!-- MEP -->
+    <div class="dm-panel" data-dm-panel="mep">
+      <div class="dm-mentors-track-wrap">
+        <div class="dm-mentors-track">
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/rocco ranieri.png" alt="Alessio R. Ranieri"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Alessio R. Ranieri</div><p class="dm-mentor-role">Psicologo e mindfulness trainer.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/lara lucaccioni.png" alt="Lara Lucaccioni"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Lara Lucaccioni</div><p class="dm-mentor-role">Master trainer italiana di Yoga della Risata.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/leonardo leone.png" alt="Leonardo Leone"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Leonardo Leone</div><p class="dm-mentor-role">Imprenditore e formatore.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/abbattista.png" alt="Alessandra Abbattista"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Alessandra Abbattista</div><p class="dm-mentor-role">Coach ICF e General Manager Karakter Coaching School.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/orsola.png" alt="Orsola Palladino"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Orsola Palladino</div><p class="dm-mentor-role">Avvocato esperto in PNL.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/fabio toma.png" alt="Fabio Toma"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Fabio Toma</div><p class="dm-mentor-role">Imprenditore immobiliare ed esperto di gestione finanziaria.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/elisa passi.png" alt="Elisa Passi"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Elisa Passi</div><p class="dm-mentor-role">Coach, esperta in crescita personale.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/monica ricci.png" alt="Monica Ricci"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Monica Ricci</div><p class="dm-mentor-role">Psicologa e love coach.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/minetti.png" alt="Annalisa Minetti"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Annalisa Minetti</div><p class="dm-mentor-role">Cantautrice, atleta paralimpica e modella italiana.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="dm-panel-count"><span>9</span> Docenti–Mentori</div>
+      <div class="dm-drag-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Scorri per vedere tutti</div>
+    </div>
+
+    <!-- Sales Skills -->
+    <div class="dm-panel" data-dm-panel="sales">
+      <div class="dm-mentors-track-wrap">
+        <div class="dm-mentors-track">
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/nora d'ascanio.png" alt="Nora D'Ascanio"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Nora D'Ascanio</div><p class="dm-mentor-role">Sales leader, specialista in tecniche di negoziazione.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/cettolo.png" alt="Roberta Cettolo"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Roberta Cettolo</div><p class="dm-mentor-role">Sales leader, esperta in strategie di vendita.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/gianna mastrototaro.png" alt="Gianna Mastrototaro"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Gianna Mastrototaro</div><p class="dm-mentor-role">Coach e trainer, specializzata in comunicazione e gestione obiezioni.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/hassan.png" alt="Hassan Mozumder"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Hassan Mozumder</div><p class="dm-mentor-role">Esperto di vendita e tecniche persuasive.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/cristiano di ordoardo.png" alt="Cristiano Di Odoardo"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Cristiano Di Odoardo</div><p class="dm-mentor-role">Esperto di retail e brand marketing.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/armando.png" alt="Armando Perrone"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Armando Perrone</div><p class="dm-mentor-role">CEO Leone Investments, esperto di leadership e mindset.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/leonardo leone.png" alt="Leonardo Leone"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Leonardo Leone</div><p class="dm-mentor-role">Fondatore LMS, imprenditore e formatore.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/alessio di marco.png" alt="Alessio Di Marco"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Alessio Di Marco</div><p class="dm-mentor-role">IT Operations Manager LMS.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/faidiga.png" alt="Patrizia Faidiga"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Patrizia Faidiga</div><p class="dm-mentor-role">Senior trainer, coach e imprenditrice.</p></div>
+          </div>
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/pancaldi.png" alt="Jonni Pancaldi"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Jonni Pancaldi</div><p class="dm-mentor-role">Sales executive, esperto in comunicazione.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="dm-panel-count"><span>10</span> Docenti–Mentori</div>
+      <div class="dm-drag-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Scorri per vedere tutti</div>
+    </div>
+
+    <!-- ADE -->
+    <div class="dm-panel" data-dm-panel="ade">
+      <div class="dm-mentors-track-wrap">
+        <div class="dm-mentors-track">
+          <div class="dm-mentor-card">
+            <div class="dm-mentor-img"><img src="docenti images/ausilio.png" alt="Roberto Ausilio"></div>
+            <div class="dm-mentor-body"><div class="dm-mentor-name">Roberto Ausilio</div><p class="dm-mentor-role">Psicologo e psicoterapeuta, esperto in genitorialità.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="dm-panel-count"><span>1</span> Docente–Mentore</div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.dm-tab');
+  var panels = document.querySelectorAll('.dm-panel');
+  var tabArr = Array.prototype.slice.call(tabs);
+  var autoSpeed = 0.4; /* px per frame */
+  var tabInterval = 5000; /* ms between auto-tab-switch */
+  var autoTimerId = null;
+  var hovered = false;
+
+  /* ── Switch to a specific tab ── */
+  function switchTab(target, resetScroll){
+    tabs.forEach(function(t){ t.classList.remove('dm-tab-active'); });
+    panels.forEach(function(p){
+      if(p.getAttribute('data-dm-panel') === target){
+        p.classList.remove('dm-panel-active');
+        /* Force reflow so animation replays */
+        void p.offsetWidth;
+        p.classList.add('dm-panel-active');
+        if(resetScroll){
+          var track = p.querySelector('.dm-mentors-track');
+          if(track) track.scrollLeft = 0;
+        }
+      } else {
+        p.classList.remove('dm-panel-active');
+      }
+    });
+    tabs.forEach(function(t){
+      if(t.getAttribute('data-dm-tab') === target) t.classList.add('dm-tab-active');
+    });
+  }
+
+  /* ── Tab click ── */
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var target = this.getAttribute('data-dm-tab');
+      switchTab(target, true);
+      resetAutoRotate();
+    });
+  });
+
+  /* ── Auto-rotate tabs every 5s ── */
+  function getActiveIndex(){
+    for(var i = 0; i < tabArr.length; i++){
+      if(tabArr[i].classList.contains('dm-tab-active')) return i;
+    }
+    return 0;
+  }
+
+  function autoRotate(){
+    if(hovered) return;
+    var idx = (getActiveIndex() + 1) % tabArr.length;
+    var target = tabArr[idx].getAttribute('data-dm-tab');
+    switchTab(target, true);
+  }
+
+  function resetAutoRotate(){
+    clearInterval(autoTimerId);
+    autoTimerId = setInterval(autoRotate, tabInterval);
+  }
+
+  resetAutoRotate();
+
+  /* ── Continuous auto-scroll for each track ── */
+  function initTrack(track){
+    var paused = false;
+    var isDragging = false;
+    var startX = 0, dragScrollLeft = 0;
+    var velocity = 0, momentum = 0;
+    var lastX = 0, lastTime = 0;
+
+    /* Auto-scroll with rAF */
+    function autoScroll(){
+      if(!paused && !isDragging){
+        track.scrollLeft += autoSpeed;
+        /* Loop: if near end, jump back */
+        if(track.scrollLeft >= track.scrollWidth - track.clientWidth - 2){
+          track.scrollLeft = 0;
+        }
+      }
+      /* Apply momentum from drag release */
+      if(!isDragging && Math.abs(momentum) > 0.3){
+        track.scrollLeft += momentum;
+        momentum *= 0.92; /* friction */
+      } else if(!isDragging){
+        momentum = 0;
+      }
+      requestAnimationFrame(autoScroll);
+    }
+    requestAnimationFrame(autoScroll);
+
+    /* Hover pause */
+    track.addEventListener('mouseenter', function(){
+      paused = true;
+      hovered = true;
+    });
+    track.addEventListener('mouseleave', function(){
+      paused = false;
+      hovered = false;
+      if(!isDragging){ isDragging = false; track.style.cursor = 'grab'; }
+    });
+
+    /* Mouse drag */
+    track.addEventListener('mousedown', function(e){
+      isDragging = true;
+      momentum = 0;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX;
+      dragScrollLeft = track.scrollLeft;
+      lastX = e.pageX;
+      lastTime = Date.now();
+      e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', function(e){
+      if(!isDragging) return;
+      var dx = e.pageX - startX;
+      track.scrollLeft = dragScrollLeft - dx;
+      /* Track velocity for momentum */
+      var now = Date.now();
+      var dt = now - lastTime;
+      if(dt > 0){
+        velocity = (lastX - e.pageX) / dt * 16; /* normalize to ~frame */
+      }
+      lastX = e.pageX;
+      lastTime = now;
+    });
+
+    window.addEventListener('mouseup', function(){
+      if(!isDragging) return;
+      isDragging = false;
+      track.style.cursor = 'grab';
+      momentum = velocity;
+      velocity = 0;
+    });
+
+    /* Touch */
+    var touchStartX2 = 0, touchScrollLeft2 = 0;
+    track.addEventListener('touchstart', function(e){
+      paused = true;
+      touchStartX2 = e.touches[0].pageX;
+      touchScrollLeft2 = track.scrollLeft;
+      momentum = 0;
+    }, {passive: true});
+
+    track.addEventListener('touchmove', function(e){
+      var dx = e.touches[0].pageX - touchStartX2;
+      track.scrollLeft = touchScrollLeft2 - dx;
+    }, {passive: true});
+
+    track.addEventListener('touchend', function(){
+      paused = false;
+    });
+  }
+
+  /* Init all tracks */
+  document.querySelectorAll('.dm-mentors-track').forEach(initTrack);
+
+  /* ── IntersectionObserver ── */
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('dm-vis'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.1});
+    document.querySelectorAll('#dmDocHeader').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('#dmDocHeader').forEach(function(el){ el.classList.add('dm-vis'); });
+  }
+})();
+</script>
