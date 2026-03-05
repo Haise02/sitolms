@@ -255,7 +255,7 @@
   display: flex;
   gap: 24px;
   width: max-content;
-  animation: dmScrollRight 80s linear infinite;
+  animation: none;
 }
 
 .dm-mentors-track.dm-track-static {
@@ -861,6 +861,20 @@
   var tabArr = Array.prototype.slice.call(tabs);
   var TAB_INTERVAL = 5000;
   var autoTimerId = null;
+  var SEC_PER_CARD = 8; /* seconds per card — uniform speed */
+
+  /* ── Force-start animation on a track ── */
+  function startAnimation(track){
+    if(!track || track.classList.contains('dm-track-static')) return;
+    /* Count only original cards (not duplicates) = total / 2 */
+    var totalCards = track.querySelectorAll('.dm-mentor-card').length;
+    var realCards = Math.round(totalCards / 2);
+    var duration = realCards * SEC_PER_CARD;
+    /* Force restart: remove animation, reflow, re-apply */
+    track.style.animation = 'none';
+    void track.offsetWidth;
+    track.style.animation = 'dmScrollRight ' + duration + 's linear infinite';
+  }
 
   /* ── Switch to a specific tab ── */
   function switchTab(target){
@@ -870,6 +884,8 @@
         p.classList.remove('dm-panel-active');
         void p.offsetWidth;
         p.classList.add('dm-panel-active');
+        var track = p.querySelector('.dm-mentors-track');
+        startAnimation(track);
       } else {
         p.classList.remove('dm-panel-active');
       }
@@ -903,6 +919,10 @@
     autoTimerId = setInterval(autoRotate, TAB_INTERVAL);
   }
   resetAutoRotate();
+
+  /* ── Init: start animation on first active panel ── */
+  var firstTrack = document.querySelector('.dm-panel.dm-panel-active .dm-mentors-track');
+  startAnimation(firstTrack);
 
   /* ── IntersectionObserver ── */
   if('IntersectionObserver' in window){
