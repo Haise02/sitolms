@@ -210,7 +210,8 @@
   z-index: 2;
 }
 
-.mt-bento-card:hover {
+.mt-bento-card:hover,
+.mt-bento-card.mt-bento-active {
   background: var(--card-hover);
   border-color: var(--border-hover);
   transform: translateY(-3px) scale(1.01);
@@ -218,8 +219,10 @@
     0 16px 36px rgba(0, 0, 0, 0.3),
     0 0 36px rgba(76, 123, 244, 0.06);
 }
-.mt-bento-card:hover::after  { opacity: 1; }
-.mt-bento-card:hover::before { opacity: 1; }
+.mt-bento-card:hover::after,
+.mt-bento-card.mt-bento-active::after  { opacity: 1; }
+.mt-bento-card:hover::before,
+.mt-bento-card.mt-bento-active::before { opacity: 1; }
 
 /* ── Logo inside card ── */
 .mt-bento-logo {
@@ -242,7 +245,8 @@
   transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.mt-bento-card:hover .mt-bento-logo img {
+.mt-bento-card:hover .mt-bento-logo img,
+.mt-bento-card.mt-bento-active .mt-bento-logo img {
   filter: brightness(1) grayscale(0%);
   opacity: 1;
   transform: scale(1.06);
@@ -261,7 +265,8 @@
   text-align: center;
   padding: 16px;
 }
-.mt-bento-card:hover .mt-bento-logo-text {
+.mt-bento-card:hover .mt-bento-logo-text,
+.mt-bento-card.mt-bento-active .mt-bento-logo-text {
   color: rgba(255,255,255,0.85);
 }
 
@@ -276,7 +281,8 @@
   z-index: 4;
   pointer-events: none;
 }
-.mt-bento-card:hover .mt-bento-shine {
+.mt-bento-card:hover .mt-bento-shine,
+.mt-bento-card.mt-bento-active .mt-bento-shine {
   animation: mtShimmer 0.8s ease-out forwards;
 }
 
@@ -470,6 +476,38 @@
       var r = c.getBoundingClientRect();
       c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
       c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* Auto-highlight cycle: 1.5s per card, loops forever */
+  var bentoCards = document.querySelectorAll('.mt-bento-card');
+  var currentIdx = -1;
+  var cyclePaused = false;
+
+  function advanceHighlight(){
+    if(cyclePaused) return;
+    /* Remove from previous */
+    if(currentIdx >= 0 && bentoCards[currentIdx]){
+      bentoCards[currentIdx].classList.remove('mt-bento-active');
+      /* Reset shimmer so it can replay */
+      var shine = bentoCards[currentIdx].querySelector('.mt-bento-shine');
+      if(shine){ shine.style.animation = 'none'; void shine.offsetWidth; shine.style.animation = ''; }
+    }
+    currentIdx = (currentIdx + 1) % bentoCards.length;
+    bentoCards[currentIdx].classList.add('mt-bento-active');
+  }
+
+  setInterval(advanceHighlight, 1500);
+
+  /* Pause cycle on real hover */
+  bentoCards.forEach(function(c){
+    c.addEventListener('mouseenter', function(){
+      cyclePaused = true;
+      /* Remove auto-active from all */
+      bentoCards.forEach(function(cc){ cc.classList.remove('mt-bento-active'); });
+    });
+    c.addEventListener('mouseleave', function(){
+      cyclePaused = false;
     });
   });
 
