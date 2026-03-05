@@ -146,7 +146,7 @@
 /* Stacked Cards Wrapper - FIXED POSITIONING */
 .stacked-cards-wrapper-rem {
     position: relative;
-    height: 2200px;
+    height: 1200px;
 }
 
 .card-wrapper-rem {
@@ -291,7 +291,7 @@
     }
     
     .stacked-cards-wrapper-rem {
-        height: 2000px;
+        height: 1100px;
     }
     
     .stacked-card-rem {
@@ -384,6 +384,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     updateWrapperCache();
     
+    function hideAllCards() {
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.pointerEvents = 'none';
+        });
+    }
+
     function updateStackedCards() {
         if (!wrapper) return;
 
@@ -393,12 +400,23 @@ document.addEventListener('DOMContentLoaded', function() {
             updateWrapperCache();
         }
         
-        const wrapperTop = wrapper.getBoundingClientRect().top;
+        const wrapperRect = wrapper.getBoundingClientRect();
+        const wrapperTop = wrapperRect.top;
+        const wrapperBottom = wrapperRect.bottom;
+        const vh = window.innerHeight;
+
+        /* CRITICAL: hide cards when wrapper is not in view */
+        if (wrapperBottom < -100 || wrapperTop > vh + 100) {
+            hideAllCards();
+            return;
+        }
+
         const scrollProgress = -wrapperTop / cachedWrapperHeight;
         const xOffset = isMobile ? '0' : '-50%';
         
         cards.forEach((card, index) => {
-            const cardProgress = ((scrollProgress * totalCards * 1.4) + 1.9) - index;
+            /* Recalibrated for 4 cards: multiplier and offset tuned */
+            const cardProgress = ((scrollProgress * totalCards * 1.6) + 1.2) - index;
             
             const useEasing = !isMobile;
             const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
