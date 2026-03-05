@@ -98,8 +98,6 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  /* Height set by JS based on tallest card */
-  min-height: 460px;
 }
 
 /* ── Single card (absolutely positioned by JS) ── */
@@ -114,6 +112,7 @@
   flex-direction: column;
   transition: left 0.55s cubic-bezier(0.25, 1, 0.5, 1),
               width 0.55s cubic-bezier(0.25, 1, 0.5, 1),
+              height 0.55s cubic-bezier(0.25, 1, 0.5, 1),
               opacity 0.55s ease,
               transform 0.55s ease,
               border-color 0.4s ease,
@@ -121,7 +120,7 @@
   opacity: 0;
   transform: scale(0.88);
   pointer-events: none;
-  will-change: left, width, opacity, transform;
+  will-change: left, width, height, opacity, transform;
 }
 
 /* Center card */
@@ -357,7 +356,6 @@
   .mt-carousel-arrow { width: 40px; height: 40px; }
   .mt-carousel-arrow--left { left: 6px; }
   .mt-carousel-arrow--right { right: 6px; }
-  .mt-carousel-stage { min-height: 420px; }
 }
 
 @media (max-width: 480px) {
@@ -367,7 +365,6 @@
   .mt-art-card-title { font-size: 15px; }
   .mt-art-card-abstract { font-size: 13px; }
   .mt-carousel-arrow { width: 36px; height: 36px; }
-  .mt-carousel-stage { min-height: 400px; }
 }
 </style>
 
@@ -482,11 +479,11 @@
         </div>
 
         <!-- Arrows on edges -->
-        <button class="mt-carousel-arrow mt-carousel-arrow--left" id="mtCarPrev">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        <button class="mt-carousel-arrow mt-carousel-arrow--left" id="mtCarPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
-        <button class="mt-carousel-arrow mt-carousel-arrow--right" id="mtCarNext">
-          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+        <button class="mt-carousel-arrow mt-carousel-arrow--right" id="mtCarNext" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
         </button>
 
       </div>
@@ -518,62 +515,72 @@
   }
   var dots = dotsBox.querySelectorAll('.mt-carousel-dot');
 
+  /* Measure natural height of center card once */
+  var stageH = 0;
+  function measureHeight(){
+    /* Temporarily make first card visible at center width to measure */
+    var W = stage.offsetWidth;
+    var centerW = Math.round(W * 0.58);
+    cards[0].style.position = 'relative';
+    cards[0].style.width = centerW + 'px';
+    cards[0].style.height = 'auto';
+    cards[0].style.opacity = '1';
+    stageH = cards[0].offsetHeight;
+    cards[0].style.position = '';
+    cards[0].style.width = '';
+    cards[0].style.height = '';
+    cards[0].style.opacity = '';
+    if(stageH > 0) stage.style.height = stageH + 'px';
+  }
+
   /* Layout: calculate pixel positions based on stage width */
   function layout(idx){
     var W = stage.offsetWidth;
-    var gap = 16;
 
     /* Center card: 58% width */
     var centerW = Math.round(W * 0.58);
     var centerL = Math.round((W - centerW) / 2);
 
-    /* Side peek cards: 18% width, showing only a sliver */
-    var sideW = Math.round(W * 0.18);
-    var leftL = 0;
-    var rightL = W - sideW;
+    /* Side peek cards: same width as center, but pushed off-screen so only a sliver shows */
+    var sideW = centerW;
+    var peekAmount = Math.round(W * 0.12); /* how much of side card is visible */
+    var leftL  = -(sideW - peekAmount);
+    var rightL = W - peekAmount;
 
     for(var i = 0; i < total; i++){
       var card = cards[i];
       var diff = i - idx;
 
-      /* Wrap around for smooth feel (non-wrapping: just hide far cards) */
       if(diff === 0){
         /* CENTER */
         card.style.left   = centerL + 'px';
         card.style.width  = centerW + 'px';
-        card.style.height = 'auto';
+        card.style.height = stageH + 'px';
         card.setAttribute('data-pos', 'center');
       } else if(diff === -1 || (idx === 0 && i === total - 1)){
         /* LEFT PEEK */
-        card.style.left   = (leftL - sideW * 0.35) + 'px';
+        card.style.left   = leftL + 'px';
         card.style.width  = sideW + 'px';
-        card.style.height = 'auto';
+        card.style.height = stageH + 'px';
         card.setAttribute('data-pos', 'left');
       } else if(diff === 1 || (idx === total - 1 && i === 0)){
         /* RIGHT PEEK */
-        card.style.left   = (rightL + sideW * 0.35) + 'px';
+        card.style.left   = rightL + 'px';
         card.style.width  = sideW + 'px';
-        card.style.height = 'auto';
+        card.style.height = stageH + 'px';
         card.setAttribute('data-pos', 'right');
       } else if(diff < -1){
-        card.style.left   = (-sideW * 2) + 'px';
+        card.style.left   = (-sideW - 100) + 'px';
         card.style.width  = sideW + 'px';
+        card.style.height = stageH + 'px';
         card.setAttribute('data-pos', 'hidden-left');
       } else {
-        card.style.left   = (W + sideW) + 'px';
+        card.style.left   = (W + 100) + 'px';
         card.style.width  = sideW + 'px';
+        card.style.height = stageH + 'px';
         card.setAttribute('data-pos', 'hidden-right');
       }
     }
-
-    /* Match stage height to center card */
-    requestAnimationFrame(function(){
-      var centerCard = cards[idx];
-      if(centerCard){
-        var h = centerCard.offsetHeight;
-        if(h > 0) stage.style.minHeight = h + 'px';
-      }
-    });
 
     /* Update dots */
     for(var j = 0; j < dots.length; j++){
@@ -650,11 +657,23 @@
   var resizeTimer;
   window.addEventListener('resize', function(){
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function(){ layout(current); }, 100);
+    resizeTimer = setTimeout(function(){ measureHeight(); layout(current); }, 100);
   });
 
   /* Init */
+  measureHeight();
   goTo(0);
+
+  /* Auto-advance every 2.5s, pause on hover */
+  var autoTimer = setInterval(function(){ goTo(current + 1); }, 2500);
+  function resetAuto(){
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function(){ goTo(current + 1); }, 2500);
+  }
+  stage.addEventListener('mouseenter', function(){ clearInterval(autoTimer); });
+  stage.addEventListener('mouseleave', function(){ resetAuto(); });
+  prevBtn.addEventListener('click', function(){ resetAuto(); });
+  nextBtn.addEventListener('click', function(){ resetAuto(); });
 
   /* IntersectionObserver */
   if('IntersectionObserver' in window){
