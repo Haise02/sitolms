@@ -304,19 +304,21 @@
 .mt-carousel-arrow:active {
   transform: translateY(-50%) scale(0.95);
 }
-.mt-carousel-arrow svg {
-  width: 20px;
-  height: 20px;
+.mt-carousel-arrow::before {
+  content: '';
   display: block;
+  width: 12px;
+  height: 12px;
+  border-top: 2.5px solid #ffffff;
+  border-right: 2.5px solid #ffffff;
 }
-.mt-carousel-arrow svg polyline,
-.mt-carousel-arrow svg path,
-.mt-carousel-arrow svg line {
-  stroke: #ffffff !important;
-  fill: none !important;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.mt-carousel-arrow--left::before {
+  transform: rotate(-135deg);
+  margin-left: 3px;
+}
+.mt-carousel-arrow--right::before {
+  transform: rotate(45deg);
+  margin-right: 3px;
 }
 
 .mt-carousel-arrow--left { left: 12px; }
@@ -364,7 +366,7 @@
   .mt-carousel-arrow { width: 36px; height: 36px; }
   .mt-carousel-arrow--left { left: 4px; }
   .mt-carousel-arrow--right { right: 4px; }
-  .mt-carousel-arrow svg { width: 16px; height: 16px; }
+  .mt-carousel-arrow::before { width: 10px; height: 10px; border-width: 2px; }
   .mt-carousel-dots { margin-top: 24px; gap: 6px; }
   .mt-carousel-dot { width: 6px; height: 6px; }
   .mt-carousel-dot.mt-dot-active { width: 20px; }
@@ -387,7 +389,7 @@
   .mt-carousel-arrow { width: 32px; height: 32px; }
   .mt-carousel-arrow--left { left: 2px; }
   .mt-carousel-arrow--right { right: 2px; }
-  .mt-carousel-arrow svg { width: 14px; height: 14px; }
+  .mt-carousel-arrow::before { width: 9px; height: 9px; border-width: 2px; }
 }
 </style>
 
@@ -502,12 +504,8 @@
         </div>
 
         <!-- Arrows on edges -->
-        <button class="mt-carousel-arrow mt-carousel-arrow--left" id="mtCarPrev" aria-label="Previous">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-        <button class="mt-carousel-arrow mt-carousel-arrow--right" id="mtCarNext" aria-label="Next">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
-        </button>
+        <button class="mt-carousel-arrow mt-carousel-arrow--left" id="mtCarPrev" aria-label="Previous"></button>
+        <button class="mt-carousel-arrow mt-carousel-arrow--right" id="mtCarNext" aria-label="Next"></button>
 
       </div>
 
