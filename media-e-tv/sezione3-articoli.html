@@ -86,54 +86,76 @@
   line-height: 1.7;
 }
 
-/* ── Carousel wrapper ── */
-.mt-swipe-wrap {
+/* ── Carousel stage ── */
+.mt-carousel {
   position: relative;
   opacity: 0;
   transform: translateY(30px);
 }
-.mt-swipe-wrap.mt-vis { animation: mtArtUp 0.8s ease 0.15s forwards; }
+.mt-carousel.mt-vis { animation: mtArtUp 0.8s ease 0.15s forwards; }
 
-.mt-swipe-viewport {
+.mt-carousel-stage {
+  position: relative;
+  width: 100%;
   overflow: hidden;
-  padding: 20px 0 40px;
+  /* Height set by JS based on tallest card */
+  min-height: 460px;
 }
 
-.mt-swipe-track {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
-}
-
-/* ── Single card ── */
-.mt-swipe-card {
-  flex: 0 0 42%;
-  max-width: 42%;
-  margin: 0 1.5%;
+/* ── Single card (absolutely positioned by JS) ── */
+.mt-carousel-card {
+  position: absolute;
+  top: 0;
   border-radius: 24px;
   overflow: hidden;
   background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
-  border: 1px solid rgba(76,123,244,0.12);
+  border: 1px solid rgba(76,123,244,0.10);
   display: flex;
   flex-direction: column;
-  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-  opacity: 0.35;
-  transform: scale(0.92);
+  transition: left 0.55s cubic-bezier(0.25, 1, 0.5, 1),
+              width 0.55s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.55s ease,
+              transform 0.55s ease,
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  opacity: 0;
+  transform: scale(0.88);
   pointer-events: none;
+  will-change: left, width, opacity, transform;
 }
 
-.mt-swipe-card.mt-card-active {
+/* Center card */
+.mt-carousel-card[data-pos="center"] {
   opacity: 1;
   transform: scale(1);
   pointer-events: auto;
-  border-color: rgba(76,123,244,0.25);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 40px rgba(76,123,244,0.06);
+  z-index: 3;
+  border-color: rgba(76,123,244,0.22);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 0 48px rgba(76,123,244,0.06);
 }
 
-.mt-swipe-card.mt-card-adjacent {
-  opacity: 0.45;
-  transform: scale(0.94);
+/* Left peek card */
+.mt-carousel-card[data-pos="left"] {
+  opacity: 0.4;
+  transform: scale(0.90);
   pointer-events: auto;
+  z-index: 2;
+}
+
+/* Right peek card */
+.mt-carousel-card[data-pos="right"] {
+  opacity: 0.4;
+  transform: scale(0.90);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* Far off cards (hidden) */
+.mt-carousel-card[data-pos="hidden-left"],
+.mt-carousel-card[data-pos="hidden-right"] {
+  opacity: 0;
+  transform: scale(0.85);
+  z-index: 1;
 }
 
 /* Card image area */
@@ -220,92 +242,102 @@
   flex: 1;
 }
 
+/* CTA as white button */
 .mt-art-card-cta {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 8px;
   font-family: 'Inter Tight', sans-serif;
   font-size: 13px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--navy);
+  background: #ffffff;
   text-decoration: none;
   letter-spacing: 0.5px;
-  transition: gap 0.3s ease, color 0.3s ease;
+  padding: 10px 22px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  align-self: flex-start;
 }
 .mt-art-card-cta:hover {
-  color: #38a0f4;
-  gap: 10px;
+  background: var(--accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(76,123,244,0.3);
 }
 .mt-art-card-cta svg {
   width: 14px;
   height: 14px;
   transition: transform 0.3s ease;
 }
-
-/* ── Arrow buttons ── */
-.mt-swipe-arrows {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 8px;
+.mt-art-card-cta:hover svg {
+  transform: translateX(3px);
 }
 
-.mt-swipe-arrow {
-  width: 52px;
-  height: 52px;
+/* ── Side arrow buttons (positioned on the carousel edges) ── */
+.mt-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 1px solid rgba(76,123,244,0.2);
-  background: rgba(13,36,80,0.5);
-  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(7,22,46,0.85);
+  color: rgba(255,255,255,0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-
-.mt-swipe-arrow:hover {
-  background: rgba(76,123,244,0.15);
-  border-color: rgba(76,123,244,0.4);
+.mt-carousel-arrow:hover {
+  background: rgba(76,123,244,0.25);
+  border-color: rgba(76,123,244,0.5);
   color: #ffffff;
-  transform: scale(1.08);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
 }
-
-.mt-swipe-arrow:active {
-  transform: scale(0.95);
+.mt-carousel-arrow:active {
+  transform: translateY(-50%) scale(0.95);
 }
-
-.mt-swipe-arrow svg {
+.mt-carousel-arrow svg {
   width: 20px;
   height: 20px;
   stroke: currentColor;
   fill: none;
-  stroke-width: 2;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
+.mt-carousel-arrow--left { left: 12px; }
+.mt-carousel-arrow--right { right: 12px; }
+
 /* Dot indicators */
-.mt-swipe-dots {
+.mt-carousel-dots {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 24px;
+  margin-top: 32px;
 }
 
-.mt-swipe-dot {
+.mt-carousel-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: rgba(255,255,255,0.15);
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
   cursor: pointer;
 }
 
-.mt-swipe-dot.mt-dot-active {
+.mt-carousel-dot.mt-dot-active {
   background: var(--accent);
-  width: 24px;
+  width: 28px;
   border-radius: 4px;
 }
 
@@ -314,38 +346,28 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
-  .mt-swipe-card { flex: 0 0 55%; max-width: 55%; }
-}
-
 @media (max-width: 768px) {
   .mt-articoli { padding: 70px 0 90px; }
   .mt-articoli-inner { padding: 0 16px; }
   .mt-articoli h2 { font-size: 36px; }
-  .mt-swipe-card {
-    flex: 0 0 80%;
-    max-width: 80%;
-    margin: 0 2%;
-  }
   .mt-art-card-img { height: 160px; }
   .mt-art-card-top { padding: 20px 20px 0; }
   .mt-art-card-body { padding: 14px 20px 22px; }
   .mt-art-card-title { font-size: 16px; }
-  .mt-swipe-arrow { width: 44px; height: 44px; }
+  .mt-carousel-arrow { width: 40px; height: 40px; }
+  .mt-carousel-arrow--left { left: 6px; }
+  .mt-carousel-arrow--right { right: 6px; }
+  .mt-carousel-stage { min-height: 420px; }
 }
 
 @media (max-width: 480px) {
   .mt-articoli { padding: 50px 0 70px; }
   .mt-articoli h2 { font-size: 30px; }
-  .mt-swipe-card {
-    flex: 0 0 88%;
-    max-width: 88%;
-    margin: 0 1.5%;
-  }
   .mt-art-card-img { height: 140px; }
   .mt-art-card-title { font-size: 15px; }
   .mt-art-card-abstract { font-size: 13px; }
-  .mt-swipe-arrow { width: 40px; height: 40px; }
+  .mt-carousel-arrow { width: 36px; height: 36px; }
+  .mt-carousel-stage { min-height: 400px; }
 }
 </style>
 
@@ -358,123 +380,119 @@
       <p class="mt-art-subtitle">Ogni articolo è una conferma: la Leone Master School sta lasciando un segno reale nel panorama formativo italiano.</p>
     </div>
 
-    <div class="mt-swipe-wrap" id="mtSwipeWrap">
-      <div class="mt-swipe-viewport">
-        <div class="mt-swipe-track" id="mtSwipeTrack">
+    <div class="mt-carousel" id="mtCarousel">
+      <div class="mt-carousel-stage" id="mtCarouselStage">
 
-          <!-- Card 1: ANSA -->
-          <div class="mt-swipe-card">
-            <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
-            <div class="mt-art-card-top">
-              <span class="mt-art-media-badge">ANSA</span>
-              <span class="mt-art-card-type">Agenzia di stampa</span>
-            </div>
-            <div class="mt-art-card-body">
-              <div class="mt-art-card-title">Leone Master School: la formazione che trasforma competenze in risultati concreti</div>
-              <p class="mt-art-card-abstract">Un approfondimento sull'approccio formativo che sta cambiando le regole del gioco nel mondo dell'alta formazione professionale italiana.</p>
-              <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
+        <!-- Card 1: ANSA -->
+        <div class="mt-carousel-card">
+          <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
+          <div class="mt-art-card-top">
+            <span class="mt-art-media-badge">ANSA</span>
+            <span class="mt-art-card-type">Agenzia di stampa</span>
           </div>
-
-          <!-- Card 2: Corriere della Sera -->
-          <div class="mt-swipe-card">
-            <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
-            <div class="mt-art-card-top">
-              <span class="mt-art-media-badge">Corriere della Sera</span>
-              <span class="mt-art-card-type">Quotidiano</span>
-            </div>
-            <div class="mt-art-card-body">
-              <div class="mt-art-card-title">Nuovi modelli di formazione: il caso Leone Master School</div>
-              <p class="mt-art-card-abstract">Il Corriere della Sera analizza il modello innovativo di formazione con affiancamento che sta rivoluzionando il settore.</p>
-              <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
+          <div class="mt-art-card-body">
+            <div class="mt-art-card-title">Leone Master School: la formazione che trasforma competenze in risultati concreti</div>
+            <p class="mt-art-card-abstract">Un approfondimento sull'approccio formativo che sta cambiando le regole del gioco nel mondo dell'alta formazione professionale italiana.</p>
+            <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
-
-          <!-- Card 3: Repubblica -->
-          <div class="mt-swipe-card">
-            <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
-            <div class="mt-art-card-top">
-              <span class="mt-art-media-badge">Repubblica</span>
-              <span class="mt-art-card-type">Quotidiano</span>
-            </div>
-            <div class="mt-art-card-body">
-              <div class="mt-art-card-title">L'alta formazione riparte dall'affiancamento: il metodo LMS</div>
-              <p class="mt-art-card-abstract">Repubblica racconta come il modello di mentoring personalizzato stia ridefinendo i confini della formazione professionale in Italia.</p>
-              <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
-          </div>
-
-          <!-- Card 4: Forbes -->
-          <div class="mt-swipe-card">
-            <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
-            <div class="mt-art-card-top">
-              <span class="mt-art-media-badge">Forbes</span>
-              <span class="mt-art-card-type">Business magazine</span>
-            </div>
-            <div class="mt-art-card-body">
-              <div class="mt-art-card-title">Leone Master School tra le realtà formative più innovative d'Italia</div>
-              <p class="mt-art-card-abstract">Forbes Italia include LMS tra le eccellenze nel settore della formazione imprenditoriale e del personal branding.</p>
-              <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
-          </div>
-
-          <!-- Card 5: Sky TG24 -->
-          <div class="mt-swipe-card">
-            <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
-            <div class="mt-art-card-top">
-              <span class="mt-art-media-badge">Sky TG24</span>
-              <span class="mt-art-card-type">TV</span>
-            </div>
-            <div class="mt-art-card-body">
-              <div class="mt-art-card-title">Intervista esclusiva: la visione dietro la Leone Master School</div>
-              <p class="mt-art-card-abstract">Sky TG24 intervista il fondatore per esplorare la mission e i risultati raggiunti dalla scuola di formazione.</p>
-              <a href="#" class="mt-art-card-cta">Guarda l'intervista <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
-          </div>
-
-          <!-- Card 6: TGCOM24 -->
-          <div class="mt-swipe-card">
-            <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
-            <div class="mt-art-card-top">
-              <span class="mt-art-media-badge">TGCOM24</span>
-              <span class="mt-art-card-type">TV</span>
-            </div>
-            <div class="mt-art-card-body">
-              <div class="mt-art-card-title">Formazione e lavoro: il ponte costruito dalla Leone Master School</div>
-              <p class="mt-art-card-abstract">TGCOM24 approfondisce come LMS stia creando un collegamento diretto tra formazione di qualità e risultati professionali misurabili.</p>
-              <a href="#" class="mt-art-card-cta">Guarda il servizio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
-          </div>
-
-          <!-- Card 7: StartupItalia -->
-          <div class="mt-swipe-card">
-            <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
-            <div class="mt-art-card-top">
-              <span class="mt-art-media-badge">StartupItalia</span>
-              <span class="mt-art-card-type">Portale digitale</span>
-            </div>
-            <div class="mt-art-card-body">
-              <div class="mt-art-card-title">Da startup a punto di riferimento: la crescita di Leone Master School</div>
-              <p class="mt-art-card-abstract">StartupItalia ripercorre il percorso di crescita dell'azienda, dalla fondazione alle centinaia di studenti formati ogni anno.</p>
-              <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- Arrows -->
-      <div class="mt-swipe-arrows">
-        <button class="mt-swipe-arrow" id="mtSwipePrev">
-          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <!-- Card 2: Corriere della Sera -->
+        <div class="mt-carousel-card">
+          <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
+          <div class="mt-art-card-top">
+            <span class="mt-art-media-badge">Corriere della Sera</span>
+            <span class="mt-art-card-type">Quotidiano</span>
+          </div>
+          <div class="mt-art-card-body">
+            <div class="mt-art-card-title">Nuovi modelli di formazione: il caso Leone Master School</div>
+            <p class="mt-art-card-abstract">Il Corriere della Sera analizza il modello innovativo di formazione con affiancamento che sta rivoluzionando il settore.</p>
+            <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Card 3: Repubblica -->
+        <div class="mt-carousel-card">
+          <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
+          <div class="mt-art-card-top">
+            <span class="mt-art-media-badge">Repubblica</span>
+            <span class="mt-art-card-type">Quotidiano</span>
+          </div>
+          <div class="mt-art-card-body">
+            <div class="mt-art-card-title">L'alta formazione riparte dall'affiancamento: il metodo LMS</div>
+            <p class="mt-art-card-abstract">Repubblica racconta come il modello di mentoring personalizzato stia ridefinendo i confini della formazione professionale in Italia.</p>
+            <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Card 4: Forbes -->
+        <div class="mt-carousel-card">
+          <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
+          <div class="mt-art-card-top">
+            <span class="mt-art-media-badge">Forbes</span>
+            <span class="mt-art-card-type">Business magazine</span>
+          </div>
+          <div class="mt-art-card-body">
+            <div class="mt-art-card-title">Leone Master School tra le realtà formative più innovative d'Italia</div>
+            <p class="mt-art-card-abstract">Forbes Italia include LMS tra le eccellenze nel settore della formazione imprenditoriale e del personal branding.</p>
+            <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Card 5: Sky TG24 -->
+        <div class="mt-carousel-card">
+          <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
+          <div class="mt-art-card-top">
+            <span class="mt-art-media-badge">Sky TG24</span>
+            <span class="mt-art-card-type">TV</span>
+          </div>
+          <div class="mt-art-card-body">
+            <div class="mt-art-card-title">Intervista esclusiva: la visione dietro la Leone Master School</div>
+            <p class="mt-art-card-abstract">Sky TG24 intervista il fondatore per esplorare la mission e i risultati raggiunti dalla scuola di formazione.</p>
+            <a href="#" class="mt-art-card-cta">Guarda l'intervista <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Card 6: TGCOM24 -->
+        <div class="mt-carousel-card">
+          <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
+          <div class="mt-art-card-top">
+            <span class="mt-art-media-badge">TGCOM24</span>
+            <span class="mt-art-card-type">TV</span>
+          </div>
+          <div class="mt-art-card-body">
+            <div class="mt-art-card-title">Formazione e lavoro: il ponte costruito dalla Leone Master School</div>
+            <p class="mt-art-card-abstract">TGCOM24 approfondisce come LMS stia creando un collegamento diretto tra formazione di qualità e risultati professionali misurabili.</p>
+            <a href="#" class="mt-art-card-cta">Guarda il servizio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Card 7: StartupItalia -->
+        <div class="mt-carousel-card">
+          <div class="mt-art-card-img"><span class="mt-art-card-img-placeholder">Immagine in arrivo</span></div>
+          <div class="mt-art-card-top">
+            <span class="mt-art-media-badge">StartupItalia</span>
+            <span class="mt-art-card-type">Portale digitale</span>
+          </div>
+          <div class="mt-art-card-body">
+            <div class="mt-art-card-title">Da startup a punto di riferimento: la crescita di Leone Master School</div>
+            <p class="mt-art-card-abstract">StartupItalia ripercorre il percorso di crescita dell'azienda, dalla fondazione alle centinaia di studenti formati ogni anno.</p>
+            <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Arrows on edges -->
+        <button class="mt-carousel-arrow mt-carousel-arrow--left" id="mtCarPrev">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button class="mt-swipe-arrow" id="mtSwipeNext">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <button class="mt-carousel-arrow mt-carousel-arrow--right" id="mtCarNext">
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
         </button>
+
       </div>
 
       <!-- Dots -->
-      <div class="mt-swipe-dots" id="mtSwipeDots"></div>
+      <div class="mt-carousel-dots" id="mtCarDots"></div>
     </div>
 
   </div>
@@ -482,51 +500,80 @@
 
 <script>
 (function(){
-  var track = document.getElementById('mtSwipeTrack');
-  var cards = track.querySelectorAll('.mt-swipe-card');
-  var prevBtn = document.getElementById('mtSwipePrev');
-  var nextBtn = document.getElementById('mtSwipeNext');
-  var dotsWrap = document.getElementById('mtSwipeDots');
-  var total = cards.length;
+  var stage   = document.getElementById('mtCarouselStage');
+  var cards   = stage.querySelectorAll('.mt-carousel-card');
+  var prevBtn = document.getElementById('mtCarPrev');
+  var nextBtn = document.getElementById('mtCarNext');
+  var dotsBox = document.getElementById('mtCarDots');
+  var total   = cards.length;
   var current = 0;
+  var animating = false;
 
-  /* Build dots */
+  /* Build dot indicators */
   for(var d = 0; d < total; d++){
     var dot = document.createElement('div');
-    dot.className = 'mt-swipe-dot';
-    dot.setAttribute('data-idx', d);
-    dotsWrap.appendChild(dot);
+    dot.className = 'mt-carousel-dot';
+    dot.setAttribute('data-i', d);
+    dotsBox.appendChild(dot);
   }
-  var dots = dotsWrap.querySelectorAll('.mt-swipe-dot');
+  var dots = dotsBox.querySelectorAll('.mt-carousel-dot');
 
-  function getCardWidth(){
-    /* card width + margin as percentage */
-    var cs = getComputedStyle(cards[0]);
-    var flex = parseFloat(cs.flexBasis) || 42;
-    var ml = parseFloat(cs.marginLeft) || 1.5;
-    var mr = parseFloat(cs.marginRight) || 1.5;
-    return flex + ml + mr;
-  }
+  /* Layout: calculate pixel positions based on stage width */
+  function layout(idx){
+    var W = stage.offsetWidth;
+    var gap = 16;
 
-  function goTo(idx){
-    if(idx < 0) idx = total - 1;
-    if(idx >= total) idx = 0;
-    current = idx;
+    /* Center card: 58% width */
+    var centerW = Math.round(W * 0.58);
+    var centerL = Math.round((W - centerW) / 2);
 
-    var cardW = getCardWidth();
-    /* Center the active card: shift by (50% - halfCard) - idx*cardW */
-    var offset = 50 - (cardW / 2) - (idx * cardW);
-    track.style.transform = 'translateX(' + offset + '%)';
+    /* Side peek cards: 18% width, showing only a sliver */
+    var sideW = Math.round(W * 0.18);
+    var leftL = 0;
+    var rightL = W - sideW;
 
-    /* Update card states */
     for(var i = 0; i < total; i++){
-      cards[i].classList.remove('mt-card-active', 'mt-card-adjacent');
-      if(i === idx){
-        cards[i].classList.add('mt-card-active');
-      } else if(i === idx - 1 || i === idx + 1 || (idx === 0 && i === total - 1) || (idx === total - 1 && i === 0)){
-        cards[i].classList.add('mt-card-adjacent');
+      var card = cards[i];
+      var diff = i - idx;
+
+      /* Wrap around for smooth feel (non-wrapping: just hide far cards) */
+      if(diff === 0){
+        /* CENTER */
+        card.style.left   = centerL + 'px';
+        card.style.width  = centerW + 'px';
+        card.style.height = 'auto';
+        card.setAttribute('data-pos', 'center');
+      } else if(diff === -1 || (idx === 0 && i === total - 1)){
+        /* LEFT PEEK */
+        card.style.left   = (leftL - sideW * 0.35) + 'px';
+        card.style.width  = sideW + 'px';
+        card.style.height = 'auto';
+        card.setAttribute('data-pos', 'left');
+      } else if(diff === 1 || (idx === total - 1 && i === 0)){
+        /* RIGHT PEEK */
+        card.style.left   = (rightL + sideW * 0.35) + 'px';
+        card.style.width  = sideW + 'px';
+        card.style.height = 'auto';
+        card.setAttribute('data-pos', 'right');
+      } else if(diff < -1){
+        card.style.left   = (-sideW * 2) + 'px';
+        card.style.width  = sideW + 'px';
+        card.setAttribute('data-pos', 'hidden-left');
+      } else {
+        card.style.left   = (W + sideW) + 'px';
+        card.style.width  = sideW + 'px';
+        card.setAttribute('data-pos', 'hidden-right');
       }
     }
+
+    /* Match stage height to center card */
+    requestAnimationFrame(function(){
+      var centerCard = cards[idx];
+      if(centerCard){
+        var h = centerCard.offsetHeight;
+        if(h > 0) stage.style.minHeight = h + 'px';
+      }
+    });
 
     /* Update dots */
     for(var j = 0; j < dots.length; j++){
@@ -534,30 +581,59 @@
     }
   }
 
-  /* Arrow clicks */
-  prevBtn.addEventListener('click', function(){ goTo(current - 1); });
-  nextBtn.addEventListener('click', function(){ goTo(current + 1); });
+  function goTo(idx){
+    if(animating) return;
+    if(idx < 0) idx = total - 1;
+    if(idx >= total) idx = 0;
+    animating = true;
+    current = idx;
+    layout(idx);
+    setTimeout(function(){ animating = false; }, 600);
+  }
+
+  /* Arrow clicks — single handler, no double-fire */
+  prevBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    goTo(current - 1);
+  });
+  nextBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    goTo(current + 1);
+  });
 
   /* Dot clicks */
-  dotsWrap.addEventListener('click', function(e){
+  dotsBox.addEventListener('click', function(e){
     var t = e.target;
-    if(t.classList.contains('mt-swipe-dot')){
-      goTo(parseInt(t.getAttribute('data-idx'), 10));
+    if(t.classList.contains('mt-carousel-dot')){
+      goTo(parseInt(t.getAttribute('data-i'), 10));
     }
   });
 
-  /* Touch swipe */
-  var startX = 0, startY = 0, dragging = false;
-  track.addEventListener('touchstart', function(e){
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    dragging = true;
+  /* Click on side cards to navigate */
+  for(var c = 0; c < total; c++){
+    (function(ci){
+      cards[ci].addEventListener('click', function(){
+        var pos = cards[ci].getAttribute('data-pos');
+        if(pos === 'left') goTo(current - 1);
+        if(pos === 'right') goTo(current + 1);
+      });
+    })(c);
+  }
+
+  /* Touch swipe on stage */
+  var sx = 0, sy = 0, swiping = false;
+  stage.addEventListener('touchstart', function(e){
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+    swiping = true;
   }, {passive: true});
-  track.addEventListener('touchend', function(e){
-    if(!dragging) return;
-    dragging = false;
-    var dx = e.changedTouches[0].clientX - startX;
-    var dy = e.changedTouches[0].clientY - startY;
+  stage.addEventListener('touchend', function(e){
+    if(!swiping) return;
+    swiping = false;
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
     if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40){
       if(dx < 0) goTo(current + 1);
       else goTo(current - 1);
@@ -570,6 +646,13 @@
     if(e.key === 'ArrowRight') goTo(current + 1);
   });
 
+  /* Resize handler */
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){ layout(current); }, 100);
+  });
+
   /* Init */
   goTo(0);
 
@@ -580,9 +663,9 @@
         if(e.isIntersecting){ e.target.classList.add('mt-vis'); obs.unobserve(e.target); }
       });
     }, {threshold: 0.08});
-    document.querySelectorAll('#mtArtHeader, #mtSwipeWrap').forEach(function(el){ obs.observe(el); });
+    document.querySelectorAll('#mtArtHeader, #mtCarousel').forEach(function(el){ obs.observe(el); });
   } else {
-    document.querySelectorAll('#mtArtHeader, #mtSwipeWrap').forEach(function(el){ el.classList.add('mt-vis'); });
+    document.querySelectorAll('#mtArtHeader, #mtCarousel').forEach(function(el){ el.classList.add('mt-vis'); });
   }
 })();
 </script>
