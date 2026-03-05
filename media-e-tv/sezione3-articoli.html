@@ -1,0 +1,330 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-articoli {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 0 120px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.mt-articoli::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(76,123,244,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(56,163,244,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.mt-articoli-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.mt-art-header {
+  text-align: center;
+  margin-bottom: 64px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-art-header.mt-vis { animation: mtArtUp 0.8s ease forwards; }
+
+.mt-art-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.mt-art-label::before,
+.mt-art-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.mt-articoli h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+.mt-articoli h2 em { font-style: italic; color: var(--beige); }
+
+.mt-art-subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Card grid */
+.mt-art-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-art-grid.mt-vis { animation: mtArtUp 0.8s ease 0.15s forwards; }
+
+/* Single card */
+.mt-art-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
+  border: 1px solid rgba(76,123,244,0.12);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.mt-art-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(76,123,244,0.3);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35), 0 0 30px rgba(76,123,244,0.08);
+}
+
+/* Card top: media logo/name */
+.mt-art-card-top {
+  padding: 28px 28px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mt-art-media-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(76,123,244,0.1);
+  border: 1px solid rgba(76,123,244,0.2);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+.mt-art-card-type {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Card body */
+.mt-art-card-body {
+  padding: 20px 28px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mt-art-card-title {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+  margin: 0 0 12px;
+}
+
+.mt-art-card-abstract {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  margin: 0 0 24px;
+  flex: 1;
+}
+
+.mt-art-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: gap 0.3s ease, color 0.3s ease;
+}
+.mt-art-card-cta:hover {
+  color: #38a0f4;
+  gap: 10px;
+}
+.mt-art-card-cta svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+.mt-art-card:hover .mt-art-card-cta svg {
+  transform: translateX(2px);
+}
+
+@keyframes mtArtUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .mt-art-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+
+@media (max-width: 768px) {
+  .mt-articoli { padding: 70px 0 90px; }
+  .mt-articoli-inner { padding: 0 20px; }
+  .mt-articoli h2 { font-size: 36px; }
+  .mt-art-grid { grid-template-columns: 1fr; gap: 16px; }
+  .mt-art-card-top { padding: 22px 22px 0; }
+  .mt-art-card-body { padding: 16px 22px 22px; }
+}
+
+@media (max-width: 480px) {
+  .mt-articoli { padding: 50px 0 70px; }
+  .mt-articoli-inner { padding: 0 16px; }
+  .mt-articoli h2 { font-size: 30px; }
+}
+</style>
+
+<div class="mt-articoli">
+  <div class="mt-articoli-inner">
+
+    <div class="mt-art-header" id="mtArtHeader">
+      <div class="mt-art-label">Articoli & Interviste</div>
+      <h2>La stampa <em>racconta</em></h2>
+      <p class="mt-art-subtitle">Ogni articolo è una conferma: la Leone Master School sta lasciando un segno reale nel panorama formativo italiano.</p>
+    </div>
+
+    <div class="mt-art-grid" id="mtArtGrid">
+
+      <div class="mt-art-card">
+        <div class="mt-art-card-top">
+          <span class="mt-art-media-badge">ANSA</span>
+          <span class="mt-art-card-type">Agenzia di stampa</span>
+        </div>
+        <div class="mt-art-card-body">
+          <div class="mt-art-card-title">Leone Master School: la formazione che trasforma competenze in risultati concreti</div>
+          <p class="mt-art-card-abstract">Un approfondimento sull'approccio formativo che sta cambiando le regole del gioco nel mondo dell'alta formazione professionale italiana.</p>
+          <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="mt-art-card">
+        <div class="mt-art-card-top">
+          <span class="mt-art-media-badge">Corriere della Sera</span>
+          <span class="mt-art-card-type">Quotidiano</span>
+        </div>
+        <div class="mt-art-card-body">
+          <div class="mt-art-card-title">Nuovi modelli di formazione: il caso Leone Master School</div>
+          <p class="mt-art-card-abstract">Il Corriere della Sera analizza il modello innovativo di formazione con affiancamento che sta rivoluzionando il settore.</p>
+          <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="mt-art-card">
+        <div class="mt-art-card-top">
+          <span class="mt-art-media-badge">Repubblica</span>
+          <span class="mt-art-card-type">Quotidiano</span>
+        </div>
+        <div class="mt-art-card-body">
+          <div class="mt-art-card-title">L'alta formazione riparte dall'affiancamento: il metodo LMS</div>
+          <p class="mt-art-card-abstract">Repubblica racconta come il modello di mentoring personalizzato stia ridefinendo i confini della formazione professionale in Italia.</p>
+          <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="mt-art-card">
+        <div class="mt-art-card-top">
+          <span class="mt-art-media-badge">Forbes</span>
+          <span class="mt-art-card-type">Business magazine</span>
+        </div>
+        <div class="mt-art-card-body">
+          <div class="mt-art-card-title">Leone Master School tra le realtà formative più innovative d'Italia</div>
+          <p class="mt-art-card-abstract">Forbes Italia include LMS tra le eccellenze nel settore della formazione imprenditoriale e del personal branding.</p>
+          <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="mt-art-card">
+        <div class="mt-art-card-top">
+          <span class="mt-art-media-badge">Sky TG24</span>
+          <span class="mt-art-card-type">TV</span>
+        </div>
+        <div class="mt-art-card-body">
+          <div class="mt-art-card-title">Intervista esclusiva: la visione dietro la Leone Master School</div>
+          <p class="mt-art-card-abstract">Sky TG24 intervista il fondatore per esplorare la mission e i risultati raggiunti dalla scuola di formazione.</p>
+          <a href="#" class="mt-art-card-cta">Guarda l'intervista <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="mt-art-card">
+        <div class="mt-art-card-top">
+          <span class="mt-art-media-badge">TGCOM24</span>
+          <span class="mt-art-card-type">TV</span>
+        </div>
+        <div class="mt-art-card-body">
+          <div class="mt-art-card-title">Formazione e lavoro: il ponte costruito dalla Leone Master School</div>
+          <p class="mt-art-card-abstract">TGCOM24 approfondisce come LMS stia creando un collegamento diretto tra formazione di qualità e risultati professionali misurabili.</p>
+          <a href="#" class="mt-art-card-cta">Guarda il servizio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="mt-art-card">
+        <div class="mt-art-card-top">
+          <span class="mt-art-media-badge">StartupItalia</span>
+          <span class="mt-art-card-type">Portale digitale</span>
+        </div>
+        <div class="mt-art-card-body">
+          <div class="mt-art-card-title">Da startup a punto di riferimento: la crescita di Leone Master School</div>
+          <p class="mt-art-card-abstract">StartupItalia ripercorre il percorso di crescita dell'azienda, dalla fondazione alle centinaia di studenti formati ogni anno.</p>
+          <a href="#" class="mt-art-card-cta">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('mt-vis'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.08});
+    document.querySelectorAll('#mtArtHeader, #mtArtGrid').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('#mtArtHeader, #mtArtGrid').forEach(function(el){ el.classList.add('mt-vis'); });
+  }
+})();
+</script>

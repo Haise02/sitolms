@@ -1,0 +1,213 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-logos {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 80px 0;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.mt-logos::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(76,123,244,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(56,163,244,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.mt-logos-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.mt-logos-header {
+  text-align: center;
+  margin-bottom: 56px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-logos-header.mt-vis { animation: mtLogoUp 0.8s ease forwards; }
+
+.mt-logos-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.mt-logos-label::before,
+.mt-logos-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.mt-logos h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+.mt-logos h2 em { font-style: italic; color: var(--beige); }
+
+.mt-logos-subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Divider line */
+.mt-logos-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin: 0 auto 56px;
+  opacity: 0;
+}
+.mt-logos-divider.mt-vis { animation: mtLogoUp 0.8s ease 0.1s forwards; }
+
+/* Logo grid */
+.mt-logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-logos-grid.mt-vis { animation: mtLogoUp 0.8s ease 0.2s forwards; }
+
+.mt-logo-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 36px;
+  border-radius: 16px;
+  border: 1px solid rgba(76,123,244,0.1);
+  background: linear-gradient(160deg, rgba(13,36,80,0.4) 0%, rgba(7,22,46,0.6) 100%);
+  transition: all 0.4s ease;
+  min-width: 160px;
+}
+
+.mt-logo-item:hover {
+  border-color: rgba(76,123,244,0.3);
+  background: linear-gradient(160deg, rgba(13,36,80,0.7) 0%, rgba(7,22,46,0.9) 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3), 0 0 20px rgba(76,123,244,0.08);
+}
+
+.mt-logo-name {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.5px;
+  transition: color 0.4s ease;
+}
+
+.mt-logo-item:hover .mt-logo-name {
+  color: rgba(255,255,255,0.95);
+}
+
+/* Bottom tagline */
+.mt-logos-tagline {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.mt-logos-tagline.mt-vis { animation: mtLogoUp 0.8s ease 0.35s forwards; }
+
+@keyframes mtLogoUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .mt-logos { padding: 60px 0; }
+  .mt-logos-inner { padding: 0 20px; }
+  .mt-logos h2 { font-size: 36px; }
+  .mt-logos-grid { gap: 16px; }
+  .mt-logo-item { padding: 18px 24px; min-width: 140px; }
+  .mt-logo-name { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .mt-logos { padding: 40px 0; }
+  .mt-logos-inner { padding: 0 16px; }
+  .mt-logos h2 { font-size: 30px; }
+  .mt-logos-grid { gap: 10px; }
+  .mt-logo-item { padding: 14px 18px; min-width: 120px; border-radius: 12px; }
+  .mt-logo-name { font-size: 13px; }
+}
+</style>
+
+<div class="mt-logos">
+  <div class="mt-logos-inner">
+
+    <div class="mt-logos-header" id="mtLogosHeader">
+      <div class="mt-logos-label">Rassegna Stampa</div>
+      <h2>Parlano di <em>noi</em></h2>
+      <p class="mt-logos-subtitle">I media più autorevoli d'Italia hanno raccontato la storia, i risultati e la visione della Leone Master School.</p>
+    </div>
+
+    <div class="mt-logos-divider" id="mtLogosDivider"></div>
+
+    <div class="mt-logos-grid" id="mtLogosGrid">
+      <div class="mt-logo-item"><span class="mt-logo-name">ANSA</span></div>
+      <div class="mt-logo-item"><span class="mt-logo-name">Corriere della Sera</span></div>
+      <div class="mt-logo-item"><span class="mt-logo-name">Repubblica</span></div>
+      <div class="mt-logo-item"><span class="mt-logo-name">Forbes</span></div>
+      <div class="mt-logo-item"><span class="mt-logo-name">Sky TG24</span></div>
+      <div class="mt-logo-item"><span class="mt-logo-name">TGCOM24</span></div>
+      <div class="mt-logo-item"><span class="mt-logo-name">StartupItalia</span></div>
+    </div>
+
+    <div class="mt-logos-tagline" id="mtLogosTagline">e molti altri — in continuo aggiornamento</div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('mt-vis'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.08});
+    document.querySelectorAll('#mtLogosHeader, #mtLogosDivider, #mtLogosGrid, #mtLogosTagline').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('#mtLogosHeader, #mtLogosDivider, #mtLogosGrid, #mtLogosTagline').forEach(function(el){ el.classList.add('mt-vis'); });
+  }
+})();
+</script>
