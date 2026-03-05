@@ -1,453 +1,492 @@
+<!-- SEZIONE 4 — WIDGET 1: Card Stack -->
+<section class="stacked-section-rem">
+    <div class="stacked-container-rem">
+        <!-- Header -->
+        <div class="stacked-header-rem">
+            <div class="stacked-label-rem">Iniziative Speciali</div>
+            <h2 class="stacked-title-rem">Oltre la formazione: <em>impatto sociale</em></h2>
+            <p class="stacked-subtitle-rem">Progetti, partnership e iniziative che testimoniano l'impegno della Leone Master School nel creare valore reale per la comunità.</p>
+        </div>
+
+        <!-- Stacked Cards Container -->
+        <div class="stacked-cards-wrapper-rem">
+            <!-- Card 1 -->
+            <div class="card-wrapper-rem">
+            <div class="stacked-card-rem" data-index="1">
+                <div class="card-header-rem">
+                    <span class="card-number-badge-rem">01</span>
+                    <span class="card-category-rem">Empowerment</span>
+                </div>
+                <h3 class="card-main-title-rem"><span class="bold">Evento</span> "Donna Leader"</h3>
+                <p class="card-description-rem">Un progetto dedicato alla <strong>leadership femminile</strong>, con articoli e copertura mediatica nazionale. Un'iniziativa per valorizzare il ruolo delle donne nel mondo imprenditoriale e professionale.</p>
+            </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-wrapper-rem">
+            <div class="stacked-card-rem" data-index="2">
+                <div class="card-header-rem">
+                    <span class="card-number-badge-rem">02</span>
+                    <span class="card-category-rem">Accademia</span>
+                </div>
+                <h3 class="card-main-title-rem"><span class="bold">Partnership</span> con Università IUL</h3>
+                <p class="card-description-rem">Una collaborazione strategica con <strong>l'Università Telematica IUL</strong> per unire rigore accademico e approccio pratico, creando percorsi formativi riconosciuti e certificati.</p>
+            </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-wrapper-rem">
+            <div class="stacked-card-rem" data-index="3">
+                <div class="card-header-rem">
+                    <span class="card-number-badge-rem">03</span>
+                    <span class="card-category-rem">Istituzioni</span>
+                </div>
+                <h3 class="card-main-title-rem"><span class="bold">Attività</span> con Regione Lazio</h3>
+                <p class="card-description-rem">Collaborazioni istituzionali per promuovere la <strong>formazione professionale</strong> e sostenere l'innovazione nel territorio, con il supporto delle istituzioni regionali.</p>
+            </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card-wrapper-rem">
+            <div class="stacked-card-rem" data-index="4">
+                <div class="card-header-rem">
+                    <span class="card-number-badge-rem">04</span>
+                    <span class="card-category-rem">Imprenditoria</span>
+                </div>
+                <h3 class="card-main-title-rem"><span class="bold">Imprenditoria</span> Femminile e Giovani</h3>
+                <p class="card-description-rem">Progetti mirati a supportare <strong>l'imprenditoria femminile e giovanile</strong>, con programmi dedicati, borse di studio e percorsi di accelerazione per i talenti emergenti.</p>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CSS INLINE -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
 
-.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
-.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
-
-/* ── Section ── */
-.mt-iniziative {
-  --navy: #07162E;
-  --accent: #4C7BF4;
-  --accent2: #7B5CF5;
-  --beige: #D4C5B0;
-  position: relative;
-  background: var(--navy);
-  font-family: 'Inter', sans-serif;
-  /* NO overflow:hidden — cards use position:fixed */
+/* Reset Elementor */
+.elementor-widget-html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.elementor-widget-container {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.mt-iniziative *,
-.mt-iniziative *::before,
-.mt-iniziative *::after { box-sizing: border-box; }
-
-.mt-iniziative::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 70% 20%, rgba(123,92,245,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 30% 80%, rgba(76,123,244,0.03) 0%, transparent 50%);
-  pointer-events: none;
+/* Section */
+.stacked-section-rem {
+    position: relative;
+    padding: 50px 24px 100px;
+    background: #07162E;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-.mt-iniz-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  position: relative;
+.stacked-container-rem {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
 }
 
-/* ── Header — sits in normal flow, NOT overlapped ── */
-.mt-iniz-header {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 80px 0 60px;
-  position: relative;
-  z-index: 5;
+/* Header */
+.stacked-header-rem {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 10px;
+    z-index: 3;
 }
 
-.mt-iniz-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Inter Tight', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent2);
-  margin-bottom: 16px;
+.stacked-label-rem {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #7B5CF5;
+    margin-bottom: 16px;
 }
-.mt-iniz-label::before,
-.mt-iniz-label::after {
-  content: '';
-  width: 20px;
-  height: 1px;
-  background: var(--accent2);
-}
-
-.mt-iniziative h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 48px;
-  font-weight: 600;
-  color: #ffffff;
-  margin: 0 0 24px;
-  line-height: 1.15;
-}
-.mt-iniziative h2 em { font-style: italic; color: var(--beige); }
-
-.mt-iniz-subtitle {
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.5);
-  max-width: 620px;
-  margin: 0 auto;
+.stacked-label-rem::before,
+.stacked-label-rem::after {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: #7B5CF5;
 }
 
-/* ── Scroll track — the tall div that drives the scroll animation ── */
-.mt-iniz-scroll-track {
-  position: relative;
-  /* height set by JS: (totalCards * scrollPerCard) + cardH */
+.stacked-title-rem {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 48px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    margin-bottom: 24px;
+    line-height: 1.15;
 }
 
-/* ── Single Card — starts fixed, last card goes absolute when done ── */
-.mt-iniz-card {
-  position: fixed;
-  border-radius: 24px;
-  overflow: hidden;
-  background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
-  border: 2px solid rgba(123,92,245,0.35);
-  padding: 36px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  backdrop-filter: blur(20px);
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(76,123,244,0.15);
-  opacity: 0;
-  pointer-events: none;
-  will-change: transform, opacity;
+.stacked-title-rem em {
+    font-style: italic;
+    color: #D4C5B0;
 }
 
-/* Z-index stacking — last card on top */
-.mt-iniz-card[data-index="1"] { z-index: 1; }
-.mt-iniz-card[data-index="2"] { z-index: 2; }
-.mt-iniz-card[data-index="3"] { z-index: 3; }
-.mt-iniz-card[data-index="4"] { z-index: 4; }
-
-/* When JS switches to absolute positioning for the "done" state */
-.mt-iniz-card.mt-iniz-done {
-  position: absolute !important;
+.stacked-subtitle-rem {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 17px !important;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-weight: 300;
+    max-width: 620px;
+    margin: 0 auto;
 }
 
-/* ── Card inner elements ── */
-.mt-iniz-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 28px;
+/* Stacked Cards Wrapper - FIXED POSITIONING */
+.stacked-cards-wrapper-rem {
+    position: relative;
+    height: 2200px;
 }
 
-.mt-iniz-card-number {
-  font-family: 'Inter Tight', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0.5px;
+.card-wrapper-rem {
+    display: contents;
 }
 
-.mt-iniz-card-tag {
-  font-family: 'Inter Tight', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--accent2);
+/* Individual Card — Navy/Accent Design */
+.stacked-card-rem {
+    position: fixed;
+    top: 195px;
+    left: 100px;
+    right: 100px;
+    height: calc(75vh - 80px);
+    padding: 30px 45px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
+    border: 2px solid rgba(76, 123, 244, 0.3);
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(76, 123, 244, 0.15);
+    transition: none;
+    will-change: transform, opacity;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(0, 100vh, 0);
 }
 
-.mt-iniz-card-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(123,92,245,0.15), rgba(76,123,244,0.1));
-  border: 1px solid rgba(123,92,245,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-  flex-shrink: 0;
+/* Desktop overrides */
+@media (min-width: 769px) {
+    .stacked-card-rem {
+        left: 50% !important;
+        right: auto !important;
+        width: min(680px, calc(100vw - 200px)) !important;
+        transform: translate3d(-50%, 100vh, 0);
+        padding: 30px 36px 40px;
+    }
 }
 
-.mt-iniz-card-icon svg {
-  width: 26px;
-  height: 26px;
-  stroke: var(--accent2);
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+/* All cards same navy/accent style */
+.stacked-card-rem[data-index="1"],
+.stacked-card-rem[data-index="2"],
+.stacked-card-rem[data-index="3"],
+.stacked-card-rem[data-index="4"] {
+    background: linear-gradient(160deg, #0d2450 0%, #07162E 100%);
+    border-color: rgba(76, 123, 244, 0.3);
 }
 
-.mt-iniz-card-title {
-  font-family: 'Inter Tight', sans-serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.25;
-  margin: 0 0 16px;
+/* Z-index: last card on top */
+.stacked-card-rem[data-index="1"] { z-index: 1; }
+.stacked-card-rem[data-index="2"] { z-index: 2; }
+.stacked-card-rem[data-index="3"] { z-index: 3; }
+.stacked-card-rem[data-index="4"] { z-index: 4; }
+
+/* Card Header */
+.card-header-rem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-.mt-iniz-card-desc {
-  font-size: 15px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.75;
-  margin: 0;
-  max-width: 520px;
+.card-number-badge-rem {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    letter-spacing: 0.5px;
 }
 
-.mt-iniz-card-desc strong {
-  color: rgba(255,255,255,0.8);
-  font-weight: 500;
+.card-category-rem {
+    font-family: 'Inter Tight', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #7B5CF5 !important;
+    padding: 0;
+    margin: 0;
 }
 
-/* ── Responsive ── */
+/* Card Title */
+.card-main-title-rem {
+    font-family: 'Inter Tight', sans-serif !important;
+    font-size: 30px !important;
+    line-height: 1.2;
+    color: #FFFFFF !important;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 20px;
+    max-width: 700px;
+}
+
+.card-main-title-rem .bold {
+    font-style: normal;
+    font-weight: 800;
+}
+
+.card-main-title-rem strong,
+.card-description-rem strong {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+}
+
+/* Card Description */
+.card-description-rem {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.55) !important;
+    font-weight: 300;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+/* Performance Mobile */
 @media (max-width: 768px) {
-  .mt-iniz-header { padding: 60px 0 40px; }
-  .mt-iniziative h2 { font-size: 36px; }
-  .mt-iniz-subtitle { font-size: 15px; }
-  .mt-iniz-container { padding: 0 20px; }
-  .mt-iniz-card { padding: 28px 24px; }
-  .mt-iniz-card-title { font-size: 22px; }
-  .mt-iniz-card-desc { font-size: 14px; line-height: 1.6; }
-  .mt-iniz-card-icon { width: 48px; height: 48px; border-radius: 14px; margin-bottom: 20px; }
-  .mt-iniz-card-icon svg { width: 22px; height: 22px; }
+    .stacked-card-rem {
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+        transition: transform 0.1s linear, opacity 0.1s linear;
+    }
+
+    .stacked-section-rem {
+        padding: 50px 20px 80px;
+    }
+
+    .stacked-header-rem {
+        margin-bottom: 10px;
+    }
+
+    .stacked-title-rem {
+        font-size: 36px !important;
+    }
+
+    .stacked-subtitle-rem {
+        font-size: 15px !important;
+    }
+    
+    .stacked-cards-wrapper-rem {
+        height: 2000px;
+    }
+    
+    .stacked-card-rem {
+        top: 160px;
+        left: 20px;
+        right: 20px;
+        height: calc(60vh - 50px);
+        padding: 28px 22px 32px;
+    }
+
+    .card-number-badge-rem {
+        font-size: 12px !important;
+    }
+
+    .card-category-rem {
+        font-size: 10px !important;
+    }
+
+    .card-main-title-rem {
+        font-size: 26px !important;
+        margin-bottom: 12px;
+        line-height: 1.1;
+    }
+
+    .card-description-rem {
+        font-size: 14px !important;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        max-width: 100%;
+    }
 }
 
-@media (max-width: 480px) {
-  .mt-iniz-header { padding: 50px 0 30px; }
-  .mt-iniziative h2 { font-size: 30px; }
-  .mt-iniz-subtitle { font-size: 14px; }
-  .mt-iniz-container { padding: 0 16px; }
-  .mt-iniz-card { padding: 24px 20px; border-radius: 18px; }
-  .mt-iniz-card-header { margin-bottom: 20px; }
-  .mt-iniz-card-title { font-size: 19px; margin-bottom: 12px; }
-  .mt-iniz-card-desc { font-size: 13px; }
-  .mt-iniz-card-icon { width: 44px; height: 44px; margin-bottom: 16px; }
-  .mt-iniz-card-icon svg { width: 20px; height: 20px; }
+/* iPhone standard */
+@media (max-width: 430px) and (min-height: 667px) {
+    .stacked-card-rem {
+        top: 140px;
+        height: calc(62vh - 45px);
+        padding: 30px 24px 34px;
+    }
+    
+    .card-main-title-rem {
+        font-size: 24px !important;
+        margin-bottom: 14px;
+    }
+    
+    .card-description-rem {
+        font-size: 13px !important;
+        line-height: 1.5;
+    }
+
+    .stacked-title-rem {
+        font-size: 30px !important;
+    }
+}
+
+/* iPhone Pro Max / Plus */
+@media (min-width: 430px) and (max-width: 768px) and (min-height: 900px) {
+    .stacked-card-rem {
+        top: 160px;
+        height: calc(60vh - 50px);
+    }
 }
 </style>
 
-<section class="mt-iniziative" id="mtInizSection">
-  <div class="mt-iniz-container">
-
-    <!-- Header — normal flow, never overlapped -->
-    <div class="mt-iniz-header" id="mtInizHeader">
-      <div class="mt-iniz-label">Iniziative Speciali</div>
-      <h2>Oltre la formazione: <em>impatto sociale</em></h2>
-      <p class="mt-iniz-subtitle">Progetti, partnership e iniziative che testimoniano l'impegno della Leone Master School nel creare valore reale per la comunità.</p>
-    </div>
-
-    <!-- Scroll track — tall div that drives the scroll animation -->
-    <div class="mt-iniz-scroll-track" id="mtInizTrack">
-
-      <!-- Card 1 -->
-      <div class="mt-iniz-card" data-index="1">
-        <div class="mt-iniz-card-header">
-          <span class="mt-iniz-card-number">01</span>
-          <span class="mt-iniz-card-tag">Empowerment</span>
-        </div>
-        <div class="mt-iniz-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <div class="mt-iniz-card-title">Evento "Donna Leader"</div>
-        <p class="mt-iniz-card-desc">Un progetto dedicato alla <strong>leadership femminile</strong>, con articoli e copertura mediatica nazionale. Un'iniziativa per valorizzare il ruolo delle donne nel mondo imprenditoriale e professionale.</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="mt-iniz-card" data-index="2">
-        <div class="mt-iniz-card-header">
-          <span class="mt-iniz-card-number">02</span>
-          <span class="mt-iniz-card-tag">Accademia</span>
-        </div>
-        <div class="mt-iniz-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <div class="mt-iniz-card-title">Partnership con Università IUL</div>
-        <p class="mt-iniz-card-desc">Una collaborazione strategica con <strong>l'Università Telematica IUL</strong> per unire rigore accademico e approccio pratico, creando percorsi formativi riconosciuti e certificati.</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="mt-iniz-card" data-index="3">
-        <div class="mt-iniz-card-header">
-          <span class="mt-iniz-card-number">03</span>
-          <span class="mt-iniz-card-tag">Istituzioni</span>
-        </div>
-        <div class="mt-iniz-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
-        </div>
-        <div class="mt-iniz-card-title">Attività con Regione Lazio</div>
-        <p class="mt-iniz-card-desc">Collaborazioni istituzionali per promuovere la <strong>formazione professionale</strong> e sostenere l'innovazione nel territorio, con il supporto delle istituzioni regionali.</p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="mt-iniz-card" data-index="4">
-        <div class="mt-iniz-card-header">
-          <span class="mt-iniz-card-number">04</span>
-          <span class="mt-iniz-card-tag">Imprenditoria</span>
-        </div>
-        <div class="mt-iniz-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div class="mt-iniz-card-title">Imprenditoria Femminile e Giovani</div>
-        <p class="mt-iniz-card-desc">Progetti mirati a supportare <strong>l'imprenditoria femminile e giovanile</strong>, con programmi dedicati, borse di studio e percorsi di accelerazione per i talenti emergenti.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+<!-- JAVASCRIPT INLINE -->
 <script>
-(function(){
-  var track    = document.getElementById('mtInizTrack');
-  var cards    = track.querySelectorAll('.mt-iniz-card');
-  var total    = cards.length;  // 4
-  var isMobile = window.innerWidth <= 768;
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.stacked-card-rem');
+    const wrapper = document.querySelector('.stacked-cards-wrapper-rem');
+    const totalCards = cards.length;
+    
+    let isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-  /* ── CONFIG ── */
-  var CARD_TOP    = 100;               /* fixed top position for cards (px from viewport top) */
-  var CARD_H      = 420;               /* card height in px */
-  var CARD_W_MAX  = 680;               /* max card width */
-  var SCROLL_PER  = 500;               /* scroll pixels to advance one card */
-  var RETRACT_PX  = 70;                /* how far a card retracts upward when replaced */
-
-  function recalc(){
-    isMobile = window.innerWidth <= 768;
-    if(isMobile){
-      CARD_TOP = 80;
-      CARD_H   = Math.min(380, window.innerHeight * 0.55);
-      SCROLL_PER = 400;
-    } else {
-      CARD_TOP = 100;
-      CARD_H   = Math.min(420, window.innerHeight * 0.55);
-      SCROLL_PER = 500;
+    function updateIsMobile() {
+        isMobile = window.matchMedia('(max-width: 768px)').matches;
     }
-    /* Set track height: enough scroll for all cards + one screen to display last card */
-    var trackH = (total * SCROLL_PER) + CARD_H;
-    track.style.height = trackH + 'px';
-  }
-
-  function getCardGeometry(){
-    var vw = window.innerWidth;
-    var pad = isMobile ? (vw <= 480 ? 16 : 20) : 0;
-    var w, l;
-    if(isMobile){
-      w = vw - (pad * 2);
-      l = pad;
-    } else {
-      w = Math.min(CARD_W_MAX, vw - 80);
-      l = Math.round((vw - w) / 2);
+    
+    let cachedWrapperHeight = 0;
+    let needsRecalc = true;
+    
+    function updateWrapperCache() {
+        const rect = wrapper.getBoundingClientRect();
+        cachedWrapperHeight = rect.height;
+        needsRecalc = false;
     }
-    return { w: w, l: l };
-  }
-
-  function ease(t){
-    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3) / 2;
-  }
-
-  function update(){
-    var trackRect = track.getBoundingClientRect();
-    var geo = getCardGeometry();
-
-    /* scrolled = how many px of track have scrolled past the viewport top */
-    var scrolled = -trackRect.top;
-
-    for(var i = 0; i < total; i++){
-      var card = cards[i];
-      var enterStart = i * SCROLL_PER;            /* when this card starts entering */
-      var enterEnd   = enterStart + SCROLL_PER;    /* when this card is fully in position */
-      var exitStart  = (i + 1) * SCROLL_PER;       /* when next card starts pushing this one */
-      var isLast     = (i === total - 1);
-
-      /* Card dimensions */
-      card.style.width  = geo.w + 'px';
-      card.style.height = CARD_H + 'px';
-
-      if(scrolled < enterStart){
-        /* ── BEFORE: card is below viewport, hidden ── */
-        card.classList.remove('mt-iniz-done');
-        card.style.position = 'fixed';
-        card.style.top  = '';
-        card.style.left = geo.l + 'px';
-        card.style.transform = 'translateY(100vh)';
-        card.style.opacity = '0';
-        card.style.pointerEvents = 'none';
-
-      } else if(scrolled >= enterStart && scrolled < enterEnd){
-        /* ── ENTERING: card slides up from bottom to CARD_TOP ── */
-        var p = (scrolled - enterStart) / SCROLL_PER;
-        p = ease(Math.max(0, Math.min(1, p)));
-        var yVh = (1 - p) * 100;
-
-        card.classList.remove('mt-iniz-done');
-        card.style.position = 'fixed';
-        card.style.top  = CARD_TOP + 'px';
-        card.style.left = geo.l + 'px';
-        card.style.transform = 'translateY(' + yVh + 'vh) scale(' + (0.95 + p * 0.05) + ')';
-        card.style.opacity = '' + Math.min(1, p * 2);
-        card.style.pointerEvents = p > 0.5 ? 'auto' : 'none';
-
-      } else if(scrolled >= enterEnd && (isLast || scrolled < exitStart)){
-        /* ── ACTIVE: card is at its resting position ── */
-        card.classList.remove('mt-iniz-done');
-        card.style.position = 'fixed';
-        card.style.top  = CARD_TOP + 'px';
-        card.style.left = geo.l + 'px';
-        card.style.transform = 'translateY(0) scale(1)';
+    
+    cards.forEach(card => {
         card.style.opacity = '1';
-        card.style.pointerEvents = 'auto';
-
-      } else if(!isLast && scrolled >= exitStart){
-        /* ── RETRACTED: pushed up by the next card ── */
-        var retractP = Math.min(1, (scrolled - exitStart) / SCROLL_PER);
-        retractP = ease(retractP);
-        var retractY = -(retractP * RETRACT_PX);
-        var retractScale = 1 - (retractP * 0.02);
-        var retractOpacity = Math.max(0.3, 1 - retractP * 0.7);
-
-        card.classList.remove('mt-iniz-done');
-        card.style.position = 'fixed';
-        card.style.top  = CARD_TOP + 'px';
-        card.style.left = geo.l + 'px';
-        card.style.transform = 'translateY(' + retractY + 'px) scale(' + retractScale + ')';
-        card.style.opacity = '' + retractOpacity;
-        card.style.pointerEvents = 'none';
-      }
-    }
-
-    /* ── LAST CARD STOP: when scroll goes past all cards, pin last card absolutely ── */
-    var allDoneAt = total * SCROLL_PER;
-    var lastCard = cards[total - 1];
-    if(scrolled >= allDoneAt){
-      /* Switch to absolute so it scrolls normally with the page */
-      lastCard.classList.add('mt-iniz-done');
-      lastCard.style.position = 'absolute';
-      lastCard.style.top  = allDoneAt + 'px';
-      lastCard.style.left = geo.l + 'px';
-      lastCard.style.transform = 'translateY(0) scale(1)';
-      lastCard.style.opacity = '1';
-      lastCard.style.pointerEvents = 'auto';
-    }
-  }
-
-  /* ── Scroll listener ── */
-  var rafId = null;
-  function handleScroll(){
-    if(rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(function(){
-      update();
-      rafId = null;
     });
-  }
+    
+    updateWrapperCache();
+    
+    function updateStackedCards() {
+        if (!wrapper) return;
 
-  window.addEventListener('scroll', handleScroll, {passive: true});
-  window.addEventListener('touchmove', handleScroll, {passive: true});
-
-  /* ── Resize ── */
-  var resizeTimer;
-  window.addEventListener('resize', function(){
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function(){
-      recalc();
-      update();
-    }, 100);
-  });
-
-  /* ── Init ── */
-  recalc();
-  update();
-})();
+        updateIsMobile();
+        
+        if (needsRecalc) {
+            updateWrapperCache();
+        }
+        
+        const wrapperTop = wrapper.getBoundingClientRect().top;
+        const scrollProgress = -wrapperTop / cachedWrapperHeight;
+        const xOffset = isMobile ? '0' : '-50%';
+        
+        cards.forEach((card, index) => {
+            const cardProgress = ((scrollProgress * totalCards * 1.4) + 1.9) - index;
+            
+            const useEasing = !isMobile;
+            const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            
+            if (cardProgress < 0) {
+                const distance = Math.abs(cardProgress) * 50;
+                card.style.transform = `translate3d(${xOffset}, ${Math.min(100, 100 + distance)}vh, 0) scale(0.95)`;
+                card.style.opacity = '1';
+                card.style.pointerEvents = 'none';
+            }
+            else if (cardProgress >= 0 && cardProgress < 1) {
+                const rawProgress = Math.max(0, Math.min(1, cardProgress));
+                const progress = useEasing ? easeInOutCubic(rawProgress) : rawProgress;
+                const translateY = (1 - progress) * 100;
+                const scale = 0.95 + (progress * 0.05);
+                
+                card.style.transform = `translate3d(${xOffset}, ${translateY}vh, 0) scale(${scale})`;
+                card.style.opacity = '1';
+                card.style.pointerEvents = 'auto';
+            }
+            else if (cardProgress >= 1 && cardProgress < 2) {
+                const subProgress = cardProgress - 1;
+                
+                if (subProgress < 0.3) {
+                    card.style.transform = `translate3d(${xOffset}, 0, 0) scale(1)`;
+                    card.style.opacity = '1';
+                    card.style.pointerEvents = 'auto';
+                } else {
+                    const retractProgress = (subProgress - 0.3) / 0.7;
+                    const smoothRetract = useEasing ? easeInOutCubic(retractProgress) : retractProgress;
+                    const offset = smoothRetract * 85;
+                    const scale = 1 - (smoothRetract * 0.005);
+                    
+                    card.style.transform = `translate3d(${xOffset}, -${offset}px, 0) scale(${scale})`;
+                    card.style.opacity = '1';
+                    card.style.pointerEvents = retractProgress < 0.5 ? 'auto' : 'none';
+                }
+            }
+            else {
+                const stacksAfter = cardProgress - 2;
+                const stackPosition = stacksAfter + 1;
+                const stackOffset = stackPosition * 85;
+                const scale = 1 - (stackPosition * 0.005);
+                
+                card.style.transform = `translate3d(${xOffset}, -${stackOffset}px, 0) scale(${scale})`;
+                card.style.opacity = '1';
+                card.style.pointerEvents = 'none';
+            }
+        });
+    }
+    
+    let lastTime = 0;
+    const throttleMs = isMobile ? 50 : 0;
+    let rafId = null;
+    
+    function handleScroll() {
+        const now = performance.now();
+        
+        if (isMobile && now - lastTime < throttleMs) {
+            return;
+        }
+        
+        lastTime = now;
+        
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+        }
+        
+        rafId = requestAnimationFrame(() => {
+            updateStackedCards();
+            rafId = null;
+        });
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('touchmove', handleScroll, { passive: true });
+    
+    updateStackedCards();
+    
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        needsRecalc = true;
+        updateIsMobile();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateWrapperCache();
+            updateStackedCards();
+        }, 100);
+    });
+});
 </script>
