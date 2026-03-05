@@ -87,16 +87,14 @@
   position: relative;
   z-index: 2;
   margin-bottom: 48px;
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 .dm-tabs-scroll {
   display: flex;
   gap: 10px;
   padding: 0 40px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -376,24 +374,25 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@media (max-width: 900px) {
+  .dm-tabs-scroll {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 16px;
+    gap: 8px;
+  }
+  .dm-tabs-scroll::-webkit-scrollbar { display: none; }
+  .dm-tab { padding: 10px 18px; font-size: 12px; white-space: nowrap; }
+}
+
 @media (max-width: 768px) {
   .dm-docenti { padding: 70px 0 90px; }
   .dm-doc-header { padding: 0 20px; }
   .dm-doc-header h2 { font-size: 36px; }
-  .dm-tabs-wrap { overflow: visible; }
-  .dm-tabs-scroll {
-    padding: 0 16px;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    gap: 8px;
-    scroll-padding: 0 16px;
-  }
-  .dm-tabs-scroll::-webkit-scrollbar { display: none; }
-  .dm-tab { padding: 10px 16px; font-size: 12px; }
-  .dm-mentors-track { padding: 20px 40px; gap: 16px; }
+  .dm-mentors-track { padding: 20px 20px; gap: 16px; }
   .dm-mentor-card { flex: 0 0 240px; }
 }
 
@@ -403,7 +402,7 @@
   .dm-tabs-scroll { padding: 0 12px; gap: 6px; }
   .dm-tab { padding: 9px 14px; font-size: 11px; letter-spacing: 0.3px; }
   .dm-mentor-card { flex: 0 0 220px; }
-  .dm-mentors-track { padding: 16px 20px; }
+  .dm-mentors-track { padding: 16px 16px; }
 }
 </style>
 
@@ -440,35 +439,35 @@
             <div class="dm-mentor-body"><div class="dm-mentor-name">Gaia Appignani</div><p class="dm-mentor-role">Home stager e interior designer.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/orsola.png" alt="Orsola Palladino"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/orsola.png" alt="Orsola Palladino"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Orsola Palladino</div><p class="dm-mentor-role">Avvocato specializzato in diritto immobiliare.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/ivan.png" alt="Ivan William De Pace"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/ivan.png" alt="Ivan William De Pace"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Ivan William De Pace</div><p class="dm-mentor-role">Esperto in Saldo e Stralcio.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/francesca borsetti.png" alt="Francesca Borsetti"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/francesca%20borsetti.png" alt="Francesca Borsetti"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Francesca Borsetti</div><p class="dm-mentor-role">Geometra e home stager.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/leccese.png" alt="Massimiliano Leccese"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/leccese.png" alt="Massimiliano Leccese"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Massimiliano Leccese</div><p class="dm-mentor-role">Avvocato e delegato alla vendita aste.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/dania.png" alt="Dania Strambi"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/dania.png" alt="Dania Strambi"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Dania Strambi</div><p class="dm-mentor-role">Esperta in Saldo e Stralcio.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/borghese.png" alt="Massimiliano Borghese"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/borghese.png" alt="Massimiliano Borghese"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Massimiliano Borghese</div><p class="dm-mentor-role">Commercialista e formatore.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/fabio toma.png" alt="Fabio Toma"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/fabio%20toma.png" alt="Fabio Toma"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Fabio Toma</div><p class="dm-mentor-role">Imprenditore immobiliare, specializzato in aste.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/leonardo leone.png" alt="Leonardo Leone"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/leonardo%20leone.png" alt="Leonardo Leone"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Leonardo Leone</div><p class="dm-mentor-role">Fondatore LMS, investitore immobiliare e formatore.</p></div>
           </div>
           <div class="dm-mentor-card">
@@ -486,11 +485,11 @@
       <div class="dm-mentors-track-wrap">
         <div class="dm-mentors-track">
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/francesco magro.png" alt="Francesco Magro"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/francesco%20magro.png" alt="Francesco Magro"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Francesco Magro</div><p class="dm-mentor-role">Fondatore Wine Livery, pioniere del food delivery in Italia.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/grossi.png" alt="Giampaolo Grossi"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/grossi.png" alt="Giampaolo Grossi"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Giampaolo Grossi</div><p class="dm-mentor-role">Ex General Manager Starbucks Italia, ha guidato l'espansione del brand nel Paese.</p></div>
           </div>
           <div class="dm-mentor-card">
@@ -506,7 +505,7 @@
             <div class="dm-mentor-body"><div class="dm-mentor-name">Chiara Rota</div><p class="dm-mentor-role">Fondatrice di MyCookingBox, caso di successo nel settore food.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/borghese.png" alt="Massimiliano Borghese"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/borghese.png" alt="Massimiliano Borghese"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Massimiliano Borghese</div><p class="dm-mentor-role">Commercialista e revisore contabile, esperto in fiscalità e bilanci.</p></div>
           </div>
         </div>
@@ -520,11 +519,11 @@
       <div class="dm-mentors-track-wrap">
         <div class="dm-mentors-track">
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/antonio testa.png" alt="Antonio Testa"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/antonio%20testa.png" alt="Antonio Testa"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Antonio Testa</div><p class="dm-mentor-role">Copywriter strategico, specializzato in direct response e posizionamento.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/daniele riolo.png" alt="Daniele Riolo"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/daniele%20riolo.png" alt="Daniele Riolo"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Daniele Riolo</div><p class="dm-mentor-role">Media buyer e consulente, esperto in campagne Facebook e Google Ads.</p></div>
           </div>
           <div class="dm-mentor-card">
@@ -532,7 +531,7 @@
             <div class="dm-mentor-body"><div class="dm-mentor-name">Salvo Trifirò</div><p class="dm-mentor-role">Direttore Marketing Leone Master School, con esperienza in strategie digital e branding.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/alessio di marco.png" alt="Alessio Di Marco"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/alessio%20di%20marco.png" alt="Alessio Di Marco"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Alessio Di Marco</div><p class="dm-mentor-role">IT Operations Manager LMS, con esperienza in sistemi digitali e automazioni di marketing.</p></div>
           </div>
         </div>
@@ -545,11 +544,11 @@
       <div class="dm-mentors-track-wrap">
         <div class="dm-mentors-track">
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/abbattista.png" alt="Alessandra Abbattista"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/abbattista.png" alt="Alessandra Abbattista"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Alessandra Abbattista</div><p class="dm-mentor-role">General Manager Karakter Coaching School.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/angeletti.png" alt="Marco Angeletti"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/angeletti.png" alt="Marco Angeletti"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Marco Angeletti</div><p class="dm-mentor-role">Presidente Karakter Coaching School.</p></div>
           </div>
         </div>
@@ -562,39 +561,39 @@
       <div class="dm-mentors-track-wrap">
         <div class="dm-mentors-track">
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/rocco ranieri.png" alt="Alessio R. Ranieri"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/rocco%20ranieri.png" alt="Alessio R. Ranieri"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Alessio R. Ranieri</div><p class="dm-mentor-role">Psicologo e mindfulness trainer.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/lara lucaccioni.png" alt="Lara Lucaccioni"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/lara%20lucaccioni.png" alt="Lara Lucaccioni"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Lara Lucaccioni</div><p class="dm-mentor-role">Master trainer italiana di Yoga della Risata.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/leonardo leone.png" alt="Leonardo Leone"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/leonardo%20leone.png" alt="Leonardo Leone"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Leonardo Leone</div><p class="dm-mentor-role">Imprenditore e formatore.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/abbattista.png" alt="Alessandra Abbattista"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/abbattista.png" alt="Alessandra Abbattista"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Alessandra Abbattista</div><p class="dm-mentor-role">Coach ICF e General Manager Karakter Coaching School.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/orsola.png" alt="Orsola Palladino"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/orsola.png" alt="Orsola Palladino"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Orsola Palladino</div><p class="dm-mentor-role">Avvocato esperto in PNL.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/fabio toma.png" alt="Fabio Toma"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/fabio%20toma.png" alt="Fabio Toma"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Fabio Toma</div><p class="dm-mentor-role">Imprenditore immobiliare ed esperto di gestione finanziaria.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/elisa passi.png" alt="Elisa Passi"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/elisa%20passi.png" alt="Elisa Passi"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Elisa Passi</div><p class="dm-mentor-role">Coach, esperta in crescita personale.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/monica ricci.png" alt="Monica Ricci"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/monica%20ricci.png" alt="Monica Ricci"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Monica Ricci</div><p class="dm-mentor-role">Psicologa e love coach.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/minetti.png" alt="Annalisa Minetti"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/minetti.png" alt="Annalisa Minetti"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Annalisa Minetti</div><p class="dm-mentor-role">Cantautrice, atleta paralimpica e modella italiana.</p></div>
           </div>
         </div>
@@ -608,43 +607,43 @@
       <div class="dm-mentors-track-wrap">
         <div class="dm-mentors-track">
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/nora d'ascanio.png" alt="Nora D'Ascanio"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/nora%20d%27ascanio.png" alt="Nora D'Ascanio"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Nora D'Ascanio</div><p class="dm-mentor-role">Sales leader, specialista in tecniche di negoziazione.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/cettolo.png" alt="Roberta Cettolo"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/cettolo.png" alt="Roberta Cettolo"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Roberta Cettolo</div><p class="dm-mentor-role">Sales leader, esperta in strategie di vendita.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/gianna mastrototaro.png" alt="Gianna Mastrototaro"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/gianna%20mastrototaro.png" alt="Gianna Mastrototaro"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Gianna Mastrototaro</div><p class="dm-mentor-role">Coach e trainer, specializzata in comunicazione e gestione obiezioni.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/hassan.png" alt="Hassan Mozumder"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/hassan.png" alt="Hassan Mozumder"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Hassan Mozumder</div><p class="dm-mentor-role">Esperto di vendita e tecniche persuasive.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/cristiano di ordoardo.png" alt="Cristiano Di Odoardo"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/cristiano%20di%20ordoardo.png" alt="Cristiano Di Odoardo"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Cristiano Di Odoardo</div><p class="dm-mentor-role">Esperto di retail e brand marketing.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/armando.png" alt="Armando Perrone"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/armando.png" alt="Armando Perrone"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Armando Perrone</div><p class="dm-mentor-role">CEO Leone Investments, esperto di leadership e mindset.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/leonardo leone.png" alt="Leonardo Leone"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/leonardo%20leone.png" alt="Leonardo Leone"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Leonardo Leone</div><p class="dm-mentor-role">Fondatore LMS, imprenditore e formatore.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/alessio di marco.png" alt="Alessio Di Marco"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/alessio%20di%20marco.png" alt="Alessio Di Marco"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Alessio Di Marco</div><p class="dm-mentor-role">IT Operations Manager LMS.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/faidiga.png" alt="Patrizia Faidiga"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/faidiga.png" alt="Patrizia Faidiga"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Patrizia Faidiga</div><p class="dm-mentor-role">Senior trainer, coach e imprenditrice.</p></div>
           </div>
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/pancaldi.png" alt="Jonni Pancaldi"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/pancaldi.png" alt="Jonni Pancaldi"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Jonni Pancaldi</div><p class="dm-mentor-role">Sales executive, esperto in comunicazione.</p></div>
           </div>
         </div>
@@ -658,7 +657,7 @@
       <div class="dm-mentors-track-wrap">
         <div class="dm-mentors-track">
           <div class="dm-mentor-card">
-            <div class="dm-mentor-img"><img src="docenti images/ausilio.png" alt="Roberto Ausilio"></div>
+            <div class="dm-mentor-img"><img src="https://raw.githubusercontent.com/Haise02/sitolms/main/docenti-mentori/docenti%20images/ausilio.png" alt="Roberto Ausilio"></div>
             <div class="dm-mentor-body"><div class="dm-mentor-name">Roberto Ausilio</div><p class="dm-mentor-role">Psicologo e psicoterapeuta, esperto in genitorialità.</p></div>
           </div>
         </div>
