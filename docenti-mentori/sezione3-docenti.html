@@ -689,13 +689,16 @@
   var tabs = document.querySelectorAll('.dm-tab');
   var panels = document.querySelectorAll('.dm-panel');
   var tabArr = Array.prototype.slice.call(tabs);
-  var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  var autoSpeed = isMobile ? 0.25 : 0.4;
-  var tabInterval = 5000;
+  var SPEED = 0.3;
+  var TICK_MS = 20;
+  var TAB_INTERVAL = 5000;
   var autoTimerId = null;
   var hovered = false;
-  var activeRAF = null;
-  var scrollDir = 1; /* 1 = forward, -1 = reverse (bounce) */
+  var scrollTimer = null;
+  var scrollDir = 1;
+  var activeTrack = null;
+  var touchActive = false;
+  var dragActive = false;
 
   /* ── Switch to a specific tab ── */
   function switchTab(target, resetScroll){
@@ -707,8 +710,8 @@
         p.classList.add('dm-panel-active');
         var track = p.querySelector('.dm-mentors-track');
         if(track){
-          if(resetScroll) track.scrollLeft = 0;
-          startAutoScroll(track);
+          if(resetScroll){ track.scrollLeft = 0; scrollDir = 1; }
+          bindTrack(track);
         }
       } else {
         p.classList.remove('dm-panel-active');
@@ -719,83 +722,57 @@
     });
   }
 
-  /* ── Auto-scroll for the ACTIVE track only ── */
-  function startAutoScroll(track){
-    if(activeRAF) cancelAnimationFrame(activeRAF);
+  /* ── Auto-scroll via setInterval (reliable on mobile) ── */
+  function startScrollTimer(){
+    if(scrollTimer) clearInterval(scrollTimer);
+    scrollTimer = setInterval(function(){
+      if(!activeTrack || touchActive || dragActive || hovered) return;
+      var max = activeTrack.scrollWidth - activeTrack.clientWidth;
+      if(max <= 0) return;
+      activeTrack.scrollLeft += SPEED * scrollDir;
+      if(activeTrack.scrollLeft >= max - 1) scrollDir = -1;
+      else if(activeTrack.scrollLeft <= 1) scrollDir = 1;
+    }, TICK_MS);
+  }
 
-    var paused = false;
-    var isDragging = false;
-    var startX = 0, dragScrollLeft = 0;
-    var velocity = 0, momentum = 0;
-    var lastX = 0, lastTime = 0;
-    var touchPaused = false;
-
-    function tick(){
-      if(!paused && !touchPaused && !isDragging){
-        track.scrollLeft += autoSpeed * scrollDir;
-        var maxScroll = track.scrollWidth - track.clientWidth;
-        if(track.scrollLeft >= maxScroll - 1){
-          scrollDir = -1;
-        } else if(track.scrollLeft <= 1){
-          scrollDir = 1;
-        }
-      }
-      if(!isDragging && Math.abs(momentum) > 0.3){
-        track.scrollLeft += momentum;
-        momentum *= 0.92;
-      } else if(!isDragging){
-        momentum = 0;
-      }
-      activeRAF = requestAnimationFrame(tick);
-    }
-    activeRAF = requestAnimationFrame(tick);
-
-    /* Remove old listeners by replacing node trick — not needed, 
-       we just overwrite via closure since only active track matters */
+  /* ── Bind interaction handlers to a track ── */
+  function bindTrack(track){
+    activeTrack = track;
 
     /* Hover pause (desktop) */
-    track.onmouseenter = function(){ paused = true; hovered = true; };
-    track.onmouseleave = function(){ paused = false; hovered = false; track.style.cursor = 'grab'; };
+    track.onmouseenter = function(){ hovered = true; };
+    track.onmouseleave = function(){ hovered = false; track.style.cursor = 'grab'; };
 
     /* Mouse drag (desktop) */
+    var mStartX = 0, mScrollL = 0;
     track.onmousedown = function(e){
-      isDragging = true; momentum = 0;
+      dragActive = true;
       track.style.cursor = 'grabbing';
-      startX = e.pageX; dragScrollLeft = track.scrollLeft;
-      lastX = e.pageX; lastTime = Date.now();
+      mStartX = e.pageX; mScrollL = track.scrollLeft;
       e.preventDefault();
     };
     document.onmousemove = function(e){
-      if(!isDragging) return;
-      track.scrollLeft = dragScrollLeft - (e.pageX - startX);
-      var now = Date.now(), dt = now - lastTime;
-      if(dt > 0) velocity = (lastX - e.pageX) / dt * 16;
-      lastX = e.pageX; lastTime = now;
+      if(!dragActive) return;
+      track.scrollLeft = mScrollL - (e.pageX - mStartX);
     };
     document.onmouseup = function(){
-      if(!isDragging) return;
-      isDragging = false; track.style.cursor = 'grab';
-      momentum = velocity; velocity = 0;
+      if(!dragActive) return;
+      dragActive = false;
+      track.style.cursor = 'grab';
     };
 
-    /* Touch drag (mobile) — with velocity for momentum */
-    var tStartX = 0, tScrollL = 0, tLastX = 0, tLastTime = 0;
+    /* Touch drag (mobile) */
+    var tStartX = 0, tScrollL = 0;
     track.ontouchstart = function(e){
-      touchPaused = true; momentum = 0;
+      touchActive = true;
       tStartX = e.touches[0].pageX;
       tScrollL = track.scrollLeft;
-      tLastX = tStartX; tLastTime = Date.now();
     };
     track.ontouchmove = function(e){
-      var cx = e.touches[0].pageX;
-      track.scrollLeft = tScrollL - (cx - tStartX);
-      var now = Date.now(), dt = now - tLastTime;
-      if(dt > 0) velocity = (tLastX - cx) / dt * 16;
-      tLastX = cx; tLastTime = now;
+      track.scrollLeft = tScrollL - (e.touches[0].pageX - tStartX);
     };
     track.ontouchend = function(){
-      touchPaused = false;
-      momentum = velocity; velocity = 0;
+      touchActive = false;
     };
   }
 
@@ -821,13 +798,14 @@
   }
   function resetAutoRotate(){
     clearInterval(autoTimerId);
-    autoTimerId = setInterval(autoRotate, tabInterval);
+    autoTimerId = setInterval(autoRotate, TAB_INTERVAL);
   }
   resetAutoRotate();
 
-  /* ── Init: start auto-scroll on the first active panel ── */
-  var firstActive = document.querySelector('.dm-panel.dm-panel-active .dm-mentors-track');
-  if(firstActive) startAutoScroll(firstActive);
+  /* ── Init ── */
+  var firstTrack = document.querySelector('.dm-panel.dm-panel-active .dm-mentors-track');
+  if(firstTrack) bindTrack(firstTrack);
+  startScrollTimer();
 
   /* ── IntersectionObserver ── */
   if('IntersectionObserver' in window){
