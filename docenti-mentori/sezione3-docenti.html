@@ -689,10 +689,11 @@
   var tabs = document.querySelectorAll('.dm-tab');
   var panels = document.querySelectorAll('.dm-panel');
   var tabArr = Array.prototype.slice.call(tabs);
-  var autoSpeed = 0.4; /* px per frame */
-  var tabInterval = 5000; /* ms between auto-tab-switch */
+  var autoSpeed = 0.4;
+  var tabInterval = 5000;
   var autoTimerId = null;
   var hovered = false;
+  var activeRAF = null;
 
   /* ── Switch to a specific tab ── */
   function switchTab(target, resetScroll){
@@ -700,12 +701,12 @@
     panels.forEach(function(p){
       if(p.getAttribute('data-dm-panel') === target){
         p.classList.remove('dm-panel-active');
-        /* Force reflow so animation replays */
         void p.offsetWidth;
         p.classList.add('dm-panel-active');
-        if(resetScroll){
-          var track = p.querySelector('.dm-mentors-track');
-          if(track) track.scrollLeft = 0;
+        var track = p.querySelector('.dm-mentors-track');
+        if(track){
+          if(resetScroll) track.scrollLeft = 0;
+          startAutoScroll(track);
         }
       } else {
         p.classList.remove('dm-panel-active');
@@ -716,131 +717,112 @@
     });
   }
 
+  /* ── Auto-scroll for the ACTIVE track only ── */
+  function startAutoScroll(track){
+    if(activeRAF) cancelAnimationFrame(activeRAF);
+
+    var paused = false;
+    var isDragging = false;
+    var startX = 0, dragScrollLeft = 0;
+    var velocity = 0, momentum = 0;
+    var lastX = 0, lastTime = 0;
+    var touchPaused = false;
+
+    function tick(){
+      if(!paused && !touchPaused && !isDragging){
+        track.scrollLeft += autoSpeed;
+        if(track.scrollLeft >= track.scrollWidth - track.clientWidth - 2){
+          track.scrollLeft = 0;
+        }
+      }
+      if(!isDragging && Math.abs(momentum) > 0.3){
+        track.scrollLeft += momentum;
+        momentum *= 0.92;
+      } else if(!isDragging){
+        momentum = 0;
+      }
+      activeRAF = requestAnimationFrame(tick);
+    }
+    activeRAF = requestAnimationFrame(tick);
+
+    /* Remove old listeners by replacing node trick — not needed, 
+       we just overwrite via closure since only active track matters */
+
+    /* Hover pause (desktop) */
+    track.onmouseenter = function(){ paused = true; hovered = true; };
+    track.onmouseleave = function(){ paused = false; hovered = false; track.style.cursor = 'grab'; };
+
+    /* Mouse drag (desktop) */
+    track.onmousedown = function(e){
+      isDragging = true; momentum = 0;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX; dragScrollLeft = track.scrollLeft;
+      lastX = e.pageX; lastTime = Date.now();
+      e.preventDefault();
+    };
+    document.onmousemove = function(e){
+      if(!isDragging) return;
+      track.scrollLeft = dragScrollLeft - (e.pageX - startX);
+      var now = Date.now(), dt = now - lastTime;
+      if(dt > 0) velocity = (lastX - e.pageX) / dt * 16;
+      lastX = e.pageX; lastTime = now;
+    };
+    document.onmouseup = function(){
+      if(!isDragging) return;
+      isDragging = false; track.style.cursor = 'grab';
+      momentum = velocity; velocity = 0;
+    };
+
+    /* Touch drag (mobile) — with velocity for momentum */
+    var tStartX = 0, tScrollL = 0, tLastX = 0, tLastTime = 0;
+    track.ontouchstart = function(e){
+      touchPaused = true; momentum = 0;
+      tStartX = e.touches[0].pageX;
+      tScrollL = track.scrollLeft;
+      tLastX = tStartX; tLastTime = Date.now();
+    };
+    track.ontouchmove = function(e){
+      var cx = e.touches[0].pageX;
+      track.scrollLeft = tScrollL - (cx - tStartX);
+      var now = Date.now(), dt = now - tLastTime;
+      if(dt > 0) velocity = (tLastX - cx) / dt * 16;
+      tLastX = cx; tLastTime = now;
+    };
+    track.ontouchend = function(){
+      touchPaused = false;
+      momentum = velocity; velocity = 0;
+    };
+  }
+
   /* ── Tab click ── */
   tabs.forEach(function(tab){
     tab.addEventListener('click', function(){
-      var target = this.getAttribute('data-dm-tab');
-      switchTab(target, true);
+      switchTab(this.getAttribute('data-dm-tab'), true);
       resetAutoRotate();
     });
   });
 
-  /* ── Auto-rotate tabs every 5s ── */
+  /* ── Auto-rotate tabs ── */
   function getActiveIndex(){
     for(var i = 0; i < tabArr.length; i++){
       if(tabArr[i].classList.contains('dm-tab-active')) return i;
     }
     return 0;
   }
-
   function autoRotate(){
     if(hovered) return;
     var idx = (getActiveIndex() + 1) % tabArr.length;
-    var target = tabArr[idx].getAttribute('data-dm-tab');
-    switchTab(target, true);
+    switchTab(tabArr[idx].getAttribute('data-dm-tab'), true);
   }
-
   function resetAutoRotate(){
     clearInterval(autoTimerId);
     autoTimerId = setInterval(autoRotate, tabInterval);
   }
-
   resetAutoRotate();
 
-  /* ── Continuous auto-scroll for each track ── */
-  function initTrack(track){
-    var paused = false;
-    var isDragging = false;
-    var startX = 0, dragScrollLeft = 0;
-    var velocity = 0, momentum = 0;
-    var lastX = 0, lastTime = 0;
-
-    /* Auto-scroll with rAF */
-    function autoScroll(){
-      if(!paused && !isDragging){
-        track.scrollLeft += autoSpeed;
-        /* Loop: if near end, jump back */
-        if(track.scrollLeft >= track.scrollWidth - track.clientWidth - 2){
-          track.scrollLeft = 0;
-        }
-      }
-      /* Apply momentum from drag release */
-      if(!isDragging && Math.abs(momentum) > 0.3){
-        track.scrollLeft += momentum;
-        momentum *= 0.92; /* friction */
-      } else if(!isDragging){
-        momentum = 0;
-      }
-      requestAnimationFrame(autoScroll);
-    }
-    requestAnimationFrame(autoScroll);
-
-    /* Hover pause */
-    track.addEventListener('mouseenter', function(){
-      paused = true;
-      hovered = true;
-    });
-    track.addEventListener('mouseleave', function(){
-      paused = false;
-      hovered = false;
-      if(!isDragging){ isDragging = false; track.style.cursor = 'grab'; }
-    });
-
-    /* Mouse drag */
-    track.addEventListener('mousedown', function(e){
-      isDragging = true;
-      momentum = 0;
-      track.style.cursor = 'grabbing';
-      startX = e.pageX;
-      dragScrollLeft = track.scrollLeft;
-      lastX = e.pageX;
-      lastTime = Date.now();
-      e.preventDefault();
-    });
-
-    window.addEventListener('mousemove', function(e){
-      if(!isDragging) return;
-      var dx = e.pageX - startX;
-      track.scrollLeft = dragScrollLeft - dx;
-      /* Track velocity for momentum */
-      var now = Date.now();
-      var dt = now - lastTime;
-      if(dt > 0){
-        velocity = (lastX - e.pageX) / dt * 16; /* normalize to ~frame */
-      }
-      lastX = e.pageX;
-      lastTime = now;
-    });
-
-    window.addEventListener('mouseup', function(){
-      if(!isDragging) return;
-      isDragging = false;
-      track.style.cursor = 'grab';
-      momentum = velocity;
-      velocity = 0;
-    });
-
-    /* Touch */
-    var touchStartX2 = 0, touchScrollLeft2 = 0;
-    track.addEventListener('touchstart', function(e){
-      paused = true;
-      touchStartX2 = e.touches[0].pageX;
-      touchScrollLeft2 = track.scrollLeft;
-      momentum = 0;
-    }, {passive: true});
-
-    track.addEventListener('touchmove', function(e){
-      var dx = e.touches[0].pageX - touchStartX2;
-      track.scrollLeft = touchScrollLeft2 - dx;
-    }, {passive: true});
-
-    track.addEventListener('touchend', function(){
-      paused = false;
-    });
-  }
-
-  /* Init all tracks */
-  document.querySelectorAll('.dm-mentors-track').forEach(initTrack);
+  /* ── Init: start auto-scroll on the first active panel ── */
+  var firstActive = document.querySelector('.dm-panel.dm-panel-active .dm-mentors-track');
+  if(firstActive) startAutoScroll(firstActive);
 
   /* ── IntersectionObserver ── */
   if('IntersectionObserver' in window){
