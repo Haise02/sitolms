@@ -1,0 +1,264 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-hero {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 130px 40px 100px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Animated signal waves canvas */
+.mt-hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Vignette */
+.mt-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,22,46,0.2) 0%, transparent 30%, transparent 70%, rgba(7,22,46,0.3) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mt-hero-inner {
+  max-width: 960px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+/* Label */
+.mt-hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.mt-hero-label.mt-vis { animation: mtUp 0.8s ease forwards; }
+
+.mt-hero-label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Headline */
+.mt-hero h1 {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 78px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  margin: 0 0 12px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-hero h1.mt-vis { animation: mtUp 0.8s ease 0.15s forwards; }
+
+.mt-hero h1 span {
+  background: linear-gradient(135deg, var(--accent) 0%, #38a0f4 50%, var(--beige) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtitle */
+.mt-hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--beige);
+  margin: 0 0 36px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-hero-sub.mt-vis { animation: mtUp 0.8s ease 0.3s forwards; }
+
+/* Body */
+.mt-hero-text {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.85;
+  max-width: 680px;
+  margin: 0 auto 20px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-hero-text.mt-vis { animation: mtUp 0.8s ease 0.45s forwards; }
+
+.mt-hero-text strong {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+/* Scroll indicator */
+.mt-hero-scroll {
+  margin-top: 48px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.mt-hero-scroll.mt-vis { animation: mtUp 0.8s ease 0.6s forwards; }
+
+.mt-hero-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  margin: 0 auto;
+  animation: mtPulse 2s ease-in-out infinite;
+}
+
+@keyframes mtPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes mtUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .mt-hero h1 { font-size: 60px; letter-spacing: -2px; }
+}
+
+@media (max-width: 768px) {
+  .mt-hero {
+    min-height: auto;
+    padding: 100px 20px 80px;
+  }
+  .mt-hero h1 { font-size: 44px; letter-spacing: -1px; }
+  .mt-hero-sub { font-size: 22px; }
+  .mt-hero-text { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .mt-hero { padding: 90px 16px 60px; }
+  .mt-hero h1 { font-size: 36px; letter-spacing: -0.5px; }
+  .mt-hero-sub { font-size: 20px; }
+}
+</style>
+
+<div class="mt-hero">
+  <!-- Signal waves animation -->
+  <canvas class="mt-hero-canvas" id="mtHeroCanvas"></canvas>
+
+  <div class="mt-hero-inner">
+    <div class="mt-hero-label" id="mtHeroLabel">
+      Media & TV
+    </div>
+
+    <h1 id="mtHeroH1">L'impatto che <span>genera</span><br>la Leone Master School</h1>
+
+    <div class="mt-hero-sub" id="mtHeroSub">Lo raccontano anche Media e Istituzioni.</div>
+
+    <p class="mt-hero-text" id="mtHeroText1">Leone Master School è stata raccontata e citata da <strong>quotidiani, riviste, TV e portali di settore</strong>. Il nostro impatto nel mondo della formazione non passa inosservato.</p>
+
+    <div class="mt-hero-scroll" id="mtHeroScroll">
+      <div class="mt-hero-scroll-line"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ── Signal Waves Animation ── */
+  var canvas = document.getElementById('mtHeroCanvas');
+  var ctx = canvas.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  var time = 0;
+
+  function resize(){
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  var waves = [
+    { y: 0.3, amp: 40, freq: 0.008, speed: 0.015, alpha: 0.12, color: '76,123,244', lineW: 1.5 },
+    { y: 0.4, amp: 30, freq: 0.012, speed: -0.01, alpha: 0.09, color: '56,152,244', lineW: 1.2 },
+    { y: 0.55, amp: 50, freq: 0.006, speed: 0.008, alpha: 0.10, color: '100,160,255', lineW: 1.0 },
+    { y: 0.65, amp: 25, freq: 0.015, speed: -0.012, alpha: 0.08, color: '140,180,255', lineW: 0.8 },
+    { y: 0.75, amp: 35, freq: 0.01, speed: 0.006, alpha: 0.07, color: '76,123,244', lineW: 0.9 },
+    { y: 0.2, amp: 20, freq: 0.02, speed: -0.018, alpha: 0.06, color: '212,197,176', lineW: 0.7 }
+  ];
+
+  function draw(){
+    var w = canvas.width / dpr;
+    var h = canvas.height / dpr;
+    ctx.clearRect(0, 0, w, h);
+    time += 0.016;
+
+    for(var i = 0; i < waves.length; i++){
+      var wave = waves[i];
+      var baseY = wave.y * h;
+
+      ctx.save();
+      ctx.globalAlpha = wave.alpha + Math.sin(time * 0.5 + i) * 0.03;
+      ctx.strokeStyle = 'rgba(' + wave.color + ',1)';
+      ctx.lineWidth = wave.lineW;
+      ctx.shadowColor = 'rgba(' + wave.color + ',0.25)';
+      ctx.shadowBlur = 20;
+
+      ctx.beginPath();
+      for(var x = 0; x <= w; x += 3){
+        var y = baseY + Math.sin(x * wave.freq + time * wave.speed * 60 + i * 2) * wave.amp * (1 + Math.sin(time * 0.3 + i) * 0.3);
+        if(x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  draw();
+  window.addEventListener('resize', resize);
+
+  /* ── IntersectionObserver ── */
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('mt-vis'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.1});
+    document.querySelectorAll('#mtHeroLabel, #mtHeroH1, #mtHeroSub, #mtHeroText1, #mtHeroScroll').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('#mtHeroLabel, #mtHeroH1, #mtHeroSub, #mtHeroText1, #mtHeroScroll').forEach(function(el){ el.classList.add('mt-vis'); });
+  }
+})();
+</script>
