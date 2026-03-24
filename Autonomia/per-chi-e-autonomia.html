@@ -1,0 +1,2381 @@
+<!-- PER CHI È — AUTONOMIA · Leone Master School -->
+<!-- COPIA TUTTO QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════ RESET ═══════════ */
+.pci *, .pci *::before, .pci *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+/* ═══════════ VARIABLES ═══════════ */
+.pci {
+  --navy: #07162E;
+  --navy-soft: #0B1D38;
+  --accent: #4C7BF4;
+  --accent2: #2E8BF7;
+  --accent-soft: rgba(76, 123, 244, 0.08);
+  --accent-border: rgba(76, 123, 244, 0.15);
+  --beige: #D4C5B0;
+  --warm-bg: #FAFAF8;
+  --warm-bg-alt: #F5F3F0;
+  --text-dark: #1a1a1a;
+  --text-body: #3d3d3d;
+  --text-muted: #6b6b6b;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans-tight: 'Inter Tight', 'Inter', sans-serif;
+  font-family: var(--sans);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.pci-reveal {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pci-reveal.visible { opacity: 1; transform: translateY(0); }
+.pci-reveal-delay-1 { transition-delay: 0.12s; }
+.pci-reveal-delay-2 { transition-delay: 0.24s; }
+.pci-reveal-delay-3 { transition-delay: 0.36s; }
+.pci-reveal-delay-4 { transition-delay: 0.48s; }
+.pci-reveal-delay-5 { transition-delay: 0.60s; }
+
+/* ═══════════ SHARED LABEL ═══════════ */
+.pci-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans-tight);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.pci-section-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* ══════════════════════════════════════════
+   SECTION 1 — HERO  (dark split layout: left text + right images + logo banner)
+   ══════════════════════════════════════════ */
+.pci-hero {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Particle canvas covers hero content area */
+.pci-hero-canvas {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 80px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Breathing glow orbs */
+.pci-hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.pci-hero-glow.hg-1 {
+  width: 500px; height: 500px;
+  background: rgba(76,123,244,0.1);
+  top: -15%; left: -8%;
+  animation: pciHeroGlow 8s ease-in-out infinite;
+}
+.pci-hero-glow.hg-2 {
+  width: 400px; height: 400px;
+  background: rgba(123,92,245,0.07);
+  bottom: 10%; right: -5%;
+  animation: pciHeroGlow 10s ease-in-out infinite 3s;
+}
+@keyframes pciHeroGlow {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+
+/* ── Hero content grid ── */
+.pci-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 48px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── LEFT side: text ── */
+.pci-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Badge with pulse ring */
+.pci-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(76,123,244,0.1);
+  border: 1px solid rgba(76,123,244,0.2);
+  border-radius: 100px;
+  padding: 8px 20px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.pci-hero-badge::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 100px;
+  border: 1px solid rgba(76,123,244,0.15);
+  animation: pciBadgePulse 2.5s ease-in-out infinite;
+}
+@keyframes pciBadgePulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.12); opacity: 0; }
+}
+.pci-hero-badge .badge-dot {
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pciBadgeDot 2s ease-in-out infinite;
+}
+@keyframes pciBadgeDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76,123,244,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(76,123,244,0); }
+}
+.pci-hero-badge span {
+  font-family: var(--sans-tight);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 1px;
+}
+
+.pci-hero h1 {
+  font-size: 56px;
+  line-height: 1.08;
+  margin: 0 0 24px;
+  letter-spacing: -0.025em;
+  text-align: left;
+}
+.pci-hero h1 .sans-bold {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: #ffffff;
+  display: block;
+  position: relative;
+}
+.pci-hero h1 .sans-bold::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 180px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+  background-size: 200% 100%;
+  animation: pciShimmerLine 3s linear infinite;
+  border-radius: 1px;
+}
+.pci-hero h1 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 1.1em;
+  display: block;
+}
+@keyframes pciShimmerLine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.pci-hero-sub {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 0 36px;
+  text-align: left;
+}
+.pci-hero-sub strong {
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+}
+
+/* Feature badges row */
+.pci-hero-features {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.pci-hero-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans-tight);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.pci-hero-feature svg {
+  width: 16px; height: 16px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+}
+.pci-hero-feature .feat-check {
+  width: 18px; height: 18px;
+  background: rgba(76,123,244,0.15);
+  border: 1px solid rgba(76,123,244,0.3);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pci-hero-feature .feat-check svg {
+  width: 12px; height: 12px;
+}
+
+/* ── RIGHT side: overlapping images ── */
+.pci-hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+}
+
+.pci-hero-img-group {
+  position: relative;
+  width: 100%;
+  height: 420px;
+}
+
+.pci-hero-img-col {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  animation: pciImgFloat1 6s ease-in-out infinite;
+}
+.pci-hero-img-col:hover {
+  border-color: rgba(76,123,244,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.pci-hero-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gradient fade overlay on image */
+.pci-hero-img-col::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--navy) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes pciImgFloat1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ── Bottom: animated logo banner ── */
+.pci-hero-logos {
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 0;
+  overflow: hidden;
+}
+.pci-hero-logos-label {
+  position: absolute;
+  top: 28px;
+  left: 48px;
+  font-family: var(--sans-tight);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 3;
+}
+.pci-logo-track-wrapper {
+  margin-left: 200px;
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+/* Edge fades */
+.pci-logo-track-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 80px;
+  background: linear-gradient(to right, var(--navy), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+.pci-logo-track-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 80px;
+  background: linear-gradient(to left, var(--navy), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+.pci-logo-track {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  will-change: transform;
+  animation: pciLogoScroll 25s linear infinite;
+}
+.pci-logo-track img {
+  height: 36px;
+  flex-shrink: 0;
+  opacity: 0.35;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.pci-logo-track img:hover {
+  opacity: 0.7;
+}
+@keyframes pciLogoScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ══════════════════════════════════════════
+   SECTION 2 — INTRO STATEMENT (breathing glow + moving gradient border)
+   ══════════════════════════════════════════ */
+.pci-intro {
+  background: var(--navy);
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top border shimmer */
+.pci-intro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 30%, var(--accent2) 50%, var(--accent) 70%, transparent 100%);
+  background-size: 200% 100%;
+  animation: pciShimmerBorder 4s linear infinite;
+}
+@keyframes pciShimmerBorder {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Breathing glow orbs */
+.pci-intro-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.pci-intro-glow.glow-1 {
+  width: 500px; height: 500px;
+  background: rgba(76,123,244,0.08);
+  top: -20%; left: -10%;
+  animation: pciBreathe 6s ease-in-out infinite;
+}
+.pci-intro-glow.glow-2 {
+  width: 400px; height: 400px;
+  background: rgba(123,92,245,0.06);
+  bottom: -15%; right: -8%;
+  animation: pciBreathe 8s ease-in-out infinite 2s;
+}
+@keyframes pciBreathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+.pci-intro-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.pci-intro h2 {
+  font-size: 44px;
+  line-height: 1.2;
+  margin: 0 0 28px;
+}
+.pci-intro h2 .serif-light {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+}
+.pci-intro h2 .sans-heavy {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.pci-intro-body {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.85;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.pci-intro-body strong {
+  font-weight: 600;
+  color: rgba(255,255,255,0.88);
+}
+
+/* ══════════════════════════════════════════
+   SECTION 3 — PAIN POINTS  (hover glow + shimmer top border + floating accent dots)
+   ══════════════════════════════════════════ */
+.pci-pain {
+  background: var(--warm-bg);
+  padding: 110px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating accent dots */
+.pci-pain-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.15;
+  pointer-events: none;
+}
+.pci-pain-dot:nth-child(1) { top: 10%; left: 5%; animation: pciDotDrift 10s ease-in-out infinite; }
+.pci-pain-dot:nth-child(2) { top: 30%; right: 8%; animation: pciDotDrift 12s ease-in-out infinite 1s; }
+.pci-pain-dot:nth-child(3) { bottom: 20%; left: 12%; animation: pciDotDrift 9s ease-in-out infinite 2s; }
+.pci-pain-dot:nth-child(4) { bottom: 35%; right: 15%; animation: pciDotDrift 11s ease-in-out infinite 0.5s; }
+.pci-pain-dot:nth-child(5) { top: 60%; left: 50%; animation: pciDotDrift 13s ease-in-out infinite 3s; }
+.pci-pain-dot:nth-child(6) { top: 80%; left: 30%; animation: pciDotDrift 8s ease-in-out infinite 1.5s; }
+@keyframes pciDotDrift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(15px, -20px); }
+  50% { transform: translate(-10px, 10px); }
+  75% { transform: translate(8px, 15px); }
+}
+
+.pci-pain-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pci-pain-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.pci-pain-header h2 { font-size: 48px; line-height: 1.15; margin: 0; }
+.pci-pain-header h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+}
+.pci-pain-header h2 .sans-bold {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.pci-pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Pain cards with continuous spinning gradient border on hover */
+.pci-pain-card {
+  padding: 36px 32px;
+  position: relative;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+}
+/* Rotating gradient disc — hidden behind the white inner fill */
+.pci-pain-card::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(var(--accent), var(--accent2), rgba(76,123,244,0.08), var(--accent2), var(--accent));
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: pciSpinDisc 3.5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+@keyframes pciSpinDisc {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+/* White inner fill masks the gradient — only the 2px edge peeks through as a border */
+.pci-pain-card::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 18px;
+  background: #ffffff;
+  pointer-events: none;
+}
+.pci-pain-card:hover,
+.pci-pain-card.active {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(7, 22, 46, 0.1), 0 0 30px rgba(76,123,244,0.06);
+  border-color: transparent;
+}
+.pci-pain-card:hover::before,
+.pci-pain-card.active::before {
+  opacity: 1;
+}
+
+.pci-pain-card .card-number {
+  font-family: var(--sans-tight);
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(76,123,244,0.1);
+  line-height: 1;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.pci-pain-card p {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+.pci-pain-card p strong {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.pci-pain-footer {
+  text-align: center;
+  margin-top: 56px;
+}
+.pci-pain-footer p {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+.pci-pain-footer p strong {
+  font-family: var(--sans-tight);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ══════════════════════════════════════════
+   SECTION 4 — METHOD  (animated icon pulses + stat counter + float card)
+   ══════════════════════════════════════════ */
+.pci-method {
+  background: var(--warm-bg-alt);
+  padding: 110px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.pci-method-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.pci-method h2 { font-size: 44px; line-height: 1.15; margin: 0 0 32px; }
+.pci-method h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+}
+.pci-method h2 .sans-heavy {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pci-method-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.pci-method-list li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* Icons with pulse animation */
+.pci-method-list .method-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: pciIconPulse 3s ease-in-out infinite;
+}
+.pci-method-list li:nth-child(2) .method-icon { animation-delay: 0.5s; }
+.pci-method-list li:nth-child(3) .method-icon { animation-delay: 1s; }
+@keyframes pciIconPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76,123,244,0.15); }
+  50% { box-shadow: 0 0 0 8px rgba(76,123,244,0); }
+}
+.pci-method-list .method-icon svg {
+  width: 20px; height: 20px;
+  color: var(--accent);
+  stroke-width: 2;
+  fill: none;
+  stroke: currentColor;
+}
+.pci-method-list .method-text {
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.7;
+  padding-top: 10px;
+}
+.pci-method-list .method-text strong {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* Visual card with animated border */
+.pci-method-visual { position: relative; }
+.pci-method-visual-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 30px 80px rgba(7, 22, 46, 0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+}
+.pci-method-visual-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+  background-size: 200% 100%;
+  animation: pciShimmerBorder 3s linear infinite;
+}
+.pci-method-visual-card .stat-number {
+  font-family: var(--sans-tight);
+  font-size: 72px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.pci-method-visual-card .stat-label {
+  font-family: var(--sans-tight);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.pci-method-visual-card .stat-desc {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+/* Floating accent shape */
+.pci-method-float {
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 100px; height: 100px;
+  background: linear-gradient(135deg, rgba(76,123,244,0.08), rgba(123,92,245,0.06));
+  border-radius: 24px;
+  z-index: -1;
+  animation: pciFloatSpin 20s linear infinite;
+}
+@keyframes pciFloatSpin {
+  0% { transform: rotate(15deg); }
+  100% { transform: rotate(375deg); }
+}
+
+/* ══════════════════════════════════════════
+   SECTION 5 — PROGRAMS  (tilt on hover + shimmer CTA + animated tags)
+   ══════════════════════════════════════════ */
+.pci-programs {
+  background: var(--warm-bg);
+  padding: 110px 40px;
+  position: relative;
+}
+.pci-programs-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.pci-programs-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.pci-programs-header h2 { font-size: 48px; line-height: 1.15; }
+.pci-programs-header h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+}
+.pci-programs-header h2 .sans-bold {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.pci-programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.pci-program-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+}
+.pci-program-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(76,123,244,0.04), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.pci-program-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 30px 80px rgba(7, 22, 46, 0.1);
+}
+.pci-program-card:hover::after { opacity: 1; }
+
+.pci-program-card-top {
+  padding: 40px 32px 32px;
+  position: relative;
+}
+.pci-program-card-top::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 32px; right: 32px;
+  height: 1px;
+  background: rgba(0,0,0,0.06);
+}
+
+/* Animated tag pulse */
+.pci-program-tag {
+  display: inline-block;
+  font-family: var(--sans-tight);
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.pci-program-tag::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  animation: pciTagShimmer 3s ease-in-out infinite;
+}
+.pci-program-card:nth-child(2) .pci-program-tag::after { animation-delay: 0.7s; }
+.pci-program-card:nth-child(3) .pci-program-tag::after { animation-delay: 1.4s; }
+.pci-program-card:nth-child(4) .pci-program-tag::after { animation-delay: 2.1s; }
+@keyframes pciTagShimmer {
+  0% { left: -100%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
+}
+.pci-program-tag.tag-blue { background: linear-gradient(135deg, var(--accent), #3B6DE0); }
+.pci-program-tag.tag-purple { background: linear-gradient(135deg, var(--accent2), #1A6DD9); }
+.pci-program-tag.tag-navy { background: linear-gradient(135deg, var(--navy), #1a3a6a); }
+.pci-program-tag.tag-green { background: linear-gradient(135deg, #2C5530, #3D7B43); }
+
+.pci-program-card h3 { font-size: 22px; line-height: 1.25; margin: 0 0 12px; }
+.pci-program-card h3 .serif-part { font-family: var(--serif); font-weight: 600; font-style: italic; }
+.pci-program-card h3 .sans-part { font-family: var(--sans-tight); font-weight: 700; }
+.pci-program-card-top p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+
+.pci-program-card-bottom {
+  padding: 28px 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pci-program-card-bottom .program-cta {
+  font-family: var(--sans-tight);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s ease;
+}
+.pci-program-card:hover .program-cta { gap: 14px; }
+.pci-program-card-bottom .program-cta svg {
+  width: 18px; height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  transition: transform 0.3s ease;
+}
+.pci-program-card:hover .program-cta svg { transform: translateX(4px); }
+
+/* ══════════════════════════════════════════
+   SECTION 6 — RESULTS  (count-up numbers + orbit ring + pulsing stats)
+   ══════════════════════════════════════════ */
+.pci-results {
+  background: var(--navy);
+  padding: 110px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Orbiting ring decoration */
+.pci-orbit-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 700px; height: 700px;
+  margin: -350px 0 0 -350px;
+  border: 1px solid rgba(76,123,244,0.06);
+  border-radius: 50%;
+  animation: pciOrbit 30s linear infinite;
+  pointer-events: none;
+}
+.pci-orbit-ring::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: 50%;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--accent);
+}
+.pci-orbit-ring-2 {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 500px; height: 500px;
+  margin: -250px 0 0 -250px;
+  border: 1px solid rgba(123,92,245,0.05);
+  border-radius: 50%;
+  animation: pciOrbit 22s linear infinite reverse;
+  pointer-events: none;
+}
+.pci-orbit-ring-2::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; right: 30%;
+  width: 6px; height: 6px;
+  background: var(--accent2);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent2);
+}
+@keyframes pciOrbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.pci-results-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.pci-results-header { text-align: center; margin-bottom: 64px; }
+.pci-results-header h2 { font-size: 48px; line-height: 1.15; color: #ffffff; }
+.pci-results-header h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+}
+.pci-results-header h2 .sans-heavy {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: #ffffff;
+}
+.pci-results-header .results-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.pci-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+/* Stat cards with border shimmer */
+.pci-stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.pci-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: pciStatShimmer 4s ease-in-out infinite;
+}
+.pci-stat-card:nth-child(2)::before { animation-delay: 1.3s; }
+.pci-stat-card:nth-child(3)::before { animation-delay: 2.6s; }
+@keyframes pciStatShimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.pci-stat-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(76,123,244,0.2);
+  transform: translateY(-4px);
+}
+
+.pci-stat-card .stat-value {
+  font-family: var(--sans-tight);
+  font-size: 56px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff, var(--beige));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.pci-stat-card .stat-desc {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+
+/* ── Testimonial Cards Grid ── */
+.pci-testimonial-grid {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0 0 20px 0;
+  -webkit-overflow-scrolling: touch;
+}
+.pci-testimonial-grid::-webkit-scrollbar { height: 8px; }
+.pci-testimonial-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
+.pci-testimonial-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+.pci-testimonial-grid::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+.pci-tcard {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+.pci-tcard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-color: rgba(255,255,255,0.2);
+}
+.pci-tcard-media {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.pci-tcard-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+.pci-tcard:hover .pci-tcard-thumb { transform: scale(1.05); }
+.pci-tcard-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+.pci-tcard:hover .pci-tcard-play { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+.pci-tcard-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(4px);
+}
+.pci-tcard:hover .pci-tcard-badge { background: rgba(0,0,0,0.8); }
+.pci-tcard-info { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.pci .pci-tcard-name { font-size: 20px; font-weight: 700; color: #ffffff; }
+.pci .pci-tcard-role { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.6); }
+.pci-tcard-result { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); }
+.pci .pci-tcard-highlight {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255,255,255,0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+.pci-tcard-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.pci .pci-tcard-cta span {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.3s ease;
+}
+.pci-tcard:hover .pci-tcard-cta span { color: #fff; }
+
+.pci-tcard-dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.pci-tcard-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.pci-tcard-dot:hover { background: rgba(255,255,255,0.5); transform: scale(1.2); }
+.pci-tcard-dot.active { background: #fff; width: 28px; border-radius: 5px; }
+
+/* Modal */
+.pci-tmodal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+.pci-tmodal-overlay.active { opacity: 1; visibility: visible; }
+.pci-tmodal-container {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 24px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 40px;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+}
+.pci-tmodal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+.pci-tmodal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+.pci-tmodal-content .tmodal-media { width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; margin-bottom: 24px; }
+.pci-tmodal-content .tmodal-media iframe { width: 100%; height: 100%; border: none; }
+.pci-tmodal-content .tmodal-media img { width: 100%; height: 100%; object-fit: cover; }
+.pci-tmodal-content .tmodal-name { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+.pci-tmodal-content .tmodal-role { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+.pci-tmodal-content .tmodal-highlight-box {
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border-left: 4px solid var(--accent, #4C7BF4);
+}
+.pci-tmodal-content .tmodal-highlight-box span { font-size: 16px; font-weight: 700; color: #fff; }
+.pci-tmodal-content .tmodal-section { margin-bottom: 20px; }
+.pci-tmodal-content .tmodal-section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent, #4C7BF4); margin-bottom: 8px; }
+.pci-tmodal-content .tmodal-section-text { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.7; }
+
+.pci-testimonial-disclaimer {
+  text-align: center;
+  padding: 24px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-top: 32px;
+}
+.pci-testimonial-disclaimer p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+}
+
+@media (max-width: 768px) {
+  .pci-tcard { min-width: 260px; max-width: 260px; }
+  .pci-tcard-dots { display: flex; }
+  .pci-tmodal-container { padding: 24px; width: 95%; }
+  .pci-tmodal-content .tmodal-name { font-size: 22px; }
+}
+@media (max-width: 480px) {
+  .pci-tcard { min-width: 240px; max-width: 240px; padding: 18px; }
+  .pci-tcard-name { font-size: 17px; }
+  .pci-tcard-role { font-size: 13px; }
+}
+
+/* ══════════════════════════════════════════
+   SECTION 7 — CTA  (particle burst + shimmer button + floating shapes)
+   ══════════════════════════════════════════ */
+.pci-cta {
+  background: var(--warm-bg);
+  padding: 130px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background floating shapes */
+.pci-cta-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.pci-cta-shape.cs-1 {
+  width: 300px; height: 300px;
+  border: 2px solid var(--accent);
+  top: 10%; left: -5%;
+  animation: pciFloat2 12s ease-in-out infinite;
+}
+.pci-cta-shape.cs-2 {
+  width: 200px; height: 200px;
+  background: var(--accent2);
+  bottom: 5%; right: -3%;
+  animation: pciFloat1 10s ease-in-out infinite 2s;
+}
+@keyframes pciFloat1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(30px, -20px) rotate(8deg); }
+  50% { transform: translate(-15px, 25px) rotate(-5deg); }
+  75% { transform: translate(20px, 15px) rotate(3deg); }
+}
+@keyframes pciFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25px, 20px) scale(1.15); }
+  66% { transform: translate(15px, -15px) scale(0.9); }
+}
+
+.pci-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pci-cta h2 { font-size: 56px; line-height: 1.1; margin: 0 0 24px; }
+.pci-cta h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+  display: block;
+}
+.pci-cta h2 .sans-heavy {
+  font-family: var(--sans-tight);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  animation: pciGradientText 4s ease-in-out infinite;
+}
+@keyframes pciGradientText {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.pci-cta-body {
+  font-size: 18px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 44px;
+}
+
+/* CTA Button with animated shimmer + glow */
+.pci-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--accent), #3B6DE0);
+  color: #ffffff;
+  font-family: var(--sans-tight);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 20px 44px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 20px rgba(76, 123, 244, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: pciCTAGlow 3s ease-in-out infinite;
+}
+@keyframes pciCTAGlow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(76, 123, 244, 0.3); }
+  50% { box-shadow: 0 8px 40px rgba(76, 123, 244, 0.5), 0 0 60px rgba(76, 123, 244, 0.15); }
+}
+.pci-cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: pciButtonShimmer 2.5s ease-in-out infinite;
+}
+@keyframes pciButtonShimmer {
+  0% { left: -100%; }
+  60% { left: 100%; }
+  100% { left: 100%; }
+}
+.pci-cta-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+.pci-cta-btn svg {
+  width: 20px; height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  transition: transform 0.3s ease;
+}
+.pci-cta-btn:hover svg { transform: translateX(5px); }
+
+.pci-cta-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+
+/* ── TABLET LANDSCAPE / SMALL DESKTOP ── */
+@media (max-width: 1024px) {
+  .pci-hero-content { max-width: 100%; padding: 90px 36px 50px; gap: 40px; }
+  .pci-hero h1 { font-size: 48px; }
+  .pci-hero-img-group { height: 360px; }
+  .pci-intro h2 { font-size: 40px; }
+  .pci-intro-body { font-size: 17px; }
+  .pci-pain-header h2 { font-size: 42px; }
+  .pci-method h2 { font-size: 38px; }
+  .pci-method-inner { gap: 56px; }
+  .pci-programs-header h2 { font-size: 42px; }
+  .pci-results-header h2 { font-size: 42px; }
+  .pci-cta h2 { font-size: 48px; }
+  .pci-cta { padding: 100px 40px; }
+  .pci-method-visual-card .stat-number { font-size: 64px; }
+  .pci-stat-card .stat-value { font-size: 48px; }
+}
+
+/* ── TABLET PORTRAIT / SMALL SCREENS ── */
+@media (max-width: 900px) {
+  .pci-hero-content { grid-template-columns: 1fr; padding: 80px 24px 40px; gap: 40px; }
+  .pci-hero-left { align-items: center; text-align: center; }
+  .pci-hero h1 { font-size: 40px; text-align: center; }
+  .pci-hero h1 .sans-bold::after { left: 50%; transform: translateX(-50%); width: 120px; }
+  .pci-hero-sub { font-size: 16px; text-align: center; max-width: 100%; }
+  .pci-hero-features { justify-content: center; }
+  .pci-hero-img-group { height: 280px; }
+  .pci-hero-right { min-height: auto; }
+  .pci-hero-logos-label { position: static; margin: 0 0 12px 24px; display: block; text-align: center; }
+  .pci-logo-track-wrapper { margin-left: 0; }
+  .pci-logo-track { gap: 48px; }
+  .pci-logo-track img { height: 30px; }
+
+  .pci-intro { padding: 80px 24px; }
+  .pci-intro h2 { font-size: 34px; }
+  .pci-intro-body { font-size: 16px; }
+
+  .pci-pain { padding: 80px 24px; }
+  .pci-pain-header h2 { font-size: 36px; }
+  .pci-pain-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pci-pain-dot { display: none; }
+  .pci-pain-footer p { font-size: 20px; }
+
+  .pci-method { padding: 80px 24px; }
+  .pci-method-inner { grid-template-columns: 1fr; gap: 48px; }
+  .pci-method h2 { font-size: 34px; }
+  .pci-method-visual-card { padding: 40px 32px; }
+  .pci-method-visual-card .stat-number { font-size: 56px; }
+
+  .pci-programs { padding: 80px 24px; }
+  .pci-programs-header h2 { font-size: 36px; }
+  .pci-programs-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .pci-results { padding: 80px 24px; }
+  .pci-results-header h2 { font-size: 36px; }
+  .pci-stats-row { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .pci-stat-card { padding: 32px 20px; }
+  .pci-stat-card .stat-value { font-size: 42px; }
+  .pci-orbit-ring, .pci-orbit-ring-2 { display: none; }
+
+  .pci-cta { padding: 80px 24px; }
+  .pci-cta h2 { font-size: 40px; }
+  .pci-cta-shape { display: none; }
+  .pci-cta-body { font-size: 17px; }
+  .pci-cta-btn { padding: 18px 36px; font-size: 15px; }
+
+}
+
+/* ── MOBILE PORTRAIT ── */
+@media (max-width: 768px) {
+  .pci-hero-content { padding: 70px 20px 36px; gap: 32px; }
+  .pci-hero h1 { font-size: 36px; }
+  .pci-hero-badge { padding: 6px 16px; margin-bottom: 24px; }
+  .pci-hero-badge span { font-size: 11px; }
+  .pci-hero-sub { margin-bottom: 28px; }
+  .pci-hero-img-group { height: 260px; }
+  .pci-hero-img-col { border-radius: 16px; }
+
+  .pci-intro { padding: 64px 20px; }
+  .pci-intro h2 { font-size: 30px; }
+  .pci-intro-body { font-size: 15px; line-height: 1.75; }
+
+  .pci-pain { padding: 64px 20px; }
+  .pci-pain-header { margin-bottom: 48px; }
+  .pci-pain-header h2 { font-size: 32px; }
+  .pci-pain-grid { grid-template-columns: 1fr; gap: 14px; }
+  .pci-pain-card { padding: 30px 26px; }
+  .pci-pain-card .card-number { font-size: 40px; margin-bottom: 12px; }
+  .pci-pain-card p { font-size: 15px; }
+  .pci-pain-footer { margin-top: 40px; }
+  .pci-pain-footer p { font-size: 18px; }
+
+  .pci-method { padding: 64px 20px; }
+  .pci-method h2 { font-size: 30px; margin-bottom: 28px; }
+  .pci-method-inner { gap: 40px; }
+  .pci-method-list { gap: 20px; }
+  .pci-method-list .method-text { font-size: 15px; }
+  .pci-method-visual-card { padding: 36px 28px; }
+  .pci-method-visual-card .stat-number { font-size: 48px; }
+  .pci-method-visual-card .stat-desc { font-size: 14px; }
+  .pci-method-float { width: 70px; height: 70px; top: -14px; right: -14px; }
+
+  .pci-programs { padding: 64px 20px; }
+  .pci-programs-header { margin-bottom: 48px; }
+  .pci-programs-header h2 { font-size: 32px; }
+  .pci-programs-grid { grid-template-columns: 1fr; gap: 18px; }
+  .pci-program-card-top { padding: 32px 24px 24px; }
+  .pci-program-card-top::after { left: 24px; right: 24px; }
+  .pci-program-card-bottom { padding: 22px 24px 28px; }
+  .pci-program-card h3 { font-size: 20px; }
+  .pci-program-card-top p { font-size: 14px; }
+
+  .pci-results { padding: 64px 20px; }
+  .pci-results-header { margin-bottom: 48px; }
+  .pci-results-header h2 { font-size: 32px; }
+  .pci-results-header .results-sub { font-size: 15px; }
+  .pci-stats-row { grid-template-columns: 1fr; gap: 14px; margin-bottom: 48px; }
+  .pci-stat-card { padding: 32px 24px; }
+  .pci-stat-card .stat-value { font-size: 44px; }
+  .pci-stat-card .stat-desc { font-size: 14px; }
+
+  .pci-cta { padding: 64px 20px; }
+  .pci-cta h2 { font-size: 36px; }
+  .pci-cta-body { font-size: 16px; margin-bottom: 36px; }
+  .pci-cta-btn { padding: 16px 32px; font-size: 15px; border-radius: 12px; }
+  .pci-cta-note { font-size: 12px; }
+
+}
+
+/* ── SMALL MOBILE ── */
+@media (max-width: 480px) {
+  .pci-hero-content { padding: 60px 16px 28px; gap: 28px; }
+  .pci-hero h1 { font-size: 30px; }
+  .pci-hero h1 .sans-bold::after { width: 80px; }
+  .pci-hero h1 .serif-italic { font-size: 1em; }
+  .pci-hero-sub { font-size: 15px; line-height: 1.65; margin-bottom: 24px; }
+  .pci-hero-img-group { height: 200px; }
+  .pci-hero-img-col { border-radius: 14px; }
+  .pci-hero-features { gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .pci-hero-feature { font-size: 10px; letter-spacing: 0.5px; gap: 6px; }
+  .pci-hero-feature .feat-check { width: 16px; height: 16px; border-radius: 4px; }
+  .pci-hero-feature .feat-check svg { width: 10px; height: 10px; }
+  .pci-hero-logos { padding: 20px 0; }
+  .pci-hero-logos-label { font-size: 10px; margin-bottom: 10px; }
+  .pci-logo-track { gap: 36px; }
+  .pci-logo-track img { height: 26px; }
+  .pci-logo-track-wrapper { height: 40px; }
+  .pci-logo-track-wrapper::before,
+  .pci-logo-track-wrapper::after { width: 40px; }
+
+  .pci-cta-btn { padding: 16px 28px; font-size: 14px; gap: 10px; }
+  .pci-cta-btn svg { width: 18px; height: 18px; }
+
+  .pci-intro { padding: 56px 16px; }
+  .pci-intro h2 { font-size: 26px; }
+  .pci-intro-body { font-size: 15px; line-height: 1.7; }
+
+  .pci-pain { padding: 56px 16px; }
+  .pci-pain-header { margin-bottom: 36px; }
+  .pci-pain-header h2 { font-size: 28px; }
+  .pci-pain-card { padding: 24px 20px; border-radius: 16px; }
+  .pci-pain-card .card-number { font-size: 36px; margin-bottom: 10px; }
+  .pci-pain-card p { font-size: 14px; line-height: 1.65; }
+  .pci-pain-footer { margin-top: 32px; }
+  .pci-pain-footer p { font-size: 17px; }
+
+  .pci-method { padding: 56px 16px; }
+  .pci-method h2 { font-size: 26px; margin-bottom: 24px; }
+  .pci-method-inner { gap: 36px; }
+  .pci-method-list { gap: 18px; }
+  .pci-method-list .method-icon { width: 38px; height: 38px; border-radius: 10px; }
+  .pci-method-list .method-icon svg { width: 18px; height: 18px; }
+  .pci-method-list .method-text { font-size: 14px; padding-top: 8px; }
+  .pci-method-visual-card { padding: 32px 24px; border-radius: 20px; }
+  .pci-method-visual-card .stat-number { font-size: 44px; }
+  .pci-method-visual-card .stat-label { font-size: 12px; }
+  .pci-method-visual-card .stat-desc { font-size: 13px; }
+  .pci-method-float { width: 56px; height: 56px; top: -10px; right: -10px; border-radius: 16px; }
+
+  .pci-programs { padding: 56px 16px; }
+  .pci-programs-header { margin-bottom: 36px; }
+  .pci-programs-header h2 { font-size: 28px; }
+  .pci-program-card { border-radius: 20px; }
+  .pci-program-card-top { padding: 28px 20px 20px; }
+  .pci-program-card-top::after { left: 20px; right: 20px; }
+  .pci-program-card-bottom { padding: 18px 20px 24px; }
+  .pci-program-card h3 { font-size: 19px; }
+  .pci-program-card-top p { font-size: 13px; }
+  .pci-program-tag { font-size: 10px; padding: 5px 12px; }
+  .pci-program-card-bottom .program-cta { font-size: 13px; }
+
+  .pci-results { padding: 56px 16px; }
+  .pci-results-header { margin-bottom: 36px; }
+  .pci-results-header h2 { font-size: 28px; }
+  .pci-results-header .results-sub { font-size: 14px; }
+  .pci-stats-row { gap: 12px; margin-bottom: 36px; }
+  .pci-stat-card { padding: 28px 20px; border-radius: 16px; }
+  .pci-stat-card .stat-value { font-size: 38px; }
+  .pci-stat-card .stat-desc { font-size: 13px; }
+
+  .pci-cta { padding: 56px 16px; }
+  .pci-cta h2 { font-size: 30px; }
+  .pci-cta-body { font-size: 15px; line-height: 1.65; margin-bottom: 32px; }
+  .pci-cta-note { font-size: 12px; margin-top: 16px; }
+
+
+  .pci-section-label { font-size: 11px; letter-spacing: 2px; gap: 8px; margin-bottom: 16px; }
+  .pci-section-label::before { width: 22px; }
+}
+
+/* ── EXTRA SMALL MOBILE (iPhone SE, Galaxy S8, etc.) ── */
+@media (max-width: 360px) {
+  .pci-hero-content { padding: 50px 14px 24px; gap: 24px; }
+  .pci-hero h1 { font-size: 26px; }
+  .pci-hero h1 .sans-bold::after { width: 60px; height: 1.5px; }
+  .pci-hero-sub { font-size: 14px; }
+  .pci-hero-badge { padding: 5px 14px; margin-bottom: 20px; }
+  .pci-hero-badge span { font-size: 10px; }
+  .pci-hero-img-group { height: 170px; }
+  .pci-hero-img-col { border-radius: 12px; }
+  .pci-hero-features { gap: 10px; }
+  .pci-hero-feature { font-size: 9px; }
+  .pci-logo-track { gap: 28px; }
+  .pci-logo-track img { height: 22px; }
+
+  .pci-cta-btn { padding: 14px 24px; font-size: 13px; border-radius: 10px; }
+
+  .pci-intro { padding: 48px 14px; }
+  .pci-intro h2 { font-size: 23px; }
+  .pci-intro-body { font-size: 14px; }
+
+  .pci-pain { padding: 48px 14px; }
+  .pci-pain-header h2 { font-size: 24px; }
+  .pci-pain-card { padding: 22px 18px; }
+  .pci-pain-card .card-number { font-size: 32px; }
+  .pci-pain-card p { font-size: 13px; }
+  .pci-pain-footer p { font-size: 15px; }
+
+  .pci-method { padding: 48px 14px; }
+  .pci-method h2 { font-size: 23px; }
+  .pci-method-visual-card { padding: 28px 20px; }
+  .pci-method-visual-card .stat-number { font-size: 36px; }
+  .pci-method-visual-card .stat-label { font-size: 11px; }
+  .pci-method-visual-card .stat-desc { font-size: 12px; }
+  .pci-method-list .method-text { font-size: 13px; }
+
+  .pci-programs { padding: 48px 14px; }
+  .pci-programs-header h2 { font-size: 24px; }
+  .pci-program-card-top { padding: 24px 18px 18px; }
+  .pci-program-card-bottom { padding: 16px 18px 22px; }
+  .pci-program-card h3 { font-size: 17px; }
+  .pci-program-card-top p { font-size: 12px; }
+
+  .pci-results { padding: 48px 14px; }
+  .pci-results-header h2 { font-size: 24px; }
+  .pci-stat-card { padding: 24px 16px; }
+  .pci-stat-card .stat-value { font-size: 34px; }
+  .pci-stat-card .stat-desc { font-size: 12px; }
+
+  .pci-cta { padding: 48px 14px; }
+  .pci-cta h2 { font-size: 26px; }
+  .pci-cta-body { font-size: 14px; margin-bottom: 28px; }
+
+  .pci-section-label { font-size: 10px; letter-spacing: 1.5px; }
+  .pci-section-label::before { width: 18px; }
+}
+</style>
+
+<div class="pci">
+
+  <!-- ═══════════ SECTION 1 — HERO ═══════════ -->
+  <section class="pci-hero">
+    <!-- Breathing glow orbs -->
+    <div class="pci-hero-glow hg-1"></div>
+    <div class="pci-hero-glow hg-2"></div>
+    <!-- Particle canvas -->
+    <canvas class="pci-hero-canvas" id="pciHeroCanvas"></canvas>
+
+    <!-- Content grid: left text + right images -->
+    <div class="pci-hero-content">
+      <div class="pci-hero-left">
+        <div class="pci-hero-badge pci-reveal">
+          <div class="badge-dot"></div>
+          <span>Per Chi &Egrave; &middot; Autonomia</span>
+        </div>
+
+        <h1>
+          <span class="sans-bold pci-reveal pci-reveal-delay-1">Vuoi crearti una professione autonoma?</span>
+          <span class="serif-italic pci-reveal pci-reveal-delay-2">Allora sei nel posto giusto.</span>
+        </h1>
+
+        <p class="pci-hero-sub pci-reveal pci-reveal-delay-3">
+          Vuoi aumentare le tue entrate, creandoti una <strong>professione autonoma</strong>? La Leone Master School &egrave; <strong>perfetta per te.</strong>
+        </p>
+
+        <a href="#pciCtaSection" class="pci-cta-btn pci-reveal pci-reveal-delay-4" style="margin-bottom: 36px;">
+          Candidati a un programma
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <div class="pci-hero-features pci-reveal pci-reveal-delay-5">
+          <div class="pci-hero-feature">
+            <div class="feat-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            ONLINE
+          </div>
+          <div class="pci-hero-feature">
+            <div class="feat-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            PRATICO
+          </div>
+          <div class="pci-hero-feature">
+            <div class="feat-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            CERTIFICATO
+          </div>
+        </div>
+      </div>
+
+      <div class="pci-hero-right pci-reveal pci-reveal-delay-2">
+        <div class="pci-hero-img-group">
+          <div class="pci-hero-img-col">
+            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Autonomia/images/autonomia-hero.jpg" alt="Leone Master School">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated logo banner -->
+    <div class="pci-hero-logos">
+      <div class="pci-hero-logos-label">Parlano di noi</div>
+      <div class="pci-logo-track-wrapper">
+        <div class="pci-logo-track" id="pciLogoTrack">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/Prime-Video-Logo-PNG-scaled.png" alt="Prime Video">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/yahoo.png" alt="Yahoo">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rds.png" alt="RDS">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rete4.png" alt="Rete 4">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rai2.png" alt="Rai 2">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/la7.png" alt="La7">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/milionaire.png" alt="Millionaire">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/italia1.png" alt="Italia 1">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/corrieredellasera.png" alt="Corriere della Sera">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/iltempo.png" alt="Il Tempo">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Progetto-senza-titolo-2026-03-05T152712.893.png" alt="ANSA">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/1684047548forbes-logo-white.webp" alt="Forbes">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Progetto-senza-titolo-2026-03-05T152810.564.png" alt="Repubblica">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/skytg24-w.png" alt="Sky TG24">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/tgcom.png" alt="TGCOM24">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Orizzontale-Negativo.webp" alt="StartupItalia">
+          <!-- Duplicate set for seamless loop -->
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/Prime-Video-Logo-PNG-scaled.png" alt="Prime Video">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/yahoo.png" alt="Yahoo">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rds.png" alt="RDS">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rete4.png" alt="Rete 4">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rai2.png" alt="Rai 2">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/la7.png" alt="La7">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/milionaire.png" alt="Millionaire">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/italia1.png" alt="Italia 1">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/corrieredellasera.png" alt="Corriere della Sera">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/iltempo.png" alt="Il Tempo">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Progetto-senza-titolo-2026-03-05T152712.893.png" alt="ANSA">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/1684047548forbes-logo-white.webp" alt="Forbes">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Progetto-senza-titolo-2026-03-05T152810.564.png" alt="Repubblica">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/skytg24-w.png" alt="Sky TG24">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/tgcom.png" alt="TGCOM24">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Orizzontale-Negativo.webp" alt="StartupItalia">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 2 — INTRO ═══════════ -->
+  <section class="pci-intro">
+    <div class="pci-intro-glow glow-1"></div>
+    <div class="pci-intro-glow glow-2"></div>
+    <div class="pci-intro-inner pci-reveal">
+      <h2>
+        <span class="serif-light">Impara a costruire la tua </span>
+        <span class="sans-heavy">indipendenza economica.</span>
+      </h2>
+      <p class="pci-intro-body">
+        Con i nostri programmi ricevi affiancamento diretto da mentori e professionisti che <strong>hanno gi&agrave; costruito la propria libert&agrave; finanziaria</strong>. Niente teoria da manuale: solo strumenti, strategie e supporto reale per <strong>creare &mdash; o rilanciare &mdash; la tua attivit&agrave; autonoma</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 3 — PAIN POINTS ═══════════ -->
+  <section class="pci-pain">
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+
+    <div class="pci-pain-inner">
+      <div class="pci-pain-header pci-reveal">
+        <div class="pci-section-label">Riconosciti</div>
+        <h2>
+          <span class="serif-italic">Vivi una o pi&ugrave; di </span>
+          <span class="sans-bold">queste difficolt&agrave;?</span>
+        </h2>
+      </div>
+
+      <div class="pci-pain-grid">
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-1">
+          <div class="card-number">01</div>
+          <p>Hai un lavoro stabile, ma <strong>non sei soddisfatto del conto a fine mese</strong> &mdash; tantomeno di dipendere da qualcuno.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-2">
+          <div class="card-number">02</div>
+          <p>Vorresti poterti permettere degli sfizi, ma <strong>devi rinunciare a qualcosa</strong> di mese in mese.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-3">
+          <div class="card-number">03</div>
+          <p>Vuoi costruirti un&rsquo;<strong>entrata extra autonoma</strong> per smettere di dipendere solo dallo stipendio.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-1">
+          <div class="card-number">04</div>
+          <p>Desideri pi&ugrave; <strong>libert&agrave; di tempo e di scelta</strong>, e non la classica prigione 9-18, ma non sai da dove iniziare.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-2">
+          <div class="card-number">05</div>
+          <p>Ti senti pronto a metterti in gioco, ma <strong>ti manca un metodo</strong>.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-3">
+          <div class="card-number">06</div>
+          <p>Hai provato da solo, ma <strong>ti sei fermato davanti a troppi dubbi</strong> o incertezze.</p>
+        </div>
+      </div>
+
+      <div class="pci-pain-footer pci-reveal">
+        <p>Se ti riconosci, <strong>uno dei nostri programmi</strong> sar&agrave; la tua guida.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 4 — METHOD ═══════════ -->
+  <section class="pci-method">
+    <div class="pci-method-inner">
+      <div class="pci-method-content pci-reveal">
+        <div class="pci-section-label">La soluzione</div>
+        <h2>
+          <span class="serif-italic">Quello che ti serve &egrave;</span><br>
+          <span class="sans-heavy">metodo e posizionamento.</span>
+        </h2>
+
+        <ul class="pci-method-list">
+          <li>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="method-text">Un <strong>Programma guidato</strong>, per capire da dove partire e come costruire un reddito autonomo passo dopo passo.</div>
+          </li>
+          <li>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="method-text">Qualcuno che ti insegni come <strong>far leva sulle tue capacit&agrave;</strong> &mdash; anche se oggi non sai quali possono diventare un mestiere.</div>
+          </li>
+          <li>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="method-text">Una <strong>guida reale</strong>: ex dipendenti, mamme, studenti, lavoratori che hanno deciso di cambiare direzione &mdash; e oggi vivono del proprio valore.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pci-method-visual pci-reveal pci-reveal-delay-2">
+        <div class="pci-method-float"></div>
+        <div class="pci-method-visual-card">
+          <div class="stat-number" data-countup="100" data-suffix="%">0%</div>
+          <div class="stat-label">Pratico &amp; Applicabile</div>
+          <p class="stat-desc">Non serve mollare tutto o rischiare alla cieca. Solo un metodo semplice e strutturato, dal primo euro guadagnato fino a una vera indipendenza economica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 5 — PROGRAMS ═══════════ -->
+  <section class="pci-programs">
+    <div class="pci-programs-inner">
+      <div class="pci-programs-header pci-reveal">
+        <div class="pci-section-label">Percorsi consigliati</div>
+        <h2>
+          <span class="serif-italic">I programmi</span> <span class="sans-bold">che ti consigliamo</span>
+        </h2>
+      </div>
+
+      <div class="pci-programs-grid">
+        <div class="pci-program-card pci-reveal pci-reveal-delay-1">
+          <div class="pci-program-card-top">
+            <div class="pci-program-tag tag-navy">Sales</div>
+            <h3><span class="sans-part">Sales </span><span class="serif-part">Skills</span></h3>
+            <p>Se vuoi imparare a vendere con autorevolezza e aumentare i tuoi compensi.</p>
+          </div>
+          <div class="pci-program-card-bottom">
+            <a href="https://leonemasterschool.it/mbe-sales-new/" class="program-cta">Scopri il programma <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+
+        <div class="pci-program-card pci-reveal pci-reveal-delay-2">
+          <div class="pci-program-card-top">
+            <div class="pci-program-tag tag-blue">Marketing</div>
+            <h3><span class="sans-part">Marketing </span><span class="serif-part">Millionaire</span></h3>
+            <p>Se vuoi acquisire nuovi clienti in modo costante e prevedibile.</p>
+          </div>
+          <div class="pci-program-card-bottom">
+            <a href="https://leonemasterschool.it/mbe-marketing-new-2/" class="program-cta">Scopri il programma <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+
+        <div class="pci-program-card pci-reveal pci-reveal-delay-3">
+          <div class="pci-program-card-top">
+            <div class="pci-program-tag tag-green">Real Estate</div>
+            <h3><span class="sans-part">Real Estate </span><span class="serif-part">Master</span></h3>
+            <p>Se vuoi sviluppare una competenza negli investimenti immobiliari &mdash; anche partendo con pochi o nessun capitale.</p>
+          </div>
+          <div class="pci-program-card-bottom">
+            <a href="https://leonemasterschool.it/rem-new/" class="program-cta">Scopri il programma <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+
+        <div class="pci-program-card pci-reveal pci-reveal-delay-4">
+          <div class="pci-program-card-top">
+            <div class="pci-program-tag tag-purple">Coaching</div>
+            <h3><span class="sans-part">Diventa Coach </span><span class="serif-part">Certificato</span></h3>
+            <p>Se vuoi costruirti una professione autonoma come Coach riconosciuto a livello internazionale, con un programma accreditato ICF.</p>
+          </div>
+          <div class="pci-program-card-bottom">
+            <a href="https://leonemasterschool.it/diventa-coach-2-new/" class="program-cta">Scopri il programma <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 6 — RESULTS ═══════════ -->
+  <section class="pci-results">
+    <div class="pci-orbit-ring"></div>
+    <div class="pci-orbit-ring-2"></div>
+    <div class="pci-results-inner">
+      <div class="pci-results-header pci-reveal">
+        <h2>
+          <span class="serif-italic">Non parole, ma </span>
+          <span class="sans-heavy">risultati.</span>
+        </h2>
+        <p class="results-sub">Tanti professionisti hanno gi&agrave; seguito i nostri programmi e hanno visto trasformazioni reali.</p>
+      </div>
+
+      <div class="pci-stats-row">
+        <div class="pci-stat-card pci-reveal pci-reveal-delay-1">
+          <div class="stat-value" data-countup="3" data-suffix="x">0x</div>
+          <div class="stat-desc">Compensi aumentati e clienti migliori selezionati</div>
+        </div>
+        <div class="pci-stat-card pci-reveal pci-reveal-delay-2">
+          <div class="stat-value" data-countup="100" data-suffix="%">0%</div>
+          <div class="stat-desc">Competenze trasformate in attivit&agrave; autonome e sostenibili</div>
+        </div>
+        <div class="pci-stat-card pci-reveal pci-reveal-delay-3">
+          <div class="stat-value" data-countup="360" data-suffix="°">0°</div>
+          <div class="stat-desc">Reddito stabile e posizionamento rispettato costruiti</div>
+        </div>
+      </div>
+
+      <div class="pci-testimonial-grid pci-reveal">
+        <div class="pci-tcard" data-testimonial="regina">
+          <div class="pci-tcard-media">
+            <img src="https://brukandy.github.io/testimonial-slider-extended/images/regina.png" alt="Regina" class="pci-tcard-thumb">
+            <div class="pci-tcard-play"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.3)"></circle><path d="M24 18L42 30L24 42V18Z" fill="white"></path></svg></div>
+            <span class="pci-tcard-badge">Video</span>
+          </div>
+          <div class="pci-tcard-info">
+            <h3 class="pci-tcard-name">Regina</h3>
+            <p class="pci-tcard-role">Settore servizi</p>
+            <div class="pci-tcard-result"><span class="pci-tcard-highlight">Fatturato 5X grazie al marketing</span></div>
+          </div>
+          <div class="pci-tcard-cta"><span>Leggi la storia &rarr;</span></div>
+        </div>
+
+        <div class="pci-tcard" data-testimonial="alice">
+          <div class="pci-tcard-media">
+            <img src="https://brukandy.github.io/testimonial-slider-extended/images/alice-testimonial.png" alt="Alice" class="pci-tcard-thumb">
+          </div>
+          <div class="pci-tcard-info">
+            <h3 class="pci-tcard-name">Alice</h3>
+            <p class="pci-tcard-role">Interior Designer</p>
+            <div class="pci-tcard-result"><span class="pci-tcard-highlight">Da 1.100&euro;/mese a Hilton London</span></div>
+          </div>
+          <div class="pci-tcard-cta"><span>Leggi la storia &rarr;</span></div>
+        </div>
+
+        <div class="pci-tcard" data-testimonial="chiara">
+          <div class="pci-tcard-media">
+            <img src="https://brukandy.github.io/testimonial-slider-extended/images/chiara-vesani.png" alt="Chiara" class="pci-tcard-thumb">
+            <div class="pci-tcard-play"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.3)"></circle><path d="M24 18L42 30L24 42V18Z" fill="white"></path></svg></div>
+            <span class="pci-tcard-badge">Video</span>
+          </div>
+          <div class="pci-tcard-info">
+            <h3 class="pci-tcard-name">Chiara</h3>
+            <p class="pci-tcard-role">Architetto &ndash; Verona</p>
+            <div class="pci-tcard-result"><span class="pci-tcard-highlight">Da zero competenze a piena consapevolezza</span></div>
+          </div>
+          <div class="pci-tcard-cta"><span>Leggi la storia &rarr;</span></div>
+        </div>
+
+        <div class="pci-tcard" data-testimonial="armando">
+          <div class="pci-tcard-media">
+            <img src="https://brukandy.github.io/testimonial-slider-extended/images/armando-giorgi.png" alt="Armando" class="pci-tcard-thumb">
+            <div class="pci-tcard-play"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.3)"></circle><path d="M24 18L42 30L24 42V18Z" fill="white"></path></svg></div>
+            <span class="pci-tcard-badge">Video</span>
+          </div>
+          <div class="pci-tcard-info">
+            <h3 class="pci-tcard-name">Armando</h3>
+            <p class="pci-tcard-role">Docente di Digital Marketing e Imprenditore</p>
+            <div class="pci-tcard-result"><span class="pci-tcard-highlight">+100% fatturato in 4 mesi</span></div>
+          </div>
+          <div class="pci-tcard-cta"><span>Leggi la storia &rarr;</span></div>
+        </div>
+
+        <div class="pci-tcard" data-testimonial="gianluca">
+          <div class="pci-tcard-media">
+            <img src="https://brukandy.github.io/testimonial-slider-extended/images/gianluca.png" alt="Gianluca" class="pci-tcard-thumb">
+            <div class="pci-tcard-play"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.3)"></circle><path d="M24 18L42 30L24 42V18Z" fill="white"></path></svg></div>
+            <span class="pci-tcard-badge">Video</span>
+          </div>
+          <div class="pci-tcard-info">
+            <h3 class="pci-tcard-name">Gianluca</h3>
+            <p class="pci-tcard-role">Settore edilizio &ndash; Pisa</p>
+            <div class="pci-tcard-result"><span class="pci-tcard-highlight">Team da 3 a 6 collaboratori</span></div>
+          </div>
+          <div class="pci-tcard-cta"><span>Leggi la storia &rarr;</span></div>
+        </div>
+
+        <div class="pci-tcard" data-testimonial="maria-grazia">
+          <div class="pci-tcard-media">
+            <img src="https://brukandy.github.io/testimonial-slider-extended/images/maria-grazia-di-filippo.png" alt="Maria Grazia" class="pci-tcard-thumb">
+            <div class="pci-tcard-play"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.3)"></circle><path d="M24 18L42 30L24 42V18Z" fill="white"></path></svg></div>
+            <span class="pci-tcard-badge">Video</span>
+          </div>
+          <div class="pci-tcard-info">
+            <h3 class="pci-tcard-name">Maria Grazia</h3>
+            <p class="pci-tcard-role">Consulente in sostenibilit&agrave; &ndash; Italia / Spagna</p>
+            <div class="pci-tcard-result"><span class="pci-tcard-highlight">Migliora collaborazioni internazionali</span></div>
+          </div>
+          <div class="pci-tcard-cta"><span>Leggi la storia &rarr;</span></div>
+        </div>
+      </div>
+
+      <div class="pci-tcard-dots" id="pciTcardDots">
+        <span class="pci-tcard-dot active"></span>
+        <span class="pci-tcard-dot"></span>
+        <span class="pci-tcard-dot"></span>
+        <span class="pci-tcard-dot"></span>
+        <span class="pci-tcard-dot"></span>
+        <span class="pci-tcard-dot"></span>
+      </div>
+
+      <div class="pci-testimonial-disclaimer">
+        <p><strong>Nota di trasparenza:</strong> Ogni esperienza e persona &egrave; diversa. I risultati non sono univoci per tutti ma possono variare.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Modal -->
+  <div class="pci-tmodal-overlay" id="pciTmodalOverlay">
+    <div class="pci-tmodal-container">
+      <button class="pci-tmodal-close" id="pciTmodalClose" type="button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="pci-tmodal-content" id="pciTmodalContent"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SECTION 7 — CTA ═══════════ -->
+  <section class="pci-cta" id="pciCtaSection">
+    <div class="pci-cta-shape cs-1"></div>
+    <div class="pci-cta-shape cs-2"></div>
+
+    <div class="pci-cta-inner">
+      <h2 class="pci-reveal">
+        <span class="serif-italic">&Egrave; il tuo</span>
+        <span class="sans-heavy">momento.</span>
+      </h2>
+      <p class="pci-cta-body pci-reveal pci-reveal-delay-1">
+        Se vuoi costruire la tua indipendenza professionale e smettere di vivere nell&rsquo;incertezza, questo &egrave; il passo da fare ora.
+      </p>
+      <a href="https://leonemasterschool.it/i-nostri-programmi/" class="pci-cta-btn pci-reveal pci-reveal-delay-2">
+        Candidati a un programma
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <p class="pci-cta-note pci-reveal pci-reveal-delay-3">Prenota una chiamata con un Selezionatore per ricevere maggiori informazioni</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+(function() {
+
+  /* ─── Scroll Reveal ─── */
+  function initReveals() {
+    var els = document.querySelectorAll('.pci-reveal');
+    if (!els.length) return;
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { obs.observe(el); });
+    } else {
+      els.forEach(function(el) { el.classList.add('visible'); });
+    }
+  }
+
+  /* ─── Count-Up Numbers ─── */
+  function initCountUp() {
+    var counters = document.querySelectorAll('[data-countup]');
+    if (!counters.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && !e.target.dataset.counted) {
+          e.target.dataset.counted = '1';
+          var target = parseInt(e.target.dataset.countup);
+          var prefix = e.target.dataset.prefix || '';
+          var suffix = e.target.dataset.suffix || '';
+          var duration = 2000;
+          var start = performance.now();
+          function step(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 4);
+            var current = Math.round(eased * target);
+            e.target.textContent = prefix + current + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+      });
+    }, { threshold: 0.3 });
+    counters.forEach(function(c) { obs.observe(c); });
+  }
+
+  /* ─── Hero Particle Canvas ─── */
+  function initParticles() {
+    var canvas = document.getElementById('pciHeroCanvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var mouseX = -1000, mouseY = -1000;
+    var hero = canvas.closest('.pci-hero');
+    var contentArea = hero.querySelector('.pci-hero-content');
+
+    function resize() {
+      canvas.width = hero.offsetWidth;
+      canvas.height = contentArea ? contentArea.offsetHeight : hero.offsetHeight - 80;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    hero.addEventListener('mousemove', function(e) {
+      var rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
+    hero.addEventListener('mouseleave', function() {
+      mouseX = -1000;
+      mouseY = -1000;
+    });
+
+    for (var i = 0; i < 50; i++) {
+      particles.push({
+        x: Math.random() * (canvas.width || 1200),
+        y: Math.random() * (canvas.height || 600),
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.25 + 0.08
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        var dx = mouseX - p.x;
+        var dy = mouseY - p.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var interactR = 150;
+        var alpha = p.opacity;
+        if (dist < interactR) {
+          alpha = p.opacity + (1 - dist / interactR) * 0.35;
+          p.x -= dx * 0.006;
+          p.y -= dy * 0.006;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(76, 123, 244, ' + alpha + ')';
+        ctx.fill();
+
+        for (var j = i + 1; j < particles.length; j++) {
+          var p2 = particles[j];
+          var ddx = p.x - p2.x;
+          var ddy = p.y - p2.y;
+          var d = Math.sqrt(ddx * ddx + ddy * ddy);
+          if (d < 130) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = 'rgba(76, 123, 244, ' + (0.05 * (1 - d / 130)) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  /* ─── Card Mouse Tracking (glow follows cursor) ─── */
+  function initCardTracking() {
+    document.querySelectorAll('.pci-program-card').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      });
+    });
+  }
+
+  /* ─── Auto-cycle pain cards ─── */
+  function initPainCycle() {
+    var cards = document.querySelectorAll('.pci-pain-card');
+    if (!cards.length) return;
+    var current = 0;
+    cards[0].classList.add('active');
+    setInterval(function() {
+      cards[current].classList.remove('active');
+      current = (current + 1) % cards.length;
+      cards[current].classList.add('active');
+    }, 2000);
+  }
+
+  /* ─── Testimonial Cards + Modal ─── */
+  function initTestimonials() {
+    var tData = {
+      regina: {
+        name: "Regina", role: "Settore servizi",
+        highlight: "Fatturato 5X grazie ai sistemi di marketing",
+        mediaType: "video", mediaUrl: "https://www.youtube.com/embed/41PsEZWOMJU",
+        sections: [
+          { label: "Situazione di partenza", text: "Regina aveva entrate mensili molto basse, tra 1.000 e 1.500 \u20AC lordi, che non le permettevano di avere stabilit\u00E0 economica." },
+          { label: "Intervento", text: "Partecipa ai programmi della Leone Master School, dove acquisisce informazioni fondamentali sulla pianificazione di marketing, posizionamento e strategie di negoziazione." },
+          { label: "Risultato misurabile", text: "I risultati sono sorprendenti: <strong>il fatturato si quintuplica</strong>. Ottiene maggiore controllo della sua attivit\u00E0 grazie ai sistemi di marketing appresi." },
+          { label: "Tempo/Impegno", text: "Integra progressivamente le nuove strategie nella sua attivit\u00E0 quotidiana, ottenendo miglioramenti tangibili in pochi mesi." }
+        ]
+      },
+      alice: {
+        name: "Alice", role: "Interior Designer",
+        highlight: "Da 1.100 \u20AC al mese a designer per Hilton London",
+        mediaType: "photo", mediaUrl: "https://brukandy.github.io/testimonial-slider-extended/images/alice-testimonial.png",
+        sections: [
+          { label: "Situazione di partenza", text: "Guadagnava 1.100 \u20AC al mese come freelance a Milano, in una fase di blocco personale e professionale." },
+          { label: "Intervento", text: "Segue il programma di affiancamento Master in Evoluzione Personale, lavorando su fiducia, chiarezza e capacit\u00E0 decisionale." },
+          { label: "Risultato misurabile", text: "Ottiene un incarico per curare il design di un <strong>hotel Hilton a Londra</strong> e si trasferisce all\u2019estero, costruendo una nuova carriera internazionale." },
+          { label: "Tempo/Impegno", text: "Tutto questo in soli dodici mesi di Programma e applicazione costante." }
+        ]
+      },
+      chiara: {
+        name: "Chiara", role: "Architetto \u2013 Verona",
+        highlight: "Da zero competenze a piena consapevolezza del proprio mercato",
+        mediaType: "video", mediaUrl: "https://www.youtube.com/embed/-3SXCseesAc",
+        sections: [
+          { label: "Situazione di partenza", text: "Partiva da zero competenze di marketing e cercava maggiore consapevolezza per individuare la nicchia professionale in cui posizionarsi come architetto." },
+          { label: "Intervento", text: "Intraprende il Master con dedizione, partecipando attivamente alle lezioni e ai canali della community." },
+          { label: "Risultato misurabile", text: "Acquisisce chiarezza sulla propria direzione professionale e sviluppa una nuova consapevolezza sul mercato a cui rivolgersi. Si sente finalmente sulla strada giusta." },
+          { label: "Tempo/Impegno", text: "Sin dalle prime settimane percepisce miglioramenti concreti nelle sue competenze e nella visione strategica del suo futuro." }
+        ]
+      },
+      armando: {
+        name: "Armando", role: "Docente di Digital Marketing e Imprenditore",
+        highlight: "+100% fatturato in 4 mesi",
+        mediaType: "video", mediaUrl: "https://www.youtube.com/embed/N6dfrNPpUP4",
+        sections: [
+          { label: "Situazione di partenza", text: "Docente di digital marketing e imprenditore, sentiva il bisogno di un percorso che potesse tradurre le sue competenze in risultati concreti." },
+          { label: "Intervento", text: "Inizia dal MEP e prosegue con altri percorsi, lavorando su mindset, leadership e trasformazione delle azioni quotidiane." },
+          { label: "Risultato misurabile", text: "Nei primi quattro mesi <strong>raddoppia il fatturato</strong> e ottiene miglioramenti tangibili nella gestione del lavoro e nella crescita personale." },
+          { label: "Tempo/Impegno", text: "Risultati visibili gi\u00E0 nelle prime settimane, consolidati nell\u2019arco di quattro mesi." }
+        ]
+      },
+      gianluca: {
+        name: "Gianluca", role: "Settore edilizio \u2013 Pisa",
+        highlight: "Team da 3 a 6 collaboratori e aumento del guadagno personale",
+        mediaType: "video", mediaUrl: "https://www.youtube.com/embed/QV_VD7X4nU4",
+        sections: [
+          { label: "Situazione di partenza", text: "Gianluca lavora nel settore edilizio e sentiva la necessit\u00E0 di migliorare la gestione del denaro, sia personale che aziendale." },
+          { label: "Intervento", text: "Partecipa ai programmi della Leone Master School, dove apprende nuove strategie finanziarie e gestionali che applica immediatamente." },
+          { label: "Risultato misurabile", text: "Ottiene molti pi\u00F9 contratti, incrementa il guadagno personale. <strong>Fa crescere l\u2019azienda da 3 a 6 collaboratori</strong>, assumendo 3 nuove risorse." },
+          { label: "Tempo/Impegno", text: "Applica con costanza le strategie imparate, ottenendo benefici tangibili nel breve periodo." }
+        ]
+      },
+      "maria-grazia": {
+        name: "Maria Grazia", role: "Consulente in sostenibilit\u00E0 \u2013 Italia / Spagna",
+        highlight: "Migliora le collaborazioni internazionali",
+        mediaType: "video", mediaUrl: "https://www.youtube.com/embed/G_G98bKwLa8",
+        sections: [
+          { label: "Situazione di partenza", text: "Maria Grazia, 48 anni, lavora nel settore della sostenibilit\u00E0 con collaborazioni tra Spagna e Italia. Cercava un percorso che potenziasse le sue competenze e l\u2019operativit\u00E0 internazionale." },
+          { label: "Intervento", text: "Decide di entrare nei programmi della Leone Master School. Nel Master ABM trova tecniche pratiche, affiancamento da docenti esperti e un supporto continuo." },
+          { label: "Risultato misurabile", text: "Dopo quasi un anno, <strong>potenzia le sue collaborazioni internazionali tra Italia e Spagna</strong>. Acquisisce maggiore consapevolezza professionale e cresce quotidianamente." },
+          { label: "Tempo/Impegno", text: "Lavora con costanza, perseveranza e obiettivi chiari. La trasformazione \u00E8 progressiva ma solida." }
+        ]
+      }
+    };
+
+    var overlay = document.getElementById('pciTmodalOverlay');
+    var content = document.getElementById('pciTmodalContent');
+    var closeBtn = document.getElementById('pciTmodalClose');
+    if (!overlay || !content) return;
+
+    document.querySelectorAll('.pci-tcard').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var id = this.getAttribute('data-testimonial');
+        var t = tData[id];
+        if (!t) return;
+        var mediaHtml = t.mediaType === 'video'
+          ? '<div class="tmodal-media"><iframe src="' + t.mediaUrl + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>'
+          : '<div class="tmodal-media"><img src="' + t.mediaUrl + '" alt="' + t.name + '"></div>';
+        var sectionsHtml = t.sections.map(function(s) {
+          return '<div class="tmodal-section"><div class="tmodal-section-label">' + s.label + '</div><div class="tmodal-section-text">' + s.text + '</div></div>';
+        }).join('');
+        content.innerHTML = mediaHtml
+          + '<h3 class="tmodal-name">' + t.name + '</h3>'
+          + '<p class="tmodal-role">' + t.role + '</p>'
+          + '<div class="tmodal-highlight-box"><span>' + t.highlight + '</span></div>'
+          + sectionsHtml;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeModal() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      var iframe = content.querySelector('iframe');
+      if (iframe) iframe.src = '';
+    }
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal(); });
+
+    /* Mobile dots */
+    var grid = document.querySelector('.pci-testimonial-grid');
+    var dots = document.querySelectorAll('.pci-tcard-dot');
+    if (grid && dots.length) {
+      grid.addEventListener('scroll', function() {
+        var idx = Math.round(grid.scrollLeft / 290);
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+      });
+      dots.forEach(function(d, i) {
+        d.addEventListener('click', function() { grid.scrollTo({ left: i * 290, behavior: 'smooth' }); });
+      });
+    }
+  }
+
+  /* ─── Init all ─── */
+  function init() {
+    initReveals();
+    initCountUp();
+    initParticles();
+    initCardTracking();
+    initPainCycle();
+    initTestimonials();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>

@@ -1,0 +1,639 @@
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+.elementor-widget-html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.elementor-widget-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.testimonial-3green-rem,
+.testimonial-3green-rem * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.testimonial-3green-rem {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #ffffff;
+    color: #0a1929;
+    padding: 70px 20px 30px 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.testimonial-3green-rem .testimonial-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-3green-rem .testimonial-header {
+    text-align: center;
+    margin-bottom: 34px;
+}
+
+.testimonial-3green-rem .testimonial-title {
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+    color: #0a1929;
+}
+
+.testimonial-3green-rem .testimonial-subtitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #22422F;
+}
+
+.testimonial-3green-rem .t3g-cards-grid {
+    display: flex;
+    gap: 22px;
+    margin-bottom: 22px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0 10px 16px 10px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testimonial-3green-rem .t3g-cards-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.testimonial-3green-rem .t3g-cards-grid::-webkit-scrollbar-track {
+    background: rgba(34, 66, 47, 0.08);
+    border-radius: 4px;
+}
+
+.testimonial-3green-rem .t3g-cards-grid::-webkit-scrollbar-thumb {
+    background: rgba(34, 66, 47, 0.35);
+    border-radius: 4px;
+}
+
+.testimonial-3green-rem .t3g-card {
+    background: linear-gradient(135deg, #22422F 0%, #1a3525 100%);
+    border-radius: 20px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 290px;
+    max-width: 290px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+}
+
+.testimonial-3green-rem .t3g-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.26);
+}
+
+.testimonial-3green-rem .card-media {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-3green-rem .card-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: transform 0.25s ease;
+}
+
+.testimonial-3green-rem .t3g-card:hover .card-thumbnail {
+    transform: scale(1.05);
+}
+
+.testimonial-3green-rem .card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.testimonial-3green-rem .card-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.testimonial-3green-rem .card-role {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.testimonial-3green-rem .card-result {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.testimonial-3green-rem .result-highlight {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 7px 12px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.testimonial-3green-rem .card-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.testimonial-3green-rem .cta-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.testimonial-3green-rem .t3g-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    padding: 0 10px;
+}
+
+.testimonial-3green-rem .t3g-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(34, 66, 47, 0.25);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.testimonial-3green-rem .t3g-dot.active {
+    background: #22422F;
+    width: 28px;
+    border-radius: 5px;
+}
+
+.testimonial-3green-rem .t3g-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    padding: 20px;
+    pointer-events: none;
+}
+
+.testimonial-3green-rem .t3g-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.testimonial-3green-rem .t3g-modal-container {
+    background: linear-gradient(135deg, #22422F 0%, #173022 100%);
+    border-radius: 20px;
+    max-width: 820px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.25s ease;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+}
+
+.testimonial-3green-rem .t3g-modal-overlay.active .t3g-modal-container {
+    transform: scale(1);
+}
+
+.testimonial-3green-rem .t3g-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    overflow: hidden;
+}
+
+.testimonial-3green-rem .t3g-modal-close::before {
+    content: '×';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 800;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.testimonial-3green-rem .t3g-modal-content {
+    padding: 46px;
+}
+
+.testimonial-3green-rem .t3g-modal-header {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+    margin-bottom: 34px;
+    align-items: flex-start;
+}
+
+.testimonial-3green-rem .t3g-modal-media {
+    flex-shrink: 0;
+    width: 340px;
+}
+
+.testimonial-3green-rem .t3g-modal-info {
+    flex: 1;
+}
+
+.testimonial-3green-rem .t3g-modal-name {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.testimonial-3green-rem .t3g-modal-role {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 14px;
+}
+
+.testimonial-3green-rem .t3g-modal-highlight {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 14px 16px;
+    border-radius: 12px;
+}
+
+.testimonial-3green-rem .t3g-modal-highlight-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.testimonial-3green-rem .t3g-modal-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.testimonial-3green-rem .t3g-modal-section {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 18px;
+    border-radius: 12px;
+    border-left: 4px solid rgba(255, 255, 255, 0.25);
+}
+
+.testimonial-3green-rem .t3g-modal-section-label {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 10px;
+}
+
+.testimonial-3green-rem .t3g-modal-section-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 768px) {
+    .testimonial-3green-rem {
+        padding: 40px 0 20px 0;
+    }
+
+    .testimonial-3green-rem .testimonial-header {
+        padding: 0 20px;
+    }
+
+    .testimonial-3green-rem .testimonial-title {
+        font-size: 34px;
+    }
+
+    .testimonial-3green-rem .testimonial-subtitle {
+        font-size: 18px;
+    }
+
+    .testimonial-3green-rem .t3g-cards-grid {
+        gap: 16px;
+        padding: 0 18px 14px 18px;
+    }
+
+    .testimonial-3green-rem .t3g-cards-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .testimonial-3green-rem .t3g-card {
+        min-width: 80%;
+        max-width: 80%;
+        scroll-snap-align: center;
+    }
+
+    /* Mobile: body text a 16px */
+    .testimonial-3green-rem .card-role {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .testimonial-3green-rem .cta-text {
+        font-size: 16px;
+    }
+
+    .testimonial-3green-rem .result-highlight {
+        font-size: 14px;
+    }
+
+    .testimonial-3green-rem .t3g-modal-section-text {
+        font-size: 16px;
+        line-height: 1.55;
+    }
+
+    .testimonial-3green-rem .t3g-modal-content {
+        padding: 60px 20px 30px 20px;
+    }
+
+    .testimonial-3green-rem .t3g-modal-header {
+        flex-direction: column;
+    }
+
+    .testimonial-3green-rem .t3g-modal-media {
+        width: 100%;
+    }
+}
+</style>
+
+<div class="testimonial-3green-rem">
+    <div class="testimonial-container">
+        <div class="testimonial-header">
+            <h2 class="testimonial-title">Prima i Risultati</h2>
+            <p class="testimonial-subtitle">Poi il Riconoscimento</p>
+        </div>
+
+        <div class="t3g-cards-grid">
+            <div class="t3g-card" data-testimonial="fabio">
+                <div class="card-media">
+                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/fabio-testimonial.png" alt="Fabio" class="card-thumbnail">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-name">Fabio</h3>
+                    <p class="card-role">Imprenditore e Franchise Owner</p>
+                    <div class="card-result"><span class="result-highlight">Da 250K a DECINE di milioni €</span></div>
+                </div>
+                <div class="card-cta"><span class="cta-text">Leggi la storia →</span></div>
+            </div>
+
+            <div class="t3g-card" data-testimonial="chiara">
+                <div class="card-media">
+                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/chiara-vesani.png" alt="Chiara" class="card-thumbnail">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-name">Chiara</h3>
+                    <p class="card-role">Architetto – Verona</p>
+                    <div class="card-result"><span class="result-highlight">Da zero competenze a piena consapevolezza</span></div>
+                </div>
+                <div class="card-cta"><span class="cta-text">Leggi la storia →</span></div>
+            </div>
+
+            <div class="t3g-card" data-testimonial="sandra">
+                <div class="card-media">
+                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/sandra-testimonial.png" alt="Sandra" class="card-thumbnail">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-name">Sandra</h3>
+                    <p class="card-role">Primo investimento immobiliare</p>
+                    <div class="card-result"><span class="result-highlight">ROI 30,64% - €64.000</span></div>
+                </div>
+                <div class="card-cta"><span class="cta-text">Leggi la storia →</span></div>
+            </div>
+        </div>
+
+        <div class="t3g-dots">
+            <span class="t3g-dot active"></span>
+            <span class="t3g-dot"></span>
+            <span class="t3g-dot"></span>
+        </div>
+
+        <div class="t3g-modal-overlay">
+            <div class="t3g-modal-container">
+                <button class="t3g-modal-close" type="button"></button>
+                <div class="t3g-modal-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(() => {
+    const t3gTestimonials = {
+        fabio: {
+            name: "Fabio",
+            role: "Imprenditore e Franchise Owner",
+            highlight: "Da 250.000 € a DECINE di milioni di euro di fatturato annuo",
+            mediaType: "video",
+            mediaUrl: "https://www.youtube.com/embed/f3lBU52wDPQ",
+            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/fabio-testimonial.png",
+            sections: [
+                { label: "Situazione di partenza", text: "Fatturava circa 250.000 € all'anno con un modello tradizionale e una struttura poco scalabile." },
+                { label: "Intervento", text: "Applica le strategie di business, leadership e gestione aziendale apprese nei programmi di affiancamento." },
+                { label: "Risultato misurabile", text: "Oggi supera di gran lunga <strong>DECINE di milioni di euro</strong> di fatturato annuo, espandendo la rete commerciale e creando un sistema di crescita stabile e replicabile." }
+            ]
+        },
+        chiara: {
+            name: "Chiara",
+            role: "Architetto – Verona",
+            highlight: "Da zero competenze a piena consapevolezza del proprio mercato",
+            mediaType: "video",
+            mediaUrl: "https://www.youtube.com/embed/-3SXCseesAc",
+            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/chiara-vesani.png",
+            sections: [
+                { label: "Situazione di partenza", text: "Partiva da zero competenze di marketing e cercava maggiore consapevolezza per individuare la nicchia professionale in cui posizionarsi come architetto." },
+                { label: "Intervento", text: "Intraprende il Master con dedizione, partecipando attivamente alle lezioni e ai canali della community." },
+                { label: "Risultato misurabile", text: "Acquisisce chiarezza sulla propria direzione professionale e sviluppa una nuova consapevolezza sul mercato a cui rivolgersi." }
+            ]
+        },
+        sandra: {
+            name: "Sandra",
+            role: "Primo investimento immobiliare",
+            highlight: "ROI del 30,64% - €64.000 di guadagno netto",
+            mediaType: "photo",
+            mediaUrl: "https://brukandy.github.io/testimonial-slider-extended/images/sandra-testimonial.png",
+            sections: [
+                { label: "Situazione di partenza", text: "Nessuna esperienza nel settore immobiliare, solo il desiderio di entrare nel mercato con una preparazione solida." },
+                { label: "Intervento", text: "Partecipa al REM (Real Estate Master) e mette in pratica le strategie apprese." },
+                { label: "Risultato misurabile", text: "Chiude la sua prima operazione con un <strong>ROI del 30,64%</strong>, generando €64.000 di guadagno netto." }
+            ]
+        }
+    };
+
+    const roots = document.querySelectorAll('.testimonial-3green-rem');
+    if (!roots.length) return;
+
+    roots.forEach((root) => {
+        const modalOverlay = root.querySelector('.t3g-modal-overlay');
+        const modalContent = root.querySelector('.t3g-modal-content');
+        const modalClose = root.querySelector('.t3g-modal-close');
+        const cardsGrid = root.querySelector('.t3g-cards-grid');
+        const mobileDots = root.querySelectorAll('.t3g-dot');
+
+        if (!modalOverlay || !modalContent || !modalClose || !cardsGrid) {
+            return;
+        }
+
+        function updateMobileDots() {
+            const cards = root.querySelectorAll('.t3g-card');
+            if (!cards.length || !mobileDots.length) return;
+            const scrollLeft = cardsGrid.scrollLeft;
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 16;
+            const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+
+            mobileDots.forEach((dot, index) => {
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function scrollToCard(index) {
+            const cards = root.querySelectorAll('.t3g-card');
+            if (!cards[index]) return;
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 16;
+            const scrollPosition = index * (cardWidth + gap);
+            cardsGrid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+        }
+
+        function openModal(testimonialId) {
+            const data = t3gTestimonials[testimonialId];
+            if (!data) return;
+
+    let mediaHTML = '';
+    if (data.mediaType === 'video') {
+        mediaHTML = `<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px;">
+            <iframe 
+                src="${data.mediaUrl}" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 16px;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>`;
+    } else {
+        mediaHTML = `<img src="${data.mediaUrl}" alt="${data.name}" style="width: 100%; border-radius: 16px;">`;
+    }
+
+            let sectionsHTML = '';
+            data.sections.forEach(section => {
+                sectionsHTML += `
+                    <div class="t3g-modal-section">
+                        <div class="t3g-modal-section-label">${section.label}</div>
+                        <div class="t3g-modal-section-text">${section.text}</div>
+                    </div>
+                `;
+            });
+
+            modalContent.innerHTML = `
+                <div class="t3g-modal-header">
+                    <div class="t3g-modal-media">${mediaHTML}</div>
+                    <div class="t3g-modal-info">
+                        <h2 class="t3g-modal-name">${data.name}</h2>
+                        <p class="t3g-modal-role">${data.role}</p>
+                        <div class="t3g-modal-highlight">
+                            <div class="t3g-modal-highlight-text">${data.highlight}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="t3g-modal-sections">${sectionsHTML}</div>
+            `;
+
+            modalOverlay.classList.add('active');
+
+            setTimeout(() => {
+                const modalContainer = root.querySelector('.t3g-modal-container');
+                if (modalContainer) {
+                    modalContainer.scrollTop = 0;
+                }
+            }, 50);
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+        }
+
+        // Delegation: funziona anche se Elementor reinietta nodi o se DOMContentLoaded è già passato
+        root.addEventListener('click', (e) => {
+            const card = e.target.closest('.t3g-card');
+            if (card && root.contains(card)) {
+                const testimonialId = card.getAttribute('data-testimonial');
+                openModal(testimonialId);
+            }
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        if (mobileDots.length > 0) {
+            cardsGrid.addEventListener('scroll', updateMobileDots);
+            updateMobileDots();
+            mobileDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => scrollToCard(index));
+            });
+        }
+    });
+})();
+</script>

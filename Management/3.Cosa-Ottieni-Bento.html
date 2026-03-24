@@ -1,0 +1,564 @@
+<!-- COSA OTTIENI BENTO - Versione per Elementor Widget HTML -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* Reset per anteprima */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden;
+}
+
+.bento-section {
+    font-family: 'Inter', sans-serif;
+    background: #0a1929 !important;
+    color: #ffffff;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.bento-section *,
+.bento-section *::before,
+.bento-section *::after {
+    box-sizing: border-box;
+}
+
+/* Cerchi Glassmorphism */
+.glass-circle-bento {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 25% 75%,
+        rgba(200, 187, 152, 0.28) 0%,
+        rgba(200, 187, 152, 0.20) 15%,
+        rgba(200, 187, 152, 0.12) 40%,
+        rgba(200, 187, 152, 0.06) 70%,
+        rgba(200, 187, 152, 0.02) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(200, 187, 152, 0.28);
+    box-shadow: 0 0 60px rgba(200, 187, 152, 0.18);
+    pointer-events: none;
+    will-change: transform;
+}
+
+.circle-1 {
+    top: 10%;
+    left: 5%;
+    z-index: 1;
+}
+
+.circle-2 {
+    top: 40%;
+    right: 8%;
+    z-index: 1;
+}
+
+.circle-3 {
+    bottom: 15%;
+    left: 10%;
+    z-index: 1;
+}
+
+.bento-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 40px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Header */
+.bento-header {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.bento-header h2 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+.bento-header p {
+    font-size: 20px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.bento-header h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #C8BB98;
+    margin-top: 32px;
+}
+
+/* Bento Grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card Flip Container */
+.bento-card {
+    perspective: 1500px;
+    cursor: pointer;
+    position: relative;
+}
+
+.bento-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.bento-card.flipped .bento-card-inner {
+    transform: rotateY(180deg);
+}
+
+.bento-card-front,
+.bento-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 24px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Front - Con immagine background */
+.bento-card-front {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.15), rgba(15, 23, 42, 0.2));
+    background-size: cover;
+    background-position: center;
+}
+
+.bento-card-front h3 {
+    font-size: 28px;
+    color: #C8BB98;
+    margin: 0 0 24px 0;
+    line-height: 1.3;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.bento-card-front .label-light {
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(200, 187, 152, 0.88);
+    font-size: 0.85em;
+}
+
+.bento-card-front .label-bold {
+    font-weight: 800;
+    font-style: italic;
+    color: #C8BB98;
+    letter-spacing: -0.02em;
+}
+
+.card-hint {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.card-hint svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Back - Con copy */
+.bento-card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid rgba(200, 187, 152, 0.16);
+}
+
+.bento-card-back h3 {
+    font-size: 24px;
+    color: #C8BB98;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.bento-card-back .label-light {
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(200, 187, 152, 0.80);
+    font-size: 0.8em;
+}
+
+.bento-card-back .label-bold {
+    font-weight: 800;
+    font-style: italic;
+    color: #C8BB98;
+}
+
+.bento-card-back p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+}
+
+/* Layout variazioni bento */
+.bento-card:nth-child(4),
+.bento-card:nth-child(7) {
+    grid-column: span 2;
+}
+
+.bento-card:nth-child(4) .bento-card-inner,
+.bento-card:nth-child(7) .bento-card-inner {
+    min-height: 350px;
+}
+
+.bento-card:nth-child(4) .bento-card-front h3,
+.bento-card:nth-child(7) .bento-card-front h3 {
+    font-size: 36px;
+}
+
+.bento-card:nth-child(4) .bento-card-back h3,
+.bento-card:nth-child(7) .bento-card-back h3 {
+    font-size: 28px;
+}
+
+.bento-card:nth-child(4) .bento-card-back p,
+.bento-card:nth-child(7) .bento-card-back p {
+    font-size: 18px;
+}
+
+/* Immagini placeholder */
+.card-img-1 { background-image: linear-gradient(135deg, rgba(30, 41, 59, 0.15), rgba(15, 23, 42, 0.2)), url('PLACEHOLDER_BENTO_1'); }
+.card-img-2 { background-image: linear-gradient(135deg, rgba(30, 41, 59, 0.15), rgba(15, 23, 42, 0.2)), url('PLACEHOLDER_BENTO_2'); }
+.card-img-3 { background-image: linear-gradient(135deg, rgba(30, 41, 59, 0.15), rgba(15, 23, 42, 0.2)), url('PLACEHOLDER_BENTO_3'); }
+.card-img-4 { background-image: linear-gradient(135deg, rgba(30, 41, 59, 0.15), rgba(15, 23, 42, 0.2)), url('PLACEHOLDER_BENTO_4'); }
+.card-img-5 { background-image: linear-gradient(135deg, rgba(30, 41, 59, 0.15), rgba(15, 23, 42, 0.2)), url('PLACEHOLDER_BENTO_5'); }
+.card-img-6 { background-image: linear-gradient(135deg, rgba(30, 41, 59, 0.15), rgba(15, 23, 42, 0.2)), url('PLACEHOLDER_BENTO_6'); }
+
+/* Responsive Tablet */
+@media (max-width: 968px) {
+    .bento-container {
+        padding: 60px 20px;
+    }
+
+    .bento-header h2 {
+        font-size: 42px;
+    }
+
+    .bento-header p {
+        font-size: 18px;
+    }
+
+    .bento-header h3 {
+        font-size: 24px;
+    }
+
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .bento-card:nth-child(4),
+    .bento-card:nth-child(7) {
+        grid-column: span 1;
+    }
+
+    .bento-card-front h3 {
+        font-size: 24px;
+    }
+
+    .bento-card:nth-child(4) .bento-card-front h3,
+    .bento-card:nth-child(7) .bento-card-front h3 {
+        font-size: 24px;
+    }
+}
+
+/* Responsive Mobile */
+@media (max-width: 480px) {
+    .bento-container {
+        padding: 40px 20px;
+    }
+
+    .bento-header h2 {
+        font-size: 32px;
+    }
+
+    .bento-header p {
+        font-size: 16px;
+    }
+
+    .bento-header h3 {
+        font-size: 20px;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .bento-card-inner {
+        min-height: 250px;
+    }
+
+    .bento-card:nth-child(4) .bento-card-inner,
+    .bento-card:nth-child(7) .bento-card-inner {
+        min-height: 250px;
+    }
+
+    .bento-card-front h3 {
+        font-size: 20px;
+    }
+
+    .bento-card-back h3 {
+        font-size: 18px;
+    }
+
+    .bento-card-back p {
+        font-size: 14px;
+    }
+
+    .glass-circle-bento {
+        display: none;
+    }
+}
+</style>
+
+<div class="bento-section">
+    <!-- Cerchi Glassmorphism -->
+    <div class="glass-circle-bento circle-1"></div>
+    <div class="glass-circle-bento circle-2"></div>
+    <div class="glass-circle-bento circle-3"></div>
+
+    <div class="bento-container">
+        <!-- Header -->
+        <div class="bento-header">
+            <h2>Cosa ottieni?</h2>
+            <p>Al termine del programma avrai la capacit&agrave; di guidare la tua impresa con metodo, numeri chiari e decisioni strategiche.</p>
+            <h3>Avrai la capacit&agrave; di:</h3>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="bento-grid">
+            <!-- Card 1 -->
+            <div class="bento-card">
+                <div class="bento-card-inner">
+                    <div class="bento-card-front card-img-1">
+                        <h3>
+                            <span class="label-light">Leggere e interpretare</span>
+                            <span class="label-bold">bilanci e flussi di cassa</span>
+                        </h3>
+                        <div class="card-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Clicca per scoprire
+                        </div>
+                    </div>
+                    <div class="bento-card-back">
+                        <h3>
+                            <span class="label-light">Leggere e interpretare</span>
+                            <span class="label-bold">bilanci e flussi di cassa</span>
+                        </h3>
+                        <p>Cos&igrave; da prendere decisioni lucide e misurabili, basate sui numeri reali della tua impresa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bento-card">
+                <div class="bento-card-inner">
+                    <div class="bento-card-front card-img-2">
+                        <h3>
+                            <span class="label-light">Pianificare strategie e azioni</span>
+                            <span class="label-bold">su orizzonti di 3, 6 e 12 mesi</span>
+                        </h3>
+                        <div class="card-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Clicca per scoprire
+                        </div>
+                    </div>
+                    <div class="bento-card-back">
+                        <h3>
+                            <span class="label-light">Pianificare strategie e azioni</span>
+                            <span class="label-bold">su orizzonti di 3, 6 e 12 mesi</span>
+                        </h3>
+                        <p>Con un metodo che ti fa anticipare e non inseguire i problemi, portando ordine e direzione alla tua impresa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bento-card">
+                <div class="bento-card-inner">
+                    <div class="bento-card-front card-img-3">
+                        <h3>
+                            <span class="label-light">Costruire un modello di</span>
+                            <span class="label-bold">business sostenibile e replicabile</span>
+                        </h3>
+                        <div class="card-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Clicca per scoprire
+                        </div>
+                    </div>
+                    <div class="bento-card-back">
+                        <h3>
+                            <span class="label-light">Costruire un modello di</span>
+                            <span class="label-bold">business sostenibile e replicabile</span>
+                        </h3>
+                        <p>Che genera margini stabili nel tempo, senza dipendere dalla tua presenza costante.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 - Grande -->
+            <div class="bento-card">
+                <div class="bento-card-inner">
+                    <div class="bento-card-front card-img-4">
+                        <h3>
+                            <span class="label-light">Gestire un team con</span>
+                            <span class="label-bold">ruoli chiari e criteri trasparenti</span>
+                        </h3>
+                        <div class="card-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Clicca per scoprire
+                        </div>
+                    </div>
+                    <div class="bento-card-back">
+                        <h3>
+                            <span class="label-light">Gestire un team con</span>
+                            <span class="label-bold">ruoli chiari e criteri trasparenti</span>
+                        </h3>
+                        <p>Creando una cultura aziendale solida, dove ogni persona sa cosa fare e come viene valutata.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="bento-card">
+                <div class="bento-card-inner">
+                    <div class="bento-card-front card-img-5">
+                        <h3>
+                            <span class="label-light">Presentarti a partner,</span>
+                            <span class="label-bold">banche e investitori</span>
+                        </h3>
+                        <div class="card-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Clicca per scoprire
+                        </div>
+                    </div>
+                    <div class="bento-card-back">
+                        <h3>
+                            <span class="label-light">Presentarti a partner,</span>
+                            <span class="label-bold">banche e investitori</span>
+                        </h3>
+                        <p>Con numeri e piani concreti, per negoziare da una posizione di forza e ottenere finanziamenti e partnership strategiche.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="bento-card">
+                <div class="bento-card-inner">
+                    <div class="bento-card-front card-img-6">
+                        <h3>
+                            <span class="label-light">Ottenere ci&ograve; che ogni</span>
+                            <span class="label-bold">imprenditore desidera davvero</span>
+                        </h3>
+                        <div class="card-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Clicca per scoprire
+                        </div>
+                    </div>
+                    <div class="bento-card-back">
+                        <h3>
+                            <span class="label-light">Ottenere ci&ograve; che ogni</span>
+                            <span class="label-bold">imprenditore desidera davvero</span>
+                        </h3>
+                        <p>Un&rsquo;impresa che cresce, produce margini e ti lascia la libert&agrave; di scegliere come vivere.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Parallax cerchi
+(function() {
+    const circles = document.querySelectorAll('.glass-circle-bento');
+    
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        
+        circles.forEach((circle, index) => {
+            const speed = (index + 1) * 0.3;
+            const direction = index % 2 === 0 ? -1 : 1;
+            circle.style.transform = `translateY(${direction * scrolled * speed}px)`;
+        });
+    }
+    
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    updateParallax();
+})();
+
+// Flip cards on click
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.bento-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
+    });
+});
+</script>

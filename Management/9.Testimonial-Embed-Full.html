@@ -1,0 +1,386 @@
+<!-- TESTIMONIAL EMBED FULL - Gilberto Vespignani - Versione per Elementor Widget HTML -->
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+.elementor-widget-html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.elementor-widget-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.testimonial-embed-section,
+.testimonial-embed-section * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.testimonial-embed-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(180deg, #0A1628 0%, #162642 100%);
+    color: #ffffff;
+    padding: 80px 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.testimonial-embed-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header */
+.testimonial-embed-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.testimonial-embed-header .te-pretitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.testimonial-embed-header h2 {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.testimonial-embed-header p {
+    font-size: 20px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 400;
+}
+
+/* Featured Card */
+.te-featured-card {
+    background: linear-gradient(135deg, #193054 0%, #0F1C33 100%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Video wrapper */
+.te-video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.te-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Card Content */
+.te-card-content {
+    padding: 36px 40px;
+}
+
+.te-card-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.te-card-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(200, 187, 152, 0.4);
+}
+
+.te-card-info {
+    flex: 1;
+}
+
+.te-card-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.te-card-role {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.te-card-quote {
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    color: #C8BB98;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    padding-left: 20px;
+    border-left: 3px solid rgba(200, 187, 152, 0.4);
+}
+
+.te-card-story {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.te-card-story p {
+    margin-bottom: 16px;
+}
+
+.te-card-story p:last-child {
+    margin-bottom: 0;
+}
+
+.te-card-story strong {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* Result Badge */
+.te-result-badge {
+    display: inline-block;
+    background: rgba(200, 187, 152, 0.15);
+    border: 1px solid rgba(200, 187, 152, 0.3);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-top: 20px;
+}
+
+.te-result-badge .badge-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(200, 187, 152, 0.8);
+    margin-bottom: 4px;
+}
+
+.te-result-badge .badge-value {
+    font-size: 18px;
+    font-weight: 800;
+    color: #C8BB98;
+}
+
+/* CTA Below */
+.te-cta-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 48px;
+    flex-wrap: wrap;
+}
+
+.te-btn {
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.te-btn-primary {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.4);
+}
+
+.te-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.5);
+}
+
+.te-btn-secondary {
+    background: rgba(255, 255, 255, 0.10);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.te-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .testimonial-embed-section {
+        padding: 60px 16px;
+    }
+
+    .testimonial-embed-header h2 {
+        font-size: 32px;
+    }
+
+    .testimonial-embed-header p {
+        font-size: 18px;
+    }
+
+    .te-card-content {
+        padding: 28px 20px;
+    }
+
+    .te-card-header {
+        gap: 16px;
+    }
+
+    .te-card-avatar {
+        width: 52px;
+        height: 52px;
+    }
+
+    .te-card-name {
+        font-size: 20px;
+    }
+
+    .te-card-role {
+        font-size: 14px;
+    }
+
+    .te-card-quote {
+        font-size: 18px;
+        padding-left: 16px;
+    }
+
+    .te-card-story {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .te-cta-row {
+        flex-direction: column;
+        padding: 0 16px;
+    }
+
+    .te-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-embed-section {
+        padding: 40px 12px;
+    }
+
+    .testimonial-embed-header h2 {
+        font-size: 26px;
+    }
+
+    .testimonial-embed-header .te-pretitle {
+        font-size: 14px;
+    }
+
+    .te-card-content {
+        padding: 24px 16px;
+    }
+
+    .te-card-quote {
+        font-size: 16px;
+    }
+
+    .te-result-badge .badge-value {
+        font-size: 16px;
+    }
+}
+</style>
+
+<section class="testimonial-embed-section">
+    <div class="testimonial-embed-container">
+        <!-- Header -->
+        <div class="testimonial-embed-header">
+            <div class="te-pretitle">Cosa succede quando sapere, affiancamento e applicazione&hellip; si incontrano?</div>
+            <h2>Nascono i risultati</h2>
+            <p>Come quelli dei nostri corsisti</p>
+        </div>
+
+        <!-- Featured Card -->
+        <div class="te-featured-card">
+            <!-- Video Embed -->
+            <div class="te-video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/Hbt3gtxyPeo" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- Content -->
+            <div class="te-card-content">
+                <div class="te-card-header">
+                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/gilberto-tetimonial.png" alt="Gilberto Vespignani" class="te-card-avatar">
+                    <div class="te-card-info">
+                        <h3 class="te-card-name">Gilberto Vespignani</h3>
+                        <p class="te-card-role">Imprenditore nel settore servizi</p>
+                    </div>
+                </div>
+
+                <blockquote class="te-card-quote">
+                    &ldquo;Il Master che mi ha portato a Quadruplicare il fatturato, rispetto all&rsquo;anno precedente.&rdquo;
+                </blockquote>
+
+                <div class="te-card-story">
+                    <p>Azienda in difficolt&agrave; economica, fatturato fermo a 600.000 &euro; l&rsquo;anno e un team di venti persone.</p>
+                    <p>Partecipa ai programmi di affiancamento dedicati a imprenditori, lavorando su leadership, gestione del team e controllo operativo.</p>
+                    <p>Risultato? Incrementa il fatturato del <strong>150% in un anno</strong>, passando da 600.000 &euro; a 1,5 milioni, e porta il team da 20 a 55 collaboratori. Oggi guida un&rsquo;impresa solida, in crescita costante.</p>
+                </div>
+
+                <div class="te-result-badge">
+                    <div class="badge-label">Risultato</div>
+                    <div class="badge-value">+150% fatturato &bull; Da 20 a 55 collaboratori</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Row -->
+        <div class="te-cta-row">
+            <a href="#" class="te-btn te-btn-primary" onclick="openTypeformInParent(event)">
+                Scopri se il programma fa al caso tuo
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <a href="#" class="te-btn te-btn-secondary">
+                Prenota una chiamata con un Selezionatore per chiedere maggiori informazioni
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+function openTypeformInParent(event) {
+    event.preventDefault();
+    window.parent.postMessage({
+        type: 'openTypeform',
+        formId: 'mGllVklt'
+    }, '*');
+}
+</script>

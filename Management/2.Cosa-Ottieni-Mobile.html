@@ -1,0 +1,536 @@
+<!-- COSA OTTIENI MOBILE ACCORDION - Versione per Elementor Widget HTML -->
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* Reset */
+.cosa-ottieni-mobile {
+    font-family: 'Inter', sans-serif !important;
+    background: #0a1929 !important;
+    color: #ffffff;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    box-sizing: border-box;
+}
+
+.cosa-ottieni-mobile *,
+.cosa-ottieni-mobile *::before,
+.cosa-ottieni-mobile *::after {
+    box-sizing: border-box;
+}
+
+.ottieni-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Header */
+.ottieni-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.ottieni-header h2 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 44px !important;
+    font-weight: 800 !important;
+    line-height: 1.1;
+    color: #ffffff !important;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(200, 187, 152, 0.22);
+}
+
+.ottieni-header p {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75) !important;
+    margin-bottom: 16px;
+    font-weight: 400 !important;
+}
+
+.ottieni-header h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: #C8BB98 !important;
+    margin-top: 28px;
+}
+
+/* Accordion List */
+.ottieni-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Accordion Item */
+.accordion-item {
+    background: #F5F3EF;
+    border-radius: 32px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.accordion-item:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Header dell'accordion */
+.accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.accordion-header:active {
+    opacity: 0.8;
+}
+
+/* Icona SVG grande - solo quando aperto */
+.accordion-icon {
+    display: none;
+}
+
+.accordion-item.active .accordion-icon {
+    display: block;
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.accordion-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Titolo */
+.accordion-title {
+    flex: 1;
+}
+
+.accordion-title .title-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Variazioni di stile titolo */
+.accordion-title .title-light {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+.accordion-title .title-bold {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 800 !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+.accordion-title .title-italic {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+/* Bottone circolare */
+.accordion-toggle {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.accordion-toggle::before,
+.accordion-toggle::after {
+    content: '';
+    position: absolute;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.accordion-toggle::before {
+    width: 20px;
+    height: 3px;
+}
+
+.accordion-toggle::after {
+    width: 3px;
+    height: 20px;
+}
+
+.accordion-item.active .accordion-toggle::after {
+    transform: rotate(90deg);
+    opacity: 0;
+}
+
+/* Colori per ogni item */
+.accordion-item:nth-child(1) .accordion-toggle { background: #C8BB98; }
+.accordion-item:nth-child(2) .accordion-toggle { background: #C8BB98; }
+.accordion-item:nth-child(3) .accordion-toggle { background: #C8BB98; }
+.accordion-item:nth-child(4) .accordion-toggle { background: #C8BB98; }
+.accordion-item:nth-child(5) .accordion-toggle { background: #C8BB98; }
+.accordion-item:nth-child(6) .accordion-toggle { background: #C8BB98; }
+
+.accordion-item:nth-child(1) .accordion-icon { color: #C8BB98; }
+.accordion-item:nth-child(2) .accordion-icon { color: #C8BB98; }
+.accordion-item:nth-child(3) .accordion-icon { color: #C8BB98; }
+.accordion-item:nth-child(4) .accordion-icon { color: #C8BB98; }
+.accordion-item:nth-child(5) .accordion-icon { color: #C8BB98; }
+.accordion-item:nth-child(6) .accordion-icon { color: #C8BB98; }
+
+/* Contenuto */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 600px;
+}
+
+.accordion-body {
+    padding: 0 32px 32px 32px;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+}
+
+.accordion-text {
+    flex: 1;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.7;
+    color: #4a4a4a !important;
+    font-weight: 400 !important;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .ottieni-container {
+        padding: 40px 16px;
+    }
+
+    .ottieni-header h2 {
+        font-size: 36px !important;
+    }
+
+    .ottieni-header p {
+        font-size: 18px !important;
+    }
+
+    .ottieni-header h3 {
+        font-size: 22px !important;
+    }
+
+    .accordion-header {
+        padding: 24px 20px;
+    }
+
+    .accordion-title .title-text {
+        font-size: 24px !important;
+    }
+
+    .accordion-title .title-light,
+    .accordion-title .title-bold,
+    .accordion-title .title-italic {
+        font-size: 24px !important;
+    }
+
+    .accordion-toggle {
+        width: 52px;
+        height: 52px;
+    }
+
+    .accordion-body {
+        padding: 0 20px 28px 20px;
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .accordion-item.active .accordion-icon {
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+    }
+
+    .accordion-text {
+        font-size: 18px !important;
+    }
+
+    .accordion-item {
+        border-radius: 24px;
+    }
+}
+</style>
+
+<div class="cosa-ottieni-mobile">
+    <div class="ottieni-container">
+        <!-- Header -->
+        <div class="ottieni-header">
+            <h2>Cosa ottieni?</h2>
+            <p>Al termine del programma avrai la capacit&agrave; di guidare la tua impresa con metodo, numeri chiari e decisioni strategiche.</p>
+            <h3>Avrai la capacit&agrave; di:</h3>
+        </div>
+
+        <!-- Accordion List -->
+        <div class="ottieni-accordion">
+            <!-- Item 1 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Leggere</span>
+                            <span class="title-light">bilanci e flussi di cassa</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Cos&igrave; da prendere decisioni lucide e misurabili, basate sui numeri reali della tua impresa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Pianificare</span>
+                            <span class="title-italic">strategie su 3, 6 e 12 mesi</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Con un metodo che ti fa anticipare e non inseguire i problemi, portando ordine e direzione alla tua impresa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Costruire</span>
+                            <span class="title-light">un business sostenibile</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Che genera margini stabili nel tempo, senza dipendere dalla tua presenza costante.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Gestire</span>
+                            <span class="title-italic">un team con ruoli chiari</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Creando una cultura aziendale solida, dove ogni persona sa cosa fare e come viene valutata.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Presentarti</span>
+                            <span class="title-italic">a banche e investitori</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Con numeri e piani concreti, per negoziare da una posizione di forza e ottenere finanziamenti e partnership strategiche.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Ottenere</span>
+                            <span class="title-italic">ci&ograve; che davvero desideri</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Un&rsquo;impresa che cresce, produce margini e ti lascia la libert&agrave; di scegliere come vivere.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Accordion functionality
+(function() {
+    function initAccordion() {
+        const accordionItems = document.querySelectorAll('.cosa-ottieni-mobile .accordion-item');
+        
+        if (!accordionItems.length) {
+            console.log('No accordion items found');
+            return;
+        }
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            if (header) {
+                header.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const isActive = item.classList.contains('active');
+                    
+                    // Chiudi tutti gli altri accordion
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current
+                    if (!isActive) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        });
+        
+        console.log('Accordion initialized with', accordionItems.length, 'items');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAccordion);
+    } else {
+        initAccordion();
+    }
+})();
+</script>

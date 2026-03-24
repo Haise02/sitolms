@@ -1,0 +1,541 @@
+<!-- SI/NO FLIP CARDS - Versione per Elementor Widget HTML -->
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* Reset per anteprima */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden;
+}
+
+.flip-section {
+    font-family: 'Inter', sans-serif !important;
+    background: #0a1929 !important;
+    color: #ffffff !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    box-sizing: border-box;
+}
+
+.flip-section *,
+.flip-section *::before,
+.flip-section *::after {
+    box-sizing: border-box;
+}
+
+.flip-container-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    width: 100%;
+}
+
+.flip-header {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.flip-header h2 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 56px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    color: #ffffff !important;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+.flip-header p {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 20px !important;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-weight: 500 !important;
+}
+
+/* Cards Grid */
+.flip-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Flip Card Container */
+.flip-card {
+    perspective: 1500px;
+    height: 440px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 28px;
+    padding: 44px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.12);
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+/* YES Card */
+.flip-card.yes .flip-card-front {
+    background-image: linear-gradient(135deg, rgba(44, 85, 48, 0.75) 0%, rgba(61, 112, 68, 0.70) 100%), 
+                      url('https://leonemasterschool.it/wp-content/uploads/2025/12/abstract-blue-lines-on-a-black-background-2025-07-17-21-19-09-utc.png');
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #2C5530;
+    color: #ffffff !important;
+}
+
+.flip-card.yes .flip-card-back {
+    background: linear-gradient(135deg, #2C5530 0%, #3d7044 100%);
+    color: #ffffff !important;
+}
+
+/* NO Card */
+.flip-card.no .flip-card-front {
+    background-image: linear-gradient(135deg, rgba(196, 30, 58, 0.75) 0%, rgba(154, 23, 41, 0.70) 100%), 
+                      url('https://leonemasterschool.it/wp-content/uploads/2025/12/abstract-blue-lines-on-a-black-background-2025-07-17-21-19-09-utc-1.png');
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #C41E3A;
+    color: #ffffff !important;
+}
+
+.flip-card.no .flip-card-back {
+    background: linear-gradient(135deg, #C41E3A 0%, #9a1729 100%);
+    color: #ffffff !important;
+}
+
+/* Front Card Content */
+.card-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 44px;
+    margin-bottom: 24px;
+    font-weight: 700;
+    transition: all 0.4s ease;
+}
+
+.flip-card.yes .card-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff !important;
+}
+
+.flip-card.no .card-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff !important;
+}
+
+.flip-card:hover .card-icon {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.card-label {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 24px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    color: #ffffff !important;
+    text-align: center;
+}
+
+.card-label .label-light {
+    font-weight: 400 !important;
+    font-style: italic !important;
+    display: block;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.card-label .label-bold {
+    font-weight: 800 !important;
+    font-style: italic !important;
+    display: block;
+    color: #ffffff !important;
+}
+
+.card-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    color: #ffffff !important;
+}
+
+.card-hint {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-hint svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Back Card Content */
+.back-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    margin-bottom: 32px;
+    line-height: 1.2;
+    color: #ffffff !important;
+}
+
+.points-list {
+    list-style: none;
+    text-align: left;
+    width: 100%;
+}
+
+.point-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+    animation: slideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.flip-card.flipped .point-item:nth-child(1) { animation-delay: 0.3s; }
+.flip-card.flipped .point-item:nth-child(2) { animation-delay: 0.4s; }
+.flip-card.flipped .point-item:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.point-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800 !important;
+    font-size: 16px !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.point-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.6;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    padding-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .flip-container-wrapper {
+        padding: 60px 20px;
+    }
+
+    .flip-header h2 {
+        font-size: 42px;
+    }
+
+    .flip-header p {
+        font-size: 18px;
+    }
+
+    .flip-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .flip-card {
+        height: 420px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        padding: 40px 32px;
+    }
+
+    .card-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+    }
+
+    .card-label {
+        font-size: 20px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .back-title {
+        font-size: 26px;
+        margin-bottom: 24px;
+    }
+
+    .point-text {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flip-container-wrapper {
+        padding: 40px 20px;
+    }
+
+    .flip-header h2 {
+        font-size: 32px;
+    }
+
+    .flip-header p {
+        font-size: 16px;
+    }
+
+    /* FIX MOBILE OVERFLOW: più altezza + meno spazi + lista scrollabile */
+    .flip-card {
+        height: 480px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        padding: 26px 20px;
+        border-radius: 24px;
+    }
+
+    .flip-card-back {
+        justify-content: flex-start;
+        overflow: hidden;
+    }
+
+    .flip-card-back .points-list {
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 6px;
+    }
+
+    .card-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .card-label {
+        font-size: 18px;
+        letter-spacing: 0.3px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-hint {
+        font-size: 14px;
+        margin-top: 24px;
+    }
+
+    .back-title {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .point-item {
+        margin-bottom: 14px;
+        gap: 12px;
+    }
+
+    .point-number {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    .point-text {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+}
+</style>
+
+<div class="flip-section">
+    <div class="flip-container-wrapper">
+        <!-- Header -->
+        <div class="flip-header">
+            <h2>Il Programma fa per te?</h2>
+            <p>Clicca sulle card per scoprire se il Master in Sales Skills &egrave; la scelta giusta per te.</p>
+        </div>
+
+        <!-- Flip Cards Grid -->
+        <div class="flip-cards-grid">
+            <!-- YES Flip Card -->
+            <div class="flip-card yes">
+                <div class="flip-card-inner">
+                    <!-- Front -->
+                    <div class="flip-card-front">
+                        <div class="card-icon">&#10003;</div>
+                        <div class="card-label">
+                            <span class="label-light">Entra nel</span>
+                            <span class="label-bold">Programma</span>
+                        </div>
+                        <h3 class="card-title">SE</h3>
+                        <div class="card-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Clicca per scoprire
+                        </div>
+                    </div>
+                    <!-- Back -->
+                    <div class="flip-card-back">
+                        <h3 class="back-title">Entra nel Programma SE:</h3>
+                        <ul class="points-list">
+                            <li class="point-item">
+                                <div class="point-number">1</div>
+                                <div class="point-text">Vuoi imparare a vendere in modo etico, senza pressioni o scorciatoie.</div>
+                            </li>
+                            <li class="point-item">
+                                <div class="point-number">2</div>
+                                <div class="point-text">Desideri protocolli chiari che puoi applicare sia da solo che in team.</div>
+                            </li>
+                            <li class="point-item">
+                                <div class="point-number">3</div>
+                                <div class="point-text">Non ti abbatti ai primi &ldquo;no&rdquo; (inevitabili all&rsquo;inizio) e sei pronto a trasformarli in occasioni future con metodo e costanza.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NO Flip Card -->
+            <div class="flip-card no">
+                <div class="flip-card-inner">
+                    <!-- Front -->
+                    <div class="flip-card-front">
+                        <div class="card-icon">&#10005;</div>
+                        <div class="card-label">
+                            <span class="label-light">Non entrare nel</span>
+                            <span class="label-bold">Programma</span>
+                        </div>
+                        <h3 class="card-title">SE</h3>
+                        <div class="card-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Clicca per scoprire
+                        </div>
+                    </div>
+                    <!-- Back -->
+                    <div class="flip-card-back">
+                        <h3 class="back-title">NON entrare nel Programma SE:</h3>
+                        <ul class="points-list">
+                            <li class="point-item">
+                                <div class="point-number">1</div>
+                                <div class="point-text">Cerchi trucchi veloci per manipolare chi compra.</div>
+                            </li>
+                            <li class="point-item">
+                                <div class="point-number">2</div>
+                                <div class="point-text">Pensi che basti ascoltare due lezioni per diventare un venditore.</div>
+                            </li>
+                            <li class="point-item">
+                                <div class="point-number">3</div>
+                                <div class="point-text">Non sei disposto a metterti in gioco con esercizi, feedback e verifiche settimanali.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // Flip card on click
+    document.querySelectorAll('.flip-card').forEach(card => {
+        card.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+    });
+
+    // Entrance animation
+    window.addEventListener('load', () => {
+        const cards = document.querySelectorAll('.flip-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 300 + (index * 200));
+        });
+    });
+
+    // Initial state
+    document.querySelectorAll('.flip-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    });
+})();
+</script>

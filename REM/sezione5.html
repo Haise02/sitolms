@@ -1,0 +1,907 @@
+<!-- PROGRAMMA REM - Versione per Elementor Widget HTML -->
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+.rem-program * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.rem-program {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+}
+
+.why-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 60px;
+}
+
+.why-header {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+}
+
+.why-title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.title-small {
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(26, 26, 26, 0.6);
+    letter-spacing: 0.5px;
+}
+
+.why-title .highlight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #2C5530;
+}
+
+.single-column {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.single-column p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: rgba(26, 26, 26, 0.8);
+    margin-bottom: 24px;
+}
+
+.single-column strong {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.final-text {
+    font-weight: 600;
+    color: rgba(26, 26, 26, 0.9) !important;
+}
+
+/* Bento Box Images */
+.bento-images {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    min-height: 600px;
+    margin: 48px 0;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bento-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f8f8f8;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 8s ease-in-out;
+    animation: kenBurns 20s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurns {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.1) translate(-5%, -5%); }
+}
+
+.bento-item:nth-child(2) img {
+    animation-delay: -5s;
+    animation-direction: alternate-reverse;
+}
+
+.bento-item:nth-child(3) img {
+    animation-delay: -10s;
+}
+
+.bento-item:nth-child(4) img {
+    animation-delay: -15s;
+    animation-direction: alternate-reverse;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.bento-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(44, 85, 48, 0.6);
+    box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.4), 0 20px 40px rgba(44, 85, 48, 0.3);
+}
+
+.bento-item.large {
+    grid-row: 1 / 3;
+    grid-column: 1;
+}
+
+.bento-item.medium {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+.bento-bottom-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 16px;
+    min-height: 200px;
+}
+
+.bento-item.bottom-left {
+    min-height: 200px;
+}
+
+.bento-item.bottom-right {
+    min-height: 200px;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 56px;
+    height: 56px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.lightbox-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+}
+
+.lightbox-close svg {
+    color: #1a1a1a;
+}
+
+#lightbox-img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+    animation: lightboxZoom 0.3s ease;
+}
+
+@keyframes lightboxZoom {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* REM Bento Grid - Base per tutte le dimensioni */
+.rem-bento-grid {
+    margin-top: 80px;
+}
+
+/* Grid layout - Solo Desktop */
+@media (min-width: 969px) {
+    .rem-bento-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 32px !important;
+    }
+
+    .rem-bento-grid.grid-2x2,
+    .rem-bento-grid.grid-riconoscimenti {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 32px !important;
+    }
+}
+
+/* REM Bento Card */
+.rem-bento-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.rem-bento-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(212, 197, 176, 0.4);
+    box-shadow: 0 20px 60px rgba(212, 197, 176, 0.25);
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.rem-bento-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 32px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card-title,
+.card-content h3,
+.rem-bento-card h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 16px !important;
+    color: #1a1a1a !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.title-light,
+.card-title .title-light {
+    font-weight: 300 !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+.title-bold,
+.card-title .title-bold {
+    font-weight: 800 !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+.title-italic,
+.card-title .title-italic {
+    font-weight: 300 !important;
+    font-style: italic !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+.card-description {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.7;
+    color: rgba(26, 26, 26, 0.7) !important;
+}
+
+/* Carousel Dots */
+.carousel-dots {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+    padding: 0 20px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(44, 85, 48, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #2C5530;
+    width: 24px;
+    border-radius: 4px;
+}
+
+.dot:hover {
+    background: rgba(44, 85, 48, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .rem-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    /* Mantieni 2x2 anche su schermi medi */
+    .rem-bento-grid.grid-2x2,
+    .rem-bento-grid.grid-riconoscimenti {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+
+    .rem-bento-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 968px) {
+    .why-container {
+        padding: 60px 40px;
+    }
+
+    .why-header {
+        margin-bottom: 60px;
+    }
+
+    .title-small {
+        font-size: 20px;
+    }
+
+    .why-title .highlight {
+        font-size: 48px;
+    }
+
+    .single-column {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    .bento-images {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 32px 0;
+    }
+
+    .bento-item.large {
+        grid-row: auto;
+        aspect-ratio: 16/9;
+    }
+
+    .bento-item.medium {
+        grid-row: auto;
+        grid-column: auto;
+        aspect-ratio: 16/9;
+    }
+
+    .bento-bottom-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .single-column p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .rem-bento-grid,
+    .rem-bento-grid.grid-2x2,
+    .rem-bento-grid.grid-riconoscimenti {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        margin-top: 60px;
+        padding: 0 20px 20px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        grid-template-columns: unset !important;
+    }
+
+    .rem-bento-grid::-webkit-scrollbar,
+    .rem-bento-grid.grid-2x2::-webkit-scrollbar,
+    .rem-bento-grid.grid-riconoscimenti::-webkit-scrollbar {
+        display: none;
+    }
+
+    .rem-bento-card {
+        flex: 0 0 85%;
+        min-width: 85%;
+        scroll-snap-align: center;
+        max-width: 400px;
+    }
+
+    .card-image {
+        height: 220px;
+    }
+
+    .card-content {
+        padding: 24px 20px;
+    }
+
+    .card-title,
+    .card-content h3,
+    .rem-bento-card h3 {
+        font-size: 22px !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .carousel-dots {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-container {
+        padding: 40px 20px;
+    }
+
+    .why-header {
+        margin-bottom: 40px;
+    }
+
+    .title-small {
+        font-size: 18px;
+    }
+
+    .why-title .highlight {
+        font-size: 36px;
+    }
+
+    .single-column {
+        gap: 16px;
+    }
+
+    .single-column p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .rem-bento-grid,
+    .rem-bento-grid.grid-2x2,
+    .rem-bento-grid.grid-riconoscimenti {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        grid-template-columns: unset !important;
+        gap: 16px;
+        margin-top: 40px;
+        padding: 0 10px 20px;
+    }
+
+    .rem-bento-card {
+        flex: 0 0 90%;
+        min-width: 90%;
+    }
+
+    .card-image {
+        height: 200px;
+    }
+
+    .card-content {
+        padding: 20px 16px;
+    }
+
+    .card-title,
+    .card-content h3,
+    .rem-bento-card h3 {
+        font-size: 20px !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .card-description {
+        font-size: 15px !important;
+        line-height: 1.6;
+    }
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(212, 197, 176, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+</style>
+
+<div class="rem-program">
+    <div class="why-container">
+        <!-- Header Section -->
+        <div class="why-header">
+            <h2 class="why-title">
+                <span class="title-small">Come è strutturato</span>
+                <span class="highlight">il programma?</span>
+            </h2>
+            
+            <!-- Single Column Layout -->
+            <div class="single-column">
+                <p>Il Master in Real Estate è un Programma progettato per chi vuole costruire solide competenze immobiliari e una professione autonoma e scalabile.</p>
+                
+                <p>Il programma integra <strong>formazione guidata, affiancamento individuale, esercitazioni pratiche</strong> e strumenti di misurazione dei risultati. Ogni fase è pensata per accompagnarti passo dopo passo: dalla tua prima operazione fino alla gestione di progetti immobiliari complessi.</p>
+                
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; margin: 2.5rem 0 1.5rem; color: #1a1a1a;">All'interno del programma troverai:</h3>
+            </div>
+        </div>
+
+        <!-- Prima sezione Cards - Contenuti del Programma -->
+        <div class="rem-bento-grid">
+            <!-- Card 1 - Sessioni Live -->
+            <div class="rem-bento-card" data-card="1">
+                <div class="card-image">
+                    <img src="https://leonemasterschool.it/wp-content/uploads/2025/12/Slide-16_9-35.png" alt="Sessioni Live">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">
+                        <span class="title-light">Sessioni di</span> <span class="title-bold">affiancamento live</span>
+                    </h3>
+                    <p class="card-description">Circa 150–200 ore annuali, tutte registrate e sempre disponibili. Segui docenti e investitori che operano ogni giorno sul mercato, osservando strategie, casi reali e processi decisionali.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 - Videoteca -->
+            <div class="rem-bento-card" data-card="2">
+                <div class="card-image">
+                    <img src="https://leonemasterschool.it/wp-content/uploads/2025/12/Slide-16_9-38.png" alt="Videoteca E-learning">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">
+                        <span class="title-bold">Videoteca e-learning</span> <span class="title-italic">con oltre 20 moduli</span>
+                    </h3>
+                    <p class="card-description">Checklist, modelli di calcolo e casi studio reali per analizzare operazioni, stimare ROI e flussi di cassa con metodo.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 - Workbook -->
+            <div class="rem-bento-card" data-card="3">
+                <div class="card-image">
+                    <img src="https://leonemasterschool.it/wp-content/uploads/2025/12/Slide-16_9-36.png" alt="Workbook LMS">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">
+                        <span class="title-bold">Workbook</span> <span class="title-italic">ufficiale LMS</span>
+                    </h3>
+                    <p class="card-description">Mappe, esercizi e strumenti di calcolo per applicare ciò che impari e simulare operazioni in sicurezza, prima di portarle sul mercato.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Dots -->
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <!-- Bento Box Images -->
+        <div class="why-header" style="margin-top: 4rem;">
+            <div class="single-column">
+                <div class="bento-images">
+                    <!-- Large Image -->
+                    <div class="bento-item large" data-tilt>
+                        <img src="https://leonemasterschool.it/wp-content/uploads/2025/07/202-scaled.jpg" alt="Master Real Estate">
+                        <div class="image-overlay"></div>
+                    </div>
+                    
+                    <!-- Single Medium Image -->
+                    <div class="bento-item medium" data-tilt>
+                        <img src="https://leonemasterschool.it/wp-content/uploads/2025/07/122-scaled.jpg" alt="Affiancamento Live">
+                        <div class="image-overlay"></div>
+                    </div>
+                    
+                    <!-- Bottom Two Images -->
+                    <div class="bento-bottom-grid">
+                        <div class="bento-item bottom-left" data-tilt>
+                            <img src="https://leonemasterschool.it/wp-content/uploads/2025/07/127-scaled.jpg" alt="Coaching">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="bento-item bottom-right" data-tilt>
+                            <img src="https://leonemasterschool.it/wp-content/uploads/2025/07/165-scaled.jpg" alt="Risultati">
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Section per Affiancamento -->
+        <div class="why-header" style="margin-top: 4rem;">
+            <div class="single-column">
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; margin: 2.5rem 0 1.5rem; color: #1a1a1a;">Ma soprattutto, verrai affiancato per trasformare ciò che impari in RISULTATI.</h3>
+            </div>
+        </div>
+
+        <!-- Seconda sezione Cards - Affiancamento -->
+        <div class="rem-bento-grid grid-2x2" id="risultati-grid">  
+            <!-- Card 4 - Coaching 1:1 -->
+            <div class="rem-bento-card" data-card="4">
+                <div class="card-image">
+                    <img src="https://leonemasterschool.it/wp-content/uploads/2025/12/Slide-16_9-41.png" alt="Coaching Individuale">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">
+                        <span class="title-light">Sessioni di</span> <span class="title-bold">coaching individuale (1:1)</span>
+                    </h3>
+                    <p class="card-description">Per validare le tue operazioni e ricevere feedback personalizzato da esperti del settore.</p>
+                </div>
+            </div>
+
+            <!-- Card 5 - Consulenza Live -->
+            <div class="rem-bento-card" data-card="5">
+                <div class="card-image">
+                    <img src="https://leonemasterschool.it/wp-content/uploads/2025/12/Slide-16_9-43.png" alt="Consulenza Settimanale">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">
+                        <span class="title-bold">Sessioni di consulenza</span> <span class="title-italic">settimanali (live)</span>
+                    </h3>
+                    <p class="card-description">Per chiarire dubbi su aste, trattative e saldo & stralcio, con casi studio analizzati in diretta.</p>
+                </div>
+            </div>
+
+            <!-- Card 6 - Tutor Dedicato -->
+            <div class="rem-bento-card" data-card="6">
+                <div class="card-image">
+                    <img src="https://leonemasterschool.it/wp-content/uploads/2025/12/Slide-16_9-44.png" alt="Tutor Dedicato">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">
+                        <span class="title-bold">Tutor</span> <span class="title-italic">dedicato</span>
+                    </h3>
+                    <p class="card-description">Che monitora i tuoi progressi e ti supporta nell'analisi delle operazioni e nella costruzione dei tuoi primi risultati.</p>
+                </div>
+            </div>
+
+            <!-- Card 7 - AI Tutor -->
+            <div class="rem-bento-card" data-card="7">
+                <div class="card-image">
+                    <img src="https://leonemasterschool.it/wp-content/uploads/2025/12/Slide-16_9-40.png" alt="AI Tutor">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">
+                        <span class="title-bold">AI Tutor LMS</span> <span class="title-light">disponibile 24/7</span>
+                    </h3>
+                    <p class="card-description">Per ottenere risposte immediate e supporto costante sui tuoi calcoli e procedure.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Dots -->
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+</div>
+
+<script>
+(function() {
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const bentoItems = document.querySelectorAll('[data-tilt]');
+
+    // Open lightbox on image click
+    bentoItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close lightbox
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
+
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // 3D Tilt Effect for Bento Items
+    bentoItems.forEach(item => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateY = ((x - centerX) / centerX) * 10;
+            
+            item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px) scale(1.02)`;
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+        });
+    });
+
+    // Smooth entrance animations
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.rem-bento-card');
+        
+        // Stagger animation on load
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 200 + (index * 150));
+        });
+
+        // Add click ripple effect
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    });
+
+    // Carousel Dots Navigation
+    function initCarouselDots() {
+        const grids = document.querySelectorAll('.rem-bento-grid');
+        
+        grids.forEach((grid, gridIndex) => {
+            const dotsContainer = grid.nextElementSibling;
+            if (!dotsContainer || !dotsContainer.classList.contains('carousel-dots')) return;
+            
+            const dots = dotsContainer.querySelectorAll('.dot');
+            const cards = grid.querySelectorAll('.rem-bento-card');
+            
+            // Update dots on scroll
+            grid.addEventListener('scroll', () => {
+                const scrollLeft = grid.scrollLeft;
+                const cardWidth = cards[0].offsetWidth;
+                const gap = 20;
+                const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            });
+            
+            // Click dots to navigate
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    const cardWidth = cards[0].offsetWidth;
+                    const gap = 20;
+                    grid.scrollTo({
+                        left: index * (cardWidth + gap),
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    }
+    
+    // Initialize dots after DOM is ready
+    if (window.innerWidth <= 968) {
+        window.addEventListener('load', initCarouselDots);
+    }
+})();
+</script>

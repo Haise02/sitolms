@@ -1,0 +1,542 @@
+﻿<!-- COSA OTTIENI MOBILE ACCORDION - Versione per Elementor Widget HTML -->
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* Reset */
+.cosa-ottieni-mobile {
+    font-family: 'Inter', sans-serif !important;
+    background: #0a1929 !important;
+    color: #ffffff;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    box-sizing: border-box;
+}
+
+.cosa-ottieni-mobile *,
+.cosa-ottieni-mobile *::before,
+.cosa-ottieni-mobile *::after {
+    box-sizing: border-box;
+}
+
+.ottieni-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Header */
+.ottieni-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.ottieni-header h2 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 44px !important;
+    font-weight: 800 !important;
+    line-height: 1.1;
+    color: #ffffff !important;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(208, 220, 239, 0.2);
+}
+
+.ottieni-header p {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75) !important;
+    margin-bottom: 16px;
+    font-weight: 400 !important;
+}
+
+.ottieni-header h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: #d0dcef !important;
+    margin-top: 28px;
+}
+
+/* Accordion List */
+.ottieni-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Accordion Item */
+.accordion-item {
+    background: #F5F3EF;
+    border-radius: 32px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.accordion-item:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Header dell'accordion */
+.accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.accordion-header:active {
+    opacity: 0.8;
+}
+
+/* Icona SVG grande - solo quando aperto */
+.accordion-icon {
+    display: none;
+}
+
+.accordion-item.active .accordion-icon {
+    display: block;
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.accordion-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Titolo */
+.accordion-title {
+    flex: 1;
+}
+
+.accordion-title .title-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Variazioni di stile titolo */
+.accordion-title .title-light {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+.accordion-title .title-bold {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 800 !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+.accordion-title .title-italic {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+/* Bottone circolare */
+.accordion-toggle {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.accordion-toggle::before,
+.accordion-toggle::after {
+    content: '';
+    position: absolute;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.accordion-toggle::before {
+    width: 20px;
+    height: 3px;
+}
+
+.accordion-toggle::after {
+    width: 3px;
+    height: 20px;
+}
+
+.accordion-item.active .accordion-toggle::after {
+    transform: rotate(90deg);
+    opacity: 0;
+}
+
+/* Colori diversi per ogni item */
+.accordion-item:nth-child(1) .accordion-toggle { background: #81C784; }
+.accordion-item:nth-child(2) .accordion-toggle { background: #66BB6A; }
+.accordion-item:nth-child(3) .accordion-toggle { background: #d0dcef; }
+.accordion-item:nth-child(4) .accordion-toggle { background: #9CCC65; }
+.accordion-item:nth-child(5) .accordion-toggle { background: #26A69A; }
+.accordion-item:nth-child(6) .accordion-toggle { background: #66BB6A; }
+.accordion-item:nth-child(7) .accordion-toggle { background: #4DB6AC; }
+.accordion-item:nth-child(8) .accordion-toggle { background: #81C784; }
+.accordion-item:nth-child(9) .accordion-toggle { background: #66BB6A; }
+.accordion-item:nth-child(10) .accordion-toggle { background: #d0dcef; }
+
+.accordion-item:nth-child(1) .accordion-icon { color: #81C784; }
+.accordion-item:nth-child(2) .accordion-icon { color: #66BB6A; }
+.accordion-item:nth-child(3) .accordion-icon { color: #d0dcef; }
+.accordion-item:nth-child(4) .accordion-icon { color: #9CCC65; }
+.accordion-item:nth-child(5) .accordion-icon { color: #26A69A; }
+.accordion-item:nth-child(6) .accordion-icon { color: #66BB6A; }
+.accordion-item:nth-child(7) .accordion-icon { color: #4DB6AC; }
+.accordion-item:nth-child(8) .accordion-icon { color: #81C784; }
+.accordion-item:nth-child(9) .accordion-icon { color: #66BB6A; }
+.accordion-item:nth-child(10) .accordion-icon { color: #d0dcef; }
+
+/* Contenuto */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 600px;
+}
+
+.accordion-body {
+    padding: 0 32px 32px 32px;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+}
+
+.accordion-text {
+    flex: 1;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.7;
+    color: #4a4a4a !important;
+    font-weight: 400 !important;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .ottieni-container {
+        padding: 40px 16px;
+    }
+
+    .ottieni-header h2 {
+        font-size: 36px !important;
+    }
+
+    .ottieni-header p {
+        font-size: 18px !important;
+    }
+
+    .ottieni-header h3 {
+        font-size: 22px !important;
+    }
+
+    .accordion-header {
+        padding: 24px 20px;
+    }
+
+    .accordion-title .title-text {
+        font-size: 24px !important;
+    }
+
+    .accordion-title .title-light,
+    .accordion-title .title-bold,
+    .accordion-title .title-italic {
+        font-size: 24px !important;
+    }
+
+    .accordion-toggle {
+        width: 52px;
+        height: 52px;
+    }
+
+    .accordion-body {
+        padding: 0 20px 28px 20px;
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .accordion-item.active .accordion-icon {
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+    }
+
+    .accordion-text {
+        font-size: 18px !important;
+    }
+
+    .accordion-item {
+        border-radius: 24px;
+    }
+}
+</style>
+
+<div class="cosa-ottieni-mobile">
+    <div class="ottieni-container">
+        <!-- Header -->
+        <div class="ottieni-header">
+            <h2>Cosa ottieni?</h2>
+            <p>Al termine del programma avrai la capacit&agrave; di costruire un ambiente familiare sereno, autonomo e rispettoso &mdash; con strumenti pratici per migliorare la comunicazione, la gestione emotiva e la crescita dei tuoi figli.</p>
+            <h3>Avrai la capacit&agrave; di:</h3>
+        </div>
+
+        <!-- Accordion List -->
+        <div class="ottieni-accordion">
+            <!-- Item 1 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-light">Comunicare in modo</span>
+                            <span class="title-bold">chiaro e assertivo</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Comunicare con i tuoi figli in modo chiaro e assertivo, senza urla, scontri o chiusure.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-italic">Gestire</span>
+                            <span class="title-bold">rabbia, paure e iperattivit&agrave;</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Gestire rabbia, paure e iperattivit&agrave; con strumenti pratici che calmano e guidano con autorevolezza.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Rafforzare</span>
+                            <span class="title-light">la loro autostima</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Rafforzare quotidianamente la loro autostima, con esercizi e linguaggi che fanno crescere fiducia e sicurezza.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-italic">Affrontare</span>
+                            <span class="title-bold">bugie, gelosie e conflitti</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Affrontare bugie, gelosie e conflitti con strategie che riportano equilibrio e rispetto reciproco.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Creare</span>
+                            <span class="title-italic">un clima familiare stabile</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Creare un clima familiare stabile e collaborativo, basato su ascolto, autonomia e responsabilit&agrave; condivisa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-italic">Guidare verso</span>
+                            <span class="title-bold">l'indipendenza</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Guidare i figli verso l'indipendenza, aiutandoli a gestire emozioni, scelte e conseguenze con maturit&agrave;.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Accordion functionality
+(function() {
+    function initAccordion() {
+        const accordionItems = document.querySelectorAll('.cosa-ottieni-mobile .accordion-item');
+        
+        if (!accordionItems.length) {
+            console.log('No accordion items found');
+            return;
+        }
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            if (header) {
+                header.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const isActive = item.classList.contains('active');
+                    
+                    // Chiudi tutti gli altri accordion
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current
+                    if (!isActive) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        });
+        
+        console.log('Accordion initialized with', accordionItems.length, 'items');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAccordion);
+    } else {
+        initAccordion();
+    }
+})();
+</script>
+

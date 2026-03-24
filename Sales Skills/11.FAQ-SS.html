@@ -1,0 +1,626 @@
+<!-- FAQ REM - Versione per Elementor Widget HTML -->
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+.faq-rem-section {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #0A1628 0%, #162642 100%);
+    color: #ffffff;
+    padding: 80px 60px;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Header */
+.faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.faq-main-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 56px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    margin-bottom: 16px;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em;
+}
+
+.faq-subtitle {
+    font-size: 18px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 400;
+}
+
+/* Accordion Container */
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 60px;
+}
+
+/* Accordion Item */
+.faq-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.faq-item:hover {
+    border-color: rgba(100, 181, 246, 0.4);
+    box-shadow: 0 4px 20px rgba(100, 181, 246, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.faq-item.active {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Question Button */
+.faq-question {
+    width: 100%;
+    padding: 28px 32px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+    gap: 20px;
+}
+
+/* Evita outline/box-shadow di focus (spesso reso "rosso" da temi/Elementor) */
+.faq-question:focus,
+.faq-question:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faq-question:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.faq-question-text {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    line-height: 1.4;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+}
+
+/* Icon */
+.faq-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(200, 187, 152, 0.22);
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.active .faq-icon {
+    background: #C8BB98;
+    transform: rotate(180deg);
+}
+
+.faq-icon svg {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+}
+
+.faq-item .faq-icon svg {
+    color: #C8BB98;
+}
+
+.faq-item.active .faq-icon svg {
+    color: #193054;
+}
+
+/* Answer */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer-content {
+    padding: 0 32px 32px 32px;
+    font-size: 16px !important;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85) !important;
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+}
+
+.faq-answer-content strong {
+    font-weight: 700 !important;
+    color: #ffffff !important;
+}
+
+.faq-answer-content ul {
+    margin: 20px 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.faq-answer-content li {
+    padding: 12px 0 12px 28px;
+    position: relative;
+}
+
+.faq-answer-content li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #C8BB98;
+    font-weight: 700;
+}
+
+.faq-answer-content .highlight-block {
+    background: rgba(200, 187, 152, 0.10);
+    border-left: 3px solid #C8BB98;
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.faq-answer-content .block-title {
+    font-weight: 700;
+    color: #C8BB98;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* CTA Section */
+.faq-cta {
+    text-align: center;
+    padding: 48px 32px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.16) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.faq-cta-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+}
+
+.faq-cta-subtitle {
+    font-size: 16px !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.faq-cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.faq-btn {
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.faq-btn-primary {
+    background: #C8BB98;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(200, 187, 152, 0.28);
+}
+
+.faq-btn-primary:hover {
+    background: #B9AB86;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(200, 187, 152, 0.38);
+}
+
+.faq-btn-secondary {
+    background: rgba(255, 255, 255, 0.95);
+    color: #0A1628;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.faq-btn-secondary:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .faq-rem-section {
+        padding: 60px 20px;
+    }
+
+    .faq-main-title {
+        font-size: 40px !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .faq-subtitle {
+        font-size: 16px !important;
+    }
+
+    .faq-question {
+        padding: 20px 16px;
+        gap: 12px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .faq-question-text {
+        font-size: 18px !important;
+        line-height: 1.3;
+        width: calc(100% - 40px);
+        max-width: calc(100% - 40px);
+    }
+
+    .faq-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .faq-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .faq-answer-content {
+        padding: 0 16px 24px 16px;
+        font-size: 15px !important;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .faq-cta {
+        padding: 32px 20px;
+    }
+
+    .faq-cta-title {
+        font-size: 26px !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .faq-cta-buttons {
+        flex-direction: column;
+    }
+
+    .faq-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-rem-section {
+        padding: 40px 16px;
+    }
+
+    .faq-main-title {
+        font-size: 28px !important;
+        line-height: 1.2 !important;
+    }
+
+    .faq-question {
+        padding: 16px 12px;
+        gap: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .faq-question-text {
+        font-size: 16px !important;
+        line-height: 1.3;
+        width: calc(100% - 34px);
+        max-width: calc(100% - 34px);
+    }
+
+    .faq-icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+    }
+
+    .faq-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .faq-answer-content {
+        padding: 0 12px 20px 12px;
+        font-size: 14px !important;
+        line-height: 1.6;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .faq-cta {
+        padding: 28px 16px;
+    }
+
+    .faq-cta-title {
+        font-size: 22px !important;
+    }
+
+    .faq-cta-subtitle {
+        font-size: 14px !important;
+    }
+}
+</style>
+
+<section class="faq-rem-section">
+    <div class="faq-container">
+        <!-- Header -->
+        <div class="faq-header">
+            <h2 class="faq-main-title">Hai domande? Ecco le risposte.</h2>
+        </div>
+
+        <!-- Accordion -->
+        <div class="faq-accordion">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">Quanto dura il programma?</span>
+                    <div class="faq-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Il Master Sales Skills &egrave; un programma di affiancamento completo, composto da lezioni registrate, eventi dal vivo, e sessioni di consulenza settimanali (live) per un totale di circa <strong>150&ndash;200 ore</strong> di formazione, affiancamento e supporto.</p>
+                        <p>Tutte le sessioni di affiancamento live sono registrate e sempre disponibili in modo che tu possa seguirlo ai tuoi ritmi e ovunque ti trovi: <strong>la formazione si adatta al tuo tempo, non il contrario.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">Posso seguirlo mentre lavoro?</span>
+                    <div class="faq-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>S&igrave;.</strong> Le lezioni si svolgono in orario serale e vengono sempre registrate.</p>
+                        <p>Questo ti permette di formarti con costanza, <strong>senza interrompere la tua attivit&agrave; o la gestione dei clienti.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">Serve esperienza nel settore vendite?</span>
+                    <div class="faq-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>No.</strong> Il programma parte da dove sei.</p>
+                        <p>Che tu sia un venditore alle prime armi o un professionista con anni di esperienza, troverai protocolli e strategie applicabili al tuo livello, con feedback diretti dai Docenti&ndash;Mentori.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">Ricevo certificazioni o riconoscimenti ufficiali?</span>
+                    <div class="faq-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>S&igrave;.</strong> Al termine del programma riceverai l&rsquo;<strong>Attestato ufficiale Leone Master School</strong>, che certifica le competenze acquisite, e <strong>fino a 12 CFU universitari</strong>, riconosciuti dal Polo Universitario IUL e validabili presso gli atenei convenzionati.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-question-text">Come funziona l'affiancamento?</span>
+                    <div class="faq-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Durante tutto il Programma verrai seguito da un team di Docenti&ndash;Mentori, Tutor dedicati e professionisti delle vendite, che ti aiutano a restare sul Programma giusto e a tradurre teoria in risultati.</p>
+                        
+                        <div class="highlight-block">
+                            <span class="block-title">Sessioni di consulenza settimanali (live)</span>
+                            Sessioni (live) per portare casi reali e ricevere feedback immediati.
+                        </div>
+
+                        <div class="highlight-block">
+                            <span class="block-title">Tutor personale</span>
+                            Monitora i tuoi progressi e ti aiuta a mantenere ritmo e focus operativo.
+                        </div>
+
+                        <div class="highlight-block">
+                            <span class="block-title">AI Tutor LMS 24/7</span>
+                            Sempre disponibile per rispondere ai tuoi dubbi e fornirti script, framework e strategie in tempo reale.
+                        </div>
+
+                        <p style="margin-top: 20px;"><strong>L&rsquo;affiancamento LMS &egrave; pensato per accompagnarti dal sapere all&rsquo;azione, fino ai risultati misurabili nel tuo business.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="faq-cta">
+            <h3 class="faq-cta-title">Conosciamoci meglio</h3>
+            <p class="faq-cta-subtitle">Prenota una chiamata con un Selezionatore per chiedere maggiori informazioni</p>
+            <div class="faq-cta-buttons">
+                <a href="#" class="faq-btn faq-btn-primary">
+                    Prenota una chiamata
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="#" class="faq-btn faq-btn-secondary">
+                    Scopri di più
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const answerContent = item.querySelector('.faq-answer-content');
+        
+        // Set initial max-height to 0
+        answer.style.maxHeight = '0';
+        
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    const otherQuestion = otherItem.querySelector('.faq-question');
+                    otherAnswer.style.maxHeight = '0';
+                    otherQuestion.setAttribute('aria-expanded', 'false');
+                }
+            });
+            
+            // Toggle current item
+            if (isActive) {
+                item.classList.remove('active');
+                answer.style.maxHeight = '0';
+                question.setAttribute('aria-expanded', 'false');
+            } else {
+                item.classList.add('active');
+                answer.style.maxHeight = answerContent.scrollHeight + 'px';
+                question.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+    
+    // Smooth entrance animation
+    document.addEventListener('DOMContentLoaded', () => {
+        faqItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                item.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 100 + (index * 100));
+        });
+    });
+    
+    // Ripple effect on button click
+    const buttons = document.querySelectorAll('.faq-btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                left: ${x}px;
+                top: ${y}px;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            `;
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+    
+    // Add ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+})();
+</script>

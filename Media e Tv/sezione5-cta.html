@@ -1,0 +1,189 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-cta {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  background: var(--navy);
+  padding: 100px 0 120px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.mt-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(76,123,244,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.mt-cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Box */
+.mt-cta-box {
+  border-radius: 32px;
+  padding: 72px 56px;
+  background: linear-gradient(160deg, rgba(13,36,80,0.5) 0%, rgba(7,22,46,0.8) 100%);
+  border: 1px solid rgba(76,123,244,0.12);
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-cta-box.mt-vis { animation: mtCtaUp 0.8s ease forwards; }
+
+.mt-cta-box:hover {
+  border-color: rgba(76,123,244,0.2);
+}
+
+/* Label */
+.mt-cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.mt-cta-label::before,
+.mt-cta-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.mt-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+.mt-cta h2 em { font-style: italic; color: var(--beige); }
+
+.mt-cta-desc {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.75;
+  max-width: 540px;
+  margin: 0 auto 40px;
+}
+
+/* CTA button */
+.mt-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 40px;
+  border-radius: 60px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: #ffffff;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mt-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(76,123,244,0.3), 0 0 60px rgba(76,123,244,0.1);
+}
+
+.mt-cta-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+.mt-cta-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* Secondary link */
+.mt-cta-secondary {
+  display: block;
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+}
+.mt-cta-secondary:hover {
+  color: rgba(255,255,255,0.6);
+}
+
+@keyframes mtCtaUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .mt-cta { padding: 70px 0 90px; }
+  .mt-cta-inner { padding: 0 20px; }
+  .mt-cta-box { padding: 48px 28px; border-radius: 24px; }
+  .mt-cta h2 { font-size: 34px; }
+  .mt-cta-btn { padding: 16px 32px; font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .mt-cta { padding: 50px 0 70px; }
+  .mt-cta-inner { padding: 0 16px; }
+  .mt-cta-box { padding: 36px 20px; border-radius: 20px; }
+  .mt-cta h2 { font-size: 28px; }
+  .mt-cta-desc { font-size: 14px; }
+  .mt-cta-btn { padding: 14px 28px; font-size: 13px; }
+}
+</style>
+
+<div class="mt-cta">
+  <div class="mt-cta-inner">
+
+    <div class="mt-cta-box" id="mtCtaBox">
+      <div class="mt-cta-label">Unisciti a Noi</div>
+      <h2>Vuoi far parte della <em>prossima storia?</em></h2>
+      <p class="mt-cta-desc">I media parlano di noi perché i nostri studenti ottengono risultati reali. Scopri i percorsi della Leone Master School e inizia il tuo.</p>
+      <a href="#" class="mt-cta-btn">Scopri i Percorsi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#" class="mt-cta-secondary">oppure contattaci per maggiori informazioni →</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('mt-vis'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.1});
+    document.querySelectorAll('#mtCtaBox').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('#mtCtaBox').forEach(function(el){ el.classList.add('mt-vis'); });
+  }
+})();
+</script>

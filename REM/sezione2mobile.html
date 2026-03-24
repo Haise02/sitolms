@@ -1,0 +1,650 @@
+<!-- COSA OTTIENI MOBILE ACCORDION - Versione per Elementor Widget HTML -->
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* Reset */
+.cosa-ottieni-mobile {
+    font-family: 'Inter', sans-serif !important;
+    background: #0a1929 !important;
+    color: #ffffff;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    box-sizing: border-box;
+}
+
+.cosa-ottieni-mobile *,
+.cosa-ottieni-mobile *::before,
+.cosa-ottieni-mobile *::after {
+    box-sizing: border-box;
+}
+
+.ottieni-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Header */
+.ottieni-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.ottieni-header h2 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 44px !important;
+    font-weight: 800 !important;
+    line-height: 1.1;
+    color: #ffffff !important;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(76, 175, 80, 0.2);
+}
+
+.ottieni-header p {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75) !important;
+    margin-bottom: 16px;
+    font-weight: 400 !important;
+}
+
+.ottieni-header h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: #4CAF50 !important;
+    margin-top: 28px;
+}
+
+/* Accordion List */
+.ottieni-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Accordion Item */
+.accordion-item {
+    background: #F5F3EF;
+    border-radius: 32px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.accordion-item:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Header dell'accordion */
+.accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.accordion-header:active {
+    opacity: 0.8;
+}
+
+/* Icona SVG grande - solo quando aperto */
+.accordion-icon {
+    display: none;
+}
+
+.accordion-item.active .accordion-icon {
+    display: block;
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.accordion-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Titolo */
+.accordion-title {
+    flex: 1;
+}
+
+.accordion-title .title-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Variazioni di stile titolo */
+.accordion-title .title-light {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+.accordion-title .title-bold {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 800 !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+.accordion-title .title-italic {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+    color: #1a1a1a !important;
+    font-size: inherit !important;
+}
+
+/* Bottone circolare */
+.accordion-toggle {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.accordion-toggle::before,
+.accordion-toggle::after {
+    content: '';
+    position: absolute;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.accordion-toggle::before {
+    width: 20px;
+    height: 3px;
+}
+
+.accordion-toggle::after {
+    width: 3px;
+    height: 20px;
+}
+
+.accordion-item.active .accordion-toggle::after {
+    transform: rotate(90deg);
+    opacity: 0;
+}
+
+/* Colori diversi per ogni item */
+.accordion-item:nth-child(1) .accordion-toggle { background: #81C784; }
+.accordion-item:nth-child(2) .accordion-toggle { background: #66BB6A; }
+.accordion-item:nth-child(3) .accordion-toggle { background: #4CAF50; }
+.accordion-item:nth-child(4) .accordion-toggle { background: #9CCC65; }
+.accordion-item:nth-child(5) .accordion-toggle { background: #26A69A; }
+.accordion-item:nth-child(6) .accordion-toggle { background: #66BB6A; }
+.accordion-item:nth-child(7) .accordion-toggle { background: #4DB6AC; }
+.accordion-item:nth-child(8) .accordion-toggle { background: #81C784; }
+.accordion-item:nth-child(9) .accordion-toggle { background: #66BB6A; }
+.accordion-item:nth-child(10) .accordion-toggle { background: #4CAF50; }
+
+.accordion-item:nth-child(1) .accordion-icon { color: #81C784; }
+.accordion-item:nth-child(2) .accordion-icon { color: #66BB6A; }
+.accordion-item:nth-child(3) .accordion-icon { color: #4CAF50; }
+.accordion-item:nth-child(4) .accordion-icon { color: #9CCC65; }
+.accordion-item:nth-child(5) .accordion-icon { color: #26A69A; }
+.accordion-item:nth-child(6) .accordion-icon { color: #66BB6A; }
+.accordion-item:nth-child(7) .accordion-icon { color: #4DB6AC; }
+.accordion-item:nth-child(8) .accordion-icon { color: #81C784; }
+.accordion-item:nth-child(9) .accordion-icon { color: #66BB6A; }
+.accordion-item:nth-child(10) .accordion-icon { color: #4CAF50; }
+
+/* Contenuto */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 600px;
+}
+
+.accordion-body {
+    padding: 0 32px 32px 32px;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+}
+
+.accordion-text {
+    flex: 1;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.7;
+    color: #4a4a4a !important;
+    font-weight: 400 !important;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .ottieni-container {
+        padding: 40px 16px;
+    }
+
+    .ottieni-header h2 {
+        font-size: 36px !important;
+    }
+
+    .ottieni-header p {
+        font-size: 18px !important;
+    }
+
+    .ottieni-header h3 {
+        font-size: 22px !important;
+    }
+
+    .accordion-header {
+        padding: 24px 20px;
+    }
+
+    .accordion-title .title-text {
+        font-size: 24px !important;
+    }
+
+    .accordion-title .title-light,
+    .accordion-title .title-bold,
+    .accordion-title .title-italic {
+        font-size: 24px !important;
+    }
+
+    .accordion-toggle {
+        width: 52px;
+        height: 52px;
+    }
+
+    .accordion-body {
+        padding: 0 20px 28px 20px;
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .accordion-item.active .accordion-icon {
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+    }
+
+    .accordion-text {
+        font-size: 18px !important;
+    }
+
+    .accordion-item {
+        border-radius: 24px;
+    }
+}
+</style>
+
+<div class="cosa-ottieni-mobile">
+    <div class="ottieni-container">
+        <!-- Header -->
+        <div class="ottieni-header">
+            <h2>Cosa ottieni?</h2>
+            <p>Al termine del Master in Real Estate avrai sviluppato le competenze, la mentalità e gli strumenti operativi per gestire ogni fase di un'operazione immobiliare — dall'analisi dell'affare alla rivendita, con metodo e controllo dei numeri.</p>
+            <h3>Avrai la capacità di:</h3>
+        </div>
+
+        <!-- Accordion List -->
+        <div class="ottieni-accordion">
+            <!-- Item 1 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-light">Trovare le</span>
+                            <span class="title-bold">giuste opportunità</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Riconosci immobili sottovalutati e impari a valutare subito margini, rischi e potenziale di guadagno.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-italic">Calcolare il</span>
+                            <span class="title-bold">valore reale</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Stimi con sicurezza valore di mercato, ristrutturazione, affitto, rendita e margine reale.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Negoziare</span>
+                            <span class="title-light">con vantaggio</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Tratti con proprietari, agenti e banche, ottenendo condizioni vantaggiose grazie a competenza e metodo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-italic">Proteggere i</span>
+                            <span class="title-bold">tuoi risultati</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Eviti errori fiscali, giuridici e contrattuali. Strutturi operazioni in sicurezza con consulenti professionali.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-italic">Valorizzare</span>
+                            <span class="title-bold">ciò che acquisti</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Coordini ristrutturazioni, progetti e fornitori per estrarre valore da ogni immobile in modo professionale.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Costruire</span>
+                            <span class="title-italic">la tua rete professionale</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Conosci investitori, professionisti e operatori che accelerano la crescita del tuo business immobiliare.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-italic">Ottenere</span>
+                            <span class="title-bold">capitali e fiducia</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Accedi a finanziamenti migliori grazie a credibilità, dati e capacità operativa dimostrata.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-italic">Replicare</span>
+                            <span class="title-bold">le tue operazioni nel tempo</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <polyline points="1 20 1 14 7 14"></polyline>
+                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Trasformi conoscenza in processo ripetibile, scalabile e trasferibile ad altri.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-bold">Avviare</span>
+                            <span class="title-light">una professione autonoma</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Costruisci la tua attività immobiliare con identità, autorevolezza e clienti reali.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 10 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <div class="title-text">
+                            <span class="title-italic">Ottenere</span>
+                            <span class="title-bold">la libertà</span>
+                        </div>
+                    </div>
+                    <div class="accordion-toggle"></div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6m-9-9h6m6 0h6"></path>
+                            </svg>
+                        </div>
+                        <div class="accordion-text">
+                            Crei tempo, sicurezza economica e controllo sulle tue scelte di vita e di business.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Accordion functionality
+(function() {
+    function initAccordion() {
+        const accordionItems = document.querySelectorAll('.cosa-ottieni-mobile .accordion-item');
+        
+        if (!accordionItems.length) {
+            console.log('No accordion items found');
+            return;
+        }
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            if (header) {
+                header.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const isActive = item.classList.contains('active');
+                    
+                    // Chiudi tutti gli altri accordion
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current
+                    if (!isActive) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        });
+        
+        console.log('Accordion initialized with', accordionItems.length, 'items');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAccordion);
+    } else {
+        initAccordion();
+    }
+})();
+</script>

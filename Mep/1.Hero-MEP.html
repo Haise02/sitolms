@@ -1,0 +1,552 @@
+<!-- HERO REM - COPIA TUTTO QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Sfondo animato navy #193054 → light blue #d0dcef -->
+<div class="iridescence-bg-container-hero-rem" id="iridescence-bg-hero-rem"></div>
+
+<!-- Cerchi Glassmorphism - Blocco unico a triangolo -->
+<div class="floating-circles-hero-rem">
+    <div class="triangle-block-hero-rem">
+        <div class="glass-circle-hero-rem circle-1"></div>
+        <div class="glass-circle-hero-rem circle-2"></div>
+        <div class="glass-circle-hero-rem circle-3"></div>
+    </div>
+</div>
+
+<section class="hero-section-hero-rem">
+    <div class="hero-container-hero-rem">
+        <!-- Copy Centrale -->
+        <div class="hero-content-hero-rem">
+            <h1 class="hero-title-hero-rem">
+                Master in Evoluzione Personale
+            </h1>
+            
+            <p class="hero-subtitle-hero-rem">
+                Programma di crescita personale con affiancamento individuale.
+            </p>
+            
+            <!-- Immagine Hero -->
+            <div class="hero-image-hero-rem">
+                <img src="PLACEHOLDER_HERO_MEP" alt="Master in Evoluzione Personale" class="hero-img-hero-rem">
+            </div>
+            
+            <p class="hero-description-hero-rem">
+                Ricevi gli strumenti per rafforzare la tua autostima, gestire meglio emozioni, relazioni e soldi per essere pienamente soddisfatto.
+            </p>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="cta-buttons-hero-rem">
+            <button onclick="openTypeformInParent(event)" class="btn-hero-rem btn-primary-hero-rem">Scopri se il programma fa al caso tuo</button>
+        </div>
+        
+        <!-- CTA Description -->
+        <p class="cta-description-hero-rem">Prenota una chiamata con un Selezionatore per chiedere maggiori informazioni</p>
+    </div>
+</section>
+
+<!-- CSS INLINE -->
+<style>
+/* Reset Elementor */
+.elementor-widget-html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.elementor-widget-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Hero Section - Container per sfondo */
+.hero-section-hero-rem {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 40px;
+    overflow: hidden;
+    background: transparent;
+    isolation: isolate;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Sfondo animato navy - CONTENUTO nella section */
+.iridescence-bg-container-hero-rem {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none !important;
+}
+
+.iridescence-bg-container-hero-rem canvas {
+    pointer-events: none !important;
+}
+
+.hero-container-hero-rem {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+/* Copy Centrale */
+.hero-content-hero-rem {
+    color: white;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title-hero-rem {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 80px !important;
+    font-weight: 600 !important;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: white !important;
+}
+
+.hero-subtitle-hero-rem {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 22px !important;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95) !important;
+    margin-bottom: 32px;
+    font-weight: 600 !important;
+    text-align: center;
+}
+
+/* Hero Image */
+.hero-image-hero-rem {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 32px;
+    position: relative;
+    z-index: 2;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(208, 220, 239, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hero-image-hero-rem:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(208, 220, 239, 0.5);
+}
+
+.hero-image-hero-rem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(208, 220, 239, 0.1) 0%, rgba(25, 48, 84, 0.1) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-img-hero-rem {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.hero-description-hero-rem {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75) !important;
+    margin-bottom: 0;
+    font-weight: 400 !important;
+    text-align: center;
+    font-style: italic;
+}
+
+/* CTA Buttons */
+.cta-buttons-hero-rem {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-hero-rem {
+    padding: 18px 36px;
+    border-radius: 12px;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    font-family: 'Inter', sans-serif !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary-hero-rem {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    color: white !important;
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.4);
+}
+
+.btn-primary-hero-rem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.5);
+}
+
+.btn-primary-hero-rem:active {
+    opacity: 0.9;
+}
+
+/* CTA Description */
+.cta-description-hero-rem {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    text-align: center;
+    margin-top: 8px;
+    font-weight: 400;
+}
+
+/* Cerchi Glassmorphism */
+.floating-circles-hero-rem {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Blocco triangolo che fluttua come unità - OVUNQUE */
+.triangle-block-hero-rem {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    animation: float-wander-hero-rem 25s infinite ease-in-out;
+}
+
+.glass-circle-hero-rem {
+    position: absolute;
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 25% 75%,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(208, 220, 239, 0.6) 15%,
+        rgba(208, 220, 239, 0.3) 40%,
+        rgba(208, 220, 239, 0.15) 70%,
+        rgba(208, 220, 239, 0.05) 100%
+    );
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 4px solid rgba(208, 220, 239, 0.8);
+    box-shadow: 0 0 80px rgba(208, 220, 239, 0.6),
+                0 0 120px rgba(208, 220, 239, 0.4),
+                0 0 160px rgba(208, 220, 239, 0.2),
+                inset 0 0 60px rgba(255, 255, 255, 0.3);
+}
+
+/* Disposizione a triangolo equilatero - distanza 36px (metà raggio) tra bordi
+   Distanza centro-centro = 144 (diametro) + 36 (gap) = 180px */
+.glass-circle-hero-rem.circle-1 {
+    top: -104px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.glass-circle-hero-rem.circle-2 {
+    top: 52px;
+    left: calc(50% - 90px - 72px);
+}
+
+.glass-circle-hero-rem.circle-3 {
+    top: 52px;
+    left: calc(50% + 90px - 72px);
+}
+
+@keyframes float-wander-hero-rem {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.7;
+    }
+    20% {
+        transform: translate(60vw, -15vh) scale(1.08) rotate(45deg);
+        opacity: 0.85;
+    }
+    40% {
+        transform: translate(-20vw, 40vh) scale(0.92) rotate(-30deg);
+        opacity: 0.75;
+    }
+    60% {
+        transform: translate(50vw, 50vh) scale(1.05) rotate(60deg);
+        opacity: 0.8;
+    }
+    80% {
+        transform: translate(-30vw, -10vh) scale(0.95) rotate(-45deg);
+        opacity: 0.78;
+    }
+    100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.7;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hero-title-hero-rem {
+        font-size: 64px !important;
+    }
+
+    .hero-subtitle-hero-rem {
+        font-size: 20px !important;
+    }
+
+    .hero-description-hero-rem {
+        font-size: 18px !important;
+    }
+
+    .triangle-block-hero-rem {
+        transform: scale(0.83);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section-hero-rem {
+        padding: 60px 24px;
+        min-height: 80vh;
+    }
+
+    .hero-title-hero-rem {
+        font-size: 48px !important;
+    }
+
+    .hero-subtitle-hero-rem {
+        font-size: 20px !important;
+        margin-bottom: 28px;
+    }
+
+    .hero-description-hero-rem {
+        font-size: 18px !important;
+    }
+
+    .hero-image-hero-rem {
+        margin: 0 auto 28px;
+        max-width: 100%;
+        border-radius: 16px;
+    }
+
+    .triangle-block-hero-rem {
+        transform: scale(0.67);
+    }
+
+    .cta-buttons-hero-rem {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .btn-hero-rem {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.4;
+        padding: 18px 24px;
+    }
+
+    .cta-description-hero-rem {
+        padding: 0 16px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section-hero-rem {
+        padding: 40px 20px;
+    }
+
+    .hero-title-hero-rem {
+        font-size: 40px !important;
+    }
+
+    .hero-subtitle-hero-rem {
+        font-size: 18px !important;
+        margin-bottom: 24px;
+    }
+
+    .hero-description-hero-rem {
+        font-size: 18px !important;
+    }
+
+    .hero-image-hero-rem {
+        margin: 0 auto 24px;
+    }
+
+    .triangle-block-hero-rem {
+        transform: scale(0.56);
+    }
+
+    .btn-hero-rem {
+        padding: 16px 20px;
+        font-size: 16px !important;
+    }
+
+    .cta-buttons-hero-rem {
+        padding: 0 12px;
+    }
+
+    .cta-description-hero-rem {
+        padding: 0 12px;
+        font-size: 14px !important;
+    }
+}
+</style>
+
+<!-- JAVASCRIPT INLINE -->
+<script>
+// ========================================
+// SFONDO ANIMATO NAVY #193054
+// ========================================
+(function() {
+  const vShader = `
+attribute vec2 position;
+varying vec2 vUv;
+void main() {
+  vUv = position * 0.5 + 0.5;
+  gl_Position = vec4(position, 0.0, 1.0);
+}`;
+
+  const fShader = `
+precision highp float;
+uniform float uTime;
+uniform vec2 uResolution;
+varying vec2 vUv;
+void main() {
+  float mr = min(uResolution.x, uResolution.y);
+  vec2 uv = (vUv * 2.0 - 1.0) * uResolution / mr;
+  float d = -uTime * 0.5;
+  float a = 0.0;
+  for (float i = 0.0; i < 8.0; ++i) {
+    a += cos(i - d - a * uv.x);
+    d += sin(uv.y * i + a);
+  }
+  d += uTime * 0.5;
+  float p1 = cos(uv.x * d) * 0.5 + 0.5;
+  float p2 = cos(uv.y * a) * 0.5 + 0.5;
+  
+  // Navy #193054 (rgb(25, 48, 84)) -> light blue #d0dcef (rgb(208, 220, 239))
+  vec3 top = vec3(0.098, 0.188, 0.329);    // #193054
+  vec3 bottom = vec3(0.816, 0.863, 0.937); // #d0dcef
+  vec3 topBright = min(top * 1.16, vec3(1.0));
+  vec3 grad = mix(bottom, topBright, vUv.y);
+  float n = (p1 - 0.5) * 0.18 + (p2 - 0.5) * 0.10;
+  vec3 col = grad + vec3(n);
+  col = pow(clamp(col, 0.0, 1.0), vec3(0.92));
+  col = min(col + vec3(0.02), vec3(1.0));
+  
+  gl_FragColor = vec4(col, 1.0);
+}`;
+
+  function initBg() {
+    const container = document.getElementById('iridescence-bg-hero-rem');
+    if (!container) return;
+    
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none';
+    container.appendChild(canvas);
+    
+    const gl = canvas.getContext('webgl');
+    if (!gl) return;
+    
+    function createShader(type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      return shader;
+    }
+    
+    const program = gl.createProgram();
+    gl.attachShader(program, createShader(gl.VERTEX_SHADER, vShader));
+    gl.attachShader(program, createShader(gl.FRAGMENT_SHADER, fShader));
+    gl.linkProgram(program);
+    gl.useProgram(program);
+    
+    const vertices = new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]);
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+    
+    const pos = gl.getAttribLocation(program, 'position');
+    gl.enableVertexAttribArray(pos);
+    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+    
+    const uTime = gl.getUniformLocation(program, 'uTime');
+    const uRes = gl.getUniformLocation(program, 'uResolution');
+    
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = container.offsetWidth * dpr;
+      canvas.height = container.offsetHeight * dpr;
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.uniform2f(uRes, canvas.width, canvas.height);
+    }
+    
+    window.addEventListener('resize', resize);
+    resize();
+    
+    function animate(t) {
+      gl.uniform1f(uTime, t * 0.001);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      requestAnimationFrame(animate);
+    }
+    animate(0);
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBg);
+  } else {
+    setTimeout(initBg, 100);
+  }
+})();
+
+// Open Typeform in parent window
+function openTypeformInParent(event) {
+    event.preventDefault();
+    
+    console.log('Sending Typeform open request to parent');
+    
+    // Send message to parent window to open Typeform
+    window.parent.postMessage({
+        type: 'openTypeform',
+        formId: 'mGllVklt'
+    }, '*');
+    
+    console.log('Message sent');
+}
+</script>
