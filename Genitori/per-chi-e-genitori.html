@@ -262,74 +262,44 @@
 .pci-hero-img-group {
   position: relative;
   width: 100%;
-  height: 420px;
+  height: 480px;
   display: flex;
-  gap: 16px;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
 }
-.pci-hero-img-col {
-  flex: 1;
+.pci-hero-img-single {
   position: relative;
-  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
   overflow: hidden;
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  animation: pciImgFloat1 6s ease-in-out infinite;
 }
-.pci-hero-img-col:hover {
-  border-color: rgba(76,123,244,0.2);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+.pci-hero-img-single:hover {
+  border-color: rgba(76,123,244,0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3), 0 0 40px rgba(76,123,244,0.1);
 }
-.pci-hero-img-col:nth-child(2) {
-  margin-top: -24px;
-  margin-bottom: -24px;
-  z-index: 2;
-}
-.pci-hero-img-col img {
+.pci-hero-img-single img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-.pci-hero-img-col::after {
+.pci-hero-img-single::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--navy) 0%, transparent 40%);
+  background: linear-gradient(to top, var(--navy) 0%, transparent 50%);
   pointer-events: none;
   z-index: 2;
 }
-.pci-hero-img-col:first-child::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, var(--navy) 0%, transparent 30%);
-  pointer-events: none;
-  z-index: 2;
-}
-.pci-hero-img-col:last-child::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to left, var(--navy) 0%, transparent 30%);
-  pointer-events: none;
-  z-index: 2;
-}
-.pci-hero-img-col:nth-child(1) { animation: pciImgFloat1 6s ease-in-out infinite; }
-.pci-hero-img-col:nth-child(2) { animation: pciImgFloat2 7s ease-in-out infinite; }
-.pci-hero-img-col:nth-child(3) { animation: pciImgFloat3 8s ease-in-out infinite; }
 @keyframes pciImgFloat1 {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
-}
-@keyframes pciImgFloat2 {
-  0%, 100% { transform: translateY(-24px); }
-  50% { transform: translateY(-32px); }
-}
-@keyframes pciImgFloat3 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
 }
 
 /* ── Logo banner ── */
@@ -1156,7 +1126,7 @@
   .pci-hero-content { grid-template-columns: 1fr; padding: 80px 24px 40px; gap: 40px; }
   .pci-hero h1 { font-size: 40px; }
   .pci-hero-sub { font-size: 16px; }
-  .pci-hero-img-group { height: 280px; }
+  .pci-hero-img-group { height: 320px; }
   .pci-hero-logos-label { position: static; margin: 0 0 12px 24px; }
   .pci-logo-track-wrapper { margin-left: 0; }
   .pci-intro { padding: 80px 24px; }
@@ -1183,7 +1153,7 @@
 @media (max-width: 480px) {
   .pci-hero-content { padding: 60px 18px 30px; }
   .pci-hero h1 { font-size: 32px; }
-  .pci-hero-img-group { height: 220px; gap: 10px; }
+  .pci-hero-img-group { height: 260px; }
   .pci-hero-features { gap: 16px; }
   .pci-hero-feature { font-size: 10px; }
   .pci-intro h2 { font-size: 28px; }
@@ -1247,14 +1217,8 @@
 
       <div class="pci-hero-right pci-reveal pci-reveal-delay-2">
         <div class="pci-hero-img-group">
-          <div class="pci-hero-img-col">
-            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Imprenditori/images/imprenditori-1.png" alt="Studente 1">
-          </div>
-          <div class="pci-hero-img-col">
-            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Imprenditori/images/siria.png" alt="Studente 2">
-          </div>
-          <div class="pci-hero-img-col">
-            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Imprenditori/images/imprenditori-3.png" alt="Studente 3">
+          <div class="pci-hero-img-single">
+            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Genitori/images/Leonardo-e-figlia-scaled-1.webp" alt="Genitori - Leone Master School">
           </div>
         </div>
       </div>
