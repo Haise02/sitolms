@@ -123,6 +123,63 @@
   animation: csFadeUp 0.8s ease forwards 0.55s;
 }
 
+/* ── Video Box ── */
+.cs-hero-video {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid rgba(76,123,244,0.15);
+  box-shadow: 0 20px 80px rgba(0,0,0,0.5), 0 0 40px rgba(76,123,244,0.08);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: csFadeUp 0.8s ease forwards 0.6s;
+}
+.cs-hero-video iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.cs-hero-video-unmute {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 10px 18px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+.cs-hero-video-unmute:hover {
+  background: rgba(76,123,244,0.5);
+  border-color: rgba(76,123,244,0.6);
+}
+.cs-hero-video-unmute svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.cs-hero-video-unmute.hidden { display: none; }
+
 .cs-hero-text {
   font-size: 17px;
   font-weight: 300;
@@ -296,6 +353,8 @@
   }
   .cs-hero h1 { font-size: 42px; }
   .cs-hero-sub { font-size: 20px; }
+  .cs-hero-video { border-radius: 14px; margin-bottom: 32px; }
+  .cs-hero-video-unmute { bottom: 12px; right: 12px; padding: 8px 14px; font-size: 12px; }
   .cs-hero-text { font-size: 15px; }
   .cs-hero-stats { gap: 12px; flex-wrap: wrap; justify-content: center; }
   .cs-stat { padding: 16px 18px; }
@@ -308,6 +367,8 @@
   .cs-hero { padding: 90px 16px 60px; }
   .cs-hero h1 { font-size: 34px; }
   .cs-hero-sub { font-size: 18px; }
+  .cs-hero-video { border-radius: 10px; margin-bottom: 28px; }
+  .cs-hero-video-unmute { bottom: 8px; right: 8px; padding: 6px 12px; font-size: 11px; border-radius: 8px; }
   .cs-hero-stats { gap: 10px; flex-direction: column; }
   .cs-stat { padding: 14px 16px; }
   .cs-stat-num { font-size: 24px; }
@@ -325,6 +386,14 @@
     <h1>Non siamo una <span class="cs-gradient">semplice scuola.</span></h1>
 
     <p class="cs-hero-sub">"La prima scuola in Italia con master di affiancamento orientati ai risultati"</p>
+
+    <div class="cs-hero-video" id="csHeroVideo">
+      <iframe id="csYTPlayer" src="https://www.youtube.com/embed/a_iSAmQDyk4?autoplay=1&mute=1&controls=0&loop=1&playlist=a_iSAmQDyk4&rel=0&showinfo=0&modestbranding=1&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <button class="cs-hero-video-unmute" id="csUnmuteBtn">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        Attiva audio
+      </button>
+    </div>
 
     <p class="cs-hero-text">LMS accompagna davvero con passi settimanali e standard chiari. Non ci rivolgiamo a chi cerca scorciatoie, ma a chi vuole trasformare la propria vita con metodo, visione e responsabilità. Per chi la frequenta significa risultati concreti e sostenibili nella vita e nel lavoro.</p>
 
@@ -372,6 +441,19 @@
 </div>
 
 <script src="//embed.typeform.com/next/embed.js"></script>
+
+<script>
+(function(){
+  var btn = document.getElementById('csUnmuteBtn');
+  var iframe = document.getElementById('csYTPlayer');
+  if(!btn || !iframe) return;
+  btn.addEventListener('click', function(){
+    iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+    iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[100]}', '*');
+    btn.classList.add('hidden');
+  });
+})();
+</script>
 
 <script>
 (function(){
