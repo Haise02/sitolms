@@ -1,0 +1,1681 @@
+<!-- PER CHI È — GENITORI · Leone Master School -->
+<!-- COPIA TUTTO QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════ RESET ═══════════ */
+.pci *, .pci *::before, .pci *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+/* ═══════════ VARIABLES ═══════════ */
+.pci {
+  --navy: #07162E;
+  --navy-soft: #0B1D38;
+  --accent: #4C7BF4;
+  --accent2: #2E8BF7;
+  --accent-soft: rgba(76, 123, 244, 0.08);
+  --accent-border: rgba(76, 123, 244, 0.15);
+  --beige: #D4C5B0;
+  --warm-bg: #FAFAF8;
+  --warm-bg-alt: #F5F3F0;
+  --text-dark: #1a1a1a;
+  --text-body: #3d3d3d;
+  --text-muted: #6b6b6b;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans-tight: 'Inter Tight', 'Inter', sans-serif;
+  font-family: var(--sans);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.pci-reveal {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pci-reveal.visible { opacity: 1; transform: translateY(0); }
+.pci-reveal-delay-1 { transition-delay: 0.12s; }
+.pci-reveal-delay-2 { transition-delay: 0.24s; }
+.pci-reveal-delay-3 { transition-delay: 0.36s; }
+.pci-reveal-delay-4 { transition-delay: 0.48s; }
+.pci-reveal-delay-5 { transition-delay: 0.60s; }
+
+/* ═══════════ SHARED LABEL ═══════════ */
+.pci-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans-tight);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.pci-section-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* ══════════════════════════════════════════
+   SECTION 1 — HERO
+   ══════════════════════════════════════════ */
+.pci-hero {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+.pci-hero-canvas {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 80px;
+  z-index: 1;
+  pointer-events: none;
+}
+.pci-hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.pci-hero-glow.hg-1 {
+  width: 500px; height: 500px;
+  background: rgba(76,123,244,0.1);
+  top: -15%; left: -8%;
+  animation: pciHeroGlow 8s ease-in-out infinite;
+}
+.pci-hero-glow.hg-2 {
+  width: 400px; height: 400px;
+  background: rgba(123,92,245,0.07);
+  bottom: 10%; right: -5%;
+  animation: pciHeroGlow 10s ease-in-out infinite 3s;
+}
+@keyframes pciHeroGlow {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+
+.pci-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 48px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.pci-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pci-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(76,123,244,0.1);
+  border: 1px solid rgba(76,123,244,0.2);
+  border-radius: 100px;
+  padding: 8px 20px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.pci-hero-badge::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 100px;
+  border: 1px solid rgba(76,123,244,0.15);
+  animation: pciBadgePulse 2.5s ease-in-out infinite;
+}
+@keyframes pciBadgePulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.12); opacity: 0; }
+}
+.pci-hero-badge .badge-dot {
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pciBadgeDot 2s ease-in-out infinite;
+}
+@keyframes pciBadgeDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76,123,244,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(76,123,244,0); }
+}
+.pci-hero-badge span {
+  font-family: var(--sans-tight);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 1px;
+}
+
+.pci-hero h1 {
+  font-size: 56px;
+  line-height: 1.08;
+  margin: 0 0 24px;
+  letter-spacing: -0.025em;
+  text-align: left;
+}
+.pci-hero h1 .sans-bold {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: #ffffff;
+  display: block;
+  position: relative;
+}
+.pci-hero h1 .sans-bold::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 180px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+  background-size: 200% 100%;
+  animation: pciShimmerLine 3s linear infinite;
+  border-radius: 1px;
+}
+.pci-hero h1 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 1.1em;
+  display: block;
+}
+@keyframes pciShimmerLine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.pci-hero-sub {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 0 36px;
+  text-align: left;
+}
+.pci-hero-sub strong {
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+}
+
+.pci-hero-features {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.pci-hero-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans-tight);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.pci-hero-feature svg {
+  width: 16px; height: 16px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+}
+.pci-hero-feature .feat-check {
+  width: 18px; height: 18px;
+  background: rgba(76,123,244,0.15);
+  border: 1px solid rgba(76,123,244,0.3);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pci-hero-feature .feat-check svg {
+  width: 12px; height: 12px;
+}
+
+.pci-hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+}
+.pci-hero-img-group {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+.pci-hero-img-col {
+  flex: 1;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.pci-hero-img-col:hover {
+  border-color: rgba(76,123,244,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.pci-hero-img-col:nth-child(2) {
+  margin-top: -24px;
+  margin-bottom: -24px;
+  z-index: 2;
+}
+.pci-hero-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pci-hero-img-col::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--navy) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 2;
+}
+.pci-hero-img-col:first-child::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--navy) 0%, transparent 30%);
+  pointer-events: none;
+  z-index: 2;
+}
+.pci-hero-img-col:last-child::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, var(--navy) 0%, transparent 30%);
+  pointer-events: none;
+  z-index: 2;
+}
+.pci-hero-img-col:nth-child(1) { animation: pciImgFloat1 6s ease-in-out infinite; }
+.pci-hero-img-col:nth-child(2) { animation: pciImgFloat2 7s ease-in-out infinite; }
+.pci-hero-img-col:nth-child(3) { animation: pciImgFloat3 8s ease-in-out infinite; }
+@keyframes pciImgFloat1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes pciImgFloat2 {
+  0%, 100% { transform: translateY(-24px); }
+  50% { transform: translateY(-32px); }
+}
+@keyframes pciImgFloat3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ── Logo banner ── */
+.pci-hero-logos {
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 0;
+  overflow: hidden;
+}
+.pci-hero-logos-label {
+  position: absolute;
+  top: 28px;
+  left: 48px;
+  font-family: var(--sans-tight);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 3;
+}
+.pci-logo-track-wrapper {
+  margin-left: 200px;
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.pci-logo-track-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 80px;
+  background: linear-gradient(to right, var(--navy), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+.pci-logo-track-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 80px;
+  background: linear-gradient(to left, var(--navy), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+.pci-logo-track {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  will-change: transform;
+  animation: pciLogoScroll 25s linear infinite;
+}
+.pci-logo-track img {
+  height: 36px;
+  flex-shrink: 0;
+  opacity: 0.35;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.pci-logo-track img:hover {
+  opacity: 0.7;
+}
+@keyframes pciLogoScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ══════════════════════════════════════════
+   SECTION 2 — INTRO
+   ══════════════════════════════════════════ */
+.pci-intro {
+  background: var(--navy);
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.pci-intro::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 30%, var(--accent2) 50%, var(--accent) 70%, transparent 100%);
+  background-size: 200% 100%;
+  animation: pciShimmerBorder 4s linear infinite;
+}
+@keyframes pciShimmerBorder {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.pci-intro-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.pci-intro-glow.glow-1 {
+  width: 500px; height: 500px;
+  background: rgba(76,123,244,0.08);
+  top: -20%; left: -10%;
+  animation: pciBreathe 6s ease-in-out infinite;
+}
+.pci-intro-glow.glow-2 {
+  width: 400px; height: 400px;
+  background: rgba(123,92,245,0.06);
+  bottom: -15%; right: -8%;
+  animation: pciBreathe 8s ease-in-out infinite 2s;
+}
+@keyframes pciBreathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+.pci-intro-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.pci-intro h2 {
+  font-size: 44px;
+  line-height: 1.2;
+  margin: 0 0 28px;
+}
+.pci-intro h2 .serif-light {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+}
+.pci-intro h2 .sans-heavy {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: #ffffff;
+}
+.pci-intro-body {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.85;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.pci-intro-body strong {
+  font-weight: 600;
+  color: rgba(255,255,255,0.88);
+}
+
+/* ══════════════════════════════════════════
+   SECTION 3 — PAIN POINTS
+   ══════════════════════════════════════════ */
+.pci-pain {
+  background: var(--warm-bg);
+  padding: 110px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.pci-pain-dot {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.15;
+  pointer-events: none;
+}
+.pci-pain-dot:nth-child(1) { top: 10%; left: 5%; animation: pciDotDrift 10s ease-in-out infinite; }
+.pci-pain-dot:nth-child(2) { top: 30%; right: 8%; animation: pciDotDrift 12s ease-in-out infinite 1s; }
+.pci-pain-dot:nth-child(3) { bottom: 20%; left: 12%; animation: pciDotDrift 9s ease-in-out infinite 2s; }
+.pci-pain-dot:nth-child(4) { bottom: 35%; right: 15%; animation: pciDotDrift 11s ease-in-out infinite 0.5s; }
+.pci-pain-dot:nth-child(5) { top: 60%; left: 50%; animation: pciDotDrift 13s ease-in-out infinite 3s; }
+.pci-pain-dot:nth-child(6) { top: 80%; left: 30%; animation: pciDotDrift 8s ease-in-out infinite 1.5s; }
+@keyframes pciDotDrift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(15px, -20px); }
+  50% { transform: translate(-10px, 10px); }
+  75% { transform: translate(8px, 15px); }
+}
+.pci-pain-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.pci-pain-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.pci-pain-header h2 { font-size: 48px; line-height: 1.15; margin: 0; }
+.pci-pain-header h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+}
+.pci-pain-header h2 .sans-bold {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: var(--accent);
+}
+.pci-pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.pci-pain-card {
+  padding: 36px 32px;
+  position: relative;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+}
+.pci-pain-card::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(var(--accent), var(--accent2), rgba(76,123,244,0.08), var(--accent2), var(--accent));
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: pciSpinDisc 3.5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+@keyframes pciSpinDisc {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.pci-pain-card::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 18px;
+  background: #ffffff;
+  pointer-events: none;
+}
+.pci-pain-card:hover,
+.pci-pain-card.active {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(7, 22, 46, 0.1), 0 0 30px rgba(76,123,244,0.06);
+  border-color: transparent;
+}
+.pci-pain-card:hover::before,
+.pci-pain-card.active::before {
+  opacity: 1;
+}
+.pci-pain-card .card-number {
+  font-family: var(--sans-tight);
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(76,123,244,0.1);
+  line-height: 1;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.pci-pain-card p {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+.pci-pain-card p strong {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.pci-pain-footer {
+  text-align: center;
+  margin-top: 56px;
+}
+.pci-pain-footer p {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+.pci-pain-footer p strong {
+  font-family: var(--sans-tight);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ══════════════════════════════════════════
+   SECTION 4 — METHOD
+   ══════════════════════════════════════════ */
+.pci-method {
+  background: var(--warm-bg-alt);
+  padding: 110px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.pci-method-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.pci-method h2 { font-size: 44px; line-height: 1.15; margin: 0 0 32px; }
+.pci-method h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+}
+.pci-method h2 .sans-heavy {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.pci-method-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.pci-method-list li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.pci-method-list .method-icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: pciIconPulse 3s ease-in-out infinite;
+}
+.pci-method-list li:nth-child(2) .method-icon { animation-delay: 0.5s; }
+.pci-method-list li:nth-child(3) .method-icon { animation-delay: 1s; }
+@keyframes pciIconPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76,123,244,0.15); }
+  50% { box-shadow: 0 0 0 8px rgba(76,123,244,0); }
+}
+.pci-method-list .method-icon svg {
+  width: 20px; height: 20px;
+  color: var(--accent);
+  stroke-width: 2;
+  fill: none;
+  stroke: currentColor;
+}
+.pci-method-list .method-text {
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.7;
+  padding-top: 10px;
+}
+.pci-method-list .method-text strong {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.pci-method-visual { position: relative; }
+.pci-method-visual-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 30px 80px rgba(7, 22, 46, 0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+}
+.pci-method-visual-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+  background-size: 200% 100%;
+  animation: pciShimmerBorder 3s linear infinite;
+}
+.pci-method-visual-card .stat-number {
+  font-family: var(--sans-tight);
+  font-size: 72px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.pci-method-visual-card .stat-label {
+  font-family: var(--sans-tight);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.pci-method-visual-card .stat-desc {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+.pci-method-float {
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 100px; height: 100px;
+  background: linear-gradient(135deg, rgba(76,123,244,0.08), rgba(123,92,245,0.06));
+  border-radius: 24px;
+  z-index: -1;
+  animation: pciFloatSpin 20s linear infinite;
+}
+@keyframes pciFloatSpin {
+  0% { transform: rotate(15deg); }
+  100% { transform: rotate(375deg); }
+}
+
+/* ══════════════════════════════════════════
+   SECTION 5 — PROGRAMS
+   ══════════════════════════════════════════ */
+.pci-programs {
+  background: var(--warm-bg);
+  padding: 110px 40px;
+  position: relative;
+}
+.pci-programs-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.pci-programs-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.pci-programs-header h2 { font-size: 48px; line-height: 1.15; }
+.pci-programs-header h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+}
+.pci-programs-header h2 .sans-bold {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: var(--text-dark);
+}
+.pci-programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+.pci-program-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+}
+.pci-program-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(76,123,244,0.04), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.pci-program-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 30px 80px rgba(7, 22, 46, 0.1);
+}
+.pci-program-card:hover::after { opacity: 1; }
+.pci-program-card-top {
+  padding: 40px 32px 32px;
+  position: relative;
+}
+.pci-program-card-top::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 32px; right: 32px;
+  height: 1px;
+  background: rgba(0,0,0,0.06);
+}
+.pci-program-tag {
+  display: inline-block;
+  font-family: var(--sans-tight);
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.pci-program-tag::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  animation: pciTagShimmer 3s ease-in-out infinite;
+}
+.pci-program-card:nth-child(2) .pci-program-tag::after { animation-delay: 0.7s; }
+@keyframes pciTagShimmer {
+  0% { left: -100%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
+}
+.pci-program-tag.tag-orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.pci-program-tag.tag-green { background: linear-gradient(135deg, #22c55e, #16a34a); }
+
+.pci-program-card h3 { font-size: 22px; line-height: 1.25; margin: 0 0 12px; }
+.pci-program-card h3 .serif-part { font-family: var(--serif); font-weight: 600; font-style: italic; }
+.pci-program-card h3 .sans-part { font-family: var(--sans-tight); font-weight: 700; }
+.pci-program-card-top p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+.pci-program-card-bottom {
+  padding: 28px 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pci-program-card-bottom .program-cta {
+  font-family: var(--sans-tight);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s ease;
+}
+.pci-program-card:hover .program-cta { gap: 14px; }
+.pci-program-card-bottom .program-cta svg {
+  width: 18px; height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  transition: transform 0.3s ease;
+}
+.pci-program-card:hover .program-cta svg { transform: translateX(4px); }
+
+/* ══════════════════════════════════════════
+   SECTION 6 — RESULTS
+   ══════════════════════════════════════════ */
+.pci-results {
+  background: var(--navy);
+  padding: 110px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.pci-orbit-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 700px; height: 700px;
+  margin: -350px 0 0 -350px;
+  border: 1px solid rgba(76,123,244,0.06);
+  border-radius: 50%;
+  animation: pciOrbit 30s linear infinite;
+  pointer-events: none;
+}
+.pci-orbit-ring::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: 50%;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--accent);
+}
+.pci-orbit-ring-2 {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 500px; height: 500px;
+  margin: -250px 0 0 -250px;
+  border: 1px solid rgba(123,92,245,0.05);
+  border-radius: 50%;
+  animation: pciOrbit 22s linear infinite reverse;
+  pointer-events: none;
+}
+.pci-orbit-ring-2::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; right: 30%;
+  width: 6px; height: 6px;
+  background: var(--accent2);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent2);
+}
+@keyframes pciOrbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.pci-results-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.pci-results-header { text-align: center; margin-bottom: 64px; }
+.pci-results-header h2 { font-size: 48px; line-height: 1.15; color: #ffffff; }
+.pci-results-header h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+}
+.pci-results-header h2 .sans-heavy {
+  font-family: var(--sans-tight);
+  font-weight: 800;
+  color: #ffffff;
+}
+.pci-results-header .results-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 16px;
+  line-height: 1.6;
+}
+.pci-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.pci-stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.pci-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: pciStatShimmer 4s ease-in-out infinite;
+}
+.pci-stat-card:nth-child(2)::before { animation-delay: 1.3s; }
+.pci-stat-card:nth-child(3)::before { animation-delay: 2.6s; }
+@keyframes pciStatShimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+.pci-stat-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(76,123,244,0.2);
+  transform: translateY(-4px);
+}
+.pci-stat-card .stat-value {
+  font-family: var(--sans-tight);
+  font-size: 56px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff, var(--beige));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.pci-stat-card .stat-desc {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+
+.pci-testimonial-disclaimer {
+  text-align: center;
+  padding: 24px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-top: 32px;
+}
+.pci-testimonial-disclaimer p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ══════════════════════════════════════════
+   SECTION 7 — CTA
+   ══════════════════════════════════════════ */
+.pci-cta {
+  background: var(--warm-bg);
+  padding: 130px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pci-cta-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.pci-cta-shape.cs-1 {
+  width: 300px; height: 300px;
+  border: 2px solid var(--accent);
+  top: 10%; left: -5%;
+  animation: pciFloat2 12s ease-in-out infinite;
+}
+.pci-cta-shape.cs-2 {
+  width: 200px; height: 200px;
+  background: var(--accent2);
+  bottom: 5%; right: -3%;
+  animation: pciFloat1 10s ease-in-out infinite 2s;
+}
+@keyframes pciFloat1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes pciFloat2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+.pci-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.pci-cta h2 { font-size: 56px; line-height: 1.1; margin: 0 0 24px; }
+.pci-cta h2 .serif-italic {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+  display: block;
+}
+.pci-cta h2 .sans-heavy {
+  font-family: var(--sans-tight);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  animation: pciGradientText 4s ease-in-out infinite;
+}
+@keyframes pciGradientText {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.pci-cta-body {
+  font-size: 18px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 44px;
+}
+.pci-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--accent), #3B6DE0);
+  color: #ffffff;
+  font-family: var(--sans-tight);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 20px 44px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 20px rgba(76, 123, 244, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: pciCTAGlow 3s ease-in-out infinite;
+}
+@keyframes pciCTAGlow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(76, 123, 244, 0.3); }
+  50% { box-shadow: 0 8px 40px rgba(76, 123, 244, 0.5), 0 0 60px rgba(76, 123, 244, 0.15); }
+}
+.pci-cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: pciButtonShimmer 2.5s ease-in-out infinite;
+}
+@keyframes pciButtonShimmer {
+  0% { left: -100%; }
+  60% { left: 100%; }
+  100% { left: 100%; }
+}
+.pci-cta-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+.pci-cta-btn svg {
+  width: 20px; height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  transition: transform 0.3s ease;
+}
+.pci-cta-btn:hover svg { transform: translateX(5px); }
+.pci-cta-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 900px) {
+  .pci-hero-content { grid-template-columns: 1fr; padding: 80px 24px 40px; gap: 40px; }
+  .pci-hero h1 { font-size: 40px; }
+  .pci-hero-sub { font-size: 16px; }
+  .pci-hero-img-group { height: 280px; }
+  .pci-hero-logos-label { position: static; margin: 0 0 12px 24px; }
+  .pci-logo-track-wrapper { margin-left: 0; }
+  .pci-intro { padding: 80px 24px; }
+  .pci-intro h2 { font-size: 34px; }
+  .pci-pain { padding: 80px 24px; }
+  .pci-pain-header h2 { font-size: 36px; }
+  .pci-pain-grid { grid-template-columns: 1fr; gap: 16px; }
+  .pci-pain-dot { display: none; }
+  .pci-method { padding: 80px 24px; }
+  .pci-method-inner { grid-template-columns: 1fr; gap: 48px; }
+  .pci-method h2 { font-size: 34px; }
+  .pci-programs { padding: 80px 24px; }
+  .pci-programs-header h2 { font-size: 36px; }
+  .pci-programs-grid { grid-template-columns: 1fr; gap: 20px; }
+  .pci-results { padding: 80px 24px; }
+  .pci-results-header h2 { font-size: 36px; }
+  .pci-stats-row { grid-template-columns: 1fr; gap: 16px; }
+  .pci-orbit-ring, .pci-orbit-ring-2 { display: none; }
+  .pci-cta { padding: 80px 24px; }
+  .pci-cta h2 { font-size: 40px; }
+  .pci-cta-shape { display: none; }
+}
+
+@media (max-width: 480px) {
+  .pci-hero-content { padding: 60px 18px 30px; }
+  .pci-hero h1 { font-size: 32px; }
+  .pci-hero-img-group { height: 220px; gap: 10px; }
+  .pci-hero-features { gap: 16px; }
+  .pci-hero-feature { font-size: 10px; }
+  .pci-intro h2 { font-size: 28px; }
+  .pci-pain-header h2 { font-size: 30px; }
+  .pci-method h2 { font-size: 28px; }
+  .pci-programs-header h2 { font-size: 30px; }
+  .pci-results-header h2 { font-size: 30px; }
+  .pci-cta h2 { font-size: 32px; }
+  .pci-stat-card .stat-value { font-size: 40px; }
+  .pci-pain-card { padding: 28px 24px; }
+  .pci-program-card-top { padding: 32px 24px 24px; }
+  .pci-program-card-bottom { padding: 20px 24px 28px; }
+  .pci-method-visual-card .stat-number { font-size: 56px; }
+}
+</style>
+
+<div class="pci">
+
+  <!-- ═══════════ SECTION 1 — HERO ═══════════ -->
+  <section class="pci-hero">
+    <div class="pci-hero-glow hg-1"></div>
+    <div class="pci-hero-glow hg-2"></div>
+    <canvas class="pci-hero-canvas" id="pciHeroCanvas"></canvas>
+
+    <div class="pci-hero-content">
+      <div class="pci-hero-left">
+        <div class="pci-hero-badge pci-reveal">
+          <div class="badge-dot"></div>
+          <span>Per Chi &Egrave; &middot; Genitori</span>
+        </div>
+
+        <h1>
+          <span class="sans-bold pci-reveal pci-reveal-delay-1">Vuoi crescere persone forti e consapevoli?</span>
+          <span class="serif-italic pci-reveal pci-reveal-delay-2">Allora sei nel posto giusto.</span>
+        </h1>
+
+        <p class="pci-hero-sub pci-reveal pci-reveal-delay-3">
+          Vuoi fare la differenza nell'educazione e nella <strong>crescita dei tuoi figli</strong>? La Leone Master School &egrave; <strong>perfetta per te.</strong>
+        </p>
+
+        <a href="#pciCtaSection" class="pci-cta-btn pci-reveal pci-reveal-delay-4" style="margin-bottom: 36px;">
+          Candidati a un programma
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <div class="pci-hero-features pci-reveal pci-reveal-delay-5">
+          <div class="pci-hero-feature">
+            <div class="feat-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            ONLINE
+          </div>
+          <div class="pci-hero-feature">
+            <div class="feat-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            PRATICO
+          </div>
+          <div class="pci-hero-feature">
+            <div class="feat-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            CERTIFICATO
+          </div>
+        </div>
+      </div>
+
+      <div class="pci-hero-right pci-reveal pci-reveal-delay-2">
+        <div class="pci-hero-img-group">
+          <div class="pci-hero-img-col">
+            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Imprenditori/images/imprenditori-1.png" alt="Studente 1">
+          </div>
+          <div class="pci-hero-img-col">
+            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Imprenditori/images/siria.png" alt="Studente 2">
+          </div>
+          <div class="pci-hero-img-col">
+            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Imprenditori/images/imprenditori-3.png" alt="Studente 3">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated logo banner -->
+    <div class="pci-hero-logos">
+      <div class="pci-hero-logos-label">Parlano di noi</div>
+      <div class="pci-logo-track-wrapper">
+        <div class="pci-logo-track" id="pciLogoTrack">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/Prime-Video-Logo-PNG-scaled.png" alt="Prime Video">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/yahoo.png" alt="Yahoo">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rds.png" alt="RDS">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rete4.png" alt="Rete 4">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rai2.png" alt="Rai 2">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/la7.png" alt="La7">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/milionaire.png" alt="Millionaire">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/italia1.png" alt="Italia 1">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/corrieredellasera.png" alt="Corriere della Sera">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/iltempo.png" alt="Il Tempo">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Progetto-senza-titolo-2026-03-05T152712.893.png" alt="ANSA">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/1684047548forbes-logo-white.webp" alt="Forbes">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Progetto-senza-titolo-2026-03-05T152810.564.png" alt="Repubblica">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/skytg24-w.png" alt="Sky TG24">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/tgcom.png" alt="TGCOM24">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Orizzontale-Negativo.webp" alt="StartupItalia">
+          <!-- Duplicate set for seamless loop -->
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/Prime-Video-Logo-PNG-scaled.png" alt="Prime Video">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/yahoo.png" alt="Yahoo">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rds.png" alt="RDS">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rete4.png" alt="Rete 4">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/rai2.png" alt="Rai 2">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/la7.png" alt="La7">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/milionaire.png" alt="Millionaire">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/italia1.png" alt="Italia 1">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/corrieredellasera.png" alt="Corriere della Sera">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/02/iltempo.png" alt="Il Tempo">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Progetto-senza-titolo-2026-03-05T152712.893.png" alt="ANSA">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/1684047548forbes-logo-white.webp" alt="Forbes">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Progetto-senza-titolo-2026-03-05T152810.564.png" alt="Repubblica">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/skytg24-w.png" alt="Sky TG24">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/tgcom.png" alt="TGCOM24">
+          <img src="https://leonemasterschool.it/wp-content/uploads/2026/03/Orizzontale-Negativo.webp" alt="StartupItalia">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 2 — INTRO ═══════════ -->
+  <section class="pci-intro">
+    <div class="pci-intro-glow glow-1"></div>
+    <div class="pci-intro-glow glow-2"></div>
+    <div class="pci-intro-inner pci-reveal">
+      <h2>
+        <span class="serif-light">Un metodo educativo moderno, </span>
+        <span class="sans-heavy">pensato da professionisti del settore.</span>
+      </h2>
+      <p class="pci-intro-body">
+        Con i nostri programmi ricevi supporto e affiancamento da <strong>docenti mentori esperti sul tema genitorialit&agrave; ed educazione</strong>, con anni di esperienza pratica e professionale. Non teoria distante, ma esperienze e strumenti che puoi trasmettere ai tuoi figli, studenti o atleti per aiutarli a crescere con <strong>consapevolezza, autonomia e fiducia</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 3 — PAIN POINTS ═══════════ -->
+  <section class="pci-pain">
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+    <div class="pci-pain-dot"></div>
+
+    <div class="pci-pain-inner">
+      <div class="pci-pain-header pci-reveal">
+        <div class="pci-section-label">Riconosciti</div>
+        <h2>
+          <span class="serif-italic">Vivi una o pi&ugrave; di </span>
+          <span class="sans-bold">queste difficolt&agrave;?</span>
+        </h2>
+      </div>
+
+      <div class="pci-pain-grid">
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-1">
+          <div class="card-number">01</div>
+          <p><strong>Non sai pi&ugrave; come motivare</strong> tuo figlio o i ragazzi che segui.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-2">
+          <div class="card-number">02</div>
+          <p>Ti preoccupa che la scuola da sola <strong>non basti a prepararli alla vita</strong> e a coltivare il loro successo.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-3">
+          <div class="card-number">03</div>
+          <p>Vorresti trasmettere valori e disciplina, ma <strong>finisci in conflitti continui</strong>.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-1">
+          <div class="card-number">04</div>
+          <p>Ti manca un <strong>metodo pratico per farti ascoltare</strong> senza alzare la voce.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-2">
+          <div class="card-number">05</div>
+          <p>I tuoi figli vivono in un mondo pieno di pressioni e <strong>non sai sempre come proteggerli</strong> o guidarli.</p>
+        </div>
+        <div class="pci-pain-card pci-reveal pci-reveal-delay-3">
+          <div class="card-number">06</div>
+          <p>Motivarli &egrave; sempre pi&ugrave; difficile: <strong>manca attenzione, costanza, ascolto</strong>.</p>
+        </div>
+      </div>
+
+      <div class="pci-pain-footer pci-reveal">
+        <p>Se ti riconosci in queste situazioni, <strong>uno dei nostri programmi</strong> sar&agrave; la tua guida.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 4 — METHOD ═══════════ -->
+  <section class="pci-method">
+    <div class="pci-method-inner">
+      <div class="pci-method-content pci-reveal">
+        <div class="pci-section-label">La soluzione</div>
+        <h2>
+          <span class="serif-italic">Scopri come</span><br>
+          <span class="sans-heavy">crescere la prossima generazione.</span>
+        </h2>
+
+        <ul class="pci-method-list">
+          <li>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="method-text"><strong>Comunicare in modo chiaro</strong>, motivare senza pressioni e costruire fiducia con i ragazzi.</div>
+          </li>
+          <li>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="method-text">Un <strong>metodo chiaro e pratico</strong> per crescere ragazzi responsabili, capaci e pronti ad affrontare il futuro.</div>
+          </li>
+          <li>
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="method-text">Strumenti per <strong>gestire la comunicazione e la crescita emotiva</strong>, costruendo un ambiente familiare sereno e rispettoso.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pci-method-visual pci-reveal pci-reveal-delay-2">
+        <div class="pci-method-float"></div>
+        <div class="pci-method-visual-card">
+          <div class="stat-number" data-countup="100" data-suffix="%">0%</div>
+          <div class="stat-label">Pratico &amp; Applicabile</div>
+          <p class="stat-desc">Non teoria distante, ma esperienze e strumenti concreti che puoi trasmettere ai tuoi figli per aiutarli a crescere con consapevolezza e autonomia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 5 — PROGRAMS ═══════════ -->
+  <section class="pci-programs">
+    <div class="pci-programs-inner">
+      <div class="pci-programs-header pci-reveal">
+        <div class="pci-section-label">Percorsi consigliati</div>
+        <h2>
+          <span class="serif-italic">I programmi</span> <span class="sans-bold">che ti consigliamo</span>
+        </h2>
+      </div>
+
+      <div class="pci-programs-grid">
+        <div class="pci-program-card pci-reveal pci-reveal-delay-1">
+          <div class="pci-program-card-top">
+            <div class="pci-program-tag tag-orange">Educazione</div>
+            <h3><span class="sans-part">L'Arte di </span><span class="serif-part">Educare</span></h3>
+            <p>Programma di affiancamento genitoriale. Ricevi gli strumenti per gestire al meglio il rapporto con i tuoi figli per far crescere dei futuri campioni nella vita e nel lavoro.</p>
+          </div>
+          <div class="pci-program-card-bottom">
+            <a href="https://leonemasterschool.it/arte-di-educare/" class="program-cta">Scopri il programma <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+
+        <div class="pci-program-card pci-reveal pci-reveal-delay-2">
+          <div class="pci-program-card-top">
+            <div class="pci-program-tag tag-green">Coaching</div>
+            <h3><span class="sans-part">Diventa </span><span class="serif-part">Coach</span></h3>
+            <p>Un programma che ti forma come guida capace di ispirare e accompagnare gli altri nel loro percorso di crescita personale o professionale.</p>
+          </div>
+          <div class="pci-program-card-bottom">
+            <a href="https://leonemasterschool.it/diventa-coach-2-new/" class="program-cta">Scopri il programma <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 6 — RESULTS ═══════════ -->
+  <section class="pci-results">
+    <div class="pci-orbit-ring"></div>
+    <div class="pci-orbit-ring-2"></div>
+    <div class="pci-results-inner">
+      <div class="pci-results-header pci-reveal">
+        <h2>
+          <span class="serif-italic">Non parole, ma </span>
+          <span class="sans-heavy">risultati.</span>
+        </h2>
+        <p class="results-sub">Genitori ed educatori che hanno gi&agrave; seguito i nostri programmi hanno visto risultati concreti.</p>
+      </div>
+
+      <div class="pci-stats-row">
+        <div class="pci-stat-card pci-reveal pci-reveal-delay-1">
+          <div class="stat-value" data-countup="90" data-prefix="+" data-suffix="%">0%</div>
+          <div class="stat-desc">Migliore comunicazione con i ragazzi e meno conflitti</div>
+        </div>
+        <div class="pci-stat-card pci-reveal pci-reveal-delay-2">
+          <div class="stat-value" data-countup="3" data-suffix="x">0x</div>
+          <div class="stat-desc">Maggiore motivazione e disciplina nei figli e negli studenti</div>
+        </div>
+        <div class="pci-stat-card pci-reveal pci-reveal-delay-3">
+          <div class="stat-value" data-countup="95" data-prefix="+" data-suffix="%">0%</div>
+          <div class="stat-desc">Ragazzi pi&ugrave; sicuri, consapevoli e orientati al futuro</div>
+        </div>
+      </div>
+
+      <div class="pci-testimonial-disclaimer">
+        <p><strong>Nota di trasparenza:</strong> Ogni esperienza e persona &egrave; diversa. I risultati non sono univoci per tutti ma possono variare.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION 7 — CTA ═══════════ -->
+  <section class="pci-cta" id="pciCtaSection">
+    <div class="pci-cta-shape cs-1"></div>
+    <div class="pci-cta-shape cs-2"></div>
+
+    <div class="pci-cta-inner">
+      <h2 class="pci-reveal">
+        <span class="serif-italic">&Egrave; il tuo</span>
+        <span class="sans-heavy">momento.</span>
+      </h2>
+      <p class="pci-cta-body pci-reveal pci-reveal-delay-1">
+        Se vuoi crescere al meglio la prossima generazione e diventare un punto di riferimento forte e positivo nella loro vita, questo &egrave; il passo che fa per te.
+      </p>
+      <a href="https://leonemasterschool.it/i-nostri-programmi/" class="pci-cta-btn pci-reveal pci-reveal-delay-2">
+        Candidati a un programma
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <p class="pci-cta-note pci-reveal pci-reveal-delay-3">Prenota una chiamata con un Selezionatore per ricevere maggiori informazioni</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+(function() {
+
+  /* ─── Scroll Reveal ─── */
+  function initReveals() {
+    var els = document.querySelectorAll('.pci-reveal');
+    if (!els.length) return;
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { obs.observe(el); });
+    } else {
+      els.forEach(function(el) { el.classList.add('visible'); });
+    }
+  }
+
+  /* ─── Count-Up Numbers ─── */
+  function initCountUp() {
+    var counters = document.querySelectorAll('[data-countup]');
+    if (!counters.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && !e.target.dataset.counted) {
+          e.target.dataset.counted = '1';
+          var target = parseInt(e.target.dataset.countup);
+          var prefix = e.target.dataset.prefix || '';
+          var suffix = e.target.dataset.suffix || '';
+          var duration = 2000;
+          var start = performance.now();
+          function step(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 4);
+            var current = Math.round(eased * target);
+            e.target.textContent = prefix + current + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+      });
+    }, { threshold: 0.3 });
+    counters.forEach(function(c) { obs.observe(c); });
+  }
+
+  /* ─── Hero Particle Canvas ─── */
+  function initParticles() {
+    var canvas = document.getElementById('pciHeroCanvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var mouseX = -1000, mouseY = -1000;
+    var hero = canvas.closest('.pci-hero');
+    var contentArea = hero.querySelector('.pci-hero-content');
+
+    function resize() {
+      canvas.width = hero.offsetWidth;
+      canvas.height = contentArea ? contentArea.offsetHeight : hero.offsetHeight - 80;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    hero.addEventListener('mousemove', function(e) {
+      var rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
+    hero.addEventListener('mouseleave', function() {
+      mouseX = -1000;
+      mouseY = -1000;
+    });
+
+    for (var i = 0; i < 50; i++) {
+      particles.push({
+        x: Math.random() * (canvas.width || 1200),
+        y: Math.random() * (canvas.height || 600),
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.25 + 0.08
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        var dx = mouseX - p.x;
+        var dy = mouseY - p.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var interactR = 150;
+        var alpha = p.opacity;
+        if (dist < interactR) {
+          alpha = p.opacity + (1 - dist / interactR) * 0.35;
+          p.x -= dx * 0.006;
+          p.y -= dy * 0.006;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(76, 123, 244, ' + alpha + ')';
+        ctx.fill();
+
+        for (var j = i + 1; j < particles.length; j++) {
+          var p2 = particles[j];
+          var ddx = p.x - p2.x;
+          var ddy = p.y - p2.y;
+          var d = Math.sqrt(ddx * ddx + ddy * ddy);
+          if (d < 130) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = 'rgba(76, 123, 244, ' + (0.05 * (1 - d / 130)) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  /* ─── Card Mouse Tracking ─── */
+  function initCardTracking() {
+    document.querySelectorAll('.pci-program-card').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      });
+    });
+  }
+
+  /* ─── Auto-cycle pain cards ─── */
+  function initPainCycle() {
+    var cards = document.querySelectorAll('.pci-pain-card');
+    if (!cards.length) return;
+    var current = 0;
+    cards[0].classList.add('active');
+    setInterval(function() {
+      cards[current].classList.remove('active');
+      current = (current + 1) % cards.length;
+      cards[current].classList.add('active');
+    }, 2000);
+  }
+
+  /* ─── Init all ─── */
+  function init() {
+    initReveals();
+    initCountUp();
+    initParticles();
+    initCardTracking();
+    initPainCycle();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
