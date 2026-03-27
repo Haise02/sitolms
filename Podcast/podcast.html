@@ -1,0 +1,623 @@
+<!-- PODCAST — Leone Master School -->
+<!-- COPIA QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════ RESET ═══════════ */
+.pod *, .pod *::before, .pod *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+/* ═══════════ VARIABLES ═══════════ */
+.pod {
+  --navy: #07162E;
+  --navy-soft: #0B1D38;
+  --accent: #4C7BF4;
+  --accent2: #2E8BF7;
+  --accent-soft: rgba(76,123,244,0.07);
+  --accent-border: rgba(76,123,244,0.15);
+  --bg-white: #ffffff;
+  --bg-off: #F8F8F6;
+  --border: rgba(0,0,0,0.07);
+  --text-dark: #111111;
+  --text-body: #444444;
+  --text-muted: #888888;
+  --radius: 16px;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans-tight: 'Inter Tight', 'Inter', sans-serif;
+  font-family: var(--sans);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.pod-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.pod-reveal.visible { opacity: 1; transform: translateY(0); }
+.pod-reveal-d1 { transition-delay: 0.08s; }
+.pod-reveal-d2 { transition-delay: 0.16s; }
+.pod-reveal-d3 { transition-delay: 0.24s; }
+
+/* ═══════════ HERO ═══════════ */
+.pod-hero {
+  background: var(--navy);
+  padding: 100px 40px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pod-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 25% 35%, rgba(76,123,244,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 75% 65%, rgba(168,85,247,0.07) 0%, transparent 55%);
+  pointer-events: none;
+  animation: podAurora 14s ease-in-out infinite alternate;
+}
+@keyframes podAurora {
+  0%   { opacity: 0.6; transform: scale(1) translate(0,0); }
+  100% { opacity: 1;   transform: scale(1.08) translate(-2%, 2%); }
+}
+.pod-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.pod-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.pod-hero-badge svg {
+  width: 14px; height: 14px;
+  stroke: var(--accent); fill: none; stroke-width: 2;
+}
+.pod-hero h1 {
+  font-family: var(--serif);
+  font-size: 58px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+.pod-hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.pod-hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.5);
+  max-width: 540px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+.pod-hero-tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pod-hero-tag {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  transition: all 0.3s;
+}
+.pod-hero-tag:hover {
+  background: rgba(76,123,244,0.1);
+  border-color: rgba(76,123,244,0.2);
+  color: var(--accent);
+}
+
+/* ═══════════ SOUNDWAVE DIVIDER ═══════════ */
+.pod-wave {
+  background: var(--navy);
+  padding: 0 40px 60px;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  align-items: center;
+  height: 50px;
+}
+.pod-wave-bar {
+  width: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.35;
+  animation: podWaveBar 1.2s ease-in-out infinite alternate;
+}
+@keyframes podWaveBar {
+  0% { height: 8px; }
+  100% { height: 28px; }
+}
+
+/* ═══════════ VIDEO CAROUSEL ═══════════ */
+.pod-carousel-section {
+  background: var(--bg-off);
+  padding: 80px 0 100px;
+  position: relative;
+}
+.pod-carousel-header {
+  text-align: center;
+  padding: 0 40px;
+  margin-bottom: 40px;
+}
+.pod-section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.pod-carousel-header h2 {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.pod-carousel-header p {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.pod-carousel-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.pod-carousel-wrap::before,
+.pod-carousel-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; width: 60px;
+  z-index: 3; pointer-events: none;
+}
+.pod-carousel-wrap::before { left: 0; background: linear-gradient(to right, var(--bg-off), transparent); }
+.pod-carousel-wrap::after  { right: 0; background: linear-gradient(to left, var(--bg-off), transparent); }
+
+.pod-carousel-track {
+  display: flex;
+  gap: 16px;
+  padding: 4px 40px;
+  animation: podCarousel 120s linear infinite;
+  width: max-content;
+  cursor: grab;
+}
+.pod-carousel-track:active { cursor: grabbing; }
+
+@keyframes podCarousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.pod-video-card {
+  flex-shrink: 0;
+  width: 340px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.35s ease;
+  position: relative;
+}
+.pod-video-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+.pod-video-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000;
+}
+.pod-video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, opacity 0.3s;
+}
+.pod-video-card:hover .pod-video-thumb img {
+  transform: scale(1.05);
+  opacity: 0.85;
+}
+.pod-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.25);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.pod-video-card:hover .pod-play-btn {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translate(-50%,-50%) scale(1.1);
+}
+.pod-play-btn svg {
+  width: 20px; height: 20px;
+  fill: #fff; stroke: none;
+  margin-left: 2px;
+}
+.pod-video-info {
+  padding: 16px 18px;
+}
+.pod-video-ep {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.pod-video-title {
+  font-family: var(--sans-tight);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.35;
+}
+
+/* ═══════════ CTA ═══════════ */
+.pod-cta {
+  background: var(--bg-white);
+  padding: 100px 40px;
+  text-align: center;
+}
+.pod-cta-inner {
+  max-width: 580px;
+  margin: 0 auto;
+}
+.pod-cta h2 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.pod-cta p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  line-height: 1.65;
+}
+.pod-cta-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pod-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--sans);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.pod-cta-link.primary {
+  background: var(--accent);
+  color: #fff;
+}
+.pod-cta-link.primary:hover {
+  background: #3968e0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(76,123,244,0.3);
+}
+.pod-cta-link.ghost {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid rgba(0,0,0,0.12);
+}
+.pod-cta-link.ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.pod-cta-link svg {
+  width: 16px; height: 16px;
+  stroke: currentColor; fill: none; stroke-width: 2;
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 900px) {
+  .pod-hero { padding: 72px 24px 60px; }
+  .pod-hero h1 { font-size: 40px; }
+  .pod-carousel-header h2 { font-size: 32px; }
+  .pod-video-card { width: 290px; }
+  .pod-cta h2 { font-size: 34px; }
+}
+@media (max-width: 480px) {
+  .pod-hero { padding: 60px 16px 48px; }
+  .pod-hero h1 { font-size: 32px; }
+  .pod-hero-sub { font-size: 14px; }
+  .pod-hero-tags { gap: 6px; }
+  .pod-video-card { width: 260px; }
+  .pod-carousel-header h2 { font-size: 28px; }
+  .pod-cta h2 { font-size: 28px; }
+  .pod-cta-links { flex-direction: column; align-items: stretch; }
+  .pod-cta-link { justify-content: center; }
+}
+</style>
+
+<!-- ═══════════ HTML ═══════════ -->
+<div class="pod">
+
+  <!-- HERO -->
+  <section class="pod-hero">
+    <div class="pod-hero-inner">
+      <div class="pod-hero-badge pod-reveal">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        Podcast ufficiale
+      </div>
+
+      <h1 class="pod-reveal pod-reveal-d1">Una chiacchierata per la tua <em>crescita</em>, ogni giorno.</h1>
+
+      <p class="pod-hero-sub pod-reveal pod-reveal-d2">Interviste e conversazioni con imprenditori, coach e corsisti che hanno trasformato la loro vita e i loro risultati.</p>
+
+      <div class="pod-hero-tags pod-reveal pod-reveal-d3">
+        <span class="pod-hero-tag">Business</span>
+        <span class="pod-hero-tag">Strategia</span>
+        <span class="pod-hero-tag">Crescita personale</span>
+        <span class="pod-hero-tag">Mindset</span>
+        <span class="pod-hero-tag">Marketing</span>
+        <span class="pod-hero-tag">Vendita</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUNDWAVE DIVIDER -->
+  <div class="pod-wave" aria-hidden="true" id="podWaveContainer"></div>
+
+  <!-- VIDEO CAROUSEL -->
+  <section class="pod-carousel-section">
+    <div class="pod-carousel-header">
+      <div class="pod-section-label pod-reveal">Tutti gli episodi</div>
+      <h2 class="pod-reveal pod-reveal-d1">Guarda, ascolta, cresci.</h2>
+      <p class="pod-reveal pod-reveal-d2">Ogni episodio &egrave; un concentrato di valore pratico. Clicca per guardare su YouTube.</p>
+    </div>
+
+    <div class="pod-carousel-wrap">
+      <div class="pod-carousel-track" id="podTrack">
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=4zryVL1QYOQ" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/4zryVL1QYOQ/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 1</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=9q6wjbkGDuI" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/9q6wjbkGDuI/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 2</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=7SFCJumYzKc" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/7SFCJumYzKc/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 3</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=RYUD4pnX0Ks" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/RYUD4pnX0Ks/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 4</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=ZULbeeMes-s" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/ZULbeeMes-s/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 5</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=XpNOUAX3dXM" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/XpNOUAX3dXM/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 6</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=OYw-hMR4y48" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/OYw-hMR4y48/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 7</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=Pyr4dh3OKz0" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/Pyr4dh3OKz0/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 8</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=MeHW7ADGfjg" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/MeHW7ADGfjg/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 9</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=bcWoemvs3ds" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/bcWoemvs3ds/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 10</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=Oa8KHqSbHss" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/Oa8KHqSbHss/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 11</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=bJSFmhwx8AE" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/bJSFmhwx8AE/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 12</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=ZotL1X3Tdz8" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/ZotL1X3Tdz8/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 13</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=6lvsQzXrbBA" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/6lvsQzXrbBA/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 14</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=f4pVDtAJ1JQ" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/f4pVDtAJ1JQ/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 15</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=NjodWgq-Qm4" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/NjodWgq-Qm4/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 16</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=mWIkggfc0UY" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/mWIkggfc0UY/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 17</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=ltgEpq4xy8Q" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/ltgEpq4xy8Q/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 18</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=i-r0pqT5C1U" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/i-r0pqT5C1U/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 19</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=IqkOsBdd7r8" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/IqkOsBdd7r8/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 20</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=pfvJ2KOfaa4" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/pfvJ2KOfaa4/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 21</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=93bjDoi2AG8" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/93bjDoi2AG8/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 22</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=F80UAL1aZfo" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/F80UAL1aZfo/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 23</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=PuTZMSN6_EI" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/PuTZMSN6_EI/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 24</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=oYPwZh2qYKw" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/oYPwZh2qYKw/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 25</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=48z2NM6D3t4" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/48z2NM6D3t4/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 26</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=KBaefKourGM" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/KBaefKourGM/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 27</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=mA_zec4Zz1g" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/mA_zec4Zz1g/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 28</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=f1Z9_TjilLY" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/f1Z9_TjilLY/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 29</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=bFpK5ccT4G4" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/bFpK5ccT4G4/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 30</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=lu12ZL6MmNw" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/lu12ZL6MmNw/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 31</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=kCkK9862k-A" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/kCkK9862k-A/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 32</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+        <a class="pod-video-card" href="https://www.youtube.com/watch?v=7WGRMDN6in0" target="_blank" rel="noopener">
+          <div class="pod-video-thumb"><img src="https://img.youtube.com/vi/7WGRMDN6in0/hqdefault.jpg" alt="EP" loading="lazy"><div class="pod-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="pod-video-info"><div class="pod-video-ep">Ep. 33</div><div class="pod-video-title">Podcast LMS</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pod-cta">
+    <div class="pod-cta-inner">
+      <div class="pod-section-label pod-reveal">Non perderti neanche un episodio</div>
+      <h2 class="pod-reveal pod-reveal-d1">Ascolta ovunque tu sia.</h2>
+      <p class="pod-reveal pod-reveal-d2">Iscriviti al canale e porta con te spunti di business, strategia e crescita personale.</p>
+      <div class="pod-cta-links pod-reveal pod-reveal-d3">
+        <a href="https://www.youtube.com/playlist?list=PL3m-0_KBDgVMBBK9zKu72CMpRXTnaoiyt" target="_blank" rel="noopener" class="pod-cta-link primary">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
+          Guarda su YouTube
+        </a>
+        <a href="https://www.youtube.com/@LeoneMasterSchool?sub_confirmation=1" target="_blank" rel="noopener" class="pod-cta-link ghost">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          Iscriviti al canale
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  // Scroll reveal
+  var els = document.querySelectorAll('.pod-reveal');
+  if (els.length) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(function(el){ obs.observe(el); });
+  }
+
+  // Soundwave bars
+  var wc = document.getElementById('podWaveContainer');
+  if (wc) {
+    for (var i = 0; i < 60; i++) {
+      var bar = document.createElement('div');
+      bar.className = 'pod-wave-bar';
+      bar.style.animationDelay = (Math.random() * 1.2).toFixed(2) + 's';
+      bar.style.animationDuration = (0.8 + Math.random() * 0.8).toFixed(2) + 's';
+      bar.style.height = (6 + Math.random() * 22) + 'px';
+      wc.appendChild(bar);
+    }
+  }
+
+  // Duplicate carousel track for seamless loop
+  var track = document.getElementById('podTrack');
+  if (track) {
+    var cards = track.innerHTML;
+    track.innerHTML = cards + cards;
+  }
+
+  // Pause carousel on hover
+  var ct = document.querySelector('.pod-carousel-track');
+  if (ct) {
+    ct.addEventListener('mouseenter', function(){ ct.style.animationPlayState = 'paused'; });
+    ct.addEventListener('mouseleave', function(){ ct.style.animationPlayState = 'running'; });
+  }
+})();
+</script>

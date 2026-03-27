@@ -1,0 +1,737 @@
+<!-- APP LMS — Leone Master School -->
+<!-- COPIA QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════ RESET ═══════════ */
+.aplms *, .aplms *::before, .aplms *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+/* ═══════════ VARIABLES ═══════════ */
+.aplms {
+  --navy: #07162E;
+  --navy-soft: #0B1D38;
+  --accent: #4C7BF4;
+  --accent2: #2E8BF7;
+  --accent-soft: rgba(76,123,244,0.07);
+  --accent-border: rgba(76,123,244,0.15);
+  --bg-white: #ffffff;
+  --bg-off: #F8F8F6;
+  --border: rgba(0,0,0,0.07);
+  --text-dark: #111111;
+  --text-body: #444444;
+  --text-muted: #888888;
+  --green: #22C55E;
+  --purple: #A855F7;
+  --orange: #F97316;
+  --pink: #EC4899;
+  --radius: 16px;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans-tight: 'Inter Tight', 'Inter', sans-serif;
+  font-family: var(--sans);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.aplms-reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.aplms-reveal.visible { opacity: 1; transform: translateY(0); }
+.aplms-reveal-d1 { transition-delay: 0.08s; }
+.aplms-reveal-d2 { transition-delay: 0.16s; }
+.aplms-reveal-d3 { transition-delay: 0.24s; }
+.aplms-reveal-d4 { transition-delay: 0.32s; }
+
+/* ═══════════ HERO ═══════════ */
+.aplms-hero {
+  background: linear-gradient(160deg, var(--navy) 0%, #0d2440 50%, #112a4a 100%);
+  padding: 100px 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+.aplms-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(76,123,244,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 80% 70%, rgba(168,85,247,0.08) 0%, transparent 50%);
+  pointer-events: none;
+  animation: aplmsGlow 10s ease-in-out infinite alternate;
+}
+@keyframes aplmsGlow {
+  0%   { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 1;   transform: scale(1.05); }
+}
+.aplms-hero-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: end;
+  position: relative;
+  z-index: 2;
+}
+.aplms-hero-text {
+  padding-bottom: 100px;
+}
+.aplms-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.aplms-hero-badge svg {
+  width: 14px; height: 14px;
+  stroke: var(--accent); fill: none; stroke-width: 2;
+}
+.aplms-hero h1 {
+  font-family: var(--serif);
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.aplms-hero h1 em {
+  font-style: italic;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.aplms-hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.5);
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.aplms-hero-btns {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.aplms-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; font-size: 14px; font-weight: 600;
+  font-family: var(--sans); border-radius: 10px; border: none;
+  cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none; white-space: nowrap;
+}
+.aplms-btn-primary { background: var(--accent); color: #fff; }
+.aplms-btn-primary:hover {
+  background: #3968e0; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(76,123,244,0.3);
+}
+.aplms-btn-ghost {
+  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.aplms-btn-ghost:hover {
+  background: rgba(255,255,255,0.1); color: #fff; transform: translateY(-2px);
+}
+.aplms-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* Phone mockup */
+.aplms-phone-wrap {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.aplms-phone {
+  width: 280px;
+  height: 560px;
+  background: #111;
+  border-radius: 36px;
+  border: 3px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+  transform: perspective(800px) rotateY(-5deg) rotateX(2deg);
+  transition: transform 0.5s ease;
+}
+.aplms-phone:hover {
+  transform: perspective(800px) rotateY(0) rotateX(0);
+}
+.aplms-phone-notch {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 28px;
+  background: #111;
+  border-radius: 0 0 16px 16px;
+  z-index: 3;
+}
+.aplms-phone-screen {
+  width: 100%; height: 100%;
+  padding: 40px 16px 20px;
+  background: linear-gradient(180deg, #0d1b2a 0%, #1a2d45 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+.aplms-phone-greeting {
+  font-size: 11px; color: rgba(255,255,255,0.4);
+  margin-bottom: 2px;
+}
+.aplms-phone-title {
+  font-family: var(--sans-tight);
+  font-size: 18px; font-weight: 700; color: #fff;
+  margin-bottom: 8px;
+}
+.aplms-phone-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  animation: aplmsPhoneFloat 4s ease-in-out infinite alternate;
+}
+.aplms-phone-card:nth-child(odd) { animation-delay: 0.5s; }
+.aplms-phone-card-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.aplms-phone-card-icon svg {
+  width: 16px; height: 16px; stroke-width: 2; fill: none;
+}
+.aplms-phone-card-text {
+  font-size: 11px; color: rgba(255,255,255,0.7);
+  line-height: 1.4;
+}
+.aplms-phone-card-text strong {
+  display: block;
+  font-size: 12px; color: #fff; margin-bottom: 1px;
+}
+@keyframes aplmsPhoneFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+/* ═══════════ FEATURES ═══════════ */
+.aplms-features {
+  background: var(--bg-white);
+  padding: 100px 40px;
+}
+.aplms-features-inner {
+  max-width: 1100px; margin: 0 auto;
+}
+.aplms-features-header {
+  text-align: center; margin-bottom: 56px;
+}
+.aplms-section-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+}
+.aplms-features-header h2 {
+  font-family: var(--serif);
+  font-size: 44px; font-weight: 600; color: var(--text-dark); margin-bottom: 14px;
+}
+.aplms-features-header p {
+  font-size: 16px; color: var(--text-muted);
+  max-width: 460px; margin: 0 auto; line-height: 1.6;
+}
+.aplms-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.aplms-feature {
+  background: var(--bg-off);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: all 0.35s ease;
+}
+.aplms-feature:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.04);
+  transform: translateY(-3px);
+}
+.aplms-feature-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.aplms-feature-icon svg {
+  width: 22px; height: 22px; stroke-width: 2; fill: none;
+}
+.aplms-feature-title {
+  font-family: var(--sans-tight);
+  font-size: 17px; font-weight: 700; color: var(--text-dark);
+  margin-bottom: 6px;
+}
+.aplms-feature-desc {
+  font-size: 14px; line-height: 1.6; color: var(--text-muted);
+}
+
+/* Feature icon colors */
+.aplms-icon-blue   { background: rgba(76,123,244,0.08); }
+.aplms-icon-blue svg   { stroke: var(--accent); }
+.aplms-icon-purple { background: rgba(168,85,247,0.08); }
+.aplms-icon-purple svg { stroke: var(--purple); }
+.aplms-icon-green  { background: rgba(34,197,94,0.08); }
+.aplms-icon-green svg  { stroke: var(--green); }
+.aplms-icon-orange { background: rgba(249,115,22,0.08); }
+.aplms-icon-orange svg { stroke: var(--orange); }
+.aplms-icon-pink   { background: rgba(236,72,153,0.08); }
+.aplms-icon-pink svg   { stroke: var(--pink); }
+
+/* ═══════════ WHAT'S INSIDE ═══════════ */
+.aplms-inside {
+  background: var(--bg-off);
+  padding: 100px 40px;
+}
+.aplms-inside-inner {
+  max-width: 1100px; margin: 0 auto;
+}
+.aplms-inside-header {
+  text-align: center; margin-bottom: 56px;
+}
+.aplms-inside-header h2 {
+  font-family: var(--serif);
+  font-size: 44px; font-weight: 600; color: var(--text-dark); margin-bottom: 14px;
+}
+.aplms-inside-header p {
+  font-size: 16px; color: var(--text-muted);
+  max-width: 440px; margin: 0 auto; line-height: 1.6;
+}
+.aplms-inside-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.aplms-inside-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: center;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.aplms-inside-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+  transform: translateY(-3px);
+}
+.aplms-inside-card-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  margin: 0 auto 18px;
+  display: flex; align-items: center; justify-content: center;
+}
+.aplms-inside-card-icon svg {
+  width: 24px; height: 24px; stroke-width: 2; fill: none;
+}
+.aplms-inside-card h3 {
+  font-family: var(--sans-tight);
+  font-size: 16px; font-weight: 700; color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.aplms-inside-card p {
+  font-size: 13px; line-height: 1.55; color: var(--text-muted);
+}
+.aplms-inside-card-arrow {
+  font-size: 12px; font-weight: 600; color: var(--accent);
+  margin-top: 14px; display: flex; align-items: center;
+  justify-content: center; gap: 4px;
+}
+
+/* ═══════════ BENEFITS ═══════════ */
+.aplms-benefits {
+  background: var(--bg-white);
+  padding: 100px 40px;
+}
+.aplms-benefits-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.aplms-benefits-header {
+  text-align: center; margin-bottom: 48px;
+}
+.aplms-benefits-header h2 {
+  font-family: var(--serif);
+  font-size: 44px; font-weight: 600; color: var(--text-dark); margin-bottom: 14px;
+}
+.aplms-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.aplms-benefit-row {
+  background: var(--bg-off);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.aplms-benefit-row:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  transform: translateX(4px);
+}
+.aplms-benefit-emoji {
+  font-size: 28px;
+  flex-shrink: 0;
+  width: 48px;
+  text-align: center;
+}
+.aplms-benefit-row-title {
+  font-family: var(--sans-tight);
+  font-size: 16px; font-weight: 700; color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.aplms-benefit-row-desc {
+  font-size: 14px; color: var(--text-muted); line-height: 1.55;
+}
+
+/* ═══════════ CTA ═══════════ */
+.aplms-cta {
+  background: var(--navy);
+  padding: 100px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.aplms-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(76,123,244,0.1), transparent 60%);
+  pointer-events: none;
+}
+.aplms-cta-inner {
+  max-width: 580px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.aplms-cta h2 {
+  font-family: var(--serif);
+  font-size: 48px; font-weight: 600; color: #fff;
+  margin-bottom: 16px; line-height: 1.12;
+}
+.aplms-cta p {
+  font-size: 16px; color: rgba(255,255,255,0.5);
+  margin-bottom: 36px; line-height: 1.65;
+}
+.aplms-cta-btns {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.aplms-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--navy);
+  padding: 14px 32px; font-size: 14px; font-weight: 700;
+  font-family: var(--sans); border-radius: 10px; border: none;
+  cursor: pointer; transition: all 0.3s ease; text-decoration: none;
+}
+.aplms-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(255,255,255,0.15);
+}
+.aplms-cta-btn svg { width: 16px; height: 16px; }
+.aplms-cta-btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 14px 32px; font-size: 14px; font-weight: 600;
+  font-family: var(--sans); border-radius: 10px;
+  cursor: pointer; transition: all 0.3s ease; text-decoration: none;
+}
+.aplms-cta-btn-ghost:hover {
+  background: rgba(255,255,255,0.06); color: #fff; transform: translateY(-3px);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 900px) {
+  .aplms-hero { padding: 72px 24px 0; }
+  .aplms-hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .aplms-hero-text { padding-bottom: 40px; }
+  .aplms-hero h1 { font-size: 38px; }
+  .aplms-hero-sub { margin: 0 auto 28px; }
+  .aplms-hero-btns { justify-content: center; }
+  .aplms-phone-wrap { justify-content: center; }
+  .aplms-phone { transform: none; width: 240px; height: 480px; }
+
+  .aplms-features { padding: 72px 24px; }
+  .aplms-features-grid { grid-template-columns: 1fr; }
+  .aplms-features-header h2 { font-size: 34px; }
+
+  .aplms-inside { padding: 72px 24px; }
+  .aplms-inside-grid { grid-template-columns: 1fr 1fr; }
+  .aplms-inside-header h2 { font-size: 34px; }
+
+  .aplms-benefits { padding: 72px 24px; }
+  .aplms-benefits-header h2 { font-size: 34px; }
+
+  .aplms-cta { padding: 72px 24px; }
+  .aplms-cta h2 { font-size: 34px; }
+}
+@media (max-width: 480px) {
+  .aplms-hero { padding: 60px 16px 0; }
+  .aplms-hero h1 { font-size: 30px; }
+  .aplms-hero-btns { flex-direction: column; align-items: stretch; }
+  .aplms-btn { justify-content: center; }
+  .aplms-phone { width: 200px; height: 400px; }
+
+  .aplms-features-header h2 { font-size: 28px; }
+  .aplms-inside-grid { grid-template-columns: 1fr; }
+  .aplms-inside-header h2 { font-size: 28px; }
+  .aplms-benefits-header h2 { font-size: 28px; }
+  .aplms-benefit-row { padding: 22px 20px; }
+  .aplms-cta h2 { font-size: 28px; }
+  .aplms-cta-btns { flex-direction: column; align-items: stretch; }
+  .aplms-cta-btn, .aplms-cta-btn-ghost { justify-content: center; }
+}
+</style>
+
+<!-- ═══════════ HTML ═══════════ -->
+<div class="aplms">
+
+  <!-- HERO -->
+  <section class="aplms-hero">
+    <div class="aplms-hero-grid">
+      <div class="aplms-hero-text">
+        <div class="aplms-hero-badge aplms-reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          App ufficiale
+        </div>
+        <h1 class="aplms-reveal aplms-reveal-d1">Tutto il sapere LMS, nella tua <em>tasca.</em></h1>
+        <p class="aplms-hero-sub aplms-reveal aplms-reveal-d2">Scarica l'App ufficiale LMS e inizia subito a formarti con i nostri videocorsi pi&ugrave; potenti. Marketing, vendita, mindset, finanza personale e crescita professionale &mdash; tutto a portata di mano.</p>
+        <div class="aplms-hero-btns aplms-reveal aplms-reveal-d3">
+          <a href="#" class="aplms-btn aplms-btn-primary">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            Scarica per iOS
+          </a>
+          <a href="#" class="aplms-btn aplms-btn-ghost">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            Scarica per Android
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="aplms-phone-wrap aplms-reveal aplms-reveal-d2">
+        <div class="aplms-phone">
+          <div class="aplms-phone-notch"></div>
+          <div class="aplms-phone-screen">
+            <div class="aplms-phone-greeting">Ciao, bentornato</div>
+            <div class="aplms-phone-title">I tuoi programmi</div>
+            <div class="aplms-phone-card">
+              <div class="aplms-phone-card-icon" style="background:rgba(76,123,244,0.15);">
+                <svg viewBox="0 0 24 24" stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div class="aplms-phone-card-text"><strong>Lezione Live</strong>Marketing Avanzato &bull; 45 min</div>
+            </div>
+            <div class="aplms-phone-card">
+              <div class="aplms-phone-card-icon" style="background:rgba(168,85,247,0.15);">
+                <svg viewBox="0 0 24 24" stroke="#A855F7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+              </div>
+              <div class="aplms-phone-card-text"><strong>Workbook</strong>Checklist settimanale</div>
+            </div>
+            <div class="aplms-phone-card">
+              <div class="aplms-phone-card-icon" style="background:rgba(34,197,94,0.15);">
+                <svg viewBox="0 0 24 24" stroke="#22C55E" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+              </div>
+              <div class="aplms-phone-card-text"><strong>Podcast</strong>Ep. 33 &bull; Nuovo</div>
+            </div>
+            <div class="aplms-phone-card">
+              <div class="aplms-phone-card-icon" style="background:rgba(249,115,22,0.15);">
+                <svg viewBox="0 0 24 24" stroke="#F97316" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="aplms-phone-card-text"><strong>Evento</strong>Masterclass &bull; Sabato</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES: Perch&eacute; l'App -->
+  <section class="aplms-features">
+    <div class="aplms-features-inner">
+      <div class="aplms-features-header">
+        <div class="aplms-section-label aplms-reveal">Perch&eacute; l'App</div>
+        <h2 class="aplms-reveal aplms-reveal-d1">Formazione senza limiti.</h2>
+        <p class="aplms-reveal aplms-reveal-d2">Tutto ci&ograve; che ti serve per crescere, in un'unica app.</p>
+      </div>
+
+      <div class="aplms-features-grid">
+        <div class="aplms-feature aplms-reveal">
+          <div class="aplms-feature-icon aplms-icon-blue">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <div>
+            <div class="aplms-feature-title">Programmi e lezioni live</div>
+            <div class="aplms-feature-desc">Accedi ai tuoi programmi e alle lezioni live registrate in qualsiasi momento.</div>
+          </div>
+        </div>
+        <div class="aplms-feature aplms-reveal aplms-reveal-d1">
+          <div class="aplms-feature-icon aplms-icon-purple">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="aplms-feature-title">Guide, checklist e workbook</div>
+            <div class="aplms-feature-desc">Consulta guide, checklist, template e workbook direttamente dal telefono.</div>
+          </div>
+        </div>
+        <div class="aplms-feature aplms-reveal aplms-reveal-d2">
+          <div class="aplms-feature-icon aplms-icon-orange">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          </div>
+          <div>
+            <div class="aplms-feature-title">Notifiche in tempo reale</div>
+            <div class="aplms-feature-desc">Ricevi notifiche su nuove lezioni, eventi e risorse extra.</div>
+          </div>
+        </div>
+        <div class="aplms-feature aplms-reveal aplms-reveal-d3">
+          <div class="aplms-feature-icon aplms-icon-green">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="aplms-feature-title">Ecosistema sempre disponibile</div>
+            <div class="aplms-feature-desc">Porta con te l'intero ecosistema LMS, sempre disponibile e senza distrazioni.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="aplms-inside">
+    <div class="aplms-inside-inner">
+      <div class="aplms-inside-header">
+        <div class="aplms-section-label aplms-reveal">Cosa trovi dentro</div>
+        <h2 class="aplms-reveal aplms-reveal-d1">Un mondo di contenuti.</h2>
+        <p class="aplms-reveal aplms-reveal-d2">Dall'on-demand ai live, tutto in un unico posto.</p>
+      </div>
+
+      <div class="aplms-inside-grid">
+        <div class="aplms-inside-card aplms-reveal">
+          <div class="aplms-inside-card-icon aplms-icon-blue">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <h3>Programmi &amp; Percorsi</h3>
+          <p>Tutte le lezioni live registrate e sempre disponibili.</p>
+        </div>
+        <div class="aplms-inside-card aplms-reveal aplms-reveal-d1">
+          <div class="aplms-inside-card-icon aplms-icon-purple">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Videoteca tematica</h3>
+          <p>Contenuti on-demand su marketing, vendita, gestione del tempo e crescita.</p>
+        </div>
+        <div class="aplms-inside-card aplms-reveal aplms-reveal-d2">
+          <div class="aplms-inside-card-icon aplms-icon-green">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Risorse gratuite</h3>
+          <p>Checklist operative, guide step-by-step e videocorsi introduttivi.</p>
+        </div>
+        <div class="aplms-inside-card aplms-reveal aplms-reveal-d3">
+          <div class="aplms-inside-card-icon aplms-icon-orange">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+          </div>
+          <h3>Podcast &amp; Clip</h3>
+          <p>Interviste, strategie e storie di successo ovunque ti trovi.</p>
+        </div>
+        <div class="aplms-inside-card aplms-reveal aplms-reveal-d4">
+          <div class="aplms-inside-card-icon aplms-icon-pink">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3>Eventi</h3>
+          <p>Workshop, masterclass e aggiornamenti sul calendario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="aplms-benefits">
+    <div class="aplms-benefits-inner">
+      <div class="aplms-benefits-header">
+        <div class="aplms-section-label aplms-reveal">I vantaggi</div>
+        <h2 class="aplms-reveal aplms-reveal-d1">La formazione sempre con te.</h2>
+      </div>
+
+      <div class="aplms-benefits-list">
+        <div class="aplms-benefit-row aplms-reveal">
+          <div class="aplms-benefit-emoji">&#x1F680;</div>
+          <div>
+            <div class="aplms-benefit-row-title">Trasforma i tempi morti in progresso</div>
+            <div class="aplms-benefit-row-desc">Ogni attesa diventa un'occasione per crescere.</div>
+          </div>
+        </div>
+        <div class="aplms-benefit-row aplms-reveal aplms-reveal-d1">
+          <div class="aplms-benefit-emoji">&#x1F4CB;</div>
+          <div>
+            <div class="aplms-benefit-row-title">Zero interruzioni nel tuo programma</div>
+            <div class="aplms-benefit-row-desc">Che tu sia in ufficio, a casa o in viaggio, hai sempre accesso ai tuoi materiali.</div>
+          </div>
+        </div>
+        <div class="aplms-benefit-row aplms-reveal aplms-reveal-d2">
+          <div class="aplms-benefit-emoji">&#x1F91D;</div>
+          <div>
+            <div class="aplms-benefit-row-title">Supporto continuo</div>
+            <div class="aplms-benefit-row-desc">Tutor e docenti a portata di mano, cos&igrave; non resti mai bloccato.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="aplms-cta">
+    <div class="aplms-cta-inner">
+      <h2 class="aplms-reveal">Porta la Leone Master School sempre con te.</h2>
+      <p class="aplms-reveal aplms-reveal-d1">Scarica l'app e inizia a formarti ovunque tu sia.</p>
+      <div class="aplms-cta-btns aplms-reveal aplms-reveal-d2">
+        <a href="#" class="aplms-cta-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+          Scarica per iOS
+        </a>
+        <a href="#" class="aplms-cta-btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+          Scarica per Android
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.aplms-reveal');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>

@@ -1,0 +1,642 @@
+<!-- CORSI GRATIS — Leone Master School -->
+<!-- COPIA QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════ RESET ═══════════ */
+.cg *, .cg *::before, .cg *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+/* ═══════════ VARIABLES ═══════════ */
+.cg {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #2E8BF7;
+  --accent-soft: rgba(76,123,244,0.07);
+  --accent-border: rgba(76,123,244,0.15);
+  --bg-white: #ffffff;
+  --bg-off: #F8F8F6;
+  --border: rgba(0,0,0,0.07);
+  --text-dark: #111111;
+  --text-body: #444444;
+  --text-muted: #888888;
+  --green: #22C55E;
+  --purple: #A855F7;
+  --orange: #F97316;
+  --pink: #EC4899;
+  --teal: #14B8A6;
+  --red: #EF4444;
+  --yellow: #EAB308;
+  --indigo: #6366F1;
+  --radius: 16px;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans-tight: 'Inter Tight', 'Inter', sans-serif;
+  font-family: var(--sans);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.cg-reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.cg-reveal.visible { opacity: 1; transform: translateY(0); }
+.cg-reveal-d1 { transition-delay: 0.08s; }
+.cg-reveal-d2 { transition-delay: 0.16s; }
+.cg-reveal-d3 { transition-delay: 0.24s; }
+.cg-reveal-d4 { transition-delay: 0.32s; }
+
+/* ═══════════ HERO ═══════════ */
+.cg-hero {
+  background: var(--bg-white);
+  padding: 100px 40px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cg-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 40%, rgba(76,123,244,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 70% 60%, rgba(34,197,94,0.04) 0%, transparent 55%);
+  pointer-events: none;
+  animation: cgGlow 12s ease-in-out infinite alternate;
+}
+@keyframes cgGlow {
+  0%   { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 1;   transform: scale(1.06) translate(-1%, 1%); }
+}
+.cg-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.cg-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(34,197,94,0.06);
+  border: 1px solid rgba(34,197,94,0.15);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--green);
+}
+.cg-hero-badge svg {
+  width: 14px; height: 14px;
+  stroke: var(--green); fill: none; stroke-width: 2;
+}
+.cg-hero h1 {
+  font-family: var(--serif);
+  font-size: 58px; font-weight: 600;
+  line-height: 1.1; color: var(--text-dark);
+  margin-bottom: 20px; letter-spacing: -0.5px;
+}
+.cg-hero h1 em {
+  font-style: italic; color: var(--green);
+}
+.cg-hero-sub {
+  font-size: 17px; color: var(--text-muted);
+  max-width: 520px; margin: 0 auto 16px;
+  line-height: 1.7;
+}
+.cg-hero-sub2 {
+  font-size: 15px; color: var(--text-muted);
+  max-width: 560px; margin: 0 auto 36px;
+  line-height: 1.65;
+}
+.cg-hero-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green); color: #fff;
+  padding: 14px 28px; font-size: 14px; font-weight: 600;
+  font-family: var(--sans); border-radius: 10px; border: none;
+  cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none; white-space: nowrap;
+}
+.cg-hero-cta:hover {
+  background: #1aab52; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(34,197,94,0.3);
+}
+.cg-hero-cta svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; }
+
+/* ═══════════ INTRO ═══════════ */
+.cg-intro {
+  background: var(--bg-off);
+  padding: 80px 40px;
+}
+.cg-intro-inner {
+  max-width: 800px; margin: 0 auto;
+  text-align: center;
+}
+.cg-section-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+}
+.cg-intro h2 {
+  font-family: var(--serif);
+  font-size: 38px; font-weight: 600;
+  color: var(--text-dark); margin-bottom: 18px;
+}
+.cg-intro p {
+  font-size: 16px; color: var(--text-body);
+  line-height: 1.75; margin-bottom: 12px;
+}
+.cg-intro-highlight {
+  display: inline-block;
+  margin-top: 16px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  border-radius: 10px;
+  padding: 14px 24px;
+  font-size: 14px; font-weight: 600;
+  color: var(--accent);
+}
+.cg-intro-highlight svg {
+  width: 14px; height: 14px; vertical-align: -2px;
+  stroke: var(--accent); fill: none; stroke-width: 2;
+  margin-right: 6px;
+}
+
+/* ═══════════ COURSES GRID ═══════════ */
+.cg-courses {
+  background: var(--bg-white);
+  padding: 100px 40px;
+}
+.cg-courses-inner {
+  max-width: 1140px; margin: 0 auto;
+}
+.cg-courses-header {
+  text-align: center; margin-bottom: 56px;
+}
+.cg-courses-header h2 {
+  font-family: var(--serif);
+  font-size: 44px; font-weight: 600;
+  color: var(--text-dark); margin-bottom: 12px;
+}
+.cg-courses-header p {
+  font-size: 16px; color: var(--text-muted);
+  max-width: 440px; margin: 0 auto; line-height: 1.6;
+}
+.cg-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.cg-card {
+  background: var(--bg-off);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+.cg-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+  transform: translateY(-5px);
+}
+.cg-card-top {
+  padding: 28px 28px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.cg-card-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.cg-card-icon svg {
+  width: 22px; height: 22px; stroke-width: 2; fill: none;
+}
+.cg-card-tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 6px;
+  margin-bottom: 8px;
+}
+.cg-card h3 {
+  font-family: var(--sans-tight);
+  font-size: 18px; font-weight: 700;
+  color: var(--text-dark); margin-bottom: 8px;
+  line-height: 1.3;
+}
+.cg-card-desc {
+  font-size: 14px; line-height: 1.6;
+  color: var(--text-muted);
+  padding: 0 28px;
+  flex: 1;
+}
+.cg-card-testimonials {
+  padding: 16px 28px;
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+}
+.cg-card-testi-quote {
+  font-size: 12px; line-height: 1.5;
+  color: var(--text-body); font-style: italic;
+}
+.cg-card-testi-quote strong {
+  font-style: normal; color: var(--text-muted);
+}
+.cg-card-bottom {
+  padding: 16px 28px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cg-card-price {
+  font-family: var(--sans-tight);
+  font-size: 20px; font-weight: 800;
+  color: var(--green);
+}
+.cg-card-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent); color: #fff;
+  padding: 10px 20px; font-size: 13px; font-weight: 600;
+  font-family: var(--sans); border-radius: 9px; border: none;
+  cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none; white-space: nowrap;
+}
+.cg-card-btn:hover {
+  background: #3968e0; transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(76,123,244,0.25);
+}
+.cg-card-btn svg { width: 13px; height: 13px; stroke: #fff; fill: none; stroke-width: 2; }
+
+/* Color variants */
+.cg-c-green  { background: rgba(34,197,94,0.08); }
+.cg-c-green svg  { stroke: var(--green); }
+.cg-t-green  { background: rgba(34,197,94,0.06); color: var(--green); }
+
+.cg-c-purple { background: rgba(168,85,247,0.08); }
+.cg-c-purple svg { stroke: var(--purple); }
+.cg-t-purple { background: rgba(168,85,247,0.06); color: var(--purple); }
+
+.cg-c-orange { background: rgba(249,115,22,0.08); }
+.cg-c-orange svg { stroke: var(--orange); }
+.cg-t-orange { background: rgba(249,115,22,0.06); color: var(--orange); }
+
+.cg-c-blue   { background: rgba(76,123,244,0.08); }
+.cg-c-blue svg   { stroke: var(--accent); }
+.cg-t-blue   { background: rgba(76,123,244,0.06); color: var(--accent); }
+
+.cg-c-pink   { background: rgba(236,72,153,0.08); }
+.cg-c-pink svg   { stroke: var(--pink); }
+.cg-t-pink   { background: rgba(236,72,153,0.06); color: var(--pink); }
+
+.cg-c-teal   { background: rgba(20,184,166,0.08); }
+.cg-c-teal svg   { stroke: var(--teal); }
+.cg-t-teal   { background: rgba(20,184,166,0.06); color: var(--teal); }
+
+.cg-c-red    { background: rgba(239,68,68,0.08); }
+.cg-c-red svg    { stroke: var(--red); }
+.cg-t-red    { background: rgba(239,68,68,0.06); color: var(--red); }
+
+.cg-c-indigo { background: rgba(99,102,241,0.08); }
+.cg-c-indigo svg { stroke: var(--indigo); }
+.cg-t-indigo { background: rgba(99,102,241,0.06); color: var(--indigo); }
+
+/* ═══════════ CTA ═══════════ */
+.cg-cta {
+  background: var(--navy);
+  padding: 100px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cg-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.08), transparent 60%);
+  pointer-events: none;
+}
+.cg-cta-inner {
+  max-width: 600px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.cg-cta h2 {
+  font-family: var(--serif);
+  font-size: 48px; font-weight: 600;
+  color: #fff; margin-bottom: 16px; line-height: 1.12;
+}
+.cg-cta p {
+  font-size: 16px; color: rgba(255,255,255,0.5);
+  margin-bottom: 36px; line-height: 1.65;
+}
+.cg-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green); color: #fff;
+  padding: 15px 36px; font-size: 14px; font-weight: 700;
+  font-family: var(--sans); border-radius: 10px; border: none;
+  cursor: pointer; transition: all 0.3s ease; text-decoration: none;
+}
+.cg-cta-btn:hover {
+  background: #1aab52; transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(34,197,94,0.3);
+}
+.cg-cta-btn svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; }
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 900px) {
+  .cg-hero { padding: 72px 24px 60px; }
+  .cg-hero h1 { font-size: 40px; }
+  .cg-intro { padding: 60px 24px; }
+  .cg-intro h2 { font-size: 30px; }
+  .cg-courses { padding: 72px 24px; }
+  .cg-courses-header h2 { font-size: 34px; }
+  .cg-grid { grid-template-columns: 1fr; }
+  .cg-cta { padding: 72px 24px; }
+  .cg-cta h2 { font-size: 34px; }
+}
+@media (max-width: 480px) {
+  .cg-hero { padding: 60px 16px 48px; }
+  .cg-hero h1 { font-size: 32px; }
+  .cg-hero-sub { font-size: 14px; }
+  .cg-courses-header h2 { font-size: 28px; }
+  .cg-card-top { padding: 22px 20px 16px; }
+  .cg-card-desc { padding: 0 20px; }
+  .cg-card-testimonials { padding: 14px 20px; }
+  .cg-card-bottom { padding: 14px 20px 20px; flex-direction: column; gap: 12px; align-items: stretch; }
+  .cg-card-btn { justify-content: center; }
+  .cg-cta h2 { font-size: 28px; }
+}
+</style>
+
+<!-- ═══════════ HTML ═══════════ -->
+<div class="cg">
+
+  <!-- HERO -->
+  <section class="cg-hero">
+    <div class="cg-hero-inner">
+      <div class="cg-hero-badge cg-reveal">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        100% Gratuiti
+      </div>
+      <h1 class="cg-reveal cg-reveal-d1">Mettici alla prova con i nostri corsi <em>gratuiti.</em></h1>
+      <p class="cg-hero-sub cg-reveal cg-reveal-d2">Non te la senti di iniziare subito uno dei nostri programmi? Nessun problema. Ecco un catalogo di lezioni introduttive per conoscere il nostro approccio.</p>
+      <p class="cg-hero-sub2 cg-reveal cg-reveal-d3">Puoi guardarle subito, senza costi, e portarti a casa strumenti pratici di marketing, vendita, crescita personale e real estate.</p>
+      <a href="#cgCorsi" class="cg-hero-cta cg-reveal cg-reveal-d3">
+        Esplora il catalogo
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="cg-intro">
+    <div class="cg-intro-inner">
+      <div class="cg-section-label cg-reveal">Il nostro approccio</div>
+      <h2 class="cg-reveal cg-reveal-d1">Formazione gratuita, ma densa di valore.</h2>
+      <p class="cg-reveal cg-reveal-d2">I corsi gratuiti della Leone Master School sono video lezioni brevi, costruite per darti strumenti immediati. Non sono anteprime: sono lezioni pratiche che ti fanno entrare subito nel merito di un tema specifico e ti mostrano come applicarlo nella vita reale.</p>
+      <p class="cg-reveal cg-reveal-d3">Ogni corso nasce dall&rsquo;esperienza dei nostri docenti e mentori, e traduce concetti complessi in azioni semplici e replicabili. Poche ore, molto valore, risultati concreti.</p>
+      <div class="cg-intro-highlight cg-reveal cg-reveal-d4">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        Con la nostra app puoi guardarli sempre e ovunque tu sia.
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section class="cg-courses" id="cgCorsi">
+    <div class="cg-courses-inner">
+      <div class="cg-courses-header">
+        <div class="cg-section-label cg-reveal">Catalogo corsi</div>
+        <h2 class="cg-reveal cg-reveal-d1">Scegli da dove iniziare.</h2>
+        <p class="cg-reveal cg-reveal-d2">8 corsi completi, pronti per te.</p>
+      </div>
+
+      <div class="cg-grid">
+
+        <!-- 1. Finanza Etica -->
+        <div class="cg-card cg-reveal">
+          <div class="cg-card-top">
+            <div class="cg-card-icon cg-c-green">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <div>
+              <span class="cg-card-tag cg-t-green">Finanza</span>
+              <h3>Finanza Etica e Sostenibile</h3>
+            </div>
+          </div>
+          <div class="cg-card-desc">Impara a gestire il denaro con consapevolezza. Scoprirai come costruire un patrimonio duraturo e far lavorare il tempo a tuo favore.</div>
+          <div class="cg-card-testimonials">
+            <div class="cg-card-testi-quote">&ldquo;Mi ha cambiato il modo di pensare al denaro.&rdquo; <strong>&mdash; Giulia L.</strong></div>
+          </div>
+          <div class="cg-card-bottom">
+            <div class="cg-card-price">Gratis</div>
+            <a href="#" class="cg-card-btn">
+              Inizia ora
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Benessere Spirituale -->
+        <div class="cg-card cg-reveal cg-reveal-d1">
+          <div class="cg-card-top">
+            <div class="cg-card-icon cg-c-purple">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <div>
+              <span class="cg-card-tag cg-t-purple">Benessere</span>
+              <h3>Benessere Spirituale</h3>
+            </div>
+          </div>
+          <div class="cg-card-desc">Meditazioni guidate, audioguide e lezioni pratiche per armonizzare i tuoi chakra, applicare le 7 leggi spirituali del successo e ritrovare libert&agrave; emotiva.</div>
+          <div class="cg-card-testimonials">
+            <div class="cg-card-testi-quote">&ldquo;Un&rsquo;esperienza trasformativa.&rdquo; <strong>&mdash; Martina G.</strong></div>
+          </div>
+          <div class="cg-card-bottom">
+            <div class="cg-card-price">Gratis</div>
+            <a href="#" class="cg-card-btn">
+              Inizia ora
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Cum-Vinco -->
+        <div class="cg-card cg-reveal">
+          <div class="cg-card-top">
+            <div class="cg-card-icon cg-c-orange">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <span class="cg-card-tag cg-t-orange">Vendita</span>
+              <h3>Cum-Vinco: Vinci e Fai Vincere</h3>
+            </div>
+          </div>
+          <div class="cg-card-desc">Impara a creare una rete solida, gestire le obiezioni e comunicare con sicurezza. La vendita come atto etico, persuasivo e reciproco.</div>
+          <div class="cg-card-testimonials">
+            <div class="cg-card-testi-quote">&ldquo;Tecniche pratiche da applicare subito.&rdquo; <strong>&mdash; Marco N.</strong></div>
+          </div>
+          <div class="cg-card-bottom">
+            <div class="cg-card-price">Gratis</div>
+            <a href="#" class="cg-card-btn">
+              Inizia ora
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Colazione per la Mente -->
+        <div class="cg-card cg-reveal cg-reveal-d1">
+          <div class="cg-card-top">
+            <div class="cg-card-icon cg-c-blue">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <span class="cg-card-tag cg-t-blue">Mindset</span>
+              <h3>Colazione per la Mente</h3>
+            </div>
+          </div>
+          <div class="cg-card-desc">Connettiti ogni giorno alle 8:00 per iniziare la giornata con chiarezza, energia e focus. Un appuntamento quotidiano per nutrire la mente.</div>
+          <div class="cg-card-testimonials">
+            <div class="cg-card-testi-quote">&ldquo;Ogni mattina una spinta concreta per partire al meglio.&rdquo; <strong>&mdash; Sara T.</strong></div>
+          </div>
+          <div class="cg-card-bottom">
+            <div class="cg-card-price">Gratis</div>
+            <a href="#" class="cg-card-btn">
+              Inizia ora
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Da Dipendente a Imprenditore -->
+        <div class="cg-card cg-reveal">
+          <div class="cg-card-top">
+            <div class="cg-card-icon cg-c-teal">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div>
+              <span class="cg-card-tag cg-t-teal">Business</span>
+              <h3>Da Dipendente a Imprenditore</h3>
+            </div>
+          </div>
+          <div class="cg-card-desc">Guidato da Leonardo Leone, scoprirai come passare dalla visione imprenditoriale alla gestione concreta di un&rsquo;attivit&agrave;. Evita errori comuni e costruisci un progetto solido.</div>
+          <div class="cg-card-testimonials">
+            <div class="cg-card-testi-quote">&ldquo;Mi ha dato tutte le basi per aprire la mia attivit&agrave;.&rdquo; <strong>&mdash; Andrea S.</strong></div>
+          </div>
+          <div class="cg-card-bottom">
+            <div class="cg-card-price">Gratis</div>
+            <a href="#" class="cg-card-btn">
+              Inizia ora
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Fare Soldi con le Case -->
+        <div class="cg-card cg-reveal cg-reveal-d1">
+          <div class="cg-card-top">
+            <div class="cg-card-icon cg-c-red">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div>
+              <span class="cg-card-tag cg-t-red">Real Estate</span>
+              <h3>Fare Soldi con le Case</h3>
+            </div>
+          </div>
+          <div class="cg-card-desc">Leonardo Leone ti guida nel mondo degli investimenti immobiliari. Scopri come scegliere le operazioni giuste, evitare rischi e usare calcolatori di ROI.</div>
+          <div class="cg-card-testimonials">
+            <div class="cg-card-testi-quote">&ldquo;Perfetto per chi vuole iniziare con sicurezza.&rdquo; <strong>&mdash; Sara B.</strong></div>
+          </div>
+          <div class="cg-card-bottom">
+            <div class="cg-card-price">Gratis</div>
+            <a href="#" class="cg-card-btn">
+              Inizia ora
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Flusso di Lavoro -->
+        <div class="cg-card cg-reveal">
+          <div class="cg-card-top">
+            <div class="cg-card-icon cg-c-indigo">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div>
+              <span class="cg-card-tag cg-t-indigo">Produttivit&agrave;</span>
+              <h3>Flusso di Lavoro</h3>
+            </div>
+          </div>
+          <div class="cg-card-desc">Tecniche per ottimizzare il tempo, gestire le distrazioni e migliorare la concentrazione. Rendi le tue giornate pi&ugrave; leggere e produttive.</div>
+          <div class="cg-card-testimonials">
+            <div class="cg-card-testi-quote">&ldquo;Mi ha cambiato il modo di lavorare.&rdquo; <strong>&mdash; Samuel V.</strong></div>
+          </div>
+          <div class="cg-card-bottom">
+            <div class="cg-card-price">Gratis</div>
+            <a href="#" class="cg-card-btn">
+              Inizia ora
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. Motiv-Azione -->
+        <div class="cg-card cg-reveal cg-reveal-d1">
+          <div class="cg-card-top">
+            <div class="cg-card-icon cg-c-pink">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div>
+              <span class="cg-card-tag cg-t-pink">Motivazione</span>
+              <h3>Motiv-Azione</h3>
+            </div>
+          </div>
+          <div class="cg-card-desc">Supera l&rsquo;autosabotaggio, potenzia la motivazione e pianifica un anno di successi concreti. Trasforma l&rsquo;energia mentale in azione costante.</div>
+          <div class="cg-card-testimonials">
+            <div class="cg-card-testi-quote">&ldquo;Mi ha aiutato a superare l&rsquo;autosabotaggio.&rdquo; <strong>&mdash; Luca B.</strong></div>
+          </div>
+          <div class="cg-card-bottom">
+            <div class="cg-card-price">Gratis</div>
+            <a href="#" class="cg-card-btn">
+              Inizia ora
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cg-cta">
+    <div class="cg-cta-inner">
+      <h2 class="cg-reveal">Inizia a formarti, gratis.</h2>
+      <p class="cg-reveal cg-reveal-d1">Scarica l&rsquo;App LMS e accedi subito a tutti i corsi gratuiti, ovunque tu sia.</p>
+      <a href="#" class="cg-cta-btn cg-reveal cg-reveal-d2">
+        Scarica l'App LMS
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.cg-reveal');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
