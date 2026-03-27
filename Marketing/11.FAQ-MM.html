@@ -1,4 +1,5 @@
-<!-- FAQ REM - Versione per Elementor Widget HTML -->
+<!-- FAQ MM - Versione per Elementor Widget HTML -->
+<script src="//embed.typeform.com/next/embed.js"></script>
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,26 +247,27 @@
 }
 
 .faq-btn-primary {
-    background: #C8BB98;
-    color: #ffffff;
-    box-shadow: 0 4px 20px rgba(200, 187, 152, 0.26);
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.4);
 }
 
 .faq-btn-primary:hover {
-    background: #D6CCB2;
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(200, 187, 152, 0.34);
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.5);
 }
 
 .faq-btn-secondary {
-    background: rgba(255, 255, 255, 0.95);
-    color: #0A1628;
-    border: 2px solid rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .faq-btn-secondary:hover {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.18) !important;
     transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive */
@@ -514,16 +516,12 @@
             <h3 class="faq-cta-title">Conosciamoci meglio</h3>
             <p class="faq-cta-subtitle">Prenota una chiamata con un Selezionatore per chiedere maggiori informazioni</p>
             <div class="faq-cta-buttons">
-                <a href="#" class="faq-btn faq-btn-primary">
-                    Prenota una chiamata
+                <button data-tf-popup="mGllVklt" data-tf-size="50" data-tf-opacity="100" data-tf-medium="snippet" class="faq-btn faq-btn-primary" style="color:#ffffff !important;">
+                    Scopri se il programma fa al caso tuo
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
-                </a>
-                <a href="#" class="faq-btn faq-btn-secondary">
-                    Scopri di più
-                </a>
+                </button>
             </div>
         </div>
     </div>
