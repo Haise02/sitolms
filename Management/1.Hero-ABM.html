@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Sfondo animato navy -> beige -->
+<!-- Sfondo animato navy scuro -->
 <div class="iridescence-bg-container-hero-rem" id="iridescence-bg-hero-rem"></div>
 
 <!-- Cerchi Glassmorphism - Blocco unico a triangolo -->
@@ -142,13 +142,13 @@
     z-index: 2;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(200, 187, 152, 0.30);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(76, 123, 244, 0.30);
     transition: all 0.3s ease;
 }
 
 .hero-image-hero-rem:hover {
     transform: translateY(-8px);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(200, 187, 152, 0.50);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(76, 123, 244, 0.50);
 }
 
 .hero-image-hero-rem::before {
@@ -158,7 +158,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(200, 187, 152, 0.10) 0%, rgba(25, 48, 84, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(76, 123, 244, 0.10) 0%, rgba(25, 48, 84, 0.10) 100%);
     pointer-events: none;
     z-index: 1;
 }
@@ -270,17 +270,17 @@
     background: radial-gradient(
         circle at 25% 75%,
         rgba(255, 255, 255, 0.9) 0%,
-        rgba(200, 187, 152, 0.60) 15%,
-        rgba(200, 187, 152, 0.30) 40%,
-        rgba(200, 187, 152, 0.15) 70%,
-        rgba(200, 187, 152, 0.05) 100%
+        rgba(76, 123, 244, 0.60) 15%,
+        rgba(76, 123, 244, 0.30) 40%,
+        rgba(76, 123, 244, 0.15) 70%,
+        rgba(76, 123, 244, 0.05) 100%
     );
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
-    border: 4px solid rgba(200, 187, 152, 0.80);
-    box-shadow: 0 0 80px rgba(200, 187, 152, 0.55),
-                0 0 120px rgba(200, 187, 152, 0.35),
-                0 0 160px rgba(200, 187, 152, 0.18),
+    border: 4px solid rgba(76, 123, 244, 0.80);
+    box-shadow: 0 0 80px rgba(76, 123, 244, 0.55),
+                0 0 120px rgba(76, 123, 244, 0.35),
+                0 0 160px rgba(76, 123, 244, 0.18),
                 inset 0 0 60px rgba(255, 255, 255, 0.3);
 }
 
@@ -454,7 +454,7 @@
 <!-- JAVASCRIPT INLINE -->
 <script>
 // ========================================
-// SFONDO ANIMATO (NAVY -> BEIGE)
+// SFONDO ANIMATO (NAVY SCURO)
 // ========================================
 (function() {
   const vShader = `
@@ -483,20 +483,9 @@ void main() {
   float p1 = cos(uv.x * d) * 0.5 + 0.5;
   float p2 = cos(uv.y * a) * 0.5 + 0.5;
   
-  // Gradiente: navy #193054 sopra + beige #C8BB98 sotto
-  vec3 top = vec3(0.098, 0.188, 0.329);    // #193054
-  vec3 bottom = vec3(0.784, 0.733, 0.596); // #C8BB98
-
-  vec3 topBright = min(top * 1.16, vec3(1.0));
-
-  float g = pow(clamp(vUv.y, 0.0, 1.0), 1.45);
-  vec3 grad = mix(bottom, topBright, g);
-
-  float n = (p1 * 0.12 + p2 * 0.08);
-  vec3 col = grad + vec3(n);
-
-  col = pow(clamp(col, 0.0, 1.0), vec3(0.92));
-  col = min(col + vec3(0.02), vec3(1.0));
+  // Navy scuro uniforme #0B1D38 con variazioni blu
+  vec3 col = vec3(0.043, 0.114, 0.220) * (0.7 + p1 * 0.5 + p2 * 0.3);
+  
   gl_FragColor = vec4(col, 1.0);
 }`;
 
