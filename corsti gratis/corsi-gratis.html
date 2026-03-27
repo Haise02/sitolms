@@ -65,7 +65,7 @@
   inset: 0;
   background:
     radial-gradient(ellipse 70% 50% at 30% 40%, rgba(76,123,244,0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 70% 60%, rgba(34,197,94,0.04) 0%, transparent 55%);
+    radial-gradient(ellipse 50% 50% at 70% 60%, rgba(76,123,244,0.04) 0%, transparent 55%);
   pointer-events: none;
   animation: cgGlow 12s ease-in-out infinite alternate;
 }
@@ -80,18 +80,18 @@
 }
 .cg-hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(34,197,94,0.06);
-  border: 1px solid rgba(34,197,94,0.15);
+  background: rgba(76,123,244,0.06);
+  border: 1px solid rgba(76,123,244,0.15);
   border-radius: 100px;
   padding: 6px 16px;
   margin-bottom: 24px;
   font-size: 11px; font-weight: 600;
   letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--green);
+  color: var(--accent);
 }
 .cg-hero-badge svg {
   width: 14px; height: 14px;
-  stroke: var(--green); fill: none; stroke-width: 2;
+  stroke: var(--accent); fill: none; stroke-width: 2;
 }
 .cg-hero h1 {
   font-family: var(--serif);
@@ -100,7 +100,7 @@
   margin-bottom: 20px; letter-spacing: -0.5px;
 }
 .cg-hero h1 em {
-  font-style: italic; color: var(--green);
+  font-style: italic; color: var(--accent);
 }
 .cg-hero-sub {
   font-size: 17px; color: var(--text-muted);
@@ -114,15 +114,15 @@
 }
 .cg-hero-cta {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--green); color: #fff;
+  background: var(--accent); color: #fff;
   padding: 14px 28px; font-size: 14px; font-weight: 600;
   font-family: var(--sans); border-radius: 10px; border: none;
   cursor: pointer; transition: all 0.3s ease;
   text-decoration: none; white-space: nowrap;
 }
 .cg-hero-cta:hover {
-  background: #1aab52; transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(34,197,94,0.3);
+  background: #3968e0; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(76,123,244,0.3);
 }
 .cg-hero-cta svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; }
 
@@ -204,8 +204,14 @@
   box-shadow: 0 16px 48px rgba(0,0,0,0.06);
   transform: translateY(-5px);
 }
+.cg-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
 .cg-card-top {
-  padding: 28px 28px 20px;
+  padding: 24px 28px 16px;
   display: flex;
   gap: 16px;
   align-items: flex-start;
@@ -259,7 +265,7 @@
 .cg-card-price {
   font-family: var(--sans-tight);
   font-size: 20px; font-weight: 800;
-  color: var(--green);
+  color: var(--accent);
 }
 .cg-card-btn {
   display: inline-flex; align-items: center; gap: 6px;
@@ -318,7 +324,7 @@
 .cg-cta::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.08), transparent 60%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(76,123,244,0.1), transparent 60%);
   pointer-events: none;
 }
 .cg-cta-inner {
@@ -334,18 +340,43 @@
   font-size: 16px; color: rgba(255,255,255,0.5);
   margin-bottom: 36px; line-height: 1.65;
 }
-.cg-cta-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--green); color: #fff;
-  padding: 15px 36px; font-size: 14px; font-weight: 700;
-  font-family: var(--sans); border-radius: 10px; border: none;
-  cursor: pointer; transition: all 0.3s ease; text-decoration: none;
+.cg-cta-btns {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
 }
-.cg-cta-btn:hover {
-  background: #1aab52; transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(34,197,94,0.3);
+.cg-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 24px; font-size: 14px; font-weight: 600;
+  font-family: var(--sans); border-radius: 12px;
+  cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none; white-space: nowrap;
+  line-height: 1;
 }
-.cg-cta-btn svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; }
+.cg-btn-apple {
+  background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.15);
+}
+.cg-btn-apple:hover {
+  background: #1a1a1a; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.cg-btn-android {
+  background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.3);
+}
+.cg-btn-android:hover {
+  background: rgba(255,255,255,0.06); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.cg-btn-logo {
+  width: 18px; height: 18px; object-fit: contain; flex-shrink: 0;
+}
+.cg-btn-text {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.cg-btn-text-small {
+  font-size: 10px; font-weight: 400; opacity: 0.7; letter-spacing: 0.3px;
+}
+.cg-btn-text-main {
+  font-size: 15px; font-weight: 700;
+}
 
 /* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width: 900px) {
@@ -369,7 +400,10 @@
   .cg-card-testimonials { padding: 14px 20px; }
   .cg-card-bottom { padding: 14px 20px 20px; flex-direction: column; gap: 12px; align-items: stretch; }
   .cg-card-btn { justify-content: center; }
+  .cg-card-img { height: 160px; }
   .cg-cta h2 { font-size: 28px; }
+  .cg-cta-btns { flex-direction: column; align-items: stretch; }
+  .cg-btn { justify-content: center; }
 }
 </style>
 
@@ -420,6 +454,7 @@
 
         <!-- 1. Finanza Etica -->
         <div class="cg-card cg-reveal">
+          <img src="images/finanza.png" alt="Finanza Etica e Sostenibile" class="cg-card-img">
           <div class="cg-card-top">
             <div class="cg-card-icon cg-c-green">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
@@ -444,6 +479,7 @@
 
         <!-- 2. Benessere Spirituale -->
         <div class="cg-card cg-reveal cg-reveal-d1">
+          <img src="images/benessere.png" alt="Benessere Spirituale" class="cg-card-img">
           <div class="cg-card-top">
             <div class="cg-card-icon cg-c-purple">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
@@ -468,6 +504,7 @@
 
         <!-- 3. Cum-Vinco -->
         <div class="cg-card cg-reveal">
+          <img src="images/cumvinco.png" alt="Cum-Vinco" class="cg-card-img">
           <div class="cg-card-top">
             <div class="cg-card-icon cg-c-orange">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
@@ -492,6 +529,7 @@
 
         <!-- 4. Colazione per la Mente -->
         <div class="cg-card cg-reveal cg-reveal-d1">
+          <img src="images/colazione2.png" alt="Colazione per la Mente" class="cg-card-img">
           <div class="cg-card-top">
             <div class="cg-card-icon cg-c-blue">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -516,6 +554,7 @@
 
         <!-- 5. Da Dipendente a Imprenditore -->
         <div class="cg-card cg-reveal">
+          <img src="images/da dipendente.png" alt="Da Dipendente a Imprenditore" class="cg-card-img">
           <div class="cg-card-top">
             <div class="cg-card-icon cg-c-teal">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
@@ -540,6 +579,7 @@
 
         <!-- 6. Fare Soldi con le Case -->
         <div class="cg-card cg-reveal cg-reveal-d1">
+          <img src="images/faresoldi.png" alt="Fare Soldi con le Case" class="cg-card-img">
           <div class="cg-card-top">
             <div class="cg-card-icon cg-c-red">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -564,6 +604,7 @@
 
         <!-- 7. Flusso di Lavoro -->
         <div class="cg-card cg-reveal">
+          <img src="images/flusso.png" alt="Flusso di Lavoro" class="cg-card-img">
           <div class="cg-card-top">
             <div class="cg-card-icon cg-c-indigo">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -588,6 +629,7 @@
 
         <!-- 8. Motiv-Azione -->
         <div class="cg-card cg-reveal cg-reveal-d1">
+          <img src="images/motivazione.png" alt="Motiv-Azione" class="cg-card-img">
           <div class="cg-card-top">
             <div class="cg-card-icon cg-c-pink">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -619,10 +661,16 @@
     <div class="cg-cta-inner">
       <h2 class="cg-reveal">Inizia a formarti, gratis.</h2>
       <p class="cg-reveal cg-reveal-d1">Scarica l&rsquo;App LMS e accedi subito a tutti i corsi gratuiti, ovunque tu sia.</p>
-      <a href="#" class="cg-cta-btn cg-reveal cg-reveal-d2">
-        Scarica l'App LMS
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-      </a>
+      <div class="cg-cta-btns cg-reveal cg-reveal-d2">
+        <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="cg-btn cg-btn-apple">
+          <img src="images/Apple_logo_white.svg.png" alt="Apple" class="cg-btn-logo">
+          <div class="cg-btn-text"><span class="cg-btn-text-small">Scarica su</span><span class="cg-btn-text-main">App Store</span></div>
+        </a>
+        <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="cg-btn cg-btn-android">
+          <img src="images/163-1632345_download-the-domus-app-today-android-icon-white.png" alt="Android" class="cg-btn-logo">
+          <div class="cg-btn-text"><span class="cg-btn-text-small">Scarica su</span><span class="cg-btn-text-main">Google Play</span></div>
+        </a>
+      </div>
     </div>
   </section>
 
