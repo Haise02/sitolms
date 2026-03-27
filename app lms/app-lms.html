@@ -61,7 +61,7 @@
   inset: 0;
   background:
     radial-gradient(ellipse 60% 50% at 20% 30%, rgba(76,123,244,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 40% at 80% 70%, rgba(168,85,247,0.08) 0%, transparent 50%);
+    radial-gradient(ellipse 40% 40% at 80% 70%, rgba(46,139,247,0.08) 0%, transparent 50%);
   pointer-events: none;
   animation: aplmsGlow 10s ease-in-out infinite alternate;
 }
@@ -111,7 +111,7 @@
 }
 .aplms-hero h1 em {
   font-style: italic;
-  background: linear-gradient(90deg, var(--accent), var(--purple));
+  background: linear-gradient(90deg, #3B6DE7, #6CB4F8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -127,104 +127,57 @@
   display: flex; gap: 12px; flex-wrap: wrap;
 }
 .aplms-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px; font-size: 14px; font-weight: 600;
-  font-family: var(--sans); border-radius: 10px; border: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 24px; font-size: 14px; font-weight: 600;
+  font-family: var(--sans); border-radius: 12px;
   cursor: pointer; transition: all 0.3s ease;
   text-decoration: none; white-space: nowrap;
+  line-height: 1;
 }
-.aplms-btn-primary { background: var(--accent); color: #fff; }
-.aplms-btn-primary:hover {
-  background: #3968e0; transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(76,123,244,0.3);
+.aplms-btn-apple {
+  background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.15);
 }
-.aplms-btn-ghost {
-  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7);
-  border: 1px solid rgba(255,255,255,0.1);
+.aplms-btn-apple:hover {
+  background: #1a1a1a; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
-.aplms-btn-ghost:hover {
-  background: rgba(255,255,255,0.1); color: #fff; transform: translateY(-2px);
+.aplms-btn-android {
+  background: #fff; color: #111; border: 1.5px solid #333;
 }
-.aplms-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; }
+.aplms-btn-android:hover {
+  background: #f5f5f5; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.aplms-btn-logo {
+  width: 18px; height: 18px; object-fit: contain; flex-shrink: 0;
+}
+.aplms-btn-text {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.aplms-btn-text-small {
+  font-size: 10px; font-weight: 400; opacity: 0.7; letter-spacing: 0.3px;
+}
+.aplms-btn-text-main {
+  font-size: 15px; font-weight: 700;
+}
 
-/* Phone mockup */
+/* Phone mockup image */
 .aplms-phone-wrap {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   position: relative;
 }
-.aplms-phone {
-  width: 280px;
-  height: 560px;
-  background: #111;
-  border-radius: 36px;
-  border: 3px solid rgba(255,255,255,0.12);
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
-  transform: perspective(800px) rotateY(-5deg) rotateX(2deg);
+.aplms-phone-img {
+  max-width: 380px;
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.35));
   transition: transform 0.5s ease;
 }
-.aplms-phone:hover {
-  transform: perspective(800px) rotateY(0) rotateX(0);
-}
-.aplms-phone-notch {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 120px; height: 28px;
-  background: #111;
-  border-radius: 0 0 16px 16px;
-  z-index: 3;
-}
-.aplms-phone-screen {
-  width: 100%; height: 100%;
-  padding: 40px 16px 20px;
-  background: linear-gradient(180deg, #0d1b2a 0%, #1a2d45 100%);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  overflow: hidden;
-}
-.aplms-phone-greeting {
-  font-size: 11px; color: rgba(255,255,255,0.4);
-  margin-bottom: 2px;
-}
-.aplms-phone-title {
-  font-family: var(--sans-tight);
-  font-size: 18px; font-weight: 700; color: #fff;
-  margin-bottom: 8px;
-}
-.aplms-phone-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  padding: 14px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  animation: aplmsPhoneFloat 4s ease-in-out infinite alternate;
-}
-.aplms-phone-card:nth-child(odd) { animation-delay: 0.5s; }
-.aplms-phone-card-icon {
-  width: 36px; height: 36px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.aplms-phone-card-icon svg {
-  width: 16px; height: 16px; stroke-width: 2; fill: none;
-}
-.aplms-phone-card-text {
-  font-size: 11px; color: rgba(255,255,255,0.7);
-  line-height: 1.4;
-}
-.aplms-phone-card-text strong {
-  display: block;
-  font-size: 12px; color: #fff; margin-bottom: 1px;
-}
-@keyframes aplmsPhoneFloat {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-4px); }
+.aplms-phone-img:hover {
+  transform: scale(1.03) translateY(-6px);
 }
 
 /* ═══════════ FEATURES ═══════════ */
@@ -441,29 +394,6 @@
 .aplms-cta-btns {
   display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
 }
-.aplms-cta-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: #fff; color: var(--navy);
-  padding: 14px 32px; font-size: 14px; font-weight: 700;
-  font-family: var(--sans); border-radius: 10px; border: none;
-  cursor: pointer; transition: all 0.3s ease; text-decoration: none;
-}
-.aplms-cta-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(255,255,255,0.15);
-}
-.aplms-cta-btn svg { width: 16px; height: 16px; }
-.aplms-cta-btn-ghost {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: transparent; color: rgba(255,255,255,0.7);
-  border: 1px solid rgba(255,255,255,0.15);
-  padding: 14px 32px; font-size: 14px; font-weight: 600;
-  font-family: var(--sans); border-radius: 10px;
-  cursor: pointer; transition: all 0.3s ease; text-decoration: none;
-}
-.aplms-cta-btn-ghost:hover {
-  background: rgba(255,255,255,0.06); color: #fff; transform: translateY(-3px);
-}
 
 /* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width: 900px) {
@@ -474,7 +404,7 @@
   .aplms-hero-sub { margin: 0 auto 28px; }
   .aplms-hero-btns { justify-content: center; }
   .aplms-phone-wrap { justify-content: center; }
-  .aplms-phone { transform: none; width: 240px; height: 480px; }
+  .aplms-phone-img { max-width: 300px; }
 
   .aplms-features { padding: 72px 24px; }
   .aplms-features-grid { grid-template-columns: 1fr; }
@@ -489,13 +419,15 @@
 
   .aplms-cta { padding: 72px 24px; }
   .aplms-cta h2 { font-size: 34px; }
+  .aplms-showcase { padding: 40px 24px !important; }
+  .aplms-showcase > div { grid-template-columns: 1fr !important; }
 }
 @media (max-width: 480px) {
   .aplms-hero { padding: 60px 16px 0; }
   .aplms-hero h1 { font-size: 30px; }
   .aplms-hero-btns { flex-direction: column; align-items: stretch; }
   .aplms-btn { justify-content: center; }
-  .aplms-phone { width: 200px; height: 400px; }
+  .aplms-phone-img { max-width: 240px; }
 
   .aplms-features-header h2 { font-size: 28px; }
   .aplms-inside-grid { grid-template-columns: 1fr; }
@@ -504,7 +436,8 @@
   .aplms-benefit-row { padding: 22px 20px; }
   .aplms-cta h2 { font-size: 28px; }
   .aplms-cta-btns { flex-direction: column; align-items: stretch; }
-  .aplms-cta-btn, .aplms-cta-btn-ghost { justify-content: center; }
+  .aplms-cta-btns .aplms-btn { justify-content: center; }
+  .aplms-showcase { padding: 32px 16px !important; }
 }
 </style>
 
@@ -522,50 +455,20 @@
         <h1 class="aplms-reveal aplms-reveal-d1">Tutto il sapere LMS, nella tua <em>tasca.</em></h1>
         <p class="aplms-hero-sub aplms-reveal aplms-reveal-d2">Scarica l'App ufficiale LMS e inizia subito a formarti con i nostri videocorsi pi&ugrave; potenti. Marketing, vendita, mindset, finanza personale e crescita professionale &mdash; tutto a portata di mano.</p>
         <div class="aplms-hero-btns aplms-reveal aplms-reveal-d3">
-          <a href="#" class="aplms-btn aplms-btn-primary">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-            Scarica per iOS
+          <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="aplms-btn aplms-btn-apple">
+            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/Apple_logo_white.svg.png" alt="Apple" class="aplms-btn-logo">
+            <div class="aplms-btn-text"><span class="aplms-btn-text-small">Scarica su</span><span class="aplms-btn-text-main">App Store</span></div>
           </a>
-          <a href="#" class="aplms-btn aplms-btn-ghost">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-            Scarica per Android
+          <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="aplms-btn aplms-btn-android">
+            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/163-1632345_download-the-domus-app-today-android-icon-white.png" alt="Android" class="aplms-btn-logo" style="filter:brightness(0);">
+            <div class="aplms-btn-text"><span class="aplms-btn-text-small">Scarica su</span><span class="aplms-btn-text-main">Google Play</span></div>
           </a>
         </div>
       </div>
 
-      <!-- Phone mockup -->
+      <!-- Phone mockup image -->
       <div class="aplms-phone-wrap aplms-reveal aplms-reveal-d2">
-        <div class="aplms-phone">
-          <div class="aplms-phone-notch"></div>
-          <div class="aplms-phone-screen">
-            <div class="aplms-phone-greeting">Ciao, bentornato</div>
-            <div class="aplms-phone-title">I tuoi programmi</div>
-            <div class="aplms-phone-card">
-              <div class="aplms-phone-card-icon" style="background:rgba(76,123,244,0.15);">
-                <svg viewBox="0 0 24 24" stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </div>
-              <div class="aplms-phone-card-text"><strong>Lezione Live</strong>Marketing Avanzato &bull; 45 min</div>
-            </div>
-            <div class="aplms-phone-card">
-              <div class="aplms-phone-card-icon" style="background:rgba(168,85,247,0.15);">
-                <svg viewBox="0 0 24 24" stroke="#A855F7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-              </div>
-              <div class="aplms-phone-card-text"><strong>Workbook</strong>Checklist settimanale</div>
-            </div>
-            <div class="aplms-phone-card">
-              <div class="aplms-phone-card-icon" style="background:rgba(34,197,94,0.15);">
-                <svg viewBox="0 0 24 24" stroke="#22C55E" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
-              </div>
-              <div class="aplms-phone-card-text"><strong>Podcast</strong>Ep. 33 &bull; Nuovo</div>
-            </div>
-            <div class="aplms-phone-card">
-              <div class="aplms-phone-card-icon" style="background:rgba(249,115,22,0.15);">
-                <svg viewBox="0 0 24 24" stroke="#F97316" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              </div>
-              <div class="aplms-phone-card-text"><strong>Evento</strong>Masterclass &bull; Sabato</div>
-            </div>
-          </div>
-        </div>
+        <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/mockupmep.png" alt="App LMS" class="aplms-phone-img">
       </div>
     </div>
   </section>
@@ -616,6 +519,18 @@
             <div class="aplms-feature-desc">Porta con te l'intero ecosistema LMS, sempre disponibile e senza distrazioni.</div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOCKUP SHOWCASE -->
+  <section class="aplms-showcase" style="background:var(--bg-off); padding:60px 40px; overflow:hidden;">
+    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;">
+      <div class="aplms-reveal" style="border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+        <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/Macbook%20Mockup%20copia.png" alt="LMS Piattaforma" style="width:100%; height:auto; display:block; transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div class="aplms-reveal aplms-reveal-d1" style="border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+        <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/manafgaemtn%20mockup.png" alt="LMS Corsi" style="width:100%; height:auto; display:block; transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
       </div>
     </div>
   </section>
@@ -709,13 +624,13 @@
       <h2 class="aplms-reveal">Porta la Leone Master School sempre con te.</h2>
       <p class="aplms-reveal aplms-reveal-d1">Scarica l'app e inizia a formarti ovunque tu sia.</p>
       <div class="aplms-cta-btns aplms-reveal aplms-reveal-d2">
-        <a href="#" class="aplms-cta-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-          Scarica per iOS
+        <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="aplms-btn aplms-btn-apple">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/Apple_logo_white.svg.png" alt="Apple" class="aplms-btn-logo">
+          <div class="aplms-btn-text"><span class="aplms-btn-text-small">Scarica su</span><span class="aplms-btn-text-main">App Store</span></div>
         </a>
-        <a href="#" class="aplms-cta-btn-ghost">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-          Scarica per Android
+        <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="aplms-btn aplms-btn-android" style="border-color:#fff; color:#fff; background:transparent;">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/163-1632345_download-the-domus-app-today-android-icon-white.png" alt="Android" class="aplms-btn-logo">
+          <div class="aplms-btn-text"><span class="aplms-btn-text-small">Scarica su</span><span class="aplms-btn-text-main">Google Play</span></div>
         </a>
       </div>
     </div>
