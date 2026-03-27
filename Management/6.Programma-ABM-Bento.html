@@ -74,167 +74,47 @@
     color: rgba(26, 26, 26, 0.9) !important;
 }
 
-/* Bento Box Images */
-.bento-images {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 16px;
-    min-height: 600px;
-    margin: 48px 0;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.bento-item {
+/* Card Icon Header */
+.card-icon-header {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    border-radius: 20px;
     overflow: hidden;
-    background: #f8f8f8;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.bento-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 8s ease-in-out;
-    animation: kenBurns 20s ease-in-out infinite alternate;
+.card-icon-header svg {
+    width: 64px;
+    height: 64px;
+    stroke: #ffffff;
+    stroke-width: 1.5;
+    fill: none;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
 }
 
-@keyframes kenBurns {
-    0% { transform: scale(1) translate(0, 0); }
-    100% { transform: scale(1.1) translate(-5%, -5%); }
-}
-
-.bento-item:nth-child(2) img {
-    animation-delay: -5s;
-    animation-direction: alternate-reverse;
-}
-
-.bento-item:nth-child(3) img {
-    animation-delay: -10s;
-}
-
-.bento-item:nth-child(4) img {
-    animation-delay: -15s;
-    animation-direction: alternate-reverse;
-}
-
-.image-overlay {
+.card-icon-header::after {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: transparent;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-}
-
-.bento-item:hover {
-    transform: translateY(-4px);
-    border-color: rgba(200, 187, 152, 0.6);
-    box-shadow: 0 0 0 3px rgba(200, 187, 152, 0.4), 0 20px 40px rgba(200, 187, 152, 0.3);
-}
-
-.bento-item.large {
-    grid-row: 1 / 3;
-    grid-column: 1;
-}
-
-.bento-item.medium {
-    grid-column: 2;
-    grid-row: 1 / 3;
-}
-
-.bento-bottom-grid {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 16px;
-    min-height: 200px;
-}
-
-.bento-item.bottom-left {
-    min-height: 200px;
-}
-
-.bento-item.bottom-right {
-    min-height: 200px;
-}
-
-/* Lightbox */
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.98);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.lightbox.active {
-    opacity: 1;
-    pointer-events: all;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 32px;
-    right: 32px;
-    width: 56px;
-    height: 56px;
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10000;
+    background: rgba(255,255,255,0.08);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.lightbox-close:hover {
-    background: rgba(0, 0, 0, 0.1);
-    transform: rotate(90deg);
-}
-
-.lightbox-close svg {
-    color: #1a1a1a;
-}
-
-#lightbox-img {
-    max-width: 90%;
-    max-height: 90vh;
-    object-fit: contain;
-    border-radius: 12px;
-    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
-    animation: lightboxZoom 0.3s ease;
-}
-
-@keyframes lightboxZoom {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
+.icon-bg-blue    { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+.icon-bg-indigo  { background: linear-gradient(135deg, #312e81 0%, #6366f1 100%); }
+.icon-bg-navy    { background: linear-gradient(135deg, #0B1D38 0%, #1e40af 100%); }
+.icon-bg-teal    { background: linear-gradient(135deg, #134e4a 0%, #14b8a6 100%); }
+.icon-bg-purple  { background: linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%); }
+.icon-bg-slate   { background: linear-gradient(135deg, #1e293b 0%, #475569 100%); }
+.icon-bg-emerald { background: linear-gradient(135deg, #064e3b 0%, #10b981 100%); }
 
 /* REM Bento Grid */
 .rem-bento-grid {
@@ -276,23 +156,6 @@
     box-shadow: 0 20px 60px rgba(212, 197, 176, 0.25);
 }
 
-.card-image {
-    position: relative;
-    width: 100%;
-    height: 280px;
-    overflow: hidden;
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.rem-bento-card:hover .card-image img {
-    transform: scale(1.05);
-}
 
 .card-content {
     padding: 32px 28px;
@@ -471,8 +334,8 @@
         max-width: 400px;
     }
 
-    .card-image {
-        height: 220px;
+    .card-icon-header {
+        height: 160px;
     }
 
     .card-content {
@@ -536,8 +399,13 @@
         min-width: 90%;
     }
 
-    .card-image {
-        height: 200px;
+    .card-icon-header {
+        height: 140px;
+    }
+
+    .card-icon-header svg {
+        width: 48px;
+        height: 48px;
     }
 
     .card-content {
@@ -601,8 +469,8 @@
         <div class="rem-bento-grid">
             <!-- Card 1 - Sessioni Live -->
             <div class="rem-bento-card" data-card="1">
-                <div class="card-image">
-                    <img src="PLACEHOLDER_PROGRAMMA_1" alt="Sessioni Live">
+                <div class="card-icon-header icon-bg-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">
@@ -614,8 +482,8 @@
 
             <!-- Card 2 - Videoteca -->
             <div class="rem-bento-card" data-card="2">
-                <div class="card-image">
-                    <img src="PLACEHOLDER_PROGRAMMA_2" alt="Videoteca E-learning">
+                <div class="card-icon-header icon-bg-indigo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">
@@ -627,8 +495,8 @@
 
             <!-- Card 3 - Workbook -->
             <div class="rem-bento-card" data-card="3">
-                <div class="card-image">
-                    <img src="PLACEHOLDER_PROGRAMMA_3" alt="Workbook LMS">
+                <div class="card-icon-header icon-bg-navy">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">
@@ -646,37 +514,6 @@
             <span class="dot"></span>
         </div>
 
-        <!-- Bento Box Images -->
-        <div class="why-header" style="margin-top: 4rem;">
-            <div class="single-column">
-                <div class="bento-images">
-                    <!-- Large Image -->
-                    <div class="bento-item large" data-tilt>
-                        <img src="PLACEHOLDER_BENTO_IMG_1" alt="Master ABM">
-                        <div class="image-overlay"></div>
-                    </div>
-                    
-                    <!-- Single Medium Image -->
-                    <div class="bento-item medium" data-tilt>
-                        <img src="PLACEHOLDER_BENTO_IMG_2" alt="Affiancamento Live">
-                        <div class="image-overlay"></div>
-                    </div>
-                    
-                    <!-- Bottom Two Images -->
-                    <div class="bento-bottom-grid">
-                        <div class="bento-item bottom-left" data-tilt>
-                            <img src="PLACEHOLDER_BENTO_IMG_3" alt="Coaching">
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="bento-item bottom-right" data-tilt>
-                            <img src="PLACEHOLDER_BENTO_IMG_4" alt="Risultati">
-                            <div class="image-overlay"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Header Section per Affiancamento -->
         <div class="why-header" style="margin-top: 4rem;">
             <div class="single-column">
@@ -688,8 +525,8 @@
         <div class="rem-bento-grid grid-2x2" id="risultati-grid">  
             <!-- Card 4 - Coaching 1:1 -->
             <div class="rem-bento-card" data-card="4">
-                <div class="card-image">
-                    <img src="PLACEHOLDER_PROGRAMMA_4" alt="Coaching Individuale">
+                <div class="card-icon-header icon-bg-teal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">
@@ -701,8 +538,8 @@
 
             <!-- Card 5 - Consulenza Live -->
             <div class="rem-bento-card" data-card="5">
-                <div class="card-image">
-                    <img src="PLACEHOLDER_PROGRAMMA_5" alt="Consulenza Settimanale">
+                <div class="card-icon-header icon-bg-purple">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">
@@ -714,8 +551,8 @@
 
             <!-- Card 6 - Tutor Dedicato -->
             <div class="rem-bento-card" data-card="6">
-                <div class="card-image">
-                    <img src="PLACEHOLDER_PROGRAMMA_6" alt="Tutor Dedicato">
+                <div class="card-icon-header icon-bg-slate">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">
@@ -727,8 +564,8 @@
 
             <!-- Card 7 - AI Tutor -->
             <div class="rem-bento-card" data-card="7">
-                <div class="card-image">
-                    <img src="PLACEHOLDER_PROGRAMMA_7" alt="AI Tutor">
+                <div class="card-icon-header icon-bg-emerald">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1a1 1 0 011 1v3a1 1 0 01-1 1h-1.27A7 7 0 015.27 19H4a1 1 0 01-1-1v-3a1 1 0 011-1h1a7 7 0 017-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2z"/><circle cx="9" cy="15" r="1"/><circle cx="15" cy="15" r="1"/></svg>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">
@@ -748,78 +585,11 @@
         </div>
     </div>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightbox-close">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <img src="" alt="" id="lightbox-img">
-    </div>
+
 </div>
 
 <script>
 (function() {
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxClose = document.getElementById('lightbox-close');
-    const bentoItems = document.querySelectorAll('[data-tilt]');
-
-    bentoItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-    });
-
-    if (lightboxClose) {
-        lightboxClose.addEventListener('click', () => {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-    }
-
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // 3D Tilt Effect for Bento Items
-    bentoItems.forEach(item => {
-        item.addEventListener('mousemove', (e) => {
-            const rect = item.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -10;
-            const rotateY = ((x - centerX) / centerX) * 10;
-            
-            item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px) scale(1.02)`;
-        });
-        
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
-        });
-    });
-
     // Smooth entrance animations
     document.addEventListener('DOMContentLoaded', () => {
         const cards = document.querySelectorAll('.rem-bento-card');
@@ -833,26 +603,6 @@
                 card.style.opacity = '1';
                 card.style.transform = 'translateY(0)';
             }, 200 + (index * 150));
-        });
-
-        // Add click ripple effect
-        cards.forEach(card => {
-            card.addEventListener('click', function(e) {
-                const ripple = document.createElement('div');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-            });
         });
     });
 

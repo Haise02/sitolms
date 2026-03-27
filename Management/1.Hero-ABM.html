@@ -1,5 +1,8 @@
 <!-- HERO ABM - COPIA TUTTO QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
 
+<!-- Typeform Embed -->
+<script src="//embed.typeform.com/next/embed.js"></script>
+
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +46,7 @@
 
         <!-- CTA Buttons -->
         <div class="cta-buttons-hero-rem">
-            <button onclick="openTypeformInParent(event)" class="btn-hero-rem btn-primary-hero-rem">Scopri se il programma fa al caso tuo</button>
+            <button data-tf-popup="mGllVklt" data-tf-size="50" data-tf-opacity="100" data-tf-medium="snippet" class="btn-hero-rem btn-primary-hero-rem" style="color:#ffffff !important;">Scopri se il programma fa al caso tuo</button>
         </div>
         
         <!-- CTA Description -->
@@ -551,17 +554,4 @@ void main() {
   }
 })();
 
-// Open Typeform in parent window
-function openTypeformInParent(event) {
-    event.preventDefault();
-    
-    console.log('Sending Typeform open request to parent');
-    
-    window.parent.postMessage({
-        type: 'openTypeform',
-        formId: 'mGllVklt'
-    }, '*');
-    
-    console.log('Message sent');
-}
 </script>
