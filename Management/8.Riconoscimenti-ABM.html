@@ -59,26 +59,68 @@
 
 .rem-riconoscimenti .rr-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(212, 197, 176, 0.4);
-    box-shadow: 0 20px 60px rgba(212, 197, 176, 0.25);
+    border-color: rgba(200, 187, 152, 0.5);
+    box-shadow: 0 20px 60px rgba(200, 187, 152, 0.25);
 }
 
-.rem-riconoscimenti .card-image {
-    position: relative;
+/* Icon Header */
+.rem-riconoscimenti .card-icon-header {
     width: 100%;
-    height: 280px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     overflow: hidden;
 }
 
-.rem-riconoscimenti .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
+.rem-riconoscimenti .card-icon-header svg {
+    width: 56px;
+    height: 56px;
+    stroke: #ffffff;
+    stroke-width: 1.5;
+    fill: none;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
 }
 
-.rem-riconoscimenti .rr-card:hover .card-image img {
-    transform: scale(1.05);
+.rem-riconoscimenti .card-icon-header::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.rem-riconoscimenti .card-icon-header::after {
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.rem-riconoscimenti .icon-bg-gold {
+    background: linear-gradient(135deg, #193054 0%, #2a4a7f 40%, #c8bb98 100%);
+}
+
+.rem-riconoscimenti .icon-bg-blue {
+    background: linear-gradient(135deg, #193054 0%, #1e40af 60%, #3b82f6 100%);
+}
+
+.rem-riconoscimenti .icon-bg-navy {
+    background: linear-gradient(135deg, #0f1f3d 0%, #193054 50%, #2a4a7f 100%);
 }
 
 .rem-riconoscimenti .card-content {
@@ -158,8 +200,8 @@
         max-width: 400px;
     }
 
-    .rem-riconoscimenti .card-image {
-        height: 220px;
+    .rem-riconoscimenti .card-icon-header {
+        height: 150px;
     }
 
     .rem-riconoscimenti .card-content {
@@ -184,8 +226,13 @@
         min-width: 90%;
     }
 
-    .rem-riconoscimenti .card-image {
-        height: 200px;
+    .rem-riconoscimenti .card-icon-header {
+        height: 130px;
+    }
+
+    .rem-riconoscimenti .card-icon-header svg {
+        width: 44px;
+        height: 44px;
     }
 
     .rem-riconoscimenti .card-content {
@@ -222,8 +269,12 @@
 
     <div class="rr-grid rr-grid-riconoscimenti">
         <div class="rr-card" data-card="8">
-            <div class="card-image">
-                <img src="PLACEHOLDER_RICONOSCIMENTI_1" alt="Attestato">
+            <div class="card-icon-header icon-bg-gold">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <path d="M9 15l2 2 4-4"/>
+                </svg>
             </div>
             <div class="card-content">
                 <h3 class="card-title">
@@ -234,8 +285,11 @@
         </div>
 
         <div class="rr-card" data-card="9">
-            <div class="card-image">
-                <img src="PLACEHOLDER_RICONOSCIMENTI_2" alt="CFU Universitari">
+            <div class="card-icon-header icon-bg-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/>
+                </svg>
             </div>
             <div class="card-content">
                 <h3 class="card-title">
@@ -246,8 +300,11 @@
         </div>
 
         <div class="rr-card" data-card="lazio">
-            <div class="card-image">
-                <img src="PLACEHOLDER_RICONOSCIMENTI_3" alt="Programma accreditato regione Lazio">
+            <div class="card-icon-header icon-bg-navy">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
             </div>
             <div class="card-content">
                 <h3 class="card-title">
