@@ -152,9 +152,12 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  overflow: visible;
+  min-height: 500px;
 }
 .apc-hero-phone img {
-  max-width: 720px; width: 100%;
+  width: 140%;
+  max-width: 700px;
   filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
   display: block;
 }
@@ -400,7 +403,8 @@
   .apc-hero-sub { margin-left: auto; margin-right: auto; }
   .apc-hero-btns { justify-content: center; }
   .apc-hero h1 { font-size: 44px; }
-  .apc-hero-phone img { max-width: 360px; }
+  .apc-hero-phone { min-height: auto; }
+  .apc-hero-phone img { width: 100%; max-width: 400px; }
 
   .apc-features, .apc-corsi { padding: 72px 24px; }
   .apc-feat-grid { grid-template-columns: 1fr; }
@@ -422,7 +426,7 @@
   .apc-hero-btns { flex-direction: column; align-items: stretch; gap: 10px; }
   .apc-btn { justify-content: center; padding: 12px 20px; }
   .apc-btn-text-main { font-size: 14px; }
-  .apc-hero-phone img { max-width: 300px; }
+  .apc-hero-phone img { width: 100%; max-width: 300px; }
 
   .apc-features, .apc-corsi { padding: 56px 16px; }
   .apc-features-header h2, .apc-corsi-header h2 { font-size: 28px; }
