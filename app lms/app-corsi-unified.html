@@ -62,7 +62,7 @@
 /* ═══════════ S1 — HERO (DARK) ═══════════ */
 .apc-hero {
   background: linear-gradient(160deg, var(--navy) 0%, #0d2440 50%, #112a4a 100%);
-  padding: 120px 40px 80px;
+  padding: 120px 40px 0;
   position: relative;
   overflow: hidden;
 }
@@ -79,11 +79,11 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+  gap: 40px;
+  align-items: end;
   position: relative; z-index: 2;
 }
-.apc-hero-text { color: #fff; }
+.apc-hero-text { color: #fff; padding-bottom: 80px; }
 .apc-hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(76,123,244,0.08);
@@ -151,11 +151,12 @@
 .apc-hero-phone {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 .apc-hero-phone img {
-  max-width: 340px; width: 100%;
+  max-width: 520px; width: 100%;
   filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
+  display: block;
 }
 
 /* ═══════════ S2 — FEATURES (LIGHT) ═══════════ */
@@ -393,12 +394,13 @@
 
 /* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width: 900px) {
-  .apc-hero { padding: 80px 24px 60px; }
-  .apc-hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .apc-hero { padding: 80px 24px 0; }
+  .apc-hero-inner { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+  .apc-hero-text { padding-bottom: 0; }
   .apc-hero-sub { margin-left: auto; margin-right: auto; }
   .apc-hero-btns { justify-content: center; }
   .apc-hero h1 { font-size: 44px; }
-  .apc-hero-phone img { max-width: 280px; }
+  .apc-hero-phone img { max-width: 360px; }
 
   .apc-features, .apc-corsi { padding: 72px 24px; }
   .apc-feat-grid { grid-template-columns: 1fr; }
@@ -414,13 +416,13 @@
   .apc-cta h2 { font-size: 36px; }
 }
 @media (max-width: 480px) {
-  .apc-hero { padding: 64px 16px 48px; }
+  .apc-hero { padding: 64px 16px 0; }
   .apc-hero h1 { font-size: 34px; }
   .apc-hero-sub { font-size: 15px; }
   .apc-hero-btns { flex-direction: column; align-items: stretch; gap: 10px; }
   .apc-btn { justify-content: center; padding: 12px 20px; }
   .apc-btn-text-main { font-size: 14px; }
-  .apc-hero-phone img { max-width: 220px; }
+  .apc-hero-phone img { max-width: 300px; }
 
   .apc-features, .apc-corsi { padding: 56px 16px; }
   .apc-features-header h2, .apc-corsi-header h2 { font-size: 28px; }
