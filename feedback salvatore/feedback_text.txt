@@ -1,0 +1,96 @@
+﻿ol{margin:0;padding:0}table td,table th{padding:0}.c13{-webkit-text-decoration-skip:none;color:#000000;text-decoration:underline;vertical-align:baseline;text-decoration-skip-ink:none;font-size:11pt;font-family:"Arial";font-style:italic}.c18{-webkit-text-decoration-skip:none;color:#000000;text-decoration:underline;vertical-align:baseline;text-decoration-skip-ink:none;font-size:26pt;font-family:"Arial";font-style:italic}.c5{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:26pt;font-family:"Arial";font-style:normal}.c1{color:#000000;font-weight:700;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}.c15{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:italic}.c0{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}.c2{padding-top:0pt;padding-bottom:0pt;line-height:1.15;orphans:2;widows:2;text-align:left}.c17{color:#000000;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:italic}.c11{padding-top:0pt;padding-bottom:0pt;line-height:1.15;orphans:2;widows:2;text-align:center}.c12{color:#000000;text-decoration:none;vertical-align:baseline;font-size:26pt;font-family:"Arial";font-style:normal}.c6{padding-top:0pt;padding-bottom:0pt;line-height:1.15;text-align:left}.c10{text-decoration-skip-ink:none;-webkit-text-decoration-skip:none;color:#1155cc;text-decoration:underline}.c14{color:inherit;text-decoration:inherit}.c16{max-width:451.4pt;padding:72pt 72pt 72pt 72pt}.c4{background-color:#ffff00;font-weight:700}.c7{font-weight:700}.c9{background-color:#ffff00}.c8{background-color:#ffffff}.c3{height:11pt}.title{padding-top:0pt;color:#000000;font-size:26pt;padding-bottom:3pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}.subtitle{padding-top:0pt;color:#666666;font-size:15pt;padding-bottom:16pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}li{color:#000000;font-size:11pt;font-family:"Arial"}p{margin:0;color:#000000;font-size:11pt;font-family:"Arial"}h1{padding-top:20pt;color:#000000;font-size:20pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h2{padding-top:18pt;color:#000000;font-size:16pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h3{padding-top:16pt;color:#434343;font-size:14pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h4{padding-top:14pt;color:#666666;font-size:12pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h5{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h6{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;font-style:italic;orphans:2;widows:2;text-align:left}HOME PAGE
+[IMG]
+[IMG]
+Se clicco sul bottone in home page EVENTO DONNA LEADER mi rimanda qui :) 
+https://brukandy.github.io/events-swap/# Da eliminare completamente il redirect ed il bottone visto che non so se quell’evento lo replicheremo. Lasciamo così com’è ma senza bottone.
+[IMG]
+Mentre quello di MMS ti rimanda a sito aggiornato e corretto ottimo ma inseriamo in questo sito bottone con “iscriviti alla lista d’attesa per il prossimo MMS Summit” e raccogliamo leads interessati al prossimo : https://www.money-maker.it/mms-ottobre-2025/ Form hubspot semplice con id campagna refresh nuovo apposito. 15 minuti di lavoro.
+[IMG]
+[IMG]
+Anzi in realtà c’è due volte questa sezione dopo il film si ripete ed è di ux migliore… 
+[IMG][IMG]
+https://leonemasterschool.it/
+Inoltre se da desktop vai giù la scorri tutta poi risali sopra perché vuoi tornare al video iniziale scompare la sezione quindi non vedo più la sezione above the fold ma parte direttamente dalle storie di successo…. 
+CHI SIAMO
+Sezione chi siamo perfetta. Complimenti. Unica cosa metterei qualche PX in più le descrizioni varie, soprattutto da desktop li vedo piccolini. Sempre per il concetto che target nostro è grande di età e non ce vede!
+URGENTE: Se clicchi da menù MOBILE CHI SIAMO ti rimanda ad una pagina rotta.
+MEDIA E TV
+MEDIA e TV SE CI VAI DA MENU MOBILE TI RIMANDA ALLA VECCHIA MEDIA E TV
+Po Qui abbiamo un problema serio… Citiamo un botto di testate giornalistiche ma poi non ci sono SCREEN dell’accaduto. Quindi o sono minchiate (e credo di si) o non li abbiamo messi. In entrrambi i casi non ci possiamo permettere di fare questo. Questa pagina il vecchio formato conteneva tutti gli screen degli articoli vari ecc… Mi andrei a riprendere quella pagina e rimetterei qui tutte le cose vere dove siamo usciti con screen (non con bottone che ti rimanda all’articolo perché a noi non interessa mandare traffico all’articolo ansa o quel che è!!) Però da trust perché fa vedere che è vero! Invece così è proprio piena di cazzate e rischiamo di perdere credibilità oltre che di avere denunce!
+[IMG]
+Anche questa sezione preferivo molto di più la vecchia… che c’erano foto e screen di varie collab e di varie cose fatte a scopo benefico con foto ecc… che danno trust e fanno capire che è vero… invece messa così anche questa sembra una minchiata! Riprendiamo la vecchia e rimettiamo le varie foto di croce rossa fatto ad icmd ed altro varie…!
+[IMG]
+IL METODO
+Se clicco su scopri i tuoi docenti secondo me ci manda su pagina errata e vecchia credo. cambiare url.
+[IMG]
+DA MOBILE SI VEDE COSI’.
+[IMG]
+DOCENTI MENTORI
+Sezione chi siamo perfetta. Complimenti. Unica cosa metterei qualche PX in più le descrizioni varie, soprattutto da desktop li vedo piccolini. Sempre per il concetto che target nostro è grande di età e non ce vede! Oppure cambia colore metti sfondo bianco in alcune parti così da non annoiare con tutto blu fisso e fare dei cambi blu bianco blu bianco come sfondo
+SCOPRI I PROGRAMMI
+Al posto di “studenti” va scritto “corsisti”
+[IMG]
+Questo form cambiamolo e mettiamo il TYPEFORM sempre quello “conosciamoci meglio” magari Embedded.
+[IMG]
+MA PRIMA DI QUESTO FORM CI DOVREBBE ESSERE TUMBNAIL O BOTTONE FIGO CON SCRITTO NOME PROGRAMMA CHE SE CLICCHI TI RIMANDA ALLA LANDING CORRETTA DEL PROGRAMMA!
+Che poi se guardo il file master copy in realtà MANCO DOVREBBE ESISTERE PROPRIO questa pagina. Ci sono direttamente le pagine verticali.
+https://docs.google.com/document/d/1ZexD9thNH9YwdkrQo-iQdmcsNdbXm-317IG-Fyl8GAk/edit?tab=t.tcexg8iz78sb
+PROBLEMA MENU'
+Non capisco perché in base a quale pagina ti trovi e in base anche se sei da mobile o meno ti cambia il menù ti cambia le pagine collegate ai menù ti cambia tutto… qui se vedi ci sono delle voci se vai nell’home non ci sono poi se vai da mobile c ne sono altre… insomma una confusione totale.. USIAMO IL MENU’ DA FILE MASTER ED ELIMINIAMO VOCI E RESTANTI PAGINE CHE NON dovrebbero più esistere.
+File master copy: https://docs.google.com/document/d/1ZexD9thNH9YwdkrQo-iQdmcsNdbXm-317IG-Fyl8GAk/edit?tab=t.4zxz4lyyphb0
+[IMG]
+PS IL FOOTER HA LO STESSO PROBLEMA CAMBIA OGNI 3x2 in base a dove ti trovi.
+REM
+A me soggettivamente non mi fa impazzire tutto il design della landing, troppo verde immagini un po’ troppo studiate poche foto reali… Vabbè a parte questo…
+Qui mancano le verie testimonianze REM che puoi semplicemente trovare su Youtube:
+https://www.youtube.com/playlist?list=PL3m-0_KBDgVNmXf2CfrSA31ArXjw2GLWh
+Prendine 10 e le mettiamo qui. Va bene anche senza design card tutta figa, anche l’embedded va bene di yt. Se le mettiamo tutte è ancora meglio. SE CLICCO IN CTA BOTTONE NON SUCCEDE NULLA.
+PS. il menù qui ricambia e di nuovo ci riporta sta merda di carta qualità
+[IMG]
+[IMG][IMG]
+ABM
+Stesso problema delle testimonianze REM + STESSO PROBLMA FOOTER + check menù + SE CLICCO IN CTA BOTTONE NON SUCCEDE NULLA.
+[IMG]
+ALTRE PAGINE PROGRAMMI
+è inutile che le guardo ad una ad una. Se clicchi da menù home nelle pagine dei progammi ogni volta che clicco ci sono problemi tra immagini menù che cambiano senzioni che saltano footer mancanti. Cta bottoni che non funzionano… Sono da checcare tutte e da aggiustare sia mobile che desktop.
+IMPRENDITORI
+Menù che cambia se vai da mobile è uno (sbagliato) se vai da desktop un altro (sbagliato pure quello)
+[IMG]
+Resto della pagina mi sembra ok a parte i bottoni dei programmi anche qui che ti rimandano sempre in landing vecchie o sballate.
+Qui questa CTA ti rimanda in pagina sbagliata dovrebbe rimandare al typeform.
+[IMG]
+x le scuole
+Questa pagina non segue le linee guida di copy indicate qui dentro nel file master (oltre i soliti problemi di menù ecc..) https://docs.google.com/document/d/1ZexD9thNH9YwdkrQo-iQdmcsNdbXm-317IG-Fyl8GAk/edit?tab=t.4sa49fhchzib#heading=h.gcnfadmbeo1q
+[IMG]
+Autonomia reddito
+Pagina ok. CTA BOTTONI NON FUNZIONANTI O RIMANDANO SU LINK SBAGLIATI. + il solito menù.[IMG]
+GENITORI
+Pagina ok. CTA BOTTONI NON FUNZIONANTI O RIMANDANO SU LINK SBAGLIATI. + il solito menù.
+FEMMINILE
+Pagina ok. CTA BOTTONI NON FUNZIONANTI O RIMANDANO SU LINK SBAGLIATI. + il solito menù. 
+OTTIMO il cambio colore sul viola bravo. MA dovrebbe cambiare anche la barra menù
+B2B e anche TALENT
+pagina B2B
+Pagina ok. CTA BOTTONI NON FUNZIONANTI O RIMANDANO SU LINK SBAGLIATI. + il solito menù. 
+Metterei LINK CHE MANDA AD UN TYPEFORM HR FATTELO PASSARE DA ALESSIA
+pagina TALENT
+https://leonemasterschool.it/talent-new/
+Pagina del TALENT si vede che è fatta con AI e senza focus giusto di fatti non ha foto belle di team e niente di bello oltre che cambiare completamente stile. DA RIFARE MEGLIO deve essere coerente con tutte le altre pagine….
+CTA BOTTONI NON FUNZIONANTI O RIMANDANO SU LINK SBAGLIATI. + il solito menù. 
+Metterei LINK CHE MANDA AD UN TYPEFORM HR FATTELO PASSARE DA ALESSIA
+Eventi
+Pagina ok. + il solito menù sbagliato.
+IMPORTANTE DA AGGIORNARE NUOVE DATE DEI VARI WORKSHOP sono rimasti quelli passati già vecchi.
+Podcast
+Pagina super easy ma va benissimo così mi piace molto. Anche se si vede un po’ AI STANDARD ma va bene in questa è poca roba e ci sta.
+APP e corsi gratuiti
+Pagina troppo AI STANDARD. Dobbiamo migliorarla, mettere più screen dell’app e sopratutto togliere queste sezioni che sono fatte da claudecode in 1 minuto si vede da 100km e facciamo figuraccia con chi ne capisce di AI. Un sito enorme fatto bene per l’ultima pagina NON CONFONDIAMOCI!
+Metterei anche bottone ACCEDI DA DESKTOP/PC e li rimandiamo a questa pagina cosa ne pensi?
+https://app.leonemasterschool.it/
+POI QUESTA SEZIONE LA UNIREI a corsi gratuiti cambiando CTA come avevo scritto nel commento ad Antonio nel file master così che abbiamo una sola pagina fatta bene! 
+[IMG]
+https://leonemasterschool.it/app-lms-new/
+Questa landing di fatto è anche lei troppo AI Generated. Anche le tumbnail dei corsi gratuiti non ci danno valore anzi ce lo tolgono… è molto più semplice entrare dentro L’APP LMS andare nella home pagine dedicata ai corsi gratuiti fare uno screen di quello metterla dentro un mockup e inserirla dentro la landing dedicata all’APP. Come dicevo sopra una sola landing più semplificata con un unico obiettivo ovvero CTA ai corsi gratis tramite app fatta bene.
+PS. solito problema del menù anche qui
+Manca BLOG
+BLOG manca la farei con AI super semplice con gli articoli nostri che ne abbiamo prodotti TANTISSIMI almeno li rendiamo pubblici…. altrimenti è un peccato buttare tutto quel lavoro fatto in passato.
