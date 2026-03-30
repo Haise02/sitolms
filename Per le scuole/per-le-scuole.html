@@ -1,0 +1,652 @@
+<!-- PER LE SCUOLE — Leone Master School -->
+<!-- COPIA TUTTO QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════ RESET ═══════════ */
+.pls *, .pls *::before, .pls *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+/* ═══════════ VARIABLES ═══════════ */
+.pls {
+  --navy: #07162E;
+  --navy-soft: #0B1D38;
+  --accent: #4C7BF4;
+  --accent2: #2E8BF7;
+  --beige: #C9A96E;
+  --green: #22C55E;
+  --bg-white: #ffffff;
+  --bg-off: #F8F9FC;
+  --text-dark: #111111;
+  --text-body: #444444;
+  --text-muted: #777777;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans-tight: 'Inter Tight', 'Inter', sans-serif;
+  font-family: var(--sans);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.pls-reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.pls-reveal.visible { opacity: 1; transform: translateY(0); }
+.pls-d1 { transition-delay: 0.08s; }
+.pls-d2 { transition-delay: 0.16s; }
+.pls-d3 { transition-delay: 0.24s; }
+.pls-d4 { transition-delay: 0.32s; }
+
+/* ═══════════ HERO (DARK) ═══════════ */
+.pls-hero {
+  background: linear-gradient(160deg, var(--navy) 0%, #0d2440 50%, #112a4a 100%);
+  padding: 120px 40px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pls-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(76,123,244,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.pls-hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.pls-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans-tight);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.pls-hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: plsPulse 2s ease-in-out infinite;
+}
+@keyframes plsPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+.pls-hero h1 {
+  font-family: var(--serif);
+  font-size: 56px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.08;
+  margin-bottom: 24px;
+  letter-spacing: -1.5px;
+}
+.pls-hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.pls-hero-sub {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ═══════════ PAIN POINTS (LIGHT) ═══════════ */
+.pls-pain {
+  background: var(--bg-white);
+  padding: 100px 40px;
+}
+.pls-pain-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.pls-pain-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.pls-pain-label {
+  font-family: var(--sans-tight);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.pls-pain-header h2 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.12;
+  letter-spacing: -1px;
+}
+.pls-pain-header h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.pls-pain-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.pls-pain-card {
+  background: var(--bg-off);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 32px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pls-pain-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+}
+.pls-pain-icon {
+  width: 44px; height: 44px;
+  background: rgba(76,123,244,0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.pls-pain-icon svg {
+  width: 22px; height: 22px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pls-pain-card h3 {
+  font-family: var(--sans-tight);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.pls-pain-card p {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+/* ═══════════ SOLUTION (DARK) ═══════════ */
+.pls-solution {
+  background: var(--navy);
+  padding: 100px 40px;
+  text-align: center;
+}
+.pls-solution-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.pls-solution h2 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.12;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+.pls-solution h2 em {
+  font-style: italic;
+  color: var(--beige);
+}
+.pls-solution p {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+}
+.pls-solution-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.pls-sol-feat {
+  text-align: center;
+  padding: 24px 16px;
+}
+.pls-sol-feat-icon {
+  width: 48px; height: 48px;
+  margin: 0 auto 16px;
+  background: rgba(76,123,244,0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pls-sol-feat-icon svg {
+  width: 24px; height: 24px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pls-sol-feat h4 {
+  font-family: var(--sans-tight);
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.pls-sol-feat p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+}
+
+/* ═══════════ PROGRAMS (LIGHT) ═══════════ */
+.pls-programs {
+  background: var(--bg-white);
+  padding: 100px 40px;
+}
+.pls-programs-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.pls-programs-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.pls-programs-label {
+  font-family: var(--sans-tight);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.pls-programs-header h2 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.12;
+  letter-spacing: -1px;
+}
+.pls-programs-header h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.pls-prg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.pls-prg-card {
+  background: var(--bg-off);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pls-prg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+}
+.pls-prg-num {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+.pls-prg-card h3 {
+  font-family: var(--sans-tight);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.pls-prg-card p {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+/* ═══════════ RESULTS (DARK) ═══════════ */
+.pls-results {
+  background: var(--navy);
+  padding: 100px 40px;
+  text-align: center;
+}
+.pls-results-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.pls-results h2 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.12;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+.pls-results h2 em {
+  font-style: italic;
+  color: var(--green);
+}
+.pls-results > .pls-results-inner > p {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  margin-bottom: 48px;
+}
+.pls-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.pls-stat {
+  padding: 28px 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+}
+.pls-stat-num {
+  font-family: var(--sans-tight);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.pls-stat-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+
+/* ═══════════ CTA (LIGHT) ═══════════ */
+.pls-cta {
+  background: var(--bg-white);
+  padding: 100px 40px;
+  text-align: center;
+}
+.pls-cta-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.pls-cta h2 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.12;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+.pls-cta h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.pls-cta-desc {
+  font-size: 18px;
+  color: var(--text-body);
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+.pls-cta-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+.pls-cta-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 28px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-family: var(--sans-tight);
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pls-cta-contact:hover {
+  transform: translateY(-2px);
+}
+.pls-cta-contact svg {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+}
+.pls-cta-email {
+  background: var(--accent);
+  color: #ffffff;
+}
+.pls-cta-email:hover {
+  box-shadow: 0 8px 24px rgba(76,123,244,0.3);
+}
+.pls-cta-email svg { stroke: #ffffff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.pls-cta-phone {
+  background: var(--bg-off);
+  color: var(--text-dark);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.pls-cta-phone:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.pls-cta-phone svg { stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.pls-cta-ref {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 900px) {
+  .pls-hero { padding: 100px 24px 80px; }
+  .pls-hero h1 { font-size: 44px; }
+  .pls-pain-grid { grid-template-columns: 1fr; }
+  .pls-solution-features { grid-template-columns: 1fr; gap: 16px; }
+  .pls-prg-grid { grid-template-columns: 1fr; }
+  .pls-stats { grid-template-columns: 1fr; gap: 16px; }
+}
+
+@media (max-width: 600px) {
+  .pls-hero { padding: 80px 16px 64px; }
+  .pls-hero h1 { font-size: 34px; }
+  .pls-hero-sub { font-size: 16px; }
+  .pls-pain, .pls-solution, .pls-programs, .pls-results, .pls-cta { padding: 64px 16px; }
+  .pls-pain-header h2, .pls-solution h2, .pls-programs-header h2, .pls-results h2, .pls-cta h2 { font-size: 32px; }
+  .pls-pain-card { padding: 24px; }
+  .pls-prg-card { padding: 28px 20px; }
+  .pls-cta-contact { padding: 14px 22px; font-size: 14px; }
+}
+
+@media (max-width: 400px) {
+  .pls-hero h1 { font-size: 28px; }
+  .pls-pain-header h2, .pls-solution h2, .pls-programs-header h2, .pls-results h2, .pls-cta h2 { font-size: 26px; }
+}
+</style>
+
+<div class="pls">
+
+  <!-- ═══════════ HERO (DARK) ═══════════ -->
+  <section class="pls-hero">
+    <div class="pls-hero-inner">
+      <div class="pls-hero-badge pls-reveal">
+        <div class="pls-hero-badge-dot"></div>
+        Percorsi per le Scuole
+      </div>
+      <h1 class="pls-reveal pls-d1">Sei un istituto scolastico che vuole offrire pi&ugrave; <em>valore</em> ai propri studenti?</h1>
+      <p class="pls-hero-sub pls-reveal pls-d2">Entra in un progetto PCTO che collega scuola e mondo del lavoro. I nostri programmi sono pensati per integrare l&rsquo;offerta formativa con esperienze concrete, moderne e gratuite.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ PAIN POINTS (LIGHT) ═══════════ -->
+  <section class="pls-pain">
+    <div class="pls-pain-inner">
+      <div class="pls-pain-header">
+        <div class="pls-pain-label pls-reveal">Le tue esigenze</div>
+        <h2 class="pls-reveal pls-d1">Vivi una o pi&ugrave; di queste <em>esigenze</em> nella tua scuola?</h2>
+      </div>
+      <div class="pls-pain-grid">
+        <div class="pls-pain-card pls-reveal">
+          <div class="pls-pain-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+          <h3>Programmi PCTO realmente formativi</h3>
+          <p>Vuoi che i tuoi studenti affrontino programmi PCTO realmente formativi, non solo formali.</p>
+        </div>
+        <div class="pls-pain-card pls-reveal pls-d1">
+          <div class="pls-pain-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <h3>Orientamento che motiva</h3>
+          <p>Desideri offrire esperienze di orientamento che motivino i ragazzi e li rendano pi&ugrave; consapevoli.</p>
+        </div>
+        <div class="pls-pain-card pls-reveal pls-d2">
+          <div class="pls-pain-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Collegamento scuola-lavoro</h3>
+          <p>Cerchi programmi che colleghino la formazione scolastica alle richieste del mondo del lavoro.</p>
+        </div>
+        <div class="pls-pain-card pls-reveal pls-d3">
+          <div class="pls-pain-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Senza costi per le famiglie</h3>
+          <p>Vuoi garantire un&rsquo;offerta aggiuntiva senza costi per le famiglie o per l&rsquo;istituto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SOLUTION (DARK) ═══════════ -->
+  <section class="pls-solution">
+    <div class="pls-solution-inner">
+      <h2 class="pls-reveal">Quello che serve &egrave; un ponte tra <em>scuola e futuro</em></h2>
+      <p class="pls-reveal pls-d1">Ti serve un partner educativo che sappia integrare metodo scolastico e competenze pratiche. Programmi progettati su misura, con flessibilit&agrave; di ore e contenuti. Una collaborazione che dia ai tuoi studenti valore concreto, certificato e riconosciuto.</p>
+      <div class="pls-solution-features">
+        <div class="pls-sol-feat pls-reveal pls-d1">
+          <div class="pls-sol-feat-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+          <h4>Metodo su misura</h4>
+          <p>Programmi personalizzati per le esigenze del tuo istituto</p>
+        </div>
+        <div class="pls-sol-feat pls-reveal pls-d2">
+          <div class="pls-sol-feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h4>Flessibilit&agrave; totale</h4>
+          <p>Ore e contenuti adattabili al calendario scolastico</p>
+        </div>
+        <div class="pls-sol-feat pls-reveal pls-d3">
+          <div class="pls-sol-feat-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></div>
+          <h4>Certificazione ufficiale</h4>
+          <p>Attestato di partecipazione per l&rsquo;e-portfolio degli studenti</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROGRAMS (LIGHT) ═══════════ -->
+  <section class="pls-programs">
+    <div class="pls-programs-inner">
+      <div class="pls-programs-header">
+        <div class="pls-programs-label pls-reveal">I programmi consigliati</div>
+        <h2 class="pls-reveal pls-d1">I programmi che ti <em>consigliamo</em></h2>
+      </div>
+      <div class="pls-prg-grid">
+        <div class="pls-prg-card pls-reveal">
+          <div class="pls-prg-num">01</div>
+          <h3>Diventa Imprenditore</h3>
+          <p>Se vuoi offrire agli studenti gli strumenti per avviare un&rsquo;attivit&agrave; da zero e sviluppare mentalit&agrave; imprenditoriale.</p>
+        </div>
+        <div class="pls-prg-card pls-reveal pls-d1">
+          <div class="pls-prg-num">02</div>
+          <h3>Marketing Masterclass</h3>
+          <p>Se vuoi introdurli alle strategie di marketing e comunicazione pi&ugrave; moderne usate nel mondo reale.</p>
+        </div>
+        <div class="pls-prg-card pls-reveal pls-d2">
+          <div class="pls-prg-num">03</div>
+          <h3>Unlock Yourself</h3>
+          <p>Se vuoi accompagnarli in un programma di crescita personale e orientamento professionale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ RESULTS (DARK) ═══════════ -->
+  <section class="pls-results">
+    <div class="pls-results-inner">
+      <h2 class="pls-reveal">Non parole, ma <em>risultati</em></h2>
+      <p class="pls-reveal pls-d1">Le scuole che hanno gi&agrave; attivato i nostri progetti hanno visto studenti pi&ugrave; motivati, coinvolti e preparati. Ogni programma si conclude con un project work e un attestato ufficiale di partecipazione.</p>
+      <div class="pls-stats">
+        <div class="pls-stat pls-reveal pls-d1">
+          <div class="pls-stat-num">100%</div>
+          <div class="pls-stat-label">Gratuito per istituti e famiglie</div>
+        </div>
+        <div class="pls-stat pls-reveal pls-d2">
+          <div class="pls-stat-num">H24</div>
+          <div class="pls-stat-label">Piattaforma online disponibile</div>
+        </div>
+        <div class="pls-stat pls-reveal pls-d3">
+          <div class="pls-stat-num">1:1</div>
+          <div class="pls-stat-label">Tutor dedicati per ogni classe</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA (LIGHT) ═══════════ -->
+  <section class="pls-cta">
+    <div class="pls-cta-inner">
+      <h2 class="pls-reveal">&Egrave; il momento di fare la <em>differenza</em> nella tua scuola</h2>
+      <p class="pls-cta-desc pls-reveal pls-d1">Se vuoi offrire ai tuoi studenti un&rsquo;esperienza PCTO realmente formativa e in linea con le esigenze del mercato, questo &egrave; il passo giusto.</p>
+      <div class="pls-cta-contacts pls-reveal pls-d2">
+        <a href="mailto:progetti.scuole@leonemasterschool.it?subject=Richiesta%20informazioni%20PCTO%20%E2%80%93%20Leone%20Master%20School&body=Buongiorno%2C%0A%0ASiamo%20interessati%20ad%20attivare%20un%20progetto%20PCTO%20con%20Leone%20Master%20School.%0A%0ANome%20istituto%3A%20%0AReferente%3A%20%0ATelefono%3A%20%0A%0AGrazie" class="pls-cta-contact pls-cta-email">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          progetti.scuole@leonemasterschool.it
+        </a>
+        <a href="tel:+393202416865" class="pls-cta-contact pls-cta-phone">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          320 241 6865
+        </a>
+      </div>
+      <p class="pls-cta-ref pls-reveal pls-d3">Francesca Aquilone &mdash; Responsabile progetto PCTO</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+(function(){
+  var els = document.querySelectorAll('.pls-reveal');
+  if (!els.length) return;
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+  } else {
+    els.forEach(function(el) { el.classList.add('visible'); });
+  }
+})();
+</script>

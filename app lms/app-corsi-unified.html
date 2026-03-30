@@ -1,0 +1,689 @@
+<!-- APP & CORSI — Leone Master School -->
+<!-- COPIA QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════ RESET ═══════════ */
+.apc *, .apc *::before, .apc *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+/* ═══════════ VARIABLES ═══════════ */
+.apc {
+  --navy: #07162E;
+  --navy-soft: #0B1D38;
+  --accent: #4C7BF4;
+  --accent2: #2E8BF7;
+  --accent-soft: rgba(76,123,244,0.07);
+  --accent-border: rgba(76,123,244,0.15);
+  --bg-white: #ffffff;
+  --bg-off: #F8F8F6;
+  --border: rgba(0,0,0,0.07);
+  --text-dark: #111111;
+  --text-body: #444444;
+  --text-muted: #888888;
+  --green: #22C55E;
+  --purple: #A855F7;
+  --orange: #F97316;
+  --pink: #EC4899;
+  --teal: #14B8A6;
+  --red: #EF4444;
+  --yellow: #EAB308;
+  --indigo: #6366F1;
+  --radius: 16px;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans-tight: 'Inter Tight', 'Inter', sans-serif;
+  font-family: var(--sans);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.apc-reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.apc-reveal.visible { opacity: 1; transform: translateY(0); }
+.apc-d1 { transition-delay: 0.08s; }
+.apc-d2 { transition-delay: 0.16s; }
+.apc-d3 { transition-delay: 0.24s; }
+.apc-d4 { transition-delay: 0.32s; }
+
+.apc-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+  font-family: var(--sans-tight);
+}
+.apc-label-light { color: var(--accent); }
+
+/* ═══════════ S1 — HERO (DARK) ═══════════ */
+.apc-hero {
+  background: linear-gradient(160deg, var(--navy) 0%, #0d2440 50%, #112a4a 100%);
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.apc-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(76,123,244,0.08) 0%, transparent 55%);
+  pointer-events: none;
+}
+.apc-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative; z-index: 2;
+}
+.apc-hero-text { color: #fff; }
+.apc-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(76,123,244,0.08);
+  border: 1px solid rgba(76,123,244,0.2);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 24px;
+}
+.apc-hero h1 {
+  font-family: var(--serif);
+  font-size: 56px; font-weight: 600;
+  line-height: 1.08; color: #fff;
+  margin-bottom: 20px; letter-spacing: -1.5px;
+}
+.apc-hero h1 em { font-style: italic; color: var(--accent); }
+.apc-hero-sub {
+  font-size: 17px; color: rgba(255,255,255,0.55);
+  line-height: 1.75; margin-bottom: 32px; max-width: 480px;
+}
+.apc-hero-btns {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.apc-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 24px; font-size: 14px; font-weight: 600;
+  font-family: var(--sans); border-radius: 12px;
+  cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none; white-space: nowrap; line-height: 1;
+}
+.apc-btn-apple {
+  background: #000 !important; color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.apc-btn-apple, .apc-btn-apple *, .apc-btn-apple span { color: #fff !important; }
+.apc-btn-apple:hover {
+  background: #1a1a1a !important; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.apc-btn-android {
+  background: transparent !important; color: #fff !important;
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+.apc-btn-android, .apc-btn-android *, .apc-btn-android span { color: #fff !important; }
+.apc-btn-android:hover {
+  background: rgba(255,255,255,0.06) !important; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.apc-btn-desktop {
+  background: transparent !important; color: #fff !important;
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+.apc-btn-desktop, .apc-btn-desktop *, .apc-btn-desktop span { color: #fff !important; }
+.apc-btn-desktop:hover {
+  background: rgba(255,255,255,0.06) !important; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(76,123,244,0.15);
+  border-color: rgba(255,255,255,0.4);
+}
+.apc-btn-logo { width: 18px; height: 18px; object-fit: contain; flex-shrink: 0; }
+.apc-btn-text { display: flex; flex-direction: column; gap: 1px; }
+.apc-btn-text-small { font-size: 10px; font-weight: 400; opacity: 0.7; letter-spacing: 0.3px; }
+.apc-btn-text-main { font-size: 15px; font-weight: 700; }
+
+.apc-hero-phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.apc-hero-phone img {
+  max-width: 340px; width: 100%;
+  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
+}
+
+/* ═══════════ S2 — FEATURES (LIGHT) ═══════════ */
+.apc-features {
+  background: var(--bg-white);
+  padding: 100px 40px;
+}
+.apc-features-inner {
+  max-width: 1000px; margin: 0 auto;
+}
+.apc-features-header {
+  text-align: center; margin-bottom: 56px;
+}
+.apc-features-header h2 {
+  font-family: var(--serif);
+  font-size: 44px; font-weight: 600;
+  color: var(--text-dark); line-height: 1.12;
+  letter-spacing: -1px;
+}
+.apc-features-header h2 em { font-style: italic; color: var(--accent); }
+.apc-feat-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.apc-feat {
+  background: var(--bg-off);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.apc-feat:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+}
+.apc-feat-icon {
+  width: 44px; height: 44px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.apc-feat-icon svg {
+  width: 22px; height: 22px;
+  stroke: var(--accent); fill: none; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.apc-feat h3 {
+  font-family: var(--sans-tight);
+  font-size: 16px; font-weight: 700;
+  color: var(--text-dark); margin-bottom: 8px;
+}
+.apc-feat p {
+  font-size: 14px; color: var(--text-muted); line-height: 1.65;
+}
+
+/* ═══════════ S3 — SHOWCASE (DARK) ═══════════ */
+.apc-showcase {
+  background: var(--navy);
+  padding: 100px 40px;
+}
+.apc-showcase-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.apc-showcase-text { color: #fff; }
+.apc-showcase h2 {
+  font-family: var(--serif);
+  font-size: 40px; font-weight: 600;
+  color: #fff; line-height: 1.15; margin-bottom: 20px;
+}
+.apc-showcase h2 em { font-style: italic; color: var(--accent); }
+.apc-showcase p {
+  font-size: 16px; color: rgba(255,255,255,0.5);
+  line-height: 1.75; margin-bottom: 12px;
+}
+.apc-showcase-img {
+  display: flex; justify-content: center;
+}
+.apc-showcase-img img {
+  max-width: 100%; border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* ═══════════ S4 — CORSI GRATIS (LIGHT) ═══════════ */
+.apc-corsi {
+  background: var(--bg-white);
+  padding: 100px 40px;
+}
+.apc-corsi-inner {
+  max-width: 1140px; margin: 0 auto;
+}
+.apc-corsi-header {
+  text-align: center; margin-bottom: 56px;
+}
+.apc-corsi-header h2 {
+  font-family: var(--serif);
+  font-size: 44px; font-weight: 600;
+  color: var(--text-dark); margin-bottom: 14px; line-height: 1.12;
+}
+.apc-corsi-header h2 em { font-style: italic; color: var(--accent); }
+.apc-corsi-header p {
+  font-size: 17px; color: var(--text-muted);
+  max-width: 540px; margin: 0 auto; line-height: 1.7;
+}
+.apc-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+}
+.apc-card {
+  background: var(--bg-off);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex; flex-direction: column;
+}
+.apc-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+  transform: translateY(-5px);
+}
+.apc-card-img {
+  width: 100%; height: 200px;
+  object-fit: cover; display: block;
+}
+.apc-card-top {
+  padding: 24px 28px 16px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.apc-card-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.apc-card-icon svg { width: 22px; height: 22px; stroke-width: 2; fill: none; }
+.apc-card-tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 6px; margin-bottom: 8px;
+}
+.apc-card h3 {
+  font-family: var(--sans-tight);
+  font-size: 18px; font-weight: 700;
+  color: var(--text-dark); margin-bottom: 8px; line-height: 1.3;
+}
+.apc-card-desc {
+  font-size: 14px; line-height: 1.6; color: var(--text-muted);
+  padding: 0 28px; flex: 1;
+}
+.apc-card-testi {
+  padding: 16px 28px; border-top: 1px solid var(--border); margin-top: 16px;
+}
+.apc-card-testi-q {
+  font-size: 12px; line-height: 1.5; color: var(--text-body); font-style: italic;
+}
+.apc-card-testi-q strong { font-style: normal; color: var(--text-muted); }
+.apc-card-bottom {
+  padding: 16px 28px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.apc-card-price {
+  font-family: var(--sans-tight);
+  font-size: 20px; font-weight: 800; color: var(--accent);
+}
+.apc-card-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent); color: #fff;
+  padding: 10px 20px; font-size: 13px; font-weight: 600;
+  font-family: var(--sans); border-radius: 9px; border: none;
+  cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none; white-space: nowrap;
+}
+.apc-card-btn:hover {
+  background: #3968e0; transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(76,123,244,0.25);
+}
+.apc-card-btn svg { width: 13px; height: 13px; stroke: #fff; fill: none; stroke-width: 2; }
+
+/* Color variants */
+.apc-c-green  { background: rgba(34,197,94,0.08); }
+.apc-c-green svg  { stroke: var(--green); }
+.apc-t-green  { background: rgba(34,197,94,0.06); color: var(--green); }
+.apc-c-purple { background: rgba(168,85,247,0.08); }
+.apc-c-purple svg { stroke: var(--purple); }
+.apc-t-purple { background: rgba(168,85,247,0.06); color: var(--purple); }
+.apc-c-orange { background: rgba(249,115,22,0.08); }
+.apc-c-orange svg { stroke: var(--orange); }
+.apc-t-orange { background: rgba(249,115,22,0.06); color: var(--orange); }
+.apc-c-blue   { background: rgba(76,123,244,0.08); }
+.apc-c-blue svg   { stroke: var(--accent); }
+.apc-t-blue   { background: rgba(76,123,244,0.06); color: var(--accent); }
+.apc-c-pink   { background: rgba(236,72,153,0.08); }
+.apc-c-pink svg   { stroke: var(--pink); }
+.apc-t-pink   { background: rgba(236,72,153,0.06); color: var(--pink); }
+.apc-c-teal   { background: rgba(20,184,166,0.08); }
+.apc-c-teal svg   { stroke: var(--teal); }
+.apc-t-teal   { background: rgba(20,184,166,0.06); color: var(--teal); }
+.apc-c-red    { background: rgba(239,68,68,0.08); }
+.apc-c-red svg    { stroke: var(--red); }
+.apc-t-red    { background: rgba(239,68,68,0.06); color: var(--red); }
+.apc-c-indigo { background: rgba(99,102,241,0.08); }
+.apc-c-indigo svg { stroke: var(--indigo); }
+.apc-t-indigo { background: rgba(99,102,241,0.06); color: var(--indigo); }
+
+/* ═══════════ S5 — CTA (DARK) ═══════════ */
+.apc-cta {
+  background: var(--navy);
+  padding: 100px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.apc-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(76,123,244,0.1), transparent 60%);
+  pointer-events: none;
+}
+.apc-cta-inner {
+  max-width: 600px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.apc-cta h2 {
+  font-family: var(--serif);
+  font-size: 48px; font-weight: 600;
+  color: #fff; margin-bottom: 16px; line-height: 1.12;
+}
+.apc-cta h2 em { font-style: italic; color: var(--accent); }
+.apc-cta p {
+  font-size: 16px; color: rgba(255,255,255,0.5);
+  margin-bottom: 36px; line-height: 1.65;
+}
+.apc-cta-btns {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 900px) {
+  .apc-hero { padding: 80px 24px 60px; }
+  .apc-hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .apc-hero-sub { margin-left: auto; margin-right: auto; }
+  .apc-hero-btns { justify-content: center; }
+  .apc-hero h1 { font-size: 44px; }
+  .apc-hero-phone img { max-width: 280px; }
+
+  .apc-features, .apc-corsi { padding: 72px 24px; }
+  .apc-feat-grid { grid-template-columns: 1fr; }
+  .apc-features-header h2, .apc-corsi-header h2 { font-size: 36px; }
+
+  .apc-showcase { padding: 72px 24px; }
+  .apc-showcase-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+  .apc-showcase h2 { font-size: 34px; }
+
+  .apc-grid { grid-template-columns: 1fr; }
+
+  .apc-cta { padding: 72px 24px; }
+  .apc-cta h2 { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .apc-hero { padding: 64px 16px 48px; }
+  .apc-hero h1 { font-size: 34px; }
+  .apc-hero-sub { font-size: 15px; }
+  .apc-hero-btns { flex-direction: column; align-items: stretch; gap: 10px; }
+  .apc-btn { justify-content: center; padding: 12px 20px; }
+  .apc-btn-text-main { font-size: 14px; }
+  .apc-hero-phone img { max-width: 220px; }
+
+  .apc-features, .apc-corsi { padding: 56px 16px; }
+  .apc-features-header h2, .apc-corsi-header h2 { font-size: 28px; }
+  .apc-feat { padding: 24px 20px; }
+
+  .apc-showcase { padding: 56px 16px; }
+  .apc-showcase h2 { font-size: 28px; }
+
+  .apc-card-top { padding: 22px 20px 16px; }
+  .apc-card-desc { padding: 0 20px; }
+  .apc-card-testi { padding: 14px 20px; }
+  .apc-card-bottom { padding: 14px 20px 20px; flex-direction: column; gap: 12px; align-items: stretch; }
+  .apc-card-btn { justify-content: center; }
+  .apc-card-img { height: 160px; }
+
+  .apc-cta { padding: 56px 16px; }
+  .apc-cta h2 { font-size: 28px; }
+  .apc-cta-btns { flex-direction: column; align-items: stretch; }
+  .apc-cta-btns .apc-btn { justify-content: center; }
+}
+@media (max-width: 360px) {
+  .apc-hero h1 { font-size: 28px; }
+  .apc-features-header h2, .apc-corsi-header h2, .apc-showcase h2, .apc-cta h2 { font-size: 24px; }
+}
+</style>
+
+<!-- ═══════════ HTML ═══════════ -->
+<div class="apc">
+
+  <!-- S1 — HERO (DARK) -->
+  <section class="apc-hero">
+    <div class="apc-hero-inner">
+      <div class="apc-hero-text">
+        <div class="apc-hero-badge apc-reveal">App ufficiale + Corsi gratuiti</div>
+        <h1 class="apc-reveal apc-d1">Tutto il sapere LMS, nella tua <em>tasca.</em></h1>
+        <p class="apc-hero-sub apc-reveal apc-d2">Scarica l&rsquo;App ufficiale LMS e inizia subito a formarti con i nostri videocorsi pi&ugrave; potenti. Marketing, vendita, mindset, finanza personale e crescita professionale &mdash; tutto a portata di mano.</p>
+        <div class="apc-hero-btns apc-reveal apc-d3">
+          <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="apc-btn apc-btn-apple">
+            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/Apple_logo_white.svg.png" alt="Apple" class="apc-btn-logo">
+            <div class="apc-btn-text"><span class="apc-btn-text-small">Scarica su</span><span class="apc-btn-text-main">App Store</span></div>
+          </a>
+          <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="apc-btn apc-btn-android">
+            <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/163-1632345_download-the-domus-app-today-android-icon-white.png" alt="Android" class="apc-btn-logo">
+            <div class="apc-btn-text"><span class="apc-btn-text-small">Scarica su</span><span class="apc-btn-text-main">Google Play</span></div>
+          </a>
+          <a href="https://app.leonemasterschool.it/" target="_blank" rel="noopener" class="apc-btn apc-btn-desktop">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <div class="apc-btn-text"><span class="apc-btn-text-small">Accedi da</span><span class="apc-btn-text-main">Desktop / PC</span></div>
+          </a>
+        </div>
+      </div>
+      <div class="apc-hero-phone apc-reveal apc-d2">
+        <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/mockupmep.png" alt="App LMS">
+      </div>
+    </div>
+  </section>
+
+  <!-- S2 — FEATURES (LIGHT) -->
+  <section class="apc-features">
+    <div class="apc-features-inner">
+      <div class="apc-features-header">
+        <div class="apc-label apc-reveal">Cosa trovi nell&rsquo;app</div>
+        <h2 class="apc-reveal apc-d1">Formazione <em>ovunque</em> tu sia</h2>
+      </div>
+      <div class="apc-feat-grid">
+        <div class="apc-feat apc-reveal">
+          <div class="apc-feat-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <h3>Videocorsi on-demand</h3>
+          <p>Accedi a tutti i corsi della tua area riservata e guardali quando vuoi, al tuo ritmo.</p>
+        </div>
+        <div class="apc-feat apc-reveal apc-d1">
+          <div class="apc-feat-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <h3>Programmi e lezioni live</h3>
+          <p>Accedi ai tuoi programmi e alle lezioni live registrate in qualsiasi momento.</p>
+        </div>
+        <div class="apc-feat apc-reveal apc-d2">
+          <div class="apc-feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Area riservata</h3>
+          <p>Il tuo spazio personale con progressi, materiali e attestati sempre disponibili.</p>
+        </div>
+        <div class="apc-feat apc-reveal">
+          <div class="apc-feat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Comunit&agrave; e supporto</h3>
+          <p>Connettiti con altri corsisti e con il tuo tutor direttamente dall&rsquo;app.</p>
+        </div>
+        <div class="apc-feat apc-reveal apc-d1">
+          <div class="apc-feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>Notifiche live</h3>
+          <p>Non perdere mai una lezione: ricevi promemoria e aggiornamenti in tempo reale.</p>
+        </div>
+        <div class="apc-feat apc-reveal apc-d2">
+          <div class="apc-feat-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <h3>Disponibile ovunque</h3>
+          <p>iPhone, Android e Desktop. La tua formazione ti segue su ogni dispositivo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 — SHOWCASE DESKTOP (DARK) -->
+  <section class="apc-showcase">
+    <div class="apc-showcase-inner">
+      <div class="apc-showcase-text">
+        <div class="apc-label apc-reveal" style="color:var(--accent);">Anche da desktop</div>
+        <h2 class="apc-reveal apc-d1">Accedi direttamente dal tuo <em>browser</em></h2>
+        <p class="apc-reveal apc-d2">Non hai lo smartphone a portata di mano? Nessun problema. La piattaforma LMS &egrave; accessibile anche da PC e Mac, con la stessa esperienza fluida e completa.</p>
+        <p class="apc-reveal apc-d3">Tutti i tuoi corsi, progressi e materiali sincronizzati in automatico tra app e desktop.</p>
+      </div>
+      <div class="apc-showcase-img apc-reveal apc-d2">
+        <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/Macbook%20Mockup%20copia.png" alt="App LMS Desktop">
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 — CORSI GRATIS (LIGHT) -->
+  <section class="apc-corsi" id="apcCorsi">
+    <div class="apc-corsi-inner">
+      <div class="apc-corsi-header">
+        <div class="apc-label apc-reveal">100% Gratuiti</div>
+        <h2 class="apc-reveal apc-d1">Mettici alla prova con i nostri corsi <em>gratuiti.</em></h2>
+        <p class="apc-reveal apc-d2">Non te la senti di iniziare subito uno dei nostri programmi? Ecco un catalogo di lezioni introduttive per conoscere il nostro approccio &mdash; senza costi.</p>
+      </div>
+
+      <div class="apc-grid">
+
+        <!-- 1. Finanza Etica -->
+        <div class="apc-card apc-reveal">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/corsti%20gratis/images/finanza.png" alt="Finanza Etica e Sostenibile" class="apc-card-img">
+          <div class="apc-card-top">
+            <div class="apc-card-icon apc-c-green"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <div><span class="apc-card-tag apc-t-green">Finanza</span><h3>Finanza Etica e Sostenibile</h3></div>
+          </div>
+          <div class="apc-card-desc">Impara a gestire il denaro con consapevolezza. Scoprirai come costruire un patrimonio duraturo e far lavorare il tempo a tuo favore.</div>
+          <div class="apc-card-testi"><div class="apc-card-testi-q">&ldquo;Mi ha cambiato il modo di pensare al denaro.&rdquo; <strong>&mdash; Giulia L.</strong></div></div>
+          <div class="apc-card-bottom"><div class="apc-card-price">Gratis</div><a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" class="apc-card-btn">Inizia ora <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+        </div>
+
+        <!-- 2. Benessere Spirituale -->
+        <div class="apc-card apc-reveal apc-d1">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/corsti%20gratis/images/benessere.png" alt="Benessere Spirituale" class="apc-card-img">
+          <div class="apc-card-top">
+            <div class="apc-card-icon apc-c-purple"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+            <div><span class="apc-card-tag apc-t-purple">Benessere</span><h3>Benessere Spirituale</h3></div>
+          </div>
+          <div class="apc-card-desc">Meditazioni guidate, audioguide e lezioni pratiche per armonizzare i tuoi chakra, applicare le 7 leggi spirituali del successo e ritrovare libert&agrave; emotiva.</div>
+          <div class="apc-card-testi"><div class="apc-card-testi-q">&ldquo;Un&rsquo;esperienza trasformativa.&rdquo; <strong>&mdash; Martina G.</strong></div></div>
+          <div class="apc-card-bottom"><div class="apc-card-price">Gratis</div><a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" class="apc-card-btn">Inizia ora <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+        </div>
+
+        <!-- 3. Cum-Vinco -->
+        <div class="apc-card apc-reveal">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/corsti%20gratis/images/cumvinco.png" alt="Cum-Vinco" class="apc-card-img">
+          <div class="apc-card-top">
+            <div class="apc-card-icon apc-c-orange"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div><span class="apc-card-tag apc-t-orange">Vendita</span><h3>Cum-Vinco: Vinci e Fai Vincere</h3></div>
+          </div>
+          <div class="apc-card-desc">Impara a creare una rete solida, gestire le obiezioni e comunicare con sicurezza. La vendita come atto etico, persuasivo e reciproco.</div>
+          <div class="apc-card-testi"><div class="apc-card-testi-q">&ldquo;Tecniche pratiche da applicare subito.&rdquo; <strong>&mdash; Marco N.</strong></div></div>
+          <div class="apc-card-bottom"><div class="apc-card-price">Gratis</div><a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" class="apc-card-btn">Inizia ora <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+        </div>
+
+        <!-- 4. Colazione per la Mente -->
+        <div class="apc-card apc-reveal apc-d1">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/corsti%20gratis/images/colazione2.png" alt="Colazione per la Mente" class="apc-card-img">
+          <div class="apc-card-top">
+            <div class="apc-card-icon apc-c-blue"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><span class="apc-card-tag apc-t-blue">Mindset</span><h3>Colazione per la Mente</h3></div>
+          </div>
+          <div class="apc-card-desc">Connettiti ogni giorno alle 8:00 per iniziare la giornata con chiarezza, energia e focus. Un appuntamento quotidiano per nutrire la mente.</div>
+          <div class="apc-card-testi"><div class="apc-card-testi-q">&ldquo;Ogni mattina una spinta concreta per partire al meglio.&rdquo; <strong>&mdash; Sara T.</strong></div></div>
+          <div class="apc-card-bottom"><div class="apc-card-price">Gratis</div><a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" class="apc-card-btn">Inizia ora <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+        </div>
+
+        <!-- 5. Da Dipendente a Imprenditore -->
+        <div class="apc-card apc-reveal">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/corsti%20gratis/images/da%20dipendente.png" alt="Da Dipendente a Imprenditore" class="apc-card-img">
+          <div class="apc-card-top">
+            <div class="apc-card-icon apc-c-teal"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div><span class="apc-card-tag apc-t-teal">Business</span><h3>Da Dipendente a Imprenditore</h3></div>
+          </div>
+          <div class="apc-card-desc">Guidato da Leonardo Leone, scoprirai come passare dalla visione imprenditoriale alla gestione concreta di un&rsquo;attivit&agrave;.</div>
+          <div class="apc-card-testi"><div class="apc-card-testi-q">&ldquo;Mi ha dato tutte le basi per aprire la mia attivit&agrave;.&rdquo; <strong>&mdash; Andrea S.</strong></div></div>
+          <div class="apc-card-bottom"><div class="apc-card-price">Gratis</div><a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" class="apc-card-btn">Inizia ora <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+        </div>
+
+        <!-- 6. Fare Soldi con le Case -->
+        <div class="apc-card apc-reveal apc-d1">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/corsti%20gratis/images/faresoldi.png" alt="Fare Soldi con le Case" class="apc-card-img">
+          <div class="apc-card-top">
+            <div class="apc-card-icon apc-c-red"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div><span class="apc-card-tag apc-t-red">Real Estate</span><h3>Fare Soldi con le Case</h3></div>
+          </div>
+          <div class="apc-card-desc">Scopri come scegliere le operazioni immobiliari giuste, evitare rischi e usare calcolatori di ROI per investire con sicurezza.</div>
+          <div class="apc-card-testi"><div class="apc-card-testi-q">&ldquo;Perfetto per chi vuole iniziare con sicurezza.&rdquo; <strong>&mdash; Sara B.</strong></div></div>
+          <div class="apc-card-bottom"><div class="apc-card-price">Gratis</div><a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" class="apc-card-btn">Inizia ora <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+        </div>
+
+        <!-- 7. Flusso di Lavoro -->
+        <div class="apc-card apc-reveal">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/corsti%20gratis/images/flusso.png" alt="Flusso di Lavoro" class="apc-card-img">
+          <div class="apc-card-top">
+            <div class="apc-card-icon apc-c-indigo"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+            <div><span class="apc-card-tag apc-t-indigo">Produttivit&agrave;</span><h3>Flusso di Lavoro</h3></div>
+          </div>
+          <div class="apc-card-desc">Tecniche per ottimizzare il tempo, gestire le distrazioni e migliorare la concentrazione. Giornate pi&ugrave; leggere e produttive.</div>
+          <div class="apc-card-testi"><div class="apc-card-testi-q">&ldquo;Mi ha cambiato il modo di lavorare.&rdquo; <strong>&mdash; Samuel V.</strong></div></div>
+          <div class="apc-card-bottom"><div class="apc-card-price">Gratis</div><a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" class="apc-card-btn">Inizia ora <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+        </div>
+
+        <!-- 8. Motiv-Azione -->
+        <div class="apc-card apc-reveal apc-d1">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/corsti%20gratis/images/motivazione.png" alt="Motiv-Azione" class="apc-card-img">
+          <div class="apc-card-top">
+            <div class="apc-card-icon apc-c-pink"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div><span class="apc-card-tag apc-t-pink">Motivazione</span><h3>Motiv-Azione</h3></div>
+          </div>
+          <div class="apc-card-desc">Supera l&rsquo;autosabotaggio, potenzia la motivazione e pianifica un anno di successi concreti. Energia mentale in azione costante.</div>
+          <div class="apc-card-testi"><div class="apc-card-testi-q">&ldquo;Mi ha aiutato a superare l&rsquo;autosabotaggio.&rdquo; <strong>&mdash; Luca B.</strong></div></div>
+          <div class="apc-card-bottom"><div class="apc-card-price">Gratis</div><a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" class="apc-card-btn">Inizia ora <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 — CTA (DARK) -->
+  <section class="apc-cta">
+    <div class="apc-cta-inner">
+      <h2 class="apc-reveal">Porta la Leone Master School sempre <em>con te.</em></h2>
+      <p class="apc-reveal apc-d1">Scarica l&rsquo;app e accedi subito a tutti i corsi gratuiti e ai tuoi programmi, ovunque tu sia.</p>
+      <div class="apc-cta-btns apc-reveal apc-d2">
+        <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="apc-btn apc-btn-apple">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/Apple_logo_white.svg.png" alt="Apple" class="apc-btn-logo">
+          <div class="apc-btn-text"><span class="apc-btn-text-small">Scarica su</span><span class="apc-btn-text-main">App Store</span></div>
+        </a>
+        <a href="https://leonemasterschool.onelink.me/N3xN/sqtq07pj" target="_blank" rel="noopener" class="apc-btn apc-btn-android">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/app%20lms/images/163-1632345_download-the-domus-app-today-android-icon-white.png" alt="Android" class="apc-btn-logo">
+          <div class="apc-btn-text"><span class="apc-btn-text-small">Scarica su</span><span class="apc-btn-text-main">Google Play</span></div>
+        </a>
+        <a href="https://app.leonemasterschool.it/" target="_blank" rel="noopener" class="apc-btn apc-btn-desktop">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <div class="apc-btn-text"><span class="apc-btn-text-small">Accedi da</span><span class="apc-btn-text-main">Desktop / PC</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+(function(){
+  var els = document.querySelectorAll('.apc-reveal');
+  if (!els.length) return;
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+  } else {
+    els.forEach(function(el) { el.classList.add('visible'); });
+  }
+})();
+</script>

@@ -543,6 +543,93 @@
   object-fit: contain;
 }
 
+/* ═══════════ SECTION 5b — TEAM SHOWCASE (LIGHT) ═══════════ */
+.tal-showcase {
+  background: var(--bg-white);
+  padding: 100px 40px;
+  position: relative;
+}
+.tal-showcase-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.tal-showcase-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.tal-showcase-header h2 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.12;
+  margin-bottom: 14px;
+}
+.tal-showcase-header h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.tal-showcase-header p {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.tal-showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+.tal-showcase-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.tal-showcase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+}
+.tal-showcase-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tal-showcase-card:first-child {
+  grid-row: 1 / 3;
+  min-height: 480px;
+}
+.tal-showcase-card:nth-child(2),
+.tal-showcase-card:nth-child(3) {
+  min-height: 228px;
+}
+@media (max-width: 768px) {
+  .tal-showcase { padding: 64px 16px; }
+  .tal-showcase-header h2 { font-size: 34px; }
+  .tal-showcase-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .tal-showcase-card:first-child {
+    grid-row: auto;
+    min-height: 280px;
+  }
+  .tal-showcase-card:nth-child(2),
+  .tal-showcase-card:nth-child(3) {
+    min-height: 220px;
+  }
+}
+@media (max-width: 480px) {
+  .tal-showcase-header h2 { font-size: 28px; }
+  .tal-showcase-card:first-child { min-height: 220px; }
+  .tal-showcase-card:nth-child(2),
+  .tal-showcase-card:nth-child(3) { min-height: 180px; }
+}
+
 /* ═══════════ SECTION 6 — CTA ═══════════ */
 .tal-cta {
   background: var(--navy);
@@ -968,14 +1055,36 @@
     </div>
   </section>
 
+  <!-- ═══════════ TEAM SHOWCASE (LIGHT) ═══════════ -->
+  <section class="tal-showcase">
+    <div class="tal-showcase-inner">
+      <div class="tal-showcase-header">
+        <div class="tal-section-label tal-reveal">Il nostro team</div>
+        <h2 class="tal-reveal tal-reveal-d1">Le persone dietro ai <em>risultati</em></h2>
+        <p class="tal-reveal tal-reveal-d2">Energia, competenza e passione: questo &egrave; il cuore della Leone Master School.</p>
+      </div>
+      <div class="tal-showcase-grid">
+        <div class="tal-showcase-card tal-reveal">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Talent/images/DSC00501.JPG" alt="Team Leone Master School">
+        </div>
+        <div class="tal-showcase-card tal-reveal tal-reveal-d1">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Talent/images/DSC00546.JPG" alt="Team Leone Master School">
+        </div>
+        <div class="tal-showcase-card tal-reveal tal-reveal-d2">
+          <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Talent/images/DSC04824.JPG" alt="Team Leone Master School">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════ CTA ═══════════ -->
   <section class="tal-cta" id="talCta">
     <div class="tal-cta-inner">
       <h2 class="tal-reveal">Non esistono limiti di crescita in un progetto che non ha limiti.</h2>
       <p class="tal-cta-text tal-reveal tal-reveal-d1">Se vuoi fare la differenza, candidati ora. Non cerchiamo persone perfette &mdash; cerchiamo persone che vogliono diventarlo.</p>
-      <a href="#" class="tal-cta-btn tal-reveal tal-reveal-d2" data-tf-popup="mGllVklt" data-tf-size="50" data-tf-opacity="100">
+      <a href="mailto:hr@leonemasterschool.it?subject=Candidatura%20Talent%20%E2%80%93%20Leone%20Master%20School&body=Buongiorno%2C%0A%0AVorrei%20candidarmi%20per%20una%20posizione%20nel%20team%20Leone%20Master%20School.%0A%0ANome%20e%20Cognome%3A%20%0ARuolo%20di%20interesse%3A%20%0ATelefono%3A%20%0ALinkedIn%3A%20%0A%0AGrazie" class="tal-cta-btn tal-reveal tal-reveal-d2">
         Candidati ora
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       </a>
       <div class="tal-cta-logo tal-reveal tal-reveal-d3">
         <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Talent/images/Logo%20LMS.png" alt="LMS">

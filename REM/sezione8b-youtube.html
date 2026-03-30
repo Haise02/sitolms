@@ -1,0 +1,225 @@
+<!-- REM — TESTIMONIANZE YOUTUBE · Leone Master School -->
+<!-- COPIA QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR (dopo sezione8) -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap');
+
+.rem-yt *, .rem-yt *::before, .rem-yt *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.rem-yt {
+  --navy: #0a1929;
+  --accent: #22c55e;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter Tight', 'Inter', sans-serif;
+  font-family: var(--sans);
+  background: var(--navy);
+  color: #ffffff;
+  padding: 100px 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.rem-yt::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.rem-yt-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.rem-yt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.rem-yt-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: remYtPulse 2s ease-in-out infinite;
+}
+@keyframes remYtPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.rem-yt-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.rem-yt-header h2 {
+  font-family: var(--serif);
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+.rem-yt-header h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.rem-yt-header p {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Featured video — full playlist embed */
+.rem-yt-featured {
+  margin-bottom: 48px;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  border: 1px solid rgba(34,197,94,0.15);
+}
+
+.rem-yt-featured iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Grid of individual video thumbnails */
+.rem-yt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.rem-yt-card {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.rem-yt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(34,197,94,0.15);
+  border-color: rgba(34,197,94,0.2);
+}
+.rem-yt-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Reveal animation */
+.rem-yt-reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.rem-yt-reveal.visible { opacity: 1; transform: translateY(0); }
+.rem-yt-reveal-d1 { transition-delay: 0.08s; }
+.rem-yt-reveal-d2 { transition-delay: 0.16s; }
+.rem-yt-reveal-d3 { transition-delay: 0.24s; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .rem-yt { padding: 70px 24px; }
+  .rem-yt-header h2 { font-size: 40px; }
+  .rem-yt-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 600px) {
+  .rem-yt { padding: 56px 16px; }
+  .rem-yt-header h2 { font-size: 32px; }
+  .rem-yt-header p { font-size: 16px; }
+  .rem-yt-grid { grid-template-columns: 1fr; gap: 14px; }
+}
+
+@media (max-width: 360px) {
+  .rem-yt-header h2 { font-size: 26px; }
+}
+</style>
+
+<div class="rem-yt">
+  <div class="rem-yt-inner">
+
+    <div class="rem-yt-header">
+      <div class="rem-yt-badge rem-yt-reveal">
+        <div class="rem-yt-badge-dot"></div>
+        Testimonianze
+      </div>
+      <h2 class="rem-yt-reveal rem-yt-reveal-d1">Le <em>storie vere</em> dei nostri corsisti</h2>
+      <p class="rem-yt-reveal rem-yt-reveal-d2">Ascolta direttamente da chi ha completato il percorso REM e ha trasformato la propria vita professionale.</p>
+    </div>
+
+    <!-- Featured: playlist embed -->
+    <div class="rem-yt-featured rem-yt-reveal rem-yt-reveal-d2">
+      <iframe
+        src="https://www.youtube.com/embed/videoseries?list=PL3m-0_KBDgVNmXf2CfrSA31ArXjw2GLWh&rel=0"
+        title="Testimonianze REM - Playlist completa"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <!-- Grid: singoli video dalla playlist -->
+    <div class="rem-yt-grid">
+      <div class="rem-yt-card rem-yt-reveal">
+        <iframe src="https://www.youtube.com/embed/1CswoL__jbc?rel=0" title="Testimonianza REM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="rem-yt-card rem-yt-reveal rem-yt-reveal-d1">
+        <iframe src="https://www.youtube.com/embed/YdFkEhEqXGw?rel=0" title="Testimonianza REM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="rem-yt-card rem-yt-reveal rem-yt-reveal-d2">
+        <iframe src="https://www.youtube.com/embed/QxVZYJKxZJE?rel=0" title="Testimonianza REM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="rem-yt-card rem-yt-reveal">
+        <iframe src="https://www.youtube.com/embed/7iqB8PMxJJY?rel=0" title="Testimonianza REM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="rem-yt-card rem-yt-reveal rem-yt-reveal-d1">
+        <iframe src="https://www.youtube.com/embed/TJf5KDjJaN8?rel=0" title="Testimonianza REM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="rem-yt-card rem-yt-reveal rem-yt-reveal-d2">
+        <iframe src="https://www.youtube.com/embed/bx_LbTMJBRs?rel=0" title="Testimonianza REM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.rem-yt-reveal');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
