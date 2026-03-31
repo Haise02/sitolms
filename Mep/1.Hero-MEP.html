@@ -32,11 +32,6 @@
                 Programma di crescita personale con affiancamento individuale.
             </p>
             
-            <!-- Immagine Hero -->
-            <div class="hero-image-hero-rem">
-                <img src="https://leonemasterschool.it/wp-content/uploads/2025/12/Frame-12.png" alt="Master in Evoluzione Personale" class="hero-img-hero-rem">
-            </div>
-            
             <p class="hero-description-hero-rem">
                 Ricevi gli strumenti per rafforzare la tua autostima, gestire meglio emozioni, relazioni e soldi per essere pienamente soddisfatto.
             </p>
@@ -132,43 +127,6 @@
     margin-bottom: 32px;
     font-weight: 600 !important;
     text-align: center;
-}
-
-/* Hero Image */
-.hero-image-hero-rem {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto 32px;
-    position: relative;
-    z-index: 2;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(208, 220, 239, 0.3);
-    transition: all 0.3s ease;
-}
-
-.hero-image-hero-rem:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(208, 220, 239, 0.5);
-}
-
-.hero-image-hero-rem::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(208, 220, 239, 0.1) 0%, rgba(25, 48, 84, 0.1) 100%);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.hero-img-hero-rem {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
 }
 
 .hero-description-hero-rem {
@@ -357,12 +315,6 @@
         font-size: 18px !important;
     }
 
-    .hero-image-hero-rem {
-        margin: 0 auto 28px;
-        max-width: 100%;
-        border-radius: 16px;
-    }
-
     .triangle-block-hero-rem {
         transform: scale(0.67);
     }
@@ -405,10 +357,6 @@
 
     .hero-description-hero-rem {
         font-size: 18px !important;
-    }
-
-    .hero-image-hero-rem {
-        margin: 0 auto 24px;
     }
 
     .triangle-block-hero-rem {
@@ -463,15 +411,13 @@ void main() {
   float p1 = cos(uv.x * d) * 0.5 + 0.5;
   float p2 = cos(uv.y * a) * 0.5 + 0.5;
   
-  // Navy #193054 (rgb(25, 48, 84)) -> light blue #d0dcef (rgb(208, 220, 239))
-  vec3 top = vec3(0.098, 0.188, 0.329);    // #193054
-  vec3 bottom = vec3(0.816, 0.863, 0.937); // #d0dcef
-  vec3 topBright = min(top * 1.16, vec3(1.0));
-  vec3 grad = mix(bottom, topBright, vUv.y);
-  float n = (p1 - 0.5) * 0.18 + (p2 - 0.5) * 0.10;
+  // Very dark navy gradient
+  vec3 dark1 = vec3(0.039, 0.098, 0.161);  // #0a1929
+  vec3 dark2 = vec3(0.059, 0.165, 0.290);  // #0f2a4a
+  vec3 grad = mix(dark1, dark2, vUv.y * 0.5 + p1 * 0.3);
+  float n = (p1 - 0.5) * 0.06 + (p2 - 0.5) * 0.04;
   vec3 col = grad + vec3(n);
-  col = pow(clamp(col, 0.0, 1.0), vec3(0.92));
-  col = min(col + vec3(0.02), vec3(1.0));
+  col = clamp(col, 0.0, 0.35);
   
   gl_FragColor = vec4(col, 1.0);
 }`;
