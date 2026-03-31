@@ -1,0 +1,542 @@
+<!-- BLOG — Leone Master School -->
+<!-- COPIA QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════ RESET ═══════════ */
+.blg *, .blg *::before, .blg *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+/* ═══════════ VARIABLES ═══════════ */
+.blg {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent-soft: rgba(76,123,244,0.07);
+  --accent-border: rgba(76,123,244,0.15);
+  --bg-white: #ffffff;
+  --bg-off: #F8F8F6;
+  --border: rgba(0,0,0,0.07);
+  --text-dark: #111111;
+  --text-body: #444444;
+  --text-muted: #888888;
+  --radius: 16px;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans-tight: 'Inter Tight', 'Inter', sans-serif;
+  font-family: var(--sans);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.blg-reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.blg-reveal.visible { opacity: 1; transform: translateY(0); }
+.blg-d1 { transition-delay: 0.08s; }
+.blg-d2 { transition-delay: 0.16s; }
+.blg-d3 { transition-delay: 0.24s; }
+.blg-d4 { transition-delay: 0.32s; }
+
+.blg-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  font-family: var(--sans-tight);
+}
+
+/* ═══════════ S1 — HERO (DARK) ═══════════ */
+.blg-hero {
+  background: linear-gradient(160deg, var(--navy) 0%, #0d2440 50%, #112a4a 100%);
+  padding: 120px 40px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.blg-hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(76,123,244,0.08) 0%, transparent 55%);
+  pointer-events: none;
+}
+.blg-hero-inner {
+  max-width: 700px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.blg-hero h1 {
+  font-family: var(--serif);
+  font-size: 62px; font-weight: 600;
+  line-height: 1.08; color: #fff;
+  margin-bottom: 18px; letter-spacing: -1.5px;
+}
+.blg-hero h1 em { font-style: italic; color: var(--accent); }
+.blg-hero-sub {
+  font-size: 17px; color: rgba(255,255,255,0.5);
+  line-height: 1.75; max-width: 520px; margin: 0 auto;
+}
+
+/* ═══════════ S2 — FEATURED ARTICLES (LIGHT) ═══════════ */
+.blg-featured {
+  background: var(--bg-white);
+  padding: 100px 40px 60px;
+}
+.blg-featured-inner {
+  max-width: 1140px; margin: 0 auto;
+}
+.blg-featured-header {
+  text-align: center; margin-bottom: 48px;
+}
+.blg-featured-header h2 {
+  font-family: var(--serif);
+  font-size: 42px; font-weight: 600;
+  color: var(--text-dark); line-height: 1.12;
+}
+.blg-featured-header h2 em { font-style: italic; color: var(--accent); }
+
+.blg-featured-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+.blg-feat-card {
+  background: var(--bg-off);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+}
+.blg-feat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+  border-color: var(--accent-border);
+}
+.blg-feat-card-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(135deg, var(--navy) 0%, #1a3152 100%);
+}
+.blg-feat-card-body {
+  padding: 28px; flex: 1;
+  display: flex; flex-direction: column;
+}
+.blg-feat-tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  padding: 4px 12px; border-radius: 6px;
+  margin-bottom: 14px; width: fit-content;
+}
+.blg-feat-card h3 {
+  font-family: var(--sans-tight);
+  font-size: 20px; font-weight: 700;
+  color: var(--text-dark); line-height: 1.3;
+  margin-bottom: 10px;
+}
+.blg-feat-card p {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.65; flex: 1;
+}
+.blg-feat-card .blg-read {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--accent);
+  margin-top: 16px; text-decoration: none;
+  transition: gap 0.3s ease;
+}
+.blg-feat-card:hover .blg-read { gap: 10px; }
+.blg-read svg { width: 14px; height: 14px; stroke: var(--accent); fill: none; stroke-width: 2; }
+
+/* Main featured card spans 2 rows */
+.blg-feat-card:first-child {
+  grid-row: 1 / 3;
+}
+.blg-feat-card:first-child .blg-feat-card-img {
+  height: 320px;
+}
+.blg-feat-card:first-child h3 {
+  font-size: 24px;
+}
+
+/* ═══════════ S3 — ALL ARTICLES GRID (OFF-WHITE) ═══════════ */
+.blg-articles {
+  background: var(--bg-off);
+  padding: 80px 40px 100px;
+}
+.blg-articles-inner {
+  max-width: 1140px; margin: 0 auto;
+}
+.blg-articles-header {
+  text-align: center; margin-bottom: 48px;
+}
+.blg-articles-header h2 {
+  font-family: var(--serif);
+  font-size: 38px; font-weight: 600;
+  color: var(--text-dark); line-height: 1.15;
+}
+.blg-art-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.blg-art-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+}
+.blg-art-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+  border-color: var(--accent-border);
+}
+.blg-art-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(135deg, var(--navy) 0%, #1a3152 100%);
+}
+.blg-art-card-body {
+  padding: 22px; flex: 1;
+  display: flex; flex-direction: column;
+}
+.blg-art-tag {
+  display: inline-block;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.blg-art-card h3 {
+  font-family: var(--sans-tight);
+  font-size: 16px; font-weight: 700;
+  color: var(--text-dark); line-height: 1.35;
+  margin-bottom: 8px;
+}
+.blg-art-card p {
+  font-size: 13px; color: var(--text-muted);
+  line-height: 1.6; flex: 1;
+}
+.blg-art-card .blg-read {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; color: var(--accent);
+  margin-top: 14px; text-decoration: none;
+  transition: gap 0.3s ease;
+}
+.blg-art-card:hover .blg-read { gap: 10px; }
+
+/* ═══════════ S4 — CTA (DARK) ═══════════ */
+.blg-cta {
+  background: var(--navy);
+  padding: 100px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.blg-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(76,123,244,0.1), transparent 60%);
+  pointer-events: none;
+}
+.blg-cta-inner {
+  max-width: 600px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.blg-cta h2 {
+  font-family: var(--serif);
+  font-size: 46px; font-weight: 600;
+  color: #fff; margin-bottom: 16px; line-height: 1.12;
+}
+.blg-cta h2 em { font-style: italic; color: var(--accent); }
+.blg-cta p {
+  font-size: 16px; color: rgba(255,255,255,0.5);
+  margin-bottom: 32px; line-height: 1.65;
+}
+.blg-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: #fff;
+  padding: 15px 30px; font-size: 14px; font-weight: 600;
+  font-family: var(--sans); border-radius: 10px; border: none;
+  cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none;
+}
+.blg-cta-btn:hover {
+  background: #3968e0; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(76,123,244,0.3);
+}
+.blg-cta-btn svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; }
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 900px) {
+  .blg-hero { padding: 80px 24px 60px; }
+  .blg-hero h1 { font-size: 44px; }
+  .blg-featured, .blg-articles { padding: 64px 24px; }
+  .blg-featured-header h2 { font-size: 34px; }
+  .blg-articles-header h2 { font-size: 32px; }
+  .blg-featured-grid { grid-template-columns: 1fr; }
+  .blg-feat-card:first-child { grid-row: auto; }
+  .blg-feat-card:first-child .blg-feat-card-img { height: 240px; }
+  .blg-art-grid { grid-template-columns: repeat(2, 1fr); }
+  .blg-cta { padding: 72px 24px; }
+  .blg-cta h2 { font-size: 34px; }
+}
+@media (max-width: 600px) {
+  .blg-art-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .blg-hero { padding: 64px 16px 48px; }
+  .blg-hero h1 { font-size: 34px; }
+  .blg-hero-sub { font-size: 15px; }
+  .blg-featured, .blg-articles { padding: 48px 16px; }
+  .blg-featured-header h2 { font-size: 28px; }
+  .blg-articles-header h2 { font-size: 26px; }
+  .blg-feat-card-body { padding: 20px; }
+  .blg-feat-card h3 { font-size: 18px; }
+  .blg-feat-card:first-child h3 { font-size: 20px; }
+  .blg-art-card-body { padding: 18px; }
+  .blg-art-card h3 { font-size: 15px; }
+  .blg-cta { padding: 56px 16px; }
+  .blg-cta h2 { font-size: 28px; }
+}
+</style>
+
+<!-- ═══════════ HTML ═══════════ -->
+<div class="blg">
+
+  <!-- S1 — HERO -->
+  <section class="blg-hero">
+    <div class="blg-hero-inner">
+      <div class="blg-label blg-reveal" style="color:var(--accent);">Blog</div>
+      <h1 class="blg-reveal blg-d1">Idee, storie e <em>ispirazione.</em></h1>
+      <p class="blg-hero-sub blg-reveal blg-d2">Articoli su marketing, vendita, management, crescita personale e real estate. Scritti dai docenti e dal team della Leone Master School.</p>
+    </div>
+  </section>
+
+  <!-- S2 — FEATURED (3 articoli principali) -->
+  <section class="blg-featured">
+    <div class="blg-featured-inner">
+      <div class="blg-featured-header">
+        <div class="blg-label blg-reveal">In evidenza</div>
+        <h2 class="blg-reveal blg-d1">Gli articoli <em>pi&ugrave; letti</em></h2>
+      </div>
+      <div class="blg-featured-grid">
+
+        <!-- FEATURED 1 — Steve Jobs -->
+        <a href="https://leonemasterschool.it/mbe-marketing/70-anni-steve-jobs-storia-genio/" target="_blank" rel="noopener" class="blg-feat-card blg-reveal">
+          <div class="blg-feat-card-img" style="background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 50%, #0d2440 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0017 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 00-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
+          </div>
+          <div class="blg-feat-card-body">
+            <span class="blg-feat-tag">Marketing</span>
+            <h3>70 anni di Steve Jobs: la storia del genio immortale</h3>
+            <p>Le lezioni di vita e business che continuano a ispirarci. Dal garage alla rivoluzione digitale, la storia di un visionario.</p>
+            <span class="blg-read">Leggi l&rsquo;articolo <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- FEATURED 2 — LMS su ANSA -->
+        <a href="https://leonemasterschool.it/crescita-personale/leone-master-school-ansa/" target="_blank" rel="noopener" class="blg-feat-card blg-reveal blg-d1">
+          <div class="blg-feat-card-img" style="background: linear-gradient(135deg, #0d1f36 0%, #162d4a 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6z"/></svg>
+          </div>
+          <div class="blg-feat-card-body">
+            <span class="blg-feat-tag">Crescita Personale</span>
+            <h3>Leone Master School su ANSA: un riconoscimento speciale</h3>
+            <p>ANSA premia la Leone Master School. Un riconoscimento all&rsquo;eccellenza della formazione italiana.</p>
+            <span class="blg-read">Leggi l&rsquo;articolo <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- FEATURED 3 — Richard Branson -->
+        <a href="https://leonemasterschool.it/mbe-management/richard-branson-ribelle/" target="_blank" rel="noopener" class="blg-feat-card blg-reveal blg-d2">
+          <div class="blg-feat-card-img" style="background: linear-gradient(135deg, #12233d 0%, #1e3a5f 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="blg-feat-card-body">
+            <span class="blg-feat-tag">Management</span>
+            <h3>Richard Branson: il ribelle del business</h3>
+            <p>Un visionario, un ribelle e un pioniere che ha trasformato il modo in cui pensiamo al business. La storia del fondatore di Virgin Group.</p>
+            <span class="blg-read">Leggi l&rsquo;articolo <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 — ALL ARTICLES GRID -->
+  <section class="blg-articles">
+    <div class="blg-articles-inner">
+      <div class="blg-articles-header">
+        <div class="blg-label blg-reveal">Tutti gli articoli</div>
+        <h2 class="blg-reveal blg-d1">Continua a leggere</h2>
+      </div>
+      <div class="blg-art-grid">
+
+        <!-- 1. Personal Branding -->
+        <a href="https://leonemasterschool.it/mbe-management/personal-branding-arma-segreta/" target="_blank" rel="noopener" class="blg-art-card blg-reveal">
+          <div class="blg-art-card-img" style="background: linear-gradient(135deg, #0f2035 0%, #1b3654 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="blg-art-card-body">
+            <span class="blg-art-tag">Management</span>
+            <h3>Perch&eacute; il Personal Branding &egrave; la tua arma segreta?</h3>
+            <p>Un elemento essenziale per distinguersi e costruire una carriera di successo nel management.</p>
+            <span class="blg-read">Leggi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- 2. LEGO -->
+        <a href="https://leonemasterschool.it/mbe-marketing/cosa-lego-fenomeno-mondiale/" target="_blank" rel="noopener" class="blg-art-card blg-reveal blg-d1">
+          <div class="blg-art-card-img" style="background: linear-gradient(135deg, #1a2a3e 0%, #253f5c 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <div class="blg-art-card-body">
+            <span class="blg-art-tag">Marketing</span>
+            <h3>Cosa ha reso i LEGO un fenomeno mondiale?</h3>
+            <p>Strategie di marketing e management dietro un successo globale che dura da generazioni.</p>
+            <span class="blg-read">Leggi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- 3. Rebranding Calcio -->
+        <a href="https://leonemasterschool.it/mbe-marketing/rebranding-nel-calcio-perche-i-club-cambiano-identita/" target="_blank" rel="noopener" class="blg-art-card blg-reveal blg-d2">
+          <div class="blg-art-card-img" style="background: linear-gradient(135deg, #0e1e32 0%, #1d3755 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <div class="blg-art-card-body">
+            <span class="blg-art-tag">Marketing</span>
+            <h3>Rebranding nel calcio: perch&eacute; i club cambiano identit&agrave;?</h3>
+            <p>Cosa c&rsquo;&egrave; dietro al marketing delle squadre di calcio quando decidono di rinnovare la propria immagine.</p>
+            <span class="blg-read">Leggi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- 4. Joe Girard -->
+        <a href="https://leonemasterschool.it/mbe-marketing/re-delle-vendite-joe-girard/" target="_blank" rel="noopener" class="blg-art-card blg-reveal">
+          <div class="blg-art-card-img" style="background: linear-gradient(135deg, #111f35 0%, #1c3451 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <div class="blg-art-card-body">
+            <span class="blg-art-tag">Marketing</span>
+            <h3>Il re delle vendite: la storia di Joe Girard</h3>
+            <p>Il pi&ugrave; grande venditore della storia e le lezioni che ogni professionista dovrebbe conoscere.</p>
+            <span class="blg-read">Leggi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- 5. Smart Home -->
+        <a href="https://leonemasterschool.it/rem/smart-home-futuro-estate/" target="_blank" rel="noopener" class="blg-art-card blg-reveal blg-d1">
+          <div class="blg-art-card-img" style="background: linear-gradient(135deg, #0c1c30 0%, #183050 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="blg-art-card-body">
+            <span class="blg-art-tag">Real Estate</span>
+            <h3>Perch&eacute; la Smart Home &egrave; il futuro del Real Estate</h3>
+            <p>Tecnologia, comfort e risparmio: come le case intelligenti stanno trasformando il mercato immobiliare.</p>
+            <span class="blg-read">Leggi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- 6. Trama che Vende -->
+        <a href="https://leonemasterschool.it/bsw/trama-vendone-libro-successo/" target="_blank" rel="noopener" class="blg-art-card blg-reveal blg-d2">
+          <div class="blg-art-card-img" style="background: linear-gradient(135deg, #132236 0%, #1f3958 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <div class="blg-art-card-body">
+            <span class="blg-art-tag">BSW</span>
+            <h3>Trama che vende: il segreto per un libro di successo</h3>
+            <p>Costruire una trama solida e coinvolgente per catturare i lettori e creare un libro memorabile.</p>
+            <span class="blg-read">Leggi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- 7. Soglia Attenzione -->
+        <a href="https://leonemasterschool.it/crescita-personale/soglia-dellattenzione-piu-bassa/" target="_blank" rel="noopener" class="blg-art-card blg-reveal">
+          <div class="blg-art-card-img" style="background: linear-gradient(135deg, #0f1f34 0%, #1a3350 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="blg-art-card-body">
+            <span class="blg-art-tag">Crescita Personale</span>
+            <h3>Perch&eacute; la nostra soglia dell&rsquo;attenzione &egrave; sempre pi&ugrave; bassa?</h3>
+            <p>Il declino della concentrazione nel mondo moderno e i rimedi concreti per rialzarla.</p>
+            <span class="blg-read">Leggi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- 8. Ruolo del Padre -->
+        <a href="https://leonemasterschool.it/crescita-personale/ruolo-padre-mondo-digitale/" target="_blank" rel="noopener" class="blg-art-card blg-reveal blg-d1">
+          <div class="blg-art-card-img" style="background: linear-gradient(135deg, #101e33 0%, #1b344f 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="blg-art-card-body">
+            <span class="blg-art-tag">Crescita Personale</span>
+            <h3>Il ruolo del padre nel mondo digitale</h3>
+            <p>Essere padre oggi significa affrontare una realt&agrave; dove tecnologia, social e IA influenzano la vita dei figli.</p>
+            <span class="blg-read">Leggi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- 9. Accreditamento IUL -->
+        <a href="https://leonemasterschool.it/crescita-personale/cosa-accreditamento-iul/" target="_blank" rel="noopener" class="blg-art-card blg-reveal blg-d2">
+          <div class="blg-art-card-img" style="background: linear-gradient(135deg, #0e1d32 0%, #1c3654 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(76,123,244,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="blg-art-card-body">
+            <span class="blg-art-tag">Crescita Personale</span>
+            <h3>Cos&rsquo;&egrave; e cosa significa l&rsquo;accreditamento IUL?</h3>
+            <p>Un traguardo importante: cosa significa per la Leone Master School e per i corsisti.</p>
+            <span class="blg-read">Leggi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 — CTA -->
+  <section class="blg-cta">
+    <div class="blg-cta-inner">
+      <h2 class="blg-reveal">Vuoi saperne di <em>pi&ugrave;?</em></h2>
+      <p class="blg-reveal blg-d1">Scopri i nostri programmi di alta formazione e inizia il tuo percorso di crescita.</p>
+      <a href="https://leonemasterschool.it/i-nostri-programmi/" class="blg-cta-btn blg-reveal blg-d2">
+        Scopri i Programmi
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+(function(){
+  var els = document.querySelectorAll('.blg-reveal');
+  if (!els.length) return;
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+  } else {
+    els.forEach(function(el) { el.classList.add('visible'); });
+  }
+})();
+</script>
