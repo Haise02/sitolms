@@ -1,0 +1,264 @@
+<!-- MEDIA E TV — ANTEPRIMA BLOG · Leone Master School -->
+<!-- COPIA QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR (dopo sezione3-articoli) -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-blog-preview {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --beige: #D4C5B0;
+  background: #0B1D38;
+  padding: 100px 0 120px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.mt-blog-preview *,
+.mt-blog-preview *::before,
+.mt-blog-preview *::after { box-sizing: border-box; }
+
+.mt-blog-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(76,123,244,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(56,163,244,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.mt-bp-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.mt-bp-header {
+  text-align: center;
+  margin-bottom: 56px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-bp-header.mt-bp-vis { animation: mtBpUp 0.8s ease forwards; }
+
+.mt-bp-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.mt-bp-label::before,
+.mt-bp-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.mt-blog-preview h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+.mt-blog-preview h2 em { font-style: italic; color: var(--beige); }
+
+.mt-bp-subtitle {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Grid */
+.mt-bp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.mt-bp-card {
+  background: linear-gradient(160deg, #0d2450 0%, var(--navy) 100%);
+  border: 1px solid rgba(76,123,244,0.12);
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.mt-bp-card.mt-bp-vis { animation: mtBpUp 0.7s ease forwards; }
+.mt-bp-card:nth-child(2).mt-bp-vis { animation-delay: 0.1s; }
+.mt-bp-card:nth-child(3).mt-bp-vis { animation-delay: 0.2s; }
+
+.mt-bp-card:hover {
+  border-color: rgba(76,123,244,0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
+}
+
+.mt-bp-card-tag {
+  display: inline-block;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.mt-bp-card-title {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+  margin: 0 0 14px;
+}
+
+.mt-bp-card-excerpt {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+/* CTA */
+.mt-bp-cta-wrap {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.mt-bp-cta-wrap.mt-bp-vis { animation: mtBpUp 0.7s ease forwards 0.25s; }
+
+.mt-bp-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 60px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.mt-bp-cta:hover {
+  background: #3a6ae0;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(76,123,244,0.3);
+}
+.mt-bp-cta svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes mtBpUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .mt-blog-preview { padding: 70px 0 90px; }
+  .mt-bp-inner { padding: 0 24px; }
+  .mt-bp-grid { grid-template-columns: 1fr 1fr; }
+  .mt-blog-preview h2 { font-size: 38px; }
+}
+
+@media (max-width: 600px) {
+  .mt-blog-preview { padding: 56px 0 70px; }
+  .mt-bp-inner { padding: 0 16px; }
+  .mt-bp-grid { grid-template-columns: 1fr; gap: 16px; }
+  .mt-blog-preview h2 { font-size: 30px; }
+  .mt-bp-card { padding: 24px 20px; }
+  .mt-bp-card-title { font-size: 18px; }
+}
+</style>
+
+<div class="mt-blog-preview">
+  <div class="mt-bp-inner">
+
+    <div class="mt-bp-header" id="mtBpHeader">
+      <div class="mt-bp-label">Dal Nostro Blog</div>
+      <h2>Articoli e <em>approfondimenti</em></h2>
+      <p class="mt-bp-subtitle">Idee, strategie e storie di successo dal mondo della formazione e dell'imprenditoria.</p>
+    </div>
+
+    <div class="mt-bp-grid">
+
+      <div class="mt-bp-card">
+        <div class="mt-bp-card-tag">Marketing</div>
+        <div class="mt-bp-card-title">Steve Jobs &mdash; 70 anni del genio che ha cambiato il marketing per sempre</div>
+        <p class="mt-bp-card-excerpt">Cosa possiamo ancora imparare da Steve Jobs sulla comunicazione, il posizionamento e la costruzione di un brand leggendario.</p>
+      </div>
+
+      <div class="mt-bp-card">
+        <div class="mt-bp-card-tag">Personal Branding</div>
+        <div class="mt-bp-card-title">Come costruire un personal brand che attrae clienti e opportunit&agrave;</div>
+        <p class="mt-bp-card-excerpt">Le strategie per trasformare la tua immagine professionale in un asset che lavora per te, anche quando dormi.</p>
+      </div>
+
+      <div class="mt-bp-card">
+        <div class="mt-bp-card-tag">Management</div>
+        <div class="mt-bp-card-title">Richard Branson &mdash; il ribelle del business che ha riscritto le regole</div>
+        <p class="mt-bp-card-excerpt">Da un piccolo negozio di dischi a un impero globale: le lezioni di leadership che ogni imprenditore dovrebbe conoscere.</p>
+      </div>
+
+    </div>
+
+    <div class="mt-bp-cta-wrap">
+      <a href="/blog-lms/" class="mt-bp-cta">
+        Scopri tutti gli articoli
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('mt-bp-vis'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.mt-bp-header, .mt-bp-card, .mt-bp-cta-wrap').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.mt-bp-header, .mt-bp-card, .mt-bp-cta-wrap').forEach(function(el){ el.classList.add('mt-bp-vis'); });
+  }
+})();
+</script>
