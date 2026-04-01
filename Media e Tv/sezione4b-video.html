@@ -1,0 +1,312 @@
+<!-- MEDIA E TV — VIDEO APPARIZIONI · Leone Master School -->
+<!-- COPIA QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR (dopo sezione 4) -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
+.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
+
+.mt-video {
+  --navy: #07162E;
+  --accent: #4C7BF4;
+  --accent2: #7B5CF5;
+  --beige: #D4C5B0;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', sans-serif;
+  --sans-tight: 'Inter Tight', sans-serif;
+  background: var(--navy);
+  padding: 100px 0 120px;
+  font-family: var(--sans);
+  position: relative;
+  overflow: hidden;
+}
+
+.mt-video *, .mt-video *::before, .mt-video *::after { box-sizing: border-box; }
+
+.mt-video::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 20%, rgba(123,92,245,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 80%, rgba(76,123,244,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.mt-video-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.mt-video-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 72px;
+}
+
+.mt-video-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans-tight);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 16px;
+}
+.mt-video-label::before,
+.mt-video-label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--accent2);
+}
+
+.mt-video-header h2 {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px;
+  line-height: 1.15;
+}
+.mt-video-header h2 em { font-style: italic; color: var(--beige); }
+
+.mt-video-header p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.5);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* Video block */
+.mt-video-block {
+  margin-bottom: 72px;
+}
+.mt-video-block:last-child {
+  margin-bottom: 0;
+}
+
+.mt-video-block-title {
+  font-family: var(--sans-tight);
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 24px;
+  line-height: 1.35;
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
+}
+
+/* Video grid for multiple videos in same block */
+.mt-video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.mt-video-grid.single {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+}
+
+/* Video wrapper */
+.mt-video-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(76,123,244,0.2);
+  background: #0d2450;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.mt-video-wrap:hover {
+  border-color: rgba(76,123,244,0.45);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.mt-video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Link card (for non-embeddable sources like RaiPlay, IlSole24Ore) */
+.mt-video-link-card {
+  display: flex;
+  gap: 24px;
+  background: linear-gradient(160deg, #0d2450 0%, var(--navy) 100%);
+  border: 1px solid rgba(76,123,244,0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+.mt-video-link-card:hover {
+  border-color: rgba(76,123,244,0.45);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
+}
+
+.mt-video-link-card img {
+  width: 320px;
+  height: 220px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.mt-video-link-body {
+  padding: 28px 28px 28px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mt-video-link-body h3 {
+  font-family: var(--sans-tight);
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+
+.mt-video-link-body p {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.mt-video-link-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans-tight);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.mt-video-link-cta svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+.mt-video-link-card:hover .mt-video-link-cta {
+  color: #ffffff;
+}
+.mt-video-link-card:hover .mt-video-link-cta svg {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mt-video { padding: 70px 0 80px; }
+  .mt-video-inner { padding: 0 20px; }
+  .mt-video-header { margin-bottom: 48px; }
+  .mt-video-header h2 { font-size: 36px; }
+  .mt-video-header p { font-size: 15px; }
+  .mt-video-block { margin-bottom: 56px; }
+  .mt-video-block-title { font-size: 18px; }
+  .mt-video-grid { grid-template-columns: 1fr; gap: 20px; }
+  .mt-video-wrap { border-radius: 12px; }
+  .mt-video-link-card { flex-direction: column; }
+  .mt-video-link-card img { width: 100%; height: 200px; }
+  .mt-video-link-body { padding: 24px; }
+}
+
+@media (max-width: 480px) {
+  .mt-video { padding: 50px 0 60px; }
+  .mt-video-inner { padding: 0 16px; }
+  .mt-video-header h2 { font-size: 30px; }
+  .mt-video-block-title { font-size: 17px; padding-left: 12px; }
+  .mt-video-link-card img { height: 160px; }
+  .mt-video-link-body { padding: 20px; }
+  .mt-video-link-body h3 { font-size: 18px; }
+  .mt-video-link-body p { font-size: 14px; }
+}
+</style>
+
+<div class="mt-video">
+  <div class="mt-video-inner">
+
+    <!-- Header -->
+    <div class="mt-video-header">
+      <div class="mt-video-label">Apparizioni TV</div>
+      <h2>Leonardo Leone <em>in televisione</em></h2>
+      <p>Le apparizioni di Leonardo Leone sui principali canali televisivi italiani e nelle testate giornalistiche nazionali.</p>
+    </div>
+
+    <!-- Block 1: LA7 con Massimo Giletti -->
+    <div class="mt-video-block">
+      <h3 class="mt-video-block-title">Su LA7 con Massimo Giletti</h3>
+      <div class="mt-video-grid">
+        <div class="mt-video-wrap">
+          <iframe src="https://www.youtube.com/embed/DuImkrOMXWs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="mt-video-wrap">
+          <iframe src="https://www.youtube.com/embed/xoics401WFM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 2: Rai 1 con Annalisa Minetti -->
+    <div class="mt-video-block">
+      <h3 class="mt-video-block-title">Su Rai 1, come Mental Coach di Annalisa Minetti, campionessa paralimpica, plurivincitrice di Sanremo&hellip;</h3>
+      <div class="mt-video-grid single">
+        <div class="mt-video-wrap">
+          <iframe src="https://www.youtube.com/embed/zaR44KP686k" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 3: Askanews / Il Sole 24 Ore -->
+    <div class="mt-video-block">
+      <h3 class="mt-video-block-title">Leonardo Leone presenta il suo libro su Askanews &mdash; Il Sole 24 Ore</h3>
+      <a class="mt-video-link-card" href="https://stream24.ilsole24ore.com/video/economia/editoria-io-creo-mio-successo-libro-leonardo-leone-solla/AEd2aAqE" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Media%20e%20Tv/immagini%20nuove/immagine_2026-02-04_175534408.png" alt="Leonardo Leone su Askanews - Il Sole 24 Ore">
+        <div class="mt-video-link-body">
+          <h3>&ldquo;Io creo il mio successo&rdquo;</h3>
+          <p>Leonardo Leone presenta il suo libro su Askanews, la piattaforma video de Il Sole 24 Ore dedicata all&rsquo;economia e all&rsquo;editoria.</p>
+          <span class="mt-video-link-cta">Guarda il video <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Block 4: Rai2 "Cerchiamo Te" con Adriana Volpe -->
+    <div class="mt-video-block">
+      <h3 class="mt-video-block-title">&ldquo;Cerchiamo Te: Missione Lavoro&rdquo; con Adriana Volpe su Rai2</h3>
+      <a class="mt-video-link-card" href="https://www.raiplay.it/programmi/cerchiamotemissionelavoro" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Media%20e%20Tv/immagini%20nuove/immagine_2026-02-04_175419935.png" alt="Cerchiamo Te Missione Lavoro - Rai2 con Adriana Volpe">
+        <div class="mt-video-link-body">
+          <h3>Cerchiamo Te: Missione Lavoro</h3>
+          <p>Leonardo Leone protagonista del programma di Rai2 condotto da Adriana Volpe, dedicato al mondo del lavoro e delle opportunit&agrave; professionali.</p>
+          <span class="mt-video-link-cta">Guarda su RaiPlay <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
