@@ -17,24 +17,13 @@
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    top: 60px;
+    top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
     height: 56px;
   }
  
-  @media (max-width: 768px) {
-    .mobile-header {
-      top: 55px;
-    }
-  }
- 
-  @media (max-width: 480px) {
-    .mobile-header {
-      top: 50px;
-    }
-  }
  
   .mobile-logo img {
     height: 60px;
@@ -72,10 +61,10 @@
  
   .mobile-menu-overlay {
     position: fixed;
-    top: 116px;
+    top: 56px;
     left: 0;
     width: 100vw;
-    height: calc(100vh - 116px);
+    height: calc(100vh - 56px);
     background-color: #07162E;
     padding: 24px 20px;
     z-index: 9998;
@@ -87,19 +76,6 @@
     letter-spacing: 0.3px;
   }
  
-  @media (max-width: 768px) {
-    .mobile-menu-overlay {
-      top: 111px;
-      height: calc(100vh - 111px);
-    }
-  }
- 
-  @media (max-width: 480px) {
-    .mobile-menu-overlay {
-      top: 106px;
-      height: calc(100vh - 106px);
-    }
-  }
  
   .mobile-menu-overlay.active {
     transform: translateX(0);
