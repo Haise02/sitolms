@@ -4,285 +4,163 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-.rem-riconoscimenti,
-.rem-riconoscimenti * {
+.ade-riconoscimenti,
+.ade-riconoscimenti * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.rem-riconoscimenti {
-    font-family: 'Inter', sans-serif !important;
+.ade-riconoscimenti {
+    font-family: 'Inter', sans-serif;
     background: transparent;
     color: #1a1a1a;
     width: 100%;
     padding: 0 40px 40px;
 }
 
-.rem-riconoscimenti .single-column {
-    max-width: 920px;
+.ade-riconoscimenti-inner {
+    max-width: 560px;
     margin: 0 auto;
-    padding: 0 20px;
+    text-align: center;
 }
 
-.rem-riconoscimenti .intro-text {
+.ade-riconoscimenti-intro {
     font-size: 18px;
     line-height: 1.8;
-    color: rgba(26, 26, 26, 0.8);
-    margin: 0 0 32px;
-}
-
-/* Grid base */
-.rem-riconoscimenti .rr-grid {
-    margin-top: 0;
-}
-
-@media (min-width: 969px) {
-    .rem-riconoscimenti .rr-grid.rr-grid-riconoscimenti {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 32px !important;
-        align-items: stretch;
-    }
+    color: rgba(26, 26, 26, 0.7);
+    margin-bottom: 32px;
 }
 
 /* Card */
-.rem-riconoscimenti .rr-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+.ade-ric-card {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 24px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    transition: all 0.35s ease;
+    text-align: center;
 }
 
-.rem-riconoscimenti .rr-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(200, 187, 152, 0.5);
-    box-shadow: 0 20px 60px rgba(200, 187, 152, 0.25);
+.ade-ric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
-/* Icon Header */
-.rem-riconoscimenti .card-icon-header {
-    width: 100%;
-    height: 180px;
+/* Icon area */
+.ade-ric-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #193054 0%, #2a4a7f 40%, #c8bb98 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
+    margin: 32px auto 0;
 }
 
-.rem-riconoscimenti .card-icon-header svg {
-    width: 56px;
-    height: 56px;
+.ade-ric-icon svg {
+    width: 32px;
+    height: 32px;
     stroke: #ffffff;
-    stroke-width: 1.5;
+    stroke-width: 1.8;
     fill: none;
-    position: relative;
-    z-index: 2;
-    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
 }
 
-.rem-riconoscimenti .card-icon-header::before {
-    content: '';
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+/* Content */
+.ade-ric-body {
+    padding: 24px 32px 32px;
 }
 
-.rem-riconoscimenti .card-icon-header::after {
-    content: '';
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.04);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
+.ade-ric-body h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #1a1a1a;
+    margin-bottom: 8px;
 }
 
-.rem-riconoscimenti .icon-bg-gold {
-    background: linear-gradient(135deg, #193054 0%, #2a4a7f 40%, #c8bb98 100%);
+.ade-ric-body h3 em {
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(26, 26, 26, 0.6);
 }
 
-.rem-riconoscimenti .icon-bg-blue {
-    background: linear-gradient(135deg, #193054 0%, #1e40af 60%, #3b82f6 100%);
-}
-
-.rem-riconoscimenti .icon-bg-navy {
-    background: linear-gradient(135deg, #0f1f3d 0%, #193054 50%, #2a4a7f 100%);
-}
-
-.rem-riconoscimenti .card-content {
-    padding: 32px 28px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.rem-riconoscimenti .card-title,
-.rem-riconoscimenti .card-content h3,
-.rem-riconoscimenti .rr-card h3 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 28px !important;
-    line-height: 1.3 !important;
-    margin-bottom: 16px !important;
-    color: #1a1a1a !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-.rem-riconoscimenti .title-light,
-.rem-riconoscimenti .card-title .title-light {
-    font-weight: 300 !important;
-    color: #1a1a1a !important;
-    font-size: inherit !important;
-}
-
-.rem-riconoscimenti .title-bold,
-.rem-riconoscimenti .card-title .title-bold {
-    font-weight: 800 !important;
-    color: #1a1a1a !important;
-    font-size: inherit !important;
-}
-
-.rem-riconoscimenti .title-italic,
-.rem-riconoscimenti .card-title .title-italic {
-    font-weight: 300 !important;
-    font-style: italic !important;
-    color: #1a1a1a !important;
-    font-size: inherit !important;
-}
-
-.rem-riconoscimenti .card-description {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 16px !important;
+.ade-ric-body p {
+    font-size: 15px;
     line-height: 1.7;
-    color: rgba(26, 26, 26, 0.7) !important;
+    color: rgba(26, 26, 26, 0.6);
 }
 
-/* Mobile swipe (come programma-rem) */
-@media (max-width: 968px) {
-    .rem-riconoscimenti .rr-grid.rr-grid-riconoscimenti {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        gap: 20px;
-        padding: 0 20px 20px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        grid-template-columns: unset !important;
+/* Responsive */
+@media (max-width: 768px) {
+    .ade-riconoscimenti {
+        padding: 0 24px 32px;
     }
 
-    .rem-riconoscimenti .rr-grid.rr-grid-riconoscimenti::-webkit-scrollbar {
-        display: none;
+    .ade-riconoscimenti-intro {
+        font-size: 16px;
+        margin-bottom: 24px;
     }
 
-    .rem-riconoscimenti .rr-card {
-        flex: 0 0 85%;
-        min-width: 85%;
-        scroll-snap-align: center;
-        max-width: 400px;
+    .ade-ric-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        margin-top: 28px;
     }
 
-    .rem-riconoscimenti .card-icon-header {
-        height: 150px;
+    .ade-ric-icon svg {
+        width: 28px;
+        height: 28px;
     }
 
-    .rem-riconoscimenti .card-content {
-        padding: 24px 20px;
+    .ade-ric-body {
+        padding: 20px 24px 28px;
     }
 
-    .rem-riconoscimenti .card-title,
-    .rem-riconoscimenti .card-content h3,
-    .rem-riconoscimenti .rr-card h3 {
-        font-size: 22px !important;
+    .ade-ric-body h3 {
+        font-size: 20px;
+    }
+
+    .ade-ric-body p {
+        font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
-    .rem-riconoscimenti .rr-grid.rr-grid-riconoscimenti {
-        gap: 16px;
-        padding: 0 10px 20px;
+    .ade-riconoscimenti {
+        padding: 0 16px 24px;
     }
 
-    .rem-riconoscimenti .rr-card {
-        flex: 0 0 90%;
-        min-width: 90%;
+    .ade-ric-body {
+        padding: 18px 20px 24px;
     }
 
-    .rem-riconoscimenti .card-icon-header {
-        height: 130px;
-    }
-
-    .rem-riconoscimenti .card-icon-header svg {
-        width: 44px;
-        height: 44px;
-    }
-
-    .rem-riconoscimenti .card-content {
-        padding: 20px 16px;
-    }
-
-    .rem-riconoscimenti .card-title,
-    .rem-riconoscimenti .card-content h3,
-    .rem-riconoscimenti .rr-card h3 {
-        font-size: 20px !important;
-    }
-
-    .rem-riconoscimenti .card-description {
-        font-size: 16px !important;
-        line-height: 1.6;
-    }
-
-    .rem-riconoscimenti .intro-text {
-        font-size: 16px;
-        line-height: 1.7;
-        margin-bottom: 24px;
-    }
-
-    .rem-riconoscimenti {
-        padding: 0 16px 32px;
+    .ade-ric-body h3 {
+        font-size: 18px;
     }
 }
 </style>
 
-<div class="rem-riconoscimenti">
-    <div class="single-column">
-        <p class="intro-text">Al termine del Master in Educazione Genitoriale riceverai:</p>
-    </div>
+<div class="ade-riconoscimenti">
+    <div class="ade-riconoscimenti-inner">
+        <p class="ade-riconoscimenti-intro">Al termine del programma ADE riceverai:</p>
 
-    <div class="rr-grid rr-grid-riconoscimenti">
-        <div class="rr-card" data-card="8">
-            <div class="card-icon-header icon-bg-gold">
+        <div class="ade-ric-card">
+            <div class="ade-ric-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                     <polyline points="14 2 14 8 20 8"/>
                     <path d="M9 15l2 2 4-4"/>
                 </svg>
             </div>
-            <div class="card-content">
-                <h3 class="card-title">
-                    <span class="title-bold">Attestato di partecipazione</span> <span class="title-italic">Leone Master School</span>
-                </h3>
-                <p class="card-description">Che certifica le competenze acquisite nel Programma.</p>
+            <div class="ade-ric-body">
+                <h3>Attestato di partecipazione <em>Leone Master School</em></h3>
+                <p>Che certifica le competenze acquisite nel Programma.</p>
             </div>
         </div>
     </div>
 </div>
-
