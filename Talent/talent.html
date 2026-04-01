@@ -81,13 +81,13 @@
   align-items: center;
   gap: 8px;
   background: transparent;
-  color: #ffffff;
+  color: var(--text-dark);
   padding: 14px 28px;
   font-size: 14px;
   font-weight: 600;
   font-family: var(--sans);
   border-radius: 10px;
-  border: 1.5px solid rgba(255,255,255,0.2);
+  border: 1.5px solid rgba(0,0,0,0.15);
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -111,7 +111,7 @@
 
 /* ═══════════ SECTION 1 — HERO ═══════════ */
 .tal-hero {
-  background: var(--navy);
+  background: var(--bg-off);
   padding: 100px 40px 60px;
   text-align: center;
   position: relative;
@@ -122,9 +122,9 @@
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(76,123,244,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 60% at 80% 30%, rgba(168,85,247,0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(52,211,153,0.06) 0%, transparent 55%);
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(76,123,244,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 30%, rgba(168,85,247,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(52,211,153,0.03) 0%, transparent 55%);
   pointer-events: none;
   animation: talAurora 12s ease-in-out infinite alternate;
 }
@@ -133,8 +133,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 70% 60%, rgba(251,146,60,0.05) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 60% at 30% 70%, rgba(76,123,244,0.08) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 50% at 70% 60%, rgba(251,146,60,0.03) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 30% 70%, rgba(76,123,244,0.04) 0%, transparent 60%);
   pointer-events: none;
   animation: talAurora2 15s ease-in-out infinite alternate;
 }
@@ -158,8 +158,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(76,123,244,0.12);
-  border: 1px solid rgba(76,123,244,0.25);
+  background: rgba(76,123,244,0.08);
+  border: 1px solid rgba(76,123,244,0.2);
   border-radius: 100px;
   padding: 6px 16px;
   margin-bottom: 24px;
@@ -174,14 +174,14 @@
   font-size: 64px;
   font-weight: 600;
   line-height: 1.08;
-  color: #ffffff;
+  color: var(--text-dark);
   margin-bottom: 20px;
   letter-spacing: -1px;
 }
 .tal-hero-sub {
   font-size: 17px;
   font-weight: 400;
-  color: rgba(255,255,255,0.6);
+  color: var(--text-body);
   max-width: 480px;
   margin: 0 auto 32px;
   line-height: 1.7;
@@ -209,8 +209,8 @@
   z-index: 2;
   pointer-events: none;
 }
-.tal-hero-ticker::before { left: 0; background: linear-gradient(to right, var(--navy), transparent); }
-.tal-hero-ticker::after  { right: 0; background: linear-gradient(to left, var(--navy), transparent); }
+.tal-hero-ticker::before { left: 0; background: linear-gradient(to right, var(--bg-off), transparent); }
+.tal-hero-ticker::after  { right: 0; background: linear-gradient(to left, var(--bg-off), transparent); }
 .tal-ticker-track {
   display: flex;
   gap: 14px;
@@ -224,8 +224,8 @@
 .tal-ticker-card {
   flex-shrink: 0;
   width: 280px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #ffffff;
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 20px;
   text-align: left;
@@ -233,7 +233,7 @@
 }
 .tal-ticker-card:hover {
   border-color: rgba(76,123,244,0.3);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 .tal-ticker-top {
   display: flex;
@@ -261,12 +261,12 @@
 .tal-avatar-teal   { background: linear-gradient(135deg, #14B8A6, #2DD4BF); }
 .tal-avatar-pink   { background: linear-gradient(135deg, #EC4899, #F472B6); }
 .tal-avatar-orange { background: linear-gradient(135deg, #F97316, #FB923C); }
-.tal-ticker-name { font-size: 13px; font-weight: 600; color: #ffffff; line-height: 1.2; }
-.tal-ticker-role { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 1px; }
-.tal-ticker-quote { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+.tal-ticker-name { font-size: 13px; font-weight: 600; color: var(--text-dark); line-height: 1.2; }
+.tal-ticker-role { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.tal-ticker-quote { font-size: 13px; line-height: 1.55; color: var(--text-body); margin-bottom: 12px; }
 .tal-ticker-score { display: flex; align-items: baseline; gap: 6px; }
-.tal-ticker-score-num { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #ffffff; }
-.tal-ticker-score-label { font-size: 11px; color: rgba(255,255,255,0.5); }
+.tal-ticker-score-num { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--text-dark); }
+.tal-ticker-score-label { font-size: 11px; color: var(--text-muted); }
 
 /* ═══════════ SECTION 2 — PROCESS (split layout) ═══════════ */
 .tal-process {
@@ -332,7 +332,7 @@
 
 /* ═══════════ SECTION 3 — BENEFITS (split layout) ═══════════ */
 .tal-benefits {
-  background: var(--navy);
+  background: var(--bg-off);
   padding: 100px 40px;
 }
 .tal-benefits-inner {
@@ -348,25 +348,25 @@
   font-size: 44px;
   font-weight: 600;
   line-height: 1.15;
-  color: #ffffff;
+  color: var(--text-dark);
   margin-bottom: 18px;
 }
 .tal-benefits-left p {
   font-size: 16px;
   line-height: 1.75;
-  color: rgba(255,255,255,0.65);
+  color: var(--text-body);
   margin-bottom: 24px;
   max-width: 420px;
 }
 .tal-benefits-left-logo {
   margin-top: 20px;
-  opacity: 0.15;
+  opacity: 0.08;
 }
-.tal-benefits-left-logo img { height: 28px; width: auto; filter: brightness(10); }
+.tal-benefits-left-logo img { height: 28px; width: auto; }
 .tal-benefit-cards { display: flex; flex-direction: column; gap: 12px; }
 .tal-benefit-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #ffffff;
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 24px 28px;
   display: flex;
@@ -376,7 +376,7 @@
 }
 .tal-benefit-card:hover {
   border-color: rgba(76,123,244,0.3);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   transform: translateY(-2px);
 }
 .tal-benefit-icon {
@@ -387,8 +387,8 @@
   flex-shrink: 0;
 }
 .tal-benefit-icon svg { width: 18px; height: 18px; color: var(--accent); fill: none; stroke: var(--accent); stroke-width: 2; }
-.tal-benefit-title { font-family: var(--sans-tight); font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
-.tal-benefit-desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.55); }
+.tal-benefit-title { font-family: var(--sans-tight); font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+.tal-benefit-desc { font-size: 13px; line-height: 1.55; color: var(--text-body); }
 
 /* ═══════════ SECTION 4 — POSIZIONI APERTE ═══════════ */
 .tal-roles {
@@ -471,7 +471,7 @@
 
 /* ═══════════ SECTION 5 — CAROUSEL FOTO ═══════════ */
 .tal-photos {
-  background: var(--navy);
+  background: var(--bg-off);
   padding: 100px 40px 80px;
   text-align: center;
 }
@@ -479,12 +479,12 @@
   font-family: var(--serif);
   font-size: 42px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-dark);
   margin-bottom: 12px;
 }
 .tal-photos-sub {
   font-size: 16px;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-body);
   margin-bottom: 48px;
 }
 .tal-carousel {
@@ -499,8 +499,8 @@
   top: 0; bottom: 0; width: 80px;
   z-index: 2; pointer-events: none;
 }
-.tal-carousel::before { left: 0; background: linear-gradient(to right, var(--navy), transparent); }
-.tal-carousel::after  { right: 0; background: linear-gradient(to left, var(--navy), transparent); }
+.tal-carousel::before { left: 0; background: linear-gradient(to right, var(--bg-off), transparent); }
+.tal-carousel::after  { right: 0; background: linear-gradient(to left, var(--bg-off), transparent); }
 .tal-carousel-track {
   display: flex;
   gap: 16px;
@@ -517,12 +517,12 @@
   height: 220px;
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border);
   transition: all 0.35s ease;
 }
 .tal-carousel-img:hover {
   transform: scale(1.03);
-  box-shadow: 0 10px 32px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.1);
   border-color: rgba(76,123,244,0.3);
 }
 .tal-carousel-img img {
@@ -533,7 +533,7 @@
 }
 /* Logo variant in carousel */
 .tal-carousel-img.is-logo {
-  background: rgba(255,255,255,0.04);
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -633,7 +633,7 @@
 
 /* ═══════════ SECTION 6 — CTA ═══════════ */
 .tal-cta {
-  background: var(--navy);
+  background: var(--bg-off);
   padding: 100px 40px;
   text-align: center;
   position: relative;
@@ -645,7 +645,7 @@
   top: 50%; left: 50%;
   transform: translate(-50%,-50%);
   width: 600px; height: 350px;
-  background: radial-gradient(ellipse, rgba(76,123,244,0.1) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(76,123,244,0.05) 0%, transparent 65%);
   pointer-events: none;
 }
 .tal-cta-inner {
@@ -658,20 +658,20 @@
   font-family: var(--serif);
   font-size: 48px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-dark);
   margin-bottom: 18px;
   line-height: 1.12;
 }
 .tal-cta-text {
   font-size: 16px;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-body);
   max-width: 460px;
   margin: 0 auto 36px;
   line-height: 1.7;
 }
 .tal-cta-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  background: #fff; color: var(--navy);
+  background: var(--navy); color: #ffffff;
   padding: 14px 36px; font-size: 14px; font-weight: 700;
   font-family: var(--sans); border-radius: 10px;
   border: none; cursor: pointer; transition: all 0.3s ease;
@@ -679,15 +679,15 @@
 }
 .tal-cta-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(255,255,255,0.15);
+  box-shadow: 0 10px 32px rgba(7,22,46,0.2);
 }
-.tal-cta-btn svg { width: 15px; height: 15px; stroke: var(--navy); fill: none; stroke-width: 2; transition: transform 0.3s; }
+.tal-cta-btn svg { width: 15px; height: 15px; stroke: #ffffff; fill: none; stroke-width: 2; transition: transform 0.3s; }
 .tal-cta-btn:hover svg { transform: translateX(4px); }
 .tal-cta-logo {
   margin-top: 40px;
-  opacity: 0.12;
+  opacity: 0.08;
 }
-.tal-cta-logo img { height: 28px; width: auto; filter: brightness(10); }
+.tal-cta-logo img { height: 28px; width: auto; }
 
 /* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width: 900px) {
@@ -904,7 +904,7 @@
         <div class="tal-section-label tal-reveal">Perch&eacute; noi</div>
         <h2 class="tal-reveal tal-reveal-d1">Non siamo solo numeri e risultati.</h2>
         <p class="tal-reveal tal-reveal-d2">Crediamo che il vero valore stia nel team. Nel sostenersi, nel condividere vittorie e difficolt&agrave;, nel crescere insieme.</p>
-        <p class="tal-reveal tal-reveal-d3" style="font-size:14px; color:rgba(255,255,255,0.45); line-height:1.65; font-style:italic;">Non esistono limiti di crescita in un progetto che non ha limiti.</p>
+        <p class="tal-reveal tal-reveal-d3" style="font-size:14px; color:rgba(0,0,0,0.45); line-height:1.65; font-style:italic;">Non esistono limiti di crescita in un progetto che non ha limiti.</p>
         <div class="tal-benefits-left-logo tal-reveal tal-reveal-d4">
           <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Talent/images/Logo%20LMS.png" alt="LMS">
         </div>
