@@ -1,0 +1,315 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap');
+ 
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+ 
+  body.noscroll {
+    overflow: hidden;
+  }
+ 
+  .mobile-header {
+    background-color: #07162E;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    height: 56px;
+  }
+ 
+  @media (max-width: 768px) {
+    .mobile-header {
+      top: 55px;
+    }
+  }
+ 
+  @media (max-width: 480px) {
+    .mobile-header {
+      top: 50px;
+    }
+  }
+ 
+  .mobile-logo img {
+    height: 60px;
+    padding-top: 10px;
+    width: auto;
+  }
+ 
+  .mobile-hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+ 
+  .mobile-hamburger:focus {
+    outline: none;
+  }
+ 
+  .mobile-hamburger:active {
+    opacity: 0.7;
+  }
+ 
+  .hamburger-icon {
+    font-size: 30px;
+    color: #ffffff;
+    line-height: 1;
+  }
+ 
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 116px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 116px);
+    background-color: #07162E;
+    padding: 24px 20px;
+    z-index: 9998;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+ 
+  @media (max-width: 768px) {
+    .mobile-menu-overlay {
+      top: 111px;
+      height: calc(100vh - 111px);
+    }
+  }
+ 
+  @media (max-width: 480px) {
+    .mobile-menu-overlay {
+      top: 106px;
+      height: calc(100vh - 106px);
+    }
+  }
+ 
+  .mobile-menu-overlay.active {
+    transform: translateX(0);
+  }
+ 
+  .mobile-menu-overlay ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+ 
+  .mobile-menu-overlay ul li,
+  .mobile-dropdown {
+    background-color: #07162E;
+    border-radius: 12px;
+    padding: 12px 0;
+    line-height: 1.4;
+  }
+ 
+  .mobile-menu-overlay a,
+  .mobile-dropdown span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.2s;
+    padding: 10px 16px;
+    -webkit-tap-highlight-color: transparent;
+  }
+ 
+  .mobile-menu-overlay a:hover,
+  .mobile-dropdown span:hover {
+    color: #ffffff;
+  }
+ 
+  .arrow-icon {
+    transition: transform 0.3s ease;
+    margin-left: 12px;
+    width: 20px;
+    height: 20px;
+  }
+ 
+  .mobile-dropdown.active .arrow-icon {
+    transform: rotate(180deg);
+  }
+ 
+  .mobile-dropdown-content {
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    margin-top: 4px;
+    padding: 0;
+  }
+ 
+  .mobile-dropdown.active .mobile-dropdown-content {
+    max-height: 1000px;
+    opacity: 1;
+    padding: 4px 0;
+  }
+ 
+  .mobile-dropdown-content a {
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+ 
+  .mobile-dropdown-content a:hover {
+    background-color: #f2f2f2;
+  }
+</style>
+ 
+<div class="mobile-header">
+  <a class="mobile-logo" href="https://leonemasterschool.it">
+    <img src="https://leonemasterschool.it/wp-content/uploads/2025/12/Logo-Bianco.png" alt="Logo Leone Master School">
+  </a>
+  <button class="mobile-hamburger" id="hamburgerButton">
+    <span class="hamburger-icon">☰</span>
+  </button>
+</div>
+ 
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+  <ul>
+    <li><a href="https://leonemasterschool.it">Home</a></li>
+    <li><a href="https://leonemasterschool.it/risultati-re">I Nostri Studenti</a></li>
+ 
+    <li class="mobile-dropdown">
+      <span onclick="toggleDropdown(this)">
+        Chi Siamo
+        <svg class="arrow-icon" viewBox="0 0 320 512">
+          <path fill="currentColor" d="M96 192l64 64 64-64z" />
+        </svg>
+      </span>
+      <div class="mobile-dropdown-content">
+        <a href="https://leonemasterschool.it/chi-siamo-re/">Chi Siamo</a>
+        <a href="https://leonemasterschool.it/media-e-tv-re/">Media e TV</a>
+        <a href="https://leonemasterschool.it/metodo-re/">Metodo</a>
+        <a href="https://leonemasterschool.it/docenti-mentori-re/">Docenti–Mentori</a>
+      </div>
+    </li>
+ 
+    <li class="mobile-dropdown">
+      <span onclick="toggleDropdown(this)">
+        I Nostri Programmi
+        <svg class="arrow-icon" viewBox="0 0 320 512">
+          <path fill="currentColor" d="M96 192l64 64 64-64z" />
+        </svg>
+      </span>
+      <div class="mobile-dropdown-content">
+        <a href="https://leonemasterschool.it/i-nostri-programmi-re/">I Nostri Programmi</a>
+        <a href="https://leonemasterschool.it/rem-re/">REM</a>
+        <a href="https://leonemasterschool.it/abm-re/">Administration Business Management</a>
+        <a href="https://leonemasterschool.it/marketing-re/">Marketing Millionaire</a>
+        <a href="https://leonemasterschool.it/sales-skills-re/">Sales Skills</a>
+        <a href="https://leonemasterschool.it/mep-re/">MEP 3.0</a>
+        <a href="https://leonemasterschool.it/diventa-coach-re/">Diventa Coach 2.0</a>
+        <a href="https://leonemasterschool.it/arte-di-educare-re/">L'Arte di educare</a>
+        <a href="https://leonemasterschool.it/bsw-re/">BSW - Scrivi il tuo best seller di successo</a>
+      </div>
+    </li>
+ 
+    <li class="mobile-dropdown">
+      <span onclick="toggleDropdown(this)">
+        Per Chi È
+        <svg class="arrow-icon" viewBox="0 0 320 512">
+          <path fill="currentColor" d="M96 192l64 64 64-64z" />
+        </svg>
+      </span>
+      <div class="mobile-dropdown-content">
+        <a href="https://leonemasterschool.it/imprenditori-re/">Imprenditori</a>
+        <a href="https://leonemasterschool.it/percorsi-per-le-scuole-re/">Per le Scuole</a>
+        <a href="https://leonemasterschool.it/autonomia-re/">Autonomia e Reddito</a>
+        <a href="https://leonemasterschool.it/genitori-re/">Genitori</a>
+        <a href="https://leonemasterschool.it/crescita-femminile-re/">Crescita Femminile</a>
+        <a href="https://leonemasterschool.it/b2b-re/">B2B</a>
+        <a href="https://leonemasterschool.it/talent-re/">Talent</a>
+      </div>
+    </li>
+ 
+    <li class="mobile-dropdown">
+      <span onclick="toggleDropdown(this)">
+        Risorse
+        <svg class="arrow-icon" viewBox="0 0 320 512">
+          <path fill="currentColor" d="M96 192l64 64 64-64z" />
+        </svg>
+      </span>
+      <div class="mobile-dropdown-content">
+        <a href="https://leonemasterschool.it/eventi-re/">Eventi</a>
+        <a href="https://leonemasterschool.it/podcast-re/">Podcast</a>
+        <a href="https://leonemasterschool.it/app-lms-re/">App LMS</a>
+        <a href="https://leonemasterschool.it/corsi-gratis-re/">Corsi Gratuiti</a>
+      </div>
+    </li>
+  </ul>
+</div>
+ 
+<script>
+  const menuOverlay = document.getElementById('mobileMenuOverlay');
+  const hamburgerButton = document.getElementById('hamburgerButton');
+  const hamburgerIcon = hamburgerButton.querySelector('.hamburger-icon');
+  const body = document.body;
+ 
+  function closeMenu() {
+    menuOverlay.classList.remove('active');
+    hamburgerButton.classList.remove('open');
+    hamburgerIcon.textContent = '☰';
+    body.classList.remove('noscroll');
+  }
+ 
+  function toggleMenu() {
+    const isOpen = menuOverlay.classList.contains('active');
+    menuOverlay.classList.toggle('active');
+    hamburgerButton.classList.toggle('open');
+    hamburgerIcon.textContent = isOpen ? '☰' : '✕';
+    body.classList.toggle('noscroll', !isOpen);
+  }
+ 
+  hamburgerButton.addEventListener('click', toggleMenu);
+ 
+  function toggleDropdown(element) {
+    document.querySelectorAll('.mobile-dropdown').forEach(drop => {
+      if (drop !== element.parentElement) {
+        drop.classList.remove('active');
+      }
+    });
+    element.parentElement.classList.toggle('active');
+  }
+ 
+  document.querySelectorAll('.mobile-menu-overlay a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+ 
+  document.addEventListener('click', (e) => {
+    const isInside = menuOverlay.contains(e.target) || hamburgerButton.contains(e.target);
+    if (!isInside && menuOverlay.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+</script>
