@@ -416,7 +416,7 @@
         <div class="t3g-cards-grid">
             <div class="t3g-card" data-testimonial="alice">
                 <div class="card-media">
-                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/alice-testimonial.png" alt="Alice" class="card-thumbnail">
+                    <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/alice-testimonial.png" alt="Alice" class="card-thumbnail">
                 </div>
                 <div class="card-info">
                     <h3 class="card-name">Alice</h3>
@@ -428,7 +428,7 @@
 
             <div class="t3g-card" data-testimonial="letizia">
                 <div class="card-media">
-                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/jessica.png" alt="Letizia" class="card-thumbnail">
+                    <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/jessica.png" alt="Letizia" class="card-thumbnail">
                 </div>
                 <div class="card-info">
                     <h3 class="card-name">Letizia</h3>
@@ -440,7 +440,7 @@
 
             <div class="t3g-card" data-testimonial="elisa">
                 <div class="card-media">
-                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/carmela-bondonno.png" alt="Elisa" class="card-thumbnail">
+                    <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/carmela-bondonno.png" alt="Elisa" class="card-thumbnail">
                 </div>
                 <div class="card-info">
                     <h3 class="card-name">Elisa</h3>
@@ -474,8 +474,8 @@
             role: "Interior Designer",
             highlight: "Da 1.100 €/mese a design hotel Hilton a Londra",
             mediaType: "photo",
-            mediaUrl: "https://brukandy.github.io/testimonial-slider-extended/images/alice-testimonial.png",
-            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/alice-testimonial.png",
+            mediaUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/alice-testimonial.png",
+            thumbnailUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/alice-testimonial.png",
             sections: [
                 { label: "Situazione di partenza", text: "Partiva guadagnando 1.100 €/mese senza una direzione professionale chiara." },
                 { label: "Intervento", text: "Grazie al MEP, lavora su autostima, visione e obiettivi concreti." },
@@ -487,8 +487,8 @@
             role: "Artista / Cantante",
             highlight: "Indipendenza e fiducia ritrovate",
             mediaType: "photo",
-            mediaUrl: "https://brukandy.github.io/testimonial-slider-extended/images/jessica.png",
-            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/jessica.png",
+            mediaUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/jessica.png",
+            thumbnailUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/jessica.png",
             sections: [
                 { label: "Situazione di partenza", text: "Bloccata in una relazione ventennale che limitava la sua crescita personale e professionale." },
                 { label: "Intervento", text: "Attraverso il MEP ritrova consapevolezza, forza interiore e indipendenza." },
@@ -500,8 +500,8 @@
             role: "Artista / Coach",
             highlight: "Da difficoltà personale a crescita professionale",
             mediaType: "photo",
-            mediaUrl: "https://brukandy.github.io/testimonial-slider-extended/images/carmela-bondonno.png",
-            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/carmela-bondonno.png",
+            mediaUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/carmela-bondonno.png",
+            thumbnailUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/carmela-bondonno.png",
             sections: [
                 { label: "Situazione di partenza", text: "Un momento di difficoltà personale che rischiava di bloccare ogni progetto." },
                 { label: "Intervento", text: "Trasforma la crisi in opportunità grazie al percorso MEP e al coaching." },
@@ -604,6 +604,11 @@
 
         function closeModal() {
             modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            var iframes = modalContent.querySelectorAll('iframe');
+            iframes.forEach(function(iframe) { iframe.src = ''; });
+            var videos = modalContent.querySelectorAll('video');
+            videos.forEach(function(video) { video.pause(); video.currentTime = 0; });
         }
 
         // Delegation: funziona anche se Elementor reinietta nodi o se DOMContentLoaded è già passato

@@ -1,4 +1,4 @@
-<meta charset="UTF-8">
+﻿<meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -415,7 +415,7 @@
         <div class="t3g-cards-grid">
             <div class="t3g-card" data-testimonial="gilberto">
                 <div class="card-media">
-                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/gilberto-tetimonial.png" alt="Gilberto" class="card-thumbnail">
+                    <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/gilberto-tetimonial.png" alt="Gilberto" class="card-thumbnail">
                 </div>
                 <div class="card-info">
                     <h3 class="card-name">Gilberto</h3>
@@ -427,7 +427,7 @@
 
             <div class="t3g-card" data-testimonial="fabio">
                 <div class="card-media">
-                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/fabio-testimonial.png" alt="Fabio" class="card-thumbnail">
+                    <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/fabio-testimonial.png" alt="Fabio" class="card-thumbnail">
                 </div>
                 <div class="card-info">
                     <h3 class="card-name">Fabio</h3>
@@ -439,7 +439,7 @@
 
             <div class="t3g-card" data-testimonial="salvatore">
                 <div class="card-media">
-                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/salvatore-sgobbio.png" alt="Salvatore" class="card-thumbnail">
+                    <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/salvatore-sgobbio.png" alt="Salvatore" class="card-thumbnail">
                 </div>
                 <div class="card-info">
                     <h3 class="card-name">Salvatore</h3>
@@ -474,7 +474,7 @@
             highlight: "Incremento del 150% in 12 mesi: da 600.000 \u20ac a 1,5 milioni",
             mediaType: "video",
             mediaUrl: "https://www.youtube.com/embed/pmbVLQppfgc",
-            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/gilberto-tetimonial.png",
+            thumbnailUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/gilberto-tetimonial.png",
             sections: [
                 { label: "Situazione di partenza", text: "Azienda in difficolt\u00e0 economica, fatturato fermo a 600.000 \u20ac l\u2019anno e un team di venti persone." },
                 { label: "Intervento", text: "Partecipa ai programmi di affiancamento dedicati a imprenditori, lavorando su leadership, gestione del team e controllo operativo." },
@@ -487,7 +487,7 @@
             highlight: "Da 250.000 \u20ac a DECINE di milioni di euro di fatturato annuo",
             mediaType: "video",
             mediaUrl: "https://www.youtube.com/embed/f3lBU52wDPQ",
-            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/fabio-testimonial.png",
+            thumbnailUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/fabio-testimonial.png",
             sections: [
                 { label: "Situazione di partenza", text: "Fatturava circa 250.000 \u20ac all\u2019anno con un modello tradizionale e una struttura poco scalabile." },
                 { label: "Intervento", text: "Applica le strategie di business, leadership e gestione aziendale apprese nei programmi di affiancamento." },
@@ -500,7 +500,7 @@
             highlight: "Diventa azienda leader del settore in Europa",
             mediaType: "video",
             mediaUrl: "https://www.youtube.com/embed/bHgNNyFFi-Q",
-            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/salvatore-sgobbio.png",
+            thumbnailUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/salvatore-sgobbio.png",
             sections: [
                 { label: "Situazione di partenza", text: "Salvatore riconosce quanto sarebbe stato diverso il suo percorso imprenditoriale se avesse avuto sin dall\u2019inizio le informazioni corrette per prendere decisioni strategiche efficaci." },
                 { label: "Intervento", text: "Partecipa ai programmi della Leone Master School. Trova un percorso strutturato che lo aiuta a migliorare la visione imprenditoriale, la gestione aziendale e la capacit\u00e0 di individuare ci\u00f2 che fa la differenza." },
@@ -580,6 +580,11 @@
 
         function closeModal() {
             modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            var iframes = modalContent.querySelectorAll('iframe');
+            iframes.forEach(function(iframe) { iframe.src = ''; });
+            var videos = modalContent.querySelectorAll('video');
+            videos.forEach(function(video) { video.pause(); video.currentTime = 0; });
         }
 
         root.addEventListener('click', (e) => {

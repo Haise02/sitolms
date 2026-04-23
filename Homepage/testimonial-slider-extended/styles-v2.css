@@ -1,0 +1,645 @@
+/* Reset & Base Styles - v4 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    border-radius: 6px;
+    border: 2px solid #0f172a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #1e3a8a #0f172a;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    padding: 80px 20px 20px 20px;
+    min-height: 100vh;
+}
+
+.testimonial-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.testimonial-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.testimonial-title {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+}
+
+.testimonial-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.cards-grid {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 40px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0 20px 20px 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar but keep functionality */
+.cards-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.cards-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.cards-grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.testimonial-card {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 280px;
+    max-width: 280px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-media {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover .card-thumbnail {
+    transform: scale(1.05);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.video-overlay svg circle {
+    transition: fill 0.3s ease;
+}
+
+.testimonial-card:hover .video-overlay {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+}
+
+.testimonial-card:hover .video-overlay svg circle {
+    fill: rgba(255,255,255,0.5);
+}
+
+.media-placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.video-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .video-badge {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.testimonial-card:hover .media-placeholder {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.card-role {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.card-result {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-highlight {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.card-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .cta-text {
+    color: #ffffff;
+}
+
+.cta-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    color: #1e3a8a;
+    padding: 18px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.disclaimer {
+    text-align: center;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.disclaimer p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.mobile-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 0 20px;
+}
+
+.mobile-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.mobile-dot:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.2);
+}
+
+.mobile-dot.active {
+    background: #ffffff;
+    width: 28px;
+    border-radius: 5px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+    pointer-events: none;
+    will-change: opacity, visibility;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body.modal-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    touch-action: none;
+}
+
+body.modal-open .modal-overlay {
+    touch-action: pan-y;
+}
+
+body.modal-open .modal-container {
+    touch-action: pan-y;
+}
+
+.modal-container {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    border-radius: 20px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    pointer-events: auto;
+    touch-action: pan-y;
+    will-change: transform;
+}
+
+.modal-overlay.active .modal-container {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    pointer-events: auto;
+    touch-action: auto;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.modal-content {
+    padding: 48px 48px 72px 48px;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.modal-media {
+    flex-shrink: 0;
+    width: 350px;
+}
+
+.modal-media-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+.modal-info {
+    flex: 1;
+}
+
+.modal-name {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.modal-role {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 16px;
+}
+
+.modal-highlight {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 16px 20px;
+    border-radius: 12px;
+}
+
+.modal-highlight-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.modal-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.modal-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-section-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 12px;
+}
+
+.modal-section-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Rimuovo media query che cambia grid - ora è sempre scroll orizzontale */
+
+@media (max-width: 768px) and (orientation: portrait) {
+    body {
+        padding: 40px 0 20px 0;
+    }
+    
+    .testimonial-header {
+        padding: 0 20px;
+        margin-bottom: 32px;
+    }
+    
+    .testimonial-title {
+        font-size: 32px;
+    }
+    
+    .testimonial-subtitle {
+        font-size: 16px;
+    }
+    
+    /* Mobile Slider */
+    .cards-grid {
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+    
+    /* Hide scrollbar on mobile */
+    .cards-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .cards-grid {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .testimonial-card {
+        min-width: 75%;
+        max-width: 75%;
+        scroll-snap-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Show peek of next card */
+    .cards-grid::after {
+        content: '';
+        min-width: 20px;
+        flex-shrink: 0;
+    }
+    
+    .cta-section {
+        padding: 0 20px;
+    }
+    
+    .disclaimer {
+        margin: 0 20px;
+    }
+    
+    /* MODAL CON PADDING LATERALE SU MOBILE PORTRAIT */
+    .modal-overlay {
+        padding: 20px 5% !important;
+    }
+    
+    .modal-container {
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 16px;
+        width: 100%;
+        margin: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        pointer-events: auto;
+    }
+    
+    .modal-content {
+        padding: 60px 20px 64px 20px;
+    }
+    
+    .modal-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.95);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        width: 44px;
+        height: 44px;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        pointer-events: auto;
+        touch-action: manipulation;
+        cursor: pointer;
+    }
+    
+    .modal-close svg {
+        stroke: #ffffff;
+        stroke-width: 3;
+        width: 20px;
+        height: 20px;
+        pointer-events: none;
+    }
+    
+    .modal-header {
+        flex-direction: column;
+    }
+    
+    .modal-media {
+        width: 100%;
+    }
+}
+
+/* Mobile Landscape - mantiene scroll orizzontale */
+@media (max-width: 926px) and (orientation: landscape) {
+    body {
+        padding: 40px 0 20px 0;
+    }
+    
+    .testimonial-header {
+        margin-bottom: 32px;
+    }
+    
+    .testimonial-title {
+        font-size: 28px;
+    }
+    
+    .testimonial-subtitle {
+        font-size: 14px;
+    }
+    
+    .testimonial-card {
+        min-width: 240px;
+        max-width: 240px;
+        padding: 16px;
+    }
+    
+    .card-name {
+        font-size: 16px;
+    }
+    
+    .card-role {
+        font-size: 13px;
+    }
+    
+    .cta-section {
+        margin-top: 32px;
+    }
+}

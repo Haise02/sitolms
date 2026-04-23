@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Accreditamenti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="accreditation-banner">
+        <div class="banner-track">
+            <!-- Ripeto il contenuto 3 volte per loop seamless -->
+            <div class="banner-content">
+                <span class="banner-text">Ente accreditato dalla</span>
+                <img src="images/regione-lazio.png" alt="Regione Lazio" class="banner-logo logo-regione">
+                <span class="banner-separator">•</span>
+                <span class="banner-text">Polo Universitario</span>
+                <img src="images/iul.png" alt="IUL" class="banner-logo logo-iul">
+                <span class="banner-separator">•</span>
+            </div>
+            <div class="banner-content" aria-hidden="true">
+                <span class="banner-text">Ente accreditato dalla</span>
+                <img src="images/regione-lazio.png" alt="Regione Lazio" class="banner-logo logo-regione">
+                <span class="banner-separator">•</span>
+                <span class="banner-text">Polo Universitario</span>
+                <img src="images/iul.png" alt="IUL" class="banner-logo logo-iul">
+                <span class="banner-separator">•</span>
+            </div>
+            <div class="banner-content" aria-hidden="true">
+                <span class="banner-text">Ente accreditato dalla</span>
+                <img src="images/regione-lazio.png" alt="Regione Lazio" class="banner-logo logo-regione">
+                <span class="banner-separator">•</span>
+                <span class="banner-text">Polo Universitario</span>
+                <img src="images/iul.png" alt="IUL" class="banner-logo logo-iul">
+                <span class="banner-separator">•</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Send height to parent for iframe auto-resize
+    function sendHeight() {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ accreditationHeight: height }, '*');
+    }
+    
+    window.addEventListener('load', sendHeight);
+    window.addEventListener('resize', sendHeight);
+    </script>
+</body>
+</html>

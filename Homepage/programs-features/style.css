@@ -1,0 +1,495 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: transparent;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: #1a2332;
+}
+
+/* Container */
+.programs-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px;
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.title-main {
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.title-highlight {
+    font-weight: 600;
+    color: #C9A55A;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #e2e8f0;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.section-process {
+    margin-top: 100px;
+}
+
+/* Seconda sezione - colori originali */
+.section-process .title-main {
+    color: #1a2332;
+}
+
+.section-process .title-highlight {
+    color: #132E55;
+}
+
+/* Features Bento Grid - 5 Cards Asymmetric */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 24px;
+    padding: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(19, 46, 85, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(19, 46, 85, 0.15);
+    border-color: rgba(201, 165, 90, 0.3);
+}
+
+/* Card Layout */
+.card-1 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.card-2 {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.card-3 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.card-4 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.card-5 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* Card Image */
+.card-image-wrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-content-wrapper {
+    padding: 32px 32px 20px 32px;
+    flex: 1;
+}
+
+/* Card Icon */
+.card-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #132E55 0%, #1a4173 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.card-icon svg {
+    stroke: #C9A55A;
+}
+
+/* Card Content */
+.card-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #132E55;
+    margin-bottom: 12px;
+}
+
+.card-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a5568;
+}
+
+/* Process Grid - 3 Horizontal Cards */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.process-card {
+    background: transparent;
+    height: 280px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.process-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.process-card:hover .process-card-inner {
+    transform: rotateY(180deg);
+}
+
+.process-card-front,
+.process-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(19, 46, 85, 0.08);
+}
+
+.process-card-front {
+    background: white;
+}
+
+.process-card-front::after {
+    content: '↻';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #132E55 0%, #1a4173 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.process-card:hover .process-card-front::after {
+    opacity: 1;
+    transform: rotate(180deg);
+}
+
+.process-card-back {
+    background: white;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.process-number {
+    font-size: 72px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #132E55 0%, #1a4173 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.process-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #132E55;
+    margin: 0;
+}
+
+.process-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #4a5568;
+    text-align: center;
+    margin: 0;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .programs-container {
+        padding: 60px 32px;
+    }
+
+    .section-title {
+        font-size: 40px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .card-1,
+    .card-2,
+    .card-3,
+    .card-4,
+    .card-5 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .process-card {
+        height: 260px;
+    }
+}
+
+/* Responsive - Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait) {
+    .programs-container {
+        padding: 40px 0;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .section-subtitle {
+        font-size: 16px;
+    }
+
+    .features-grid {
+        display: flex;
+        grid-template-columns: none;
+        gap: 16px;
+        margin-bottom: 60px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 0 20px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .features-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .feature-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+
+    .card-image-wrapper {
+        height: 160px;
+    }
+
+    .card-content-wrapper {
+        padding: 24px 20px 16px 20px;
+    }
+
+    .card-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .card-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .card-title {
+        font-size: 20px;
+    }
+
+    .card-description {
+        font-size: 15px;
+    }
+
+    .section-process {
+        margin-top: 60px;
+        padding: 0 24px 0; /* Rimosso padding bottom eccessivo */
+    }
+
+    .process-grid {
+        gap: 24px;
+        padding: 0 16px; /* Aggiunto padding laterale alle card */
+    }
+
+    .process-card {
+        height: 240px;
+    }
+
+    .process-card-front,
+    .process-card-back {
+        padding: 28px 20px; /* Ridotto padding interno verticale */
+    }
+
+    .process-card-front::after {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+        top: 12px;
+        right: 12px;
+    }
+
+    .process-number {
+        font-size: 56px;
+    }
+
+    .process-title {
+        font-size: 20px;
+    }
+
+    .process-description {
+        font-size: 16px;
+    }
+}
+
+/* Responsive - Mobile Small */
+@media (max-width: 480px) {
+    .programs-container {
+        padding: 32px 0;
+    }
+
+    .section-header {
+        padding: 0 16px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .section-subtitle {
+        font-size: 15px;
+    }
+
+    .features-grid {
+        padding: 0 16px;
+    }
+
+    .feature-card {
+        flex: 0 0 90%;
+    }
+
+    .card-content-wrapper {
+        padding: 20px 16px 12px 16px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .card-description {
+        font-size: 14px;
+    }
+
+    .section-process {
+        padding: 0 16px;
+    }
+
+    .process-card {
+        height: 220px;
+    }
+
+    .process-card-front,
+    .process-card-back {
+        padding: 24px 20px;
+    }
+
+    .process-card-front::after {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .process-number {
+        font-size: 48px;
+    }
+
+    .process-title {
+        font-size: 18px;
+    }
+
+    .process-description {
+        font-size: 15px;
+    }
+}

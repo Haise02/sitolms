@@ -49,6 +49,7 @@
     user-select: none !important;
   }
 </style>
+<a href="https://leonemasterschool.it/media-e-tv-re/" class="image-scroller-link" style="display:block; text-decoration:none; color:inherit;" aria-label="Scopri dove siamo apparsi - Vai alla pagina Media e TV">
 <div class="image-scroller">
   <div class="fade-left"></div>
   <div class="scroll-track" id="scrollTrack">
@@ -123,11 +124,15 @@
   </div>
   <div class="fade-right"></div>
 </div>
+</a>
 <script>
   const track = document.getElementById("scrollTrack");
+  const scrollerLink = document.querySelector(".image-scroller-link");
   const speed = 0.5;
   let offset = 0;
   let isDragging = false;
+  let hasDragged = false;
+  const dragThreshold = 5;
   let startX = 0;
   let currentX = 0;
   let lastOffset = 0;
@@ -146,6 +151,7 @@
   track.addEventListener("mousedown", (e) => {
     e.preventDefault();
     isDragging = true;
+    hasDragged = false;
     startX = e.clientX;
     lastOffset = offset;
     document.body.classList.add("dragging");
@@ -153,6 +159,7 @@
   document.addEventListener("mousemove", (e) => {
     if (!isDragging) return;
     currentX = e.clientX;
+    if (Math.abs(currentX - startX) > dragThreshold) hasDragged = true;
     offset = lastOffset + (currentX - startX);
     track.style.transform = `translateX(${offset}px)`;
   });
@@ -163,17 +170,28 @@
   // Drag mobile
   track.addEventListener("touchstart", (e) => {
     isDragging = true;
+    hasDragged = false;
     startX = e.touches[0].clientX;
     lastOffset = offset;
   });
   track.addEventListener("touchmove", (e) => {
     if (!isDragging) return;
     currentX = e.touches[0].clientX;
+    if (Math.abs(currentX - startX) > dragThreshold) hasDragged = true;
     offset = lastOffset + (currentX - startX);
     track.style.transform = `translateX(${offset}px)`;
   });
   track.addEventListener("touchend", () => {
     isDragging = false;
   });
+  // Evita che il drag apra il link
+  if (scrollerLink) {
+    scrollerLink.addEventListener("click", (e) => {
+      if (hasDragged) {
+        e.preventDefault();
+        hasDragged = false;
+      }
+    });
+  }
   autoScroll();
 </script>

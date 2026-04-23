@@ -1,397 +1,57 @@
-<!-- I NOSTRI PROGRAMMI — Hero · Leone Master School -->
-<!-- COPIA TUTTO QUESTO CODICE IN UN WIDGET HTML DI ELEMENTOR -->
+<!-- I NOSTRI PROGRAMMI - Pagina oscurata -->
+<!-- Il contenuto originale è disponibile nella cronologia git. Per ripristinarlo eseguire `git show HEAD~:Programmi/hero-programmi.html`. -->
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-/* ═══════════ RESET ═══════════ */
-.prg *, .prg *::before, .prg *::after { margin: 0; padding: 0; box-sizing: border-box; }
-.elementor-widget-html { margin: 0 !important; padding: 0 !important; }
-.elementor-widget-container { margin: 0 !important; padding: 0 !important; }
-
-/* ═══════════ VARIABLES ═══════════ */
-.prg {
-  --navy: #07162E;
-  --navy-soft: #0B1D38;
-  --accent: #4C7BF4;
-  --accent2: #2E8BF7;
-  --accent-soft: rgba(76, 123, 244, 0.08);
-  --accent-border: rgba(76, 123, 244, 0.15);
-  --warm-bg: #FAFAF8;
-  --text-dark: #1a1a1a;
-  --text-body: #3d3d3d;
-  --text-muted: #6b6b6b;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --sans-tight: 'Inter Tight', 'Inter', sans-serif;
-  font-family: var(--sans);
-  color: var(--text-dark);
-  overflow-x: hidden;
-}
-
-/* ═══════════ REVEAL ═══════════ */
-.prg-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.prg-reveal.visible { opacity: 1; transform: translateY(0); }
-.prg-reveal-d1 { transition-delay: 0.1s; }
-.prg-reveal-d2 { transition-delay: 0.2s; }
-.prg-reveal-d3 { transition-delay: 0.3s; }
-.prg-reveal-d4 { transition-delay: 0.4s; }
-
-/* ══════════════════════════════════════════
-   HERO
-   ══════════════════════════════════════════ */
-.prg-hero {
-  background: var(--navy);
-  position: relative;
-  overflow: hidden;
-  padding: 0;
-}
-
-/* Particle canvas */
-.prg-hero-canvas {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Glow orbs */
-.prg-glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  pointer-events: none;
-  z-index: 0;
-}
-.prg-glow.g1 {
-  width: 600px; height: 600px;
-  background: rgba(76,123,244,0.1);
-  top: -20%; left: -10%;
-  animation: prgGlow 8s ease-in-out infinite;
-}
-.prg-glow.g2 {
-  width: 500px; height: 500px;
-  background: rgba(46,139,247,0.07);
-  bottom: -15%; right: -8%;
-  animation: prgGlow 10s ease-in-out infinite 3s;
-}
-.prg-glow.g3 {
-  width: 300px; height: 300px;
-  background: rgba(76,123,244,0.05);
-  top: 40%; left: 50%;
-  animation: prgGlow 12s ease-in-out infinite 1.5s;
-}
-@keyframes prgGlow {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.4); opacity: 1; }
-}
-
-/* ── Hero header ── */
-.prg-hero-header {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 120px 40px 60px;
-  position: relative;
-  z-index: 2;
-}
-
-.prg-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(76,123,244,0.1);
-  border: 1px solid rgba(76,123,244,0.2);
-  border-radius: 100px;
-  padding: 8px 20px;
-  margin-bottom: 32px;
-  position: relative;
-}
-.prg-hero-badge::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 100px;
-  border: 1px solid rgba(76,123,244,0.15);
-  animation: prgBadgePulse 2.5s ease-in-out infinite;
-}
-@keyframes prgBadgePulse {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.12); opacity: 0; }
-}
-.prg-hero-badge .badge-dot {
-  width: 8px; height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  animation: prgDot 2s ease-in-out infinite;
-}
-@keyframes prgDot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(76,123,244,0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(76,123,244,0); }
-}
-.prg .prg-hero-badge span {
-  font-family: var(--sans-tight);
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.85);
-  letter-spacing: 1px;
-}
-
-.prg-hero-header h1 {
-  font-size: 58px;
-  line-height: 1.08;
-  margin: 0 0 24px;
-  letter-spacing: -0.025em;
-}
-.prg .prg-hero-header h1 .serif-italic {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-style: italic;
-  color: rgba(255,255,255,0.6);
-  display: block;
-}
-.prg .prg-hero-header h1 .sans-heavy {
-  font-family: var(--sans-tight);
-  font-weight: 800;
-  color: #ffffff;
-  display: block;
-  position: relative;
-}
-.prg .prg-hero-header h1 .sans-heavy::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
-  background-size: 200% 100%;
-  animation: prgShimmer 3s linear infinite;
-  border-radius: 1px;
-}
-@keyframes prgShimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-.prg .prg-hero-sub {
-  font-size: 18px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.75;
-  max-width: 600px;
-  margin: 0 auto 40px;
-}
-.prg .prg-hero-sub strong {
-  font-weight: 600;
-  color: rgba(255,255,255,0.85);
-}
-
-/* ── Social proof ── */
-.prg-hero-proof {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 100px;
-  padding: 10px 24px 10px 12px;
-}
-.prg-hero-proof-avatars {
-  display: flex;
-}
-.prg-hero-proof-avatar {
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  border: 2px solid var(--navy);
-  background: linear-gradient(135deg, rgba(76,123,244,0.3), rgba(46,139,247,0.2));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: -6px;
-}
-.prg-hero-proof-avatar:first-child { margin-left: 0; }
-.prg-hero-proof-avatar svg {
-  width: 12px; height: 12px;
-  stroke: rgba(255,255,255,0.6);
-  fill: none;
-  stroke-width: 2;
-}
-.prg .prg-hero-proof-text {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.5);
-}
-.prg .prg-hero-proof-text strong {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-/* ══════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════ */
-@media (max-width: 1024px) {
-  .prg-hero-header { padding: 100px 36px 50px; }
-  .prg-hero-header h1 { font-size: 50px; }
-}
-
-@media (max-width: 768px) {
-  .prg-hero-header { padding: 80px 24px 40px; }
-  .prg-hero-header h1 { font-size: 40px; }
-  .prg .prg-hero-sub { font-size: 16px; }
-}
-
-@media (max-width: 480px) {
-  .prg-hero-header { padding: 64px 16px 32px; }
-  .prg-hero-header h1 { font-size: 32px; }
-  .prg .prg-hero-sub { font-size: 15px; margin-bottom: 28px; }
-  .prg-hero-proof { padding: 8px 16px 8px 10px; gap: 10px; }
-  .prg .prg-hero-proof-text { font-size: 12px; }
-}
-
-@media (max-width: 360px) {
-  .prg-hero-header { padding: 56px 14px 28px; }
-  .prg-hero-header h1 { font-size: 27px; }
-  .prg .prg-hero-sub { font-size: 14px; }
-}
-
+  .prg-offline {
+    background: #07162E;
+    color: #fff;
+    padding: 80px 24px;
+    text-align: center;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .prg-offline h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .prg-offline p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .prg-offline a {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #4C7BF4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .prg-offline a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(76, 123, 244, 0.3);
+  }
 </style>
 
-<div class="prg">
-  <section class="prg-hero">
-    <!-- Glow orbs -->
-    <div class="prg-glow g1"></div>
-    <div class="prg-glow g2"></div>
-    <div class="prg-glow g3"></div>
-    <!-- Particle canvas -->
-    <canvas class="prg-hero-canvas" id="prgCanvas"></canvas>
-
-    <!-- Header -->
-    <div class="prg-hero-header">
-      <div class="prg-hero-badge prg-reveal">
-        <div class="badge-dot"></div>
-        <span>I Nostri Programmi</span>
-      </div>
-
-      <h1>
-        <span class="serif-italic prg-reveal prg-reveal-d1">Trova il percorso</span>
-        <span class="sans-heavy prg-reveal prg-reveal-d2">che fa per te.</span>
-      </h1>
-
-      <p class="prg-hero-sub prg-reveal prg-reveal-d3">
-        Programmi di affiancamento con <strong>mentori e professionisti</strong> per trasformare le tue competenze in risultati concreti. Scegli l&rsquo;area che vuoi potenziare.
-      </p>
-
-      <div class="prg-hero-proof prg-reveal prg-reveal-d4">
-        <div class="prg-hero-proof-avatars">
-          <div class="prg-hero-proof-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div class="prg-hero-proof-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div class="prg-hero-proof-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div class="prg-hero-proof-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div class="prg-hero-proof-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        </div>
-        <div class="prg-hero-proof-text"><strong>+10.000</strong> corsisti</div>
-      </div>
-    </div>
-  </section>
+<div class="prg-offline">
+  <h1>Pagina non disponibile</h1>
+  <p>Questa pagina non è più attiva. Puoi esplorare i nostri programmi direttamente dal menu o tornare alla home.</p>
+  <a href="https://leonemasterschool.it/">Torna alla home</a>
 </div>
 
 <script>
-(function() {
-
-  /* ─── Scroll reveals ─── */
-  function initReveals() {
-    var els = document.querySelectorAll('.prg-reveal');
-    if (!els.length) return;
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    els.forEach(function(el) { obs.observe(el); });
-  }
-
-  /* ─── Particle canvas ─── */
-  function initParticles() {
-    var canvas = document.getElementById('prgCanvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var particles = [];
-    var hero = canvas.closest('.prg-hero');
-
-    function resize() {
-      canvas.width = hero.offsetWidth;
-      canvas.height = hero.offsetHeight;
+  setTimeout(function () {
+    if (window.top === window.self) {
+      window.location.replace('https://leonemasterschool.it/');
     }
-    resize();
-    window.addEventListener('resize', resize);
-
-    for (var i = 0; i < 40; i++) {
-      particles.push({
-        x: Math.random() * (canvas.width || 1200),
-        y: Math.random() * (canvas.height || 800),
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        r: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.2 + 0.05
-      });
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(76, 123, 244, ' + p.opacity + ')';
-        ctx.fill();
-
-        for (var j = i + 1; j < particles.length; j++) {
-          var p2 = particles[j];
-          var dx = p.x - p2.x;
-          var dy = p.y - p2.y;
-          var d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 120) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = 'rgba(76, 123, 244, ' + (0.04 * (1 - d / 120)) + ')';
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(draw);
-    }
-    draw();
-  }
-
-  /* ─── Init all ─── */
-  function init() {
-    initReveals();
-    initParticles();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-})();
+  }, 2500);
 </script>

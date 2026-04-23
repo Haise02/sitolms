@@ -1,3 +1,6 @@
 sitolms/
 .DS_Store
 Thumbs.db
+.claude/
+feedback_images/
+feedback (*).pdf

@@ -416,7 +416,7 @@
         <div class="t3g-cards-grid">
             <div class="t3g-card" data-testimonial="fabio">
                 <div class="card-media">
-                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/fabio-testimonial.png" alt="Fabio" class="card-thumbnail">
+                    <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/fabio-testimonial.png" alt="Fabio" class="card-thumbnail">
                 </div>
                 <div class="card-info">
                     <h3 class="card-name">Fabio</h3>
@@ -428,7 +428,7 @@
 
             <div class="t3g-card" data-testimonial="chiara">
                 <div class="card-media">
-                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/chiara-vesani.png" alt="Chiara" class="card-thumbnail">
+                    <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/chiara-vesani.png" alt="Chiara" class="card-thumbnail">
                 </div>
                 <div class="card-info">
                     <h3 class="card-name">Chiara</h3>
@@ -440,7 +440,7 @@
 
             <div class="t3g-card" data-testimonial="carmela">
                 <div class="card-media">
-                    <img src="https://brukandy.github.io/testimonial-slider-extended/images/carmela-bondonno.png" alt="Carmela" class="card-thumbnail">
+                    <img src="https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/carmela-bondonno.png" alt="Carmela" class="card-thumbnail">
                 </div>
                 <div class="card-info">
                     <h3 class="card-name">Carmela</h3>
@@ -475,7 +475,7 @@
             highlight: "Da 250.000 € a DECINE di milioni di euro di fatturato annuo",
             mediaType: "video",
             mediaUrl: "https://www.youtube.com/embed/f3lBU52wDPQ",
-            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/fabio-testimonial.png",
+            thumbnailUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/fabio-testimonial.png",
             sections: [
                 { label: "Situazione di partenza", text: "Fatturava circa 250.000 € all'anno con un modello tradizionale e una struttura poco scalabile." },
                 { label: "Intervento", text: "Applica le strategie di business, leadership e gestione aziendale apprese nei programmi di affiancamento." },
@@ -488,7 +488,7 @@
             highlight: "Da zero competenze a piena consapevolezza del proprio mercato",
             mediaType: "video",
             mediaUrl: "https://www.youtube.com/embed/-3SXCseesAc",
-            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/chiara-vesani.png",
+            thumbnailUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/chiara-vesani.png",
             sections: [
                 { label: "Situazione di partenza", text: "Partiva da zero competenze di marketing e cercava maggiore consapevolezza per individuare la nicchia professionale in cui posizionarsi come architetto." },
                 { label: "Intervento", text: "Intraprende il Master con dedizione, partecipando attivamente alle lezioni e ai canali della community." },
@@ -501,7 +501,7 @@
             highlight: "Autostima ritrovata e nuova direzione di vita",
             mediaType: "video",
             mediaUrl: "https://www.youtube.com/embed/PUbLRY1xzwI",
-            thumbnailUrl: "https://brukandy.github.io/testimonial-slider-extended/images/carmela-bondonno.png",
+            thumbnailUrl: "https://raw.githubusercontent.com/Haise02/sitolms/main/Homepage/testimonial-slider-extended/images/carmela-bondonno.png",
             sections: [
                 { label: "Situazione di partenza", text: "Carmela, insegnante di matematica e mamma di tre figli, stava attraversando un periodo complesso sia economicamente che emotivamente. Proveniva da un matrimonio difficile che aveva compromesso la sua autostima." },
                 { label: "Intervento", text: "Inizia i programmi della Leone Master School con l'obiettivo di rimettersi in forma, recuperare equilibrio e affrontare il momento delicato nel modo migliore possibile." },
@@ -604,6 +604,11 @@
 
         function closeModal() {
             modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            var iframes = modalContent.querySelectorAll('iframe');
+            iframes.forEach(function(iframe) { iframe.src = ''; });
+            var videos = modalContent.querySelectorAll('video');
+            videos.forEach(function(video) { video.pause(); video.currentTime = 0; });
         }
 
         // Delegation: funziona anche se Elementor reinietta nodi o se DOMContentLoaded è già passato
