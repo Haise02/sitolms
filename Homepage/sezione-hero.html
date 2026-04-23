@@ -1,0 +1,72 @@
+<!-- CODICE PER ELEMENTOR - WIDGET HTML -->
+
+<!-- Typeform Embed Script (il CTA "Conosciamoci meglio" apre un popup Typeform via postMessage) -->
+<script src="//embed.typeform.com/next/embed.js"></script>
+
+<!-- Iframe Hero Section -->
+<iframe
+    src="https://cdn.jsdelivr.net/gh/Haise02/sitolms@main/Homepage/hero-section/index.html"
+    width="100%"
+    height="800"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+    style="border: none; display: block; margin: 0; padding: 0;">
+</iframe>
+
+<script>
+// Auto-resize iframe + gestione Typeform da iframe figlio
+window.addEventListener('message', function(e) {
+    // Handle iframe height resize
+    if (e.data && e.data.hasOwnProperty('heroHeight')) {
+        var iframe = document.querySelector('iframe[src*="hero-section"]');
+        if (iframe) {
+            iframe.style.height = e.data.heroHeight + 'px';
+        }
+    }
+
+    // Handle Typeform open request from iframe
+    if (e.data && e.data.type === 'openTypeform' && e.data.formId) {
+        // Detect mobile
+        var isMobile = window.innerWidth <= 768;
+        var isPortrait = window.innerHeight > window.innerWidth;
+        var tfSize = (isMobile && isPortrait) ? '100' : '50';
+
+        // Create hidden button with Typeform attributes
+        var button = document.createElement('button');
+        button.setAttribute('data-tf-popup', e.data.formId);
+        button.setAttribute('data-tf-size', tfSize);
+        button.setAttribute('data-tf-opacity', '100');
+        button.setAttribute('data-tf-medium', 'snippet');
+        button.style.display = 'none';
+        button.id = 'tf-trigger-' + Date.now();
+        document.body.appendChild(button);
+
+        // Force Typeform to reinitialize and scan for new buttons
+        if (window.tf && window.tf.load) {
+            window.tf.load();
+        }
+
+        // Wait for Typeform to initialize, then trigger
+        setTimeout(function() {
+            button.click();
+            setTimeout(function() {
+                if (button.parentNode) {
+                    document.body.removeChild(button);
+                }
+            }, 2000);
+        }, 200);
+    }
+});
+</script>
+
+<style>
+/* Remove Elementor padding/margins */
+.elementor-widget-html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.elementor-widget-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+</style>

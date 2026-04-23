@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section - Leone Master School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=13">
+</head>
+<body>
+    <!-- Sfondo animato -->
+    <div class="iridescence-bg-container" id="iridescence-bg-unique"></div>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <!-- Copy Centrale -->
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Risultati straordinari e concreti<br>
+                    <span class="gradient-text">oltre i titoli.</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Affiancamento in crescita personale, business, immobiliare & coaching.
+                </p>
+            </div>
+
+            <!-- Video 3D Centrale -->
+            <div class="hero-video">
+                <div class="video-wrapper" id="videoWrapper">
+                    <div class="video-container" id="videoContainer">
+                        <!-- GIF Thumbnail -->
+                        <img 
+                            src="https://leonemasterschool.it/wp-content/uploads/2025/12/gu.png" 
+                            alt="Video Preview" 
+                            class="video-thumbnail"
+                            id="videoThumbnail"
+                            onerror="this.onerror=null;this.src='https://leonemasterschool.it/wp-content/uploads/2024/07/REF29JULY-ezgif.com-video-to-gif-converter.gif';">
+                        
+                        <!-- Play Button -->
+                        <div class="play-button" id="playButton">
+                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="40" r="40" fill="rgba(255,255,255,0.9)"/>
+                                <path d="M32 26L56 40L32 54V26Z" fill="#1e3a8a"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- YouTube iframe (nascosto inizialmente) -->
+                        <iframe
+                            id="youtubePlayer"
+                            src="https://www.youtube.com/embed/pqSPQa-ByKs?enablejsapi=1&rel=0&modestbranding=1&playsinline=1"
+                            frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                            allowfullscreen
+                            style="display: none;">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="cta-buttons">
+                <button onclick="openTypeformInParent(event)" class="btn btn-primary">Conosciamoci meglio</button>
+            </div>
+            
+            <!-- CTA Description -->
+            <p class="cta-description">Prenota una chiamata con un selezionatore per chiedere maggiori informazioni</p>
+
+            <!-- Proof Stack -->
+            <div class="proof-stack">
+                <div class="proof-item">
+                    <div class="proof-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="proof-content">
+                        <div class="proof-number">+60.000</div>
+                        <div class="proof-label">corsisti affiancati</div>
+                    </div>
+                </div>
+
+                <div class="proof-item">
+                    <div class="proof-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="proof-content">
+                        <div class="proof-number">1.300</div>
+                        <div class="proof-label">testimonianze reali<br><span class="proof-sub">(367 a 5 stelle su Trustpilot)</span></div>
+                    </div>
+                </div>
+
+                <div class="proof-item">
+                    <div class="proof-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <div class="proof-content">
+                        <div class="proof-number">92%</div>
+                        <div class="proof-label">tasso di completamento<br>dei programmi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js?v=8"></script>
+    <script>
+    // Open Typeform in parent window (outside iframe)
+    function openTypeformInParent(event) {
+        event.preventDefault();
+        
+        console.log('Sending Typeform open request to parent');
+        
+        // Send message to parent window to open Typeform
+        window.parent.postMessage({
+            type: 'openTypeform',
+            formId: 'mGllVklt'
+        }, '*');
+        
+        console.log('Message sent');
+    }
+    
+    // Send height to parent for iframe auto-resize (Elementor)
+    function sendHeight() {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ heroHeight: height }, '*');
+    }
+    
+    window.addEventListener('load', sendHeight);
+    window.addEventListener('resize', sendHeight);
+    
+    // Send height after animations
+    setTimeout(sendHeight, 1000);
+    </script>
+</body>
+</html>
