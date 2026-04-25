@@ -13,7 +13,7 @@ const programs = [
         badgeClass: 'business',
         title: '<span class="title-italic">Marketing</span> <span class="title-bold">MILLIONAIRE</span>',
         description: 'Programma di affiancamento marketing personalizzato per piccoli imprenditori e liberi professionisti. Impara a creare strategie commerciali per trasformare la tua comunicazione online in clienti fidelizzati.',
-        url: 'https://leonemasterschool.it/marketing-millionaire-re/',
+        url: 'https://leonemasterschool.it/marketing-re/',
         cta: 'Vai al programma'
     },
     {
@@ -46,6 +46,14 @@ const programs = [
         title: '<span class="title-bold">REAL ESTATE</span> <span class="title-italic">Master</span>',
         description: 'Programma per fare operazioni immobiliari anche senza capitali con affiancamento individuale. Ricevi gli strumenti per crearti, anche da zero, una "professione indipendente ad alto reddito".',
         url: 'https://leonemasterschool.it/rem-re/',
+        cta: 'Vai al programma'
+    },
+    {
+        badge: 'Educazione Genitoriale',
+        badgeClass: 'genitoriale',
+        title: '<span class="title-light">L\'Arte di</span> <span class="title-bold">EDUCARE</span>',
+        description: 'Programma di affiancamento per genitori e futuri genitori. Ricevi gli strumenti pratici per costruire una relazione sana con i tuoi figli e accompagnarli in ogni fase della loro crescita.',
+        url: 'https://leonemasterschool.it/arte-di-educare-re/',
         cta: 'Vai al programma'
     }
 ];

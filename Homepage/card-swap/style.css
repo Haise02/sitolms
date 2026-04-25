@@ -96,6 +96,11 @@ body {
     color: #ffffff;
 }
 
+.badge.genitoriale {
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    color: #1e3a8a;
+}
+
 .title {
     font-size: 56px;
     font-weight: 700;
